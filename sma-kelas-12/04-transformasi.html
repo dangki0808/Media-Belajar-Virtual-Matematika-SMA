@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transformasi Geometri · Matematika SMA Kelas XII</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>.mx{display:inline-grid;grid-template-columns:auto auto;gap:2px 10px;padding:4px 10px;border-left:2.5px solid var(--ink);border-right:2.5px solid var(--ink);border-radius:8px;vertical-align:middle;font-family:var(--mono);text-align:center}</style>
+</head>
+<body style="--acc:#7a4fd6">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XII</a><div class="brand">∂ Matematika SMA <small>· Kelas XII</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 4 · Geometri <span class="lvl pemula">PEMULA</span></span>
+  <h1>Transformasi Geometri: Menggeser, Mencerminkan, Memutar, Memperbesar</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menentukan bayangan titik dan bangun oleh translasi, refleksi, rotasi, dan dilatasi.</li>
+    <li>Menuliskan transformasi dalam bentuk matriks.</li>
+    <li>Menentukan hasil komposisi dua transformasi.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🔺 Lab Bayangan</button><button data-target="komp">🔁 Lab Komposisi</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Motif tenun dan batik</span><p style="margin:.3em 0">Perhatikan kain tenun Sumbawa atau batik: satu motif digeser berulang (translasi), dicerminkan kiri-kanan (refleksi), diputar (rotasi), atau dibuat lebih besar di bagian tengah (dilatasi). Aplikasi edit foto dan permainan video juga melakukan hal yang sama ribuan kali per detik dengan rumus transformasi.</p></div>
+  </div>
+  <div class="card"><h2>1. Empat transformasi dasar</h2>
+    <table class="t"><tr><th>Transformasi</th><th>Bayangan titik (x, y)</th><th>Matriks</th></tr>
+      <tr><td>Translasi (a, b)</td><td>(x + a, y + b)</td><td>— (penjumlahan)</td></tr>
+      <tr><td>Refleksi sumbu-x</td><td>(x, −y)</td><td>[1 0 ; 0 −1]</td></tr>
+      <tr><td>Refleksi sumbu-y</td><td>(−x, y)</td><td>[−1 0 ; 0 1]</td></tr>
+      <tr><td>Refleksi y = x</td><td>(y, x)</td><td>[0 1 ; 1 0]</td></tr>
+      <tr><td>Refleksi y = −x</td><td>(−y, −x)</td><td>[0 −1 ; −1 0]</td></tr>
+      <tr><td>Refleksi titik O</td><td>(−x, −y)</td><td>[−1 0 ; 0 −1]</td></tr>
+      <tr><td>Rotasi 90° (O)</td><td>(−y, x)</td><td>[0 −1 ; 1 0]</td></tr>
+      <tr><td>Rotasi 180° (O)</td><td>(−x, −y)</td><td>[−1 0 ; 0 −1]</td></tr>
+      <tr><td>Rotasi θ (O)</td><td>(x cos θ − y sin θ, x sin θ + y cos θ)</td><td>[cos θ −sin θ ; sin θ cos θ]</td></tr>
+      <tr><td>Dilatasi k (O)</td><td>(kx, ky)</td><td>[k 0 ; 0 k]</td></tr></table>
+    <div class="note">Rotasi bernilai positif berarti <b>berlawanan arah jarum jam</b>. Translasi, refleksi, dan rotasi mempertahankan bentuk dan ukuran (isometri); dilatasi mengubah ukuran dengan faktor k dan luas dengan faktor k².</div>
+  </div>
+  <div class="card"><h2>2. Komposisi transformasi</h2>
+    <p>Transformasi T₁ lalu T₂ setara dengan satu matriks <b>M = M₂ · M₁</b> (yang dikerjakan belakangan ditulis di kiri).</p>
+    <div class="ex"><span class="t">Contoh</span>Refleksi sumbu-x lalu rotasi 90°: M = [0 −1 ; 1 0]·[1 0 ; 0 −1] = [0 1 ; 1 0], sama dengan refleksi terhadap y = x.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Bayangan Segitiga</h2>
+    <p>Pilih transformasi dan atur parameternya. Segitiga asli (abu-abu) dan bayangannya (berwarna). <b>Seret titik A, B, C</b> untuk mengubah segitiga.</p>
+    <div class="row" id="ts"></div>
+    <div class="ctrl" id="pr"></div>
+    <svg class="viz" id="g1" viewBox="0 0 480 480" style="max-width:480px;margin:auto;display:block;touch-action:none"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="komp" class="panel">
+  <div class="card"><h2>Lab: Komposisi Dua Transformasi</h2>
+    <p>Bendera dikenai T₁ (oranye) lalu T₂ (berwarna). Tukar urutannya dan bandingkan.</p>
+    <div class="grid2"><label>T₁ <select id="t1"></select></label><label>T₂ <select id="t2"></select></label></div>
+    <div class="row" style="margin-top:8px"><button class="btn soft" id="swp">Tukar T₁ ↔ T₂</button></div>
+    <svg class="viz" id="g2" viewBox="0 0 480 480" style="max-width:480px;margin:auto;display:block"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XII · Modul 4</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const M=(a,b,c,d)=>`<span class="mx"><span>${VML.m(G.fmt(a,2))}</span><span>${VML.m(G.fmt(b,2))}</span><span>${VML.m(G.fmt(c,2))}</span><span>${VML.m(G.fmt(d,2))}</span></span>`;
+let T=[[1,1],[4,1],[2,4]], tk='Translasi';
+const TR={
+ 'Translasi':{p:[['a',-6,6,1,3],['b',-6,6,1,-2]],f:(x,y,P)=>[x+P.a,y+P.b],m:P=>`T = (${P.a}, ${P.b}): (x, y) → (x + ${VML.neg(P.a)}, y + ${VML.neg(P.b)})`},
+ 'Refleksi':{p:[['garis',0,4,1,0]],f:(x,y,P)=>[[x,-y],[-x,y],[y,x],[-y,-x],[-x,-y]][P.garis],m:P=>{ const n=['sumbu-x','sumbu-y','y = x','y = −x','titik O'][P.garis]; const mm=[[1,0,0,-1],[-1,0,0,1],[0,1,1,0],[0,-1,-1,0],[-1,0,0,-1]][P.garis]; return `Refleksi terhadap <b>${n}</b>, matriks ${M(...mm)}`; }},
+ 'Rotasi':{p:[['sudut',-180,180,15,90]],f:(x,y,P)=>{ const t=P.sudut*Math.PI/180; return [x*Math.cos(t)-y*Math.sin(t),x*Math.sin(t)+y*Math.cos(t)]; },m:P=>{ const t=P.sudut*Math.PI/180; return `Rotasi ${P.sudut}° pusat O (${P.sudut>=0?'berlawanan':'searah'} jarum jam), matriks ${M(Math.cos(t),-Math.sin(t),Math.sin(t),Math.cos(t))}`; }},
+ 'Dilatasi':{p:[['k',-2,2.5,0.5,2]],f:(x,y,P)=>[P.k*x,P.k*y],m:P=>`Dilatasi pusat O faktor k = ${G.fmt(P.k,1)}, matriks ${M(P.k,0,0,P.k)}. Luas bayangan = k² × luas asal = ${G.fmt(P.k*P.k,2)} ×`}};
+const GN=['sumbu-x','sumbu-y','y = x','y = −x','titik O'];
+$('#ts').innerHTML=Object.keys(TR).map(k=>`<button class="chipbtn ${k===tk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#ts .chipbtn').forEach(b=>b.onclick=()=>{ $$('#ts .chipbtn').forEach(x=>x.classList.toggle('on',x===b)); tk=b.dataset.k; build(); });
+function build(){ $('#pr').innerHTML=TR[tk].p.map(([id,mn,mx,st,v])=>`<label>${id==='garis'?'Cermin':id} <span class="v" id="${id}-v"></span><input type="range" id="${id}" min="${mn}" max="${mx}" step="${st}" value="${v}"></label>`).join(''); TR[tk].p.forEach(([id])=>$('#'+id).oninput=d1); d1(); }
+let PL;
+function d1(){
+  const P={}; TR[tk].p.forEach(([id])=>{ P[id]=+$('#'+id).value; $('#'+id+'-v').textContent= id==='garis'?GN[P[id]]:VML.m(P[id]); });
+  const g=$('#g1'); clear(g); PL=VML.plane(g,{xmin:-10,xmax:10,ymin:-10,ymax:10,W:480,H:480,pad:20,lab:2});
+  if(tk==='Refleksi'){ const L=[[[-10,0],[10,0]],[[0,-10],[0,10]],[[-10,-10],[10,10]],[[-10,10],[10,-10]],null][P.garis]; if(L) s('line',{x1:PL.X(L[0][0]),y1:PL.Y(L[0][1]),x2:PL.X(L[1][0]),y2:PL.Y(L[1][1]),stroke:'var(--b)','stroke-width':3,'stroke-dasharray':'8 5'},g); }
+  const I=T.map(([x,y])=>TR[tk].f(x,y,P));
+  s('polygon',{points:T.map(([x,y])=>PL.X(x)+','+PL.Y(y)).join(' '),fill:'var(--muted)','fill-opacity':.3,stroke:'var(--muted)','stroke-width':2},g);
+  s('polygon',{points:I.map(([x,y])=>PL.X(x)+','+PL.Y(y)).join(' '),fill:'var(--acc)','fill-opacity':.35,stroke:'var(--acc)','stroke-width':2.5},g);
+  T.forEach(([x,y],i)=>{ s('line',{x1:PL.X(x),y1:PL.Y(y),x2:PL.X(I[i][0]),y2:PL.Y(I[i][1]),stroke:'var(--line)','stroke-dasharray':'3 4'},g); });
+  'ABC'.split('').forEach((l,i)=>{ s('circle',{cx:PL.X(T[i][0]),cy:PL.Y(T[i][1]),r:8,fill:'var(--ink)',stroke:'#fff','stroke-width':2},g); txt(g,PL.X(T[i][0])+12,PL.Y(T[i][1])-8,l,{'font-weight':800,'font-size':13});
+    txt(g,PL.X(I[i][0])+12,PL.Y(I[i][1])-8,l+'′',{'font-weight':800,'font-size':13,fill:'var(--acc)'}); });
+  const fp=([x,y])=>`(${VML.m(G.fmt(x,2))}, ${VML.m(G.fmt(y,2))})`;
+  $('#o1').innerHTML=`<p>${TR[tk].m(P)}</p><table class="t"><tr><th></th><th>A</th><th>B</th><th>C</th></tr><tr><th>Asal</th>${T.map(p=>`<td>${fp(p)}</td>`).join('')}</tr><tr><th>Bayangan</th>${I.map(p=>`<td><b>${fp(p)}</b></td>`).join('')}</tr></table>`;
+}
+VML.dragSvg($('#g1'), p=>{ let k=null; T.forEach(([x,y],i)=>{ if(Math.hypot(p.x-PL.X(x),p.y-PL.Y(y))<18) k=i; }); return k; }, (i,p)=>{ T[i]=[Math.max(-9,Math.min(9,Math.round(PL.ix(p.x)))),Math.max(-9,Math.min(9,Math.round(PL.iy(p.y))))]; d1(); });
+build();
+
+const MT={'Refleksi sumbu-x':[1,0,0,-1],'Refleksi sumbu-y':[-1,0,0,1],'Refleksi y = x':[0,1,1,0],'Rotasi 90°':[0,-1,1,0],'Rotasi 180°':[-1,0,0,-1],'Rotasi 270°':[0,1,-1,0],'Dilatasi 2':[2,0,0,2],'Dilatasi ½':[.5,0,0,.5]};
+const opts=Object.keys(MT).map(k=>`<option>${k}</option>`).join(''); $('#t1').innerHTML=opts; $('#t2').innerHTML=opts; $('#t1').value='Refleksi sumbu-x'; $('#t2').value='Rotasi 90°';
+const FLAG=[[1,1],[1,5],[4,4],[1,3]];
+function d2(){
+  const A1=MT[$('#t1').value], A2=MT[$('#t2').value]; const ap=(m,[x,y])=>[m[0]*x+m[1]*y,m[2]*x+m[3]*y];
+  const C=[A2[0]*A1[0]+A2[1]*A1[2],A2[0]*A1[1]+A2[1]*A1[3],A2[2]*A1[0]+A2[3]*A1[2],A2[2]*A1[1]+A2[3]*A1[3]];
+  const D=[A1[0]*A2[0]+A1[1]*A2[2],A1[0]*A2[1]+A1[1]*A2[3],A1[2]*A2[0]+A1[3]*A2[2],A1[2]*A2[1]+A1[3]*A2[3]];
+  const g=$('#g2'); clear(g); const P=VML.plane(g,{xmin:-10,xmax:10,ymin:-10,ymax:10,W:480,H:480,pad:20,lab:2});
+  const draw=(pts,col,op)=>{ s('polygon',{points:pts.map(([x,y])=>P.X(x)+','+P.Y(y)).join(' '),fill:col,'fill-opacity':op,stroke:col,'stroke-width':2.5},g); s('circle',{cx:P.X(pts[0][0]),cy:P.Y(pts[0][1]),r:5,fill:col},g); };
+  const F1=FLAG.map(p=>ap(A1,p)), F2=F1.map(p=>ap(A2,p));
+  draw(FLAG,'var(--muted)',.25); draw(F1,'var(--b)',.3); draw(F2,'var(--acc)',.45);
+  const same=C.every((v,i)=>Math.abs(v-D[i])<1e-9);
+  const names=Object.keys(MT).filter(k=>MT[k].every((v,i)=>Math.abs(v-C[i])<1e-9));
+  $('#o2').innerHTML=`<div class="big">M = M₂ · M₁ = ${M(...A2)} · ${M(...A1)} = ${M(...C)}</div>
+   <p>${names.length?`Hasilnya sama dengan satu transformasi: <b>${names.join(' / ')}</b>.`:C[0]===0&&C[3]===0&&C[1]===-1&&C[2]===-1?'Hasilnya sama dengan <b>refleksi terhadap y = −x</b>.':''} Jika urutan ditukar, matriksnya ${M(...D)} — ${same?'<b>kebetulan sama</b>.':'<b>berbeda</b>! Urutan transformasi penting.'}</p>
+   <div class="legend"><span><i style="background:var(--muted)"></i>asal</span><span><i style="background:var(--b)"></i>setelah T₁</span><span><i style="background:var(--acc)"></i>setelah T₁ lalu T₂</span></div>`;
+}
+$('#t1').onchange=d2; $('#t2').onchange=d2; $('#swp').onclick=()=>{ const a=$('#t1').value; $('#t1').value=$('#t2').value; $('#t2').value=a; d2(); }; d2();
+
+const TP=[['translasi',(x,y,a,b)=>[x+a,y+b],(a,b)=>`ditranslasi oleh T = (${a}, ${b})`],['ref-x',(x,y)=>[x,-y],()=>'dicerminkan terhadap sumbu-x'],['ref-y',(x,y)=>[-x,y],()=>'dicerminkan terhadap sumbu-y'],['ref-yx',(x,y)=>[y,x],()=>'dicerminkan terhadap garis y = x'],['ref-ymx',(x,y)=>[-y,-x],()=>'dicerminkan terhadap garis y = −x'],['rot90',(x,y)=>[-y,x],()=>'dirotasi 90° berlawanan arah jarum jam dengan pusat O'],['rot180',(x,y)=>[-x,-y],()=>'dirotasi 180° dengan pusat O'],['rot-90',(x,y)=>[y,-x],()=>'dirotasi 90° searah jarum jam dengan pusat O'],['dil',(x,y,a,b,k)=>[k*x,k*y],(a,b,k)=>`didilatasi dengan pusat O dan faktor ${k}`]];
+VML.practice($('#prac'),[
+ {name:'Satu transformasi', gen(){ const t=pick(TP), x=rand(-8,8), y=rand(-8,8), a=rand(-6,6), b=rand(-6,6), k=pick([-2,2,3,-3]); const r=t[1](x,y,a,b,k); const w=rand(0,1);
+   return {q:`Titik P(${x}, ${y}) ${t[2](a,b,k)}. ${w?'Ordinat':'Absis'} bayangannya = …`, a:String(r[w]), hint:'Lihat tabel rumus bayangan.', ex:`P′(${r[0]}, ${r[1]})`}; }},
+ {name:'Komposisi', gen(){ const t1=pick(TP.slice(1,8)), t2=pick(TP.slice(1,8)); const x=rand(-7,7), y=rand(-7,7); const r1=t1[1](x,y), r=t2[1](r1[0],r1[1]); const w=rand(0,1);
+   return {q:`Titik (${x}, ${y}) ${t1[2]()}, kemudian ${t2[2]()}. ${w?'Ordinat':'Absis'} bayangan akhirnya = …`, a:String(r[w]), hint:'Kerjakan satu per satu.', ex:`(${x}, ${y}) → (${r1[0]}, ${r1[1]}) → (${r[0]}, ${r[1]})`}; }},
+ {name:'Cari translasi', gen(){ const x=rand(-6,6), y=rand(-6,6), a=rand(-6,6), b=rand(-6,6); return {q:`Titik (${x}, ${y}) ditranslasi menjadi (${x+a}, ${y+b}). Nilai a + b pada T = (a, b) adalah …`, a:String(a+b), hint:'a = x′ − x, b = y′ − y.', ex:`a = ${a}, b = ${b}`}; }},
+ {name:'Luas dilatasi', gen(){ const L=rand(2,20), k=pick([2,3,-2,4,0.5]); return {q:`Bangun dengan luas ${L} satuan didilatasi dengan faktor ${VML.num(k)}. Luas bayangannya = …`, a:String(L*k*k), hint:'Luas dikali k².', ex:`${L} × ${VML.num(k*k)} = ${VML.num(L*k*k)}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Bayangan (3, −2) oleh translasi (4, 5) adalah …', o:['(7, 3)','(−1, −7)','(12, −10)','(7, −7)'], a:0, ex:'(3 + 4, −2 + 5).'},
+ {q:'Bayangan (5, 2) oleh refleksi sumbu-y adalah …', o:['(−5, 2)','(5, −2)','(2, 5)','(−5, −2)'], a:0, ex:'x berganti tanda.'},
+ {q:'Bayangan (4, 1) oleh refleksi garis y = x adalah …', o:['(1, 4)','(−1, −4)','(4, −1)','(−4, 1)'], a:0, ex:'Koordinat bertukar.'},
+ {q:'Bayangan (2, 3) oleh rotasi 90° berlawanan arah jarum jam (pusat O) adalah …', o:['(−3, 2)','(3, −2)','(−2, −3)','(3, 2)'], a:0, ex:'(−y, x).'},
+ {q:'Bayangan (−4, 6) oleh dilatasi pusat O faktor ½ adalah …', o:['(−2, 3)','(−8, 12)','(2, −3)','(−4, 3)'], a:0, ex:'Dikali ½.'},
+ {q:'Rotasi 180° pusat O sama dengan …', o:['refleksi terhadap titik O','refleksi sumbu-x','refleksi y = x','dilatasi 2'], a:0, ex:'(−x, −y).'},
+ {q:'Matriks rotasi 90° (pusat O) adalah …', o:['[0 −1 ; 1 0]','[1 0 ; 0 −1]','[0 1 ; 1 0]','[−1 0 ; 0 −1]'], a:0, ex:'Lihat tabel.'},
+ {q:'Transformasi yang mengubah ukuran bangun adalah …', o:['dilatasi','translasi','refleksi','rotasi'], a:0, ex:'Yang lain isometri.'},
+ {q:'Persegi luas 9 didilatasi faktor 3. Luas bayangannya …', o:['81','27','9','12'], a:0, ex:'9 × 3².'},
+ {q:'(1, 5) dicerminkan terhadap sumbu-x, lalu ditranslasi (2, 3). Ordinat akhir = …', input:true, a:['-2'], ex:'(1, −5) → (3, −2).'},
+ {q:'(6, −3) dirotasi 180° pusat O. Absis bayangannya = …', input:true, a:['-6'], ex:'(−6, 3).'},
+ {q:'Translasi yang memetakan (2, 7) ke (−1, 9) adalah T = (a, b). Nilai a = …', input:true, a:['-3'], ex:'−1 − 2.'}
+],'xii4');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

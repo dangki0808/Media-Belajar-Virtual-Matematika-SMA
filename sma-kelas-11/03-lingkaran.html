@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Persamaan Lingkaran · Matematika SMA Kelas XI</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#2b6fd6">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XI</a><div class="brand">∘ Matematika SMA <small>· Kelas XI</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 3 · Geometri Analitik <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Persamaan Lingkaran: Jangkauan Sinyal dan Garis Singgung</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menulis persamaan lingkaran dari pusat dan jari-jari, dan sebaliknya.</li>
+    <li>Menentukan posisi titik terhadap lingkaran.</li>
+    <li>Menentukan kedudukan garis dan persamaan garis singgung.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📡 Lab Jangkauan Sinyal</button><button data-target="garis">📏 Lab Garis &amp; Lingkaran</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Menara BTS di desa</span><p style="margin:.3em 0">Sebuah menara sinyal di titik (3, 2) pada peta (satuan km) menjangkau 5 km ke segala arah. Rumah di titik (6, 6) berjarak √(3² + 4²) = 5 km, tepat di batas jangkauan. Semua titik yang berjarak sama dari satu pusat membentuk <b>lingkaran</b>. Dengan persamaannya, kita bisa memeriksa rumah mana yang mendapat sinyal tanpa menggambar.</p></div>
+  </div>
+  <div class="card"><h2>1. Persamaan lingkaran</h2>
+    <div class="grid2"><div class="ex"><span class="t">Pusat (0, 0), jari-jari r</span><span class="mth">x² + y² = r²</span></div><div class="ex"><span class="t">Pusat (a, b), jari-jari r</span><span class="mth">(x − a)² + (y − b)² = r²</span></div></div>
+    <div class="ex"><span class="t">Bentuk umum</span><span class="mth">x² + y² + Ax + By + C = 0</span> dengan pusat <b>(−A/2, −B/2)</b> dan <b>r = √(A²/4 + B²/4 − C)</b>.<br>Contoh: x² + y² − 6x + 4y − 12 = 0 → pusat (3, −2), r = √(9 + 4 + 12) = 5.</div>
+  </div>
+  <div class="card"><h2>2. Posisi titik</h2>
+    <p>Substitusikan titik (p, q) ke ruas kiri (x − a)² + (y − b)² lalu bandingkan dengan r²:</p>
+    <table class="t"><tr><th>Hasil</th><th>Posisi</th></tr><tr><td>&lt; r²</td><td>di dalam lingkaran</td></tr><tr><td>= r²</td><td>pada lingkaran</td></tr><tr><td>&gt; r²</td><td>di luar lingkaran</td></tr></table>
+  </div>
+  <div class="card"><h2>3. Garis dan lingkaran</h2>
+    <p>Substitusikan y = mx + c ke persamaan lingkaran, diperoleh persamaan kuadrat dalam x. Diskriminannya menentukan kedudukan:</p>
+    <ul><li>D &gt; 0: garis <b>memotong</b> di dua titik.</li><li>D = 0: garis <b>menyinggung</b>.</li><li>D &lt; 0: garis <b>tidak memotong</b>.</li></ul>
+    <div class="note">Garis singgung bergradien m pada x² + y² = r²: <span class="mth">y = mx ± r√(1 + m²)</span>. Garis singgung di titik (x₁, y₁) pada lingkaran itu: <span class="mth">x₁x + y₁y = r²</span>.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Jangkauan Sinyal</h2>
+    <p>Atur posisi menara (pusat) dan jangkauannya. <b>Seret rumah 🏠</b> di peta untuk memeriksa apakah ia mendapat sinyal.</p>
+    <div class="ctrl"><label>Pusat a <span class="v" id="a-v"></span><input type="range" id="a" min="-5" max="5" value="1"></label><label>Pusat b <span class="v" id="b-v"></span><input type="range" id="b" min="-5" max="5" value="-1"></label><label>Jari-jari r <span class="v" id="r-v"></span><input type="range" id="r" min="1" max="7" value="5"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 460 460" style="max-width:460px;margin:auto;display:block;touch-action:none"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="garis" class="panel">
+  <div class="card"><h2>Lab: Garis Memotong, Menyinggung, atau Lewat?</h2>
+    <p>Lingkaran x² + y² = r² dan garis y = mx + c. Geser c sampai garis tepat <b>menyinggung</b>.</p>
+    <div class="ctrl"><label>Gradien m <span class="v" id="m-v"></span><input type="range" id="m" min="-3" max="3" step="0.25" value="0.75"></label><label>Konstanta c <span class="v" id="c-v"></span><input type="range" id="c" min="-10" max="10" step="0.25" value="2"></label><label>Jari-jari r <span class="v" id="R-v"></span><input type="range" id="R" min="1" max="6" value="4"></label></div>
+    <div class="row"><button class="chipbtn" id="tg">Buat menyinggung</button></div>
+    <svg class="viz" id="g2" viewBox="0 0 460 460" style="max-width:460px;margin:auto;display:block"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XI · Modul 3</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const sq=(v,n)=> v===0? n+'²' : `(${n} ${v<0?'+':'−'} ${Math.abs(v)})²`;
+const gen=(A,B,C)=>{ let t='x² + y²'; if(A) t+=` ${A<0?'−':'+'} ${Math.abs(A)}x`; if(B) t+=` ${B<0?'−':'+'} ${Math.abs(B)}y`; if(C) t+=` ${C<0?'−':'+'} ${Math.abs(C)}`; return t+' = 0'; };
+let H={x:4,y:3};
+function d1(){
+  const a=+$('#a').value, b=+$('#b').value, r=+$('#r').value; $('#a-v').textContent=VML.m(a); $('#b-v').textContent=VML.m(b); $('#r-v').textContent=r;
+  const g=$('#g1'); clear(g); const P=VML.plane(g,{xmin:-10,xmax:10,ymin:-10,ymax:10,W:460,H:460,pad:20,lab:2});
+  s('circle',{cx:P.X(a),cy:P.Y(b),r:r*P.sx,fill:'color-mix(in srgb,var(--acc) 15%,transparent)',stroke:'var(--acc)','stroke-width':3},g);
+  s('line',{x1:P.X(a),y1:P.Y(b),x2:P.X(a+r),y2:P.Y(b),stroke:'var(--acc)','stroke-width':2,'stroke-dasharray':'5 4'},g); txt(g,P.X(a+r/2),P.Y(b)+16,'r = '+r,{'font-size':12,'font-weight':700,fill:'var(--acc)'});
+  txt(g,P.X(a),P.Y(b)+6,'📡',{'font-size':20});
+  const pw=(H.x-a)**2+(H.y-b)**2, r2=r*r; const pos= pw<r2?'di dalam':pw===r2?'tepat pada':'di luar';
+  s('line',{x1:P.X(a),y1:P.Y(b),x2:P.X(H.x),y2:P.Y(H.y),stroke:'var(--b)','stroke-width':2},g);
+  txt(g,P.X(H.x),P.Y(H.y)+8,'🏠',{'font-size':24}); s('circle',{cx:P.X(H.x),cy:P.Y(H.y),r:18,fill:'transparent'},g);
+  const A=-2*a, B=-2*b, C=a*a+b*b-r2;
+  $('#o1').innerHTML=`<div class="big">${sq(a,'x')} + ${sq(b,'y')} = ${r2}</div><p>Bentuk umum: <b>${gen(A,B,C)}</b></p>
+   <p>Rumah di (${VML.m(H.x)}, ${VML.m(H.y)}): (${VML.m(H.x)} − ${VML.neg(a)})² + (${VML.m(H.y)} − ${VML.neg(b)})² = (${VML.m(H.x-a)})² + (${VML.m(H.y-b)})² = <b>${pw}</b> ${pw<r2?'&lt;':pw===r2?'=':'&gt;'} ${r2}. Rumah ${pos} lingkaran: ${pw<=r2?'<b style="color:var(--ok)">mendapat sinyal ✓</b>':'<b style="color:var(--bad)">tidak mendapat sinyal ✗</b>'} (jarak ${G.fmt(Math.sqrt(pw),2)} km).</p>`;
+}
+['a','b','r'].forEach(k=>$('#'+k).oninput=d1);
+VML.dragSvg($('#g1'), p=>{ const X=20+(H.x+10)*21, Y=440-(H.y+10)*21; return Math.hypot(p.x-X,p.y-Y)<30?1:null; }, (id,p)=>{ H.x=Math.max(-10,Math.min(10,Math.round((p.x-20)/21-10))); H.y=Math.max(-10,Math.min(10,Math.round((440-p.y)/21-10))); d1(); });
+d1();
+
+function d2(){
+  const m=+$('#m').value, c=+$('#c').value, r=+$('#R').value; $('#m-v').textContent=G.fmt(m,2); $('#c-v').textContent=G.fmt(c,2); $('#R-v').textContent=r;
+  const g=$('#g2'); clear(g); const A=G.axes(g,{x0:-8,x1:8,y0:-8,y1:8,W:460,H:460,pad:30,padb:26,xs:2,ys:2,lx:'x',ly:'y'});
+  s('circle',{cx:A.X(0),cy:A.Y(0),r:A.X(r)-A.X(0),fill:'none',stroke:'var(--acc)','stroke-width':3},g);
+  s('path',{d:G.curve(x=>m*x+c,-8,8,A),stroke:'var(--b)','stroke-width':3,fill:'none','clip-path':A.cp},g);
+  // (1+m²)x² + 2mcx + c² − r² = 0
+  const qa=1+m*m, qb=2*m*c, qc=c*c-r*r, D=qb*qb-4*qa*qc; const tol=1e-9;
+  let kind, pts=[];
+  if(D>tol){ kind='<b>memotong</b> lingkaran di dua titik'; [-1,1].forEach(sg=>{ const x=(-qb+sg*Math.sqrt(D))/(2*qa); pts.push([x,m*x+c]); }); }
+  else if(Math.abs(D)<=tol){ kind='<b style="color:var(--ok)">menyinggung</b> lingkaran'; const x=-qb/(2*qa); pts.push([x,m*x+c]); }
+  else kind='<b>tidak memotong</b> lingkaran';
+  pts.forEach(([x,y])=>s('circle',{cx:A.X(x),cy:A.Y(y),r:7,fill:'var(--e)',stroke:'#fff','stroke-width':2},g));
+  const ct=r*Math.sqrt(1+m*m);
+  $('#o2').innerHTML=`<p>Substitusi y = ${G.fmt(m,2)}x ${c<0?'−':'+'} ${G.fmt(Math.abs(c),2)} ke x² + y² = ${r*r}:</p><div class="big">${G.fmt(qa,4)}x² ${qb<0?'−':'+'} ${G.fmt(Math.abs(qb),3)}x ${qc<0?'−':'+'} ${G.fmt(Math.abs(qc),3)} = 0 &nbsp;→&nbsp; D = ${G.fmt(D,3)}</div>
+   <p>Garis ${kind}. ${pts.length?'Titik: '+pts.map(([x,y])=>`(${G.fmt(x,2)} ; ${G.fmt(y,2)})`).join(' dan '):''}</p>
+   <p class="muted">Syarat menyinggung: c = ±r√(1 + m²) = ±${G.fmt(ct,3)}.</p>`;
+}
+['m','c','R'].forEach(k=>$('#'+k).oninput=d2);
+$('#tg').onclick=()=>{ const m=+$('#m').value, r=+$('#R').value; const ct=r*Math.sqrt(1+m*m); $('#c').step='any'; $('#c').value=(+$('#c').value<0?-ct:ct); d2(); };
+d2();
+
+VML.practice($('#prac'),[
+ {name:'Pusat', gen(){ const a=rand(-6,6), b=rand(-6,6), r=rand(1,8); const A=-2*a,B=-2*b,C=a*a+b*b-r*r; const t=rand(0,1); return {q:`Lingkaran ${gen(A,B,C)}. ${t?'Ordinat':'Absis'} pusatnya = …`, a:String(t?b:a), hint:'Pusat (−A/2, −B/2).', ex:`Pusat (${a}, ${b})`}; }},
+ {name:'Jari-jari', gen(){ const a=rand(-6,6), b=rand(-6,6), r=rand(1,9); const A=-2*a,B=-2*b,C=a*a+b*b-r*r; return {q:`Jari-jari lingkaran ${gen(A,B,C)} adalah …`, a:String(r), hint:'r = √(A²/4 + B²/4 − C).', ex:`√(${a*a} + ${b*b} − ${VML.neg(C)}) = ${r}`}; }},
+ {name:'Kuasa titik', gen(){ const a=rand(-4,4), b=rand(-4,4), r=rand(2,6), p=rand(-8,8), q=rand(-8,8); const k=(p-a)**2+(q-b)**2-r*r; return {q:`Nilai kuasa titik (${p}, ${q}) terhadap lingkaran ${sq(a,'x')} + ${sq(b,'y')} = ${r*r} (hasil substitusi dikurangi r²) adalah …`, a:String(k), hint:'Negatif = di dalam, nol = pada, positif = di luar.', ex:`${(p-a)**2} + ${(q-b)**2} − ${r*r} = ${k} → ${k<0?'di dalam':k===0?'pada':'di luar'}`}; }},
+ {name:'r² dari titik', gen(){ const a=rand(-5,5), b=rand(-5,5), p=rand(-8,8), q=rand(-8,8); const r2=(p-a)**2+(q-b)**2; return {q:`Lingkaran berpusat (${a}, ${b}) melalui titik (${p}, ${q}). Nilai r² = …`, a:String(r2), hint:'r² = kuadrat jarak pusat ke titik.', ex:`(${p-a})² + (${q-b})² = ${r2}`}; }},
+ {name:'Garis singgung', gen(){ const tr=pick([[3,4,5],[6,8,10],[5,12,13],[0,5,5],[4,3,5]]), sx=pick([1,-1]), sy=pick([1,-1]); const x1=tr[0]*sx, y1=tr[1]*sy, r2=tr[2]*tr[2]; const k=rand(0,1);
+   return {q:`Garis singgung lingkaran x² + y² = ${r2} di titik (${x1}, ${y1}) berbentuk ${x1}x ${y1<0?'−':'+'} ${Math.abs(y1)}y = k. Nilai k = …`, a:String(r2), hint:'x₁x + y₁y = r²', ex:`k = r² = ${r2}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Persamaan lingkaran berpusat (0, 0) dengan jari-jari 6 adalah …', o:['x² + y² = 36','x² + y² = 6','x² + y² = 12','(x − 6)² + y² = 0'], a:0, ex:'r² = 36.'},
+ {q:'Pusat lingkaran (x − 2)² + (y + 5)² = 49 adalah …', o:['(2, −5)','(−2, 5)','(2, 5)','(−2, −5)'], a:0, ex:'Tanda di dalam kurung dibalik.'},
+ {q:'Jari-jari lingkaran (x − 2)² + (y + 5)² = 49 adalah …', o:['7','49','5','2'], a:0, ex:'√49.'},
+ {q:'Pusat lingkaran x² + y² − 8x + 6y + 9 = 0 adalah …', o:['(4, −3)','(−4, 3)','(8, −6)','(−8, 6)'], a:0, ex:'(−A/2, −B/2).'},
+ {q:'Jari-jari lingkaran x² + y² − 8x + 6y + 9 = 0 adalah …', o:['4','5','16','3'], a:0, ex:'√(16 + 9 − 9) = 4.'},
+ {q:'Titik (3, 4) terhadap x² + y² = 16 terletak …', o:['di luar','di dalam','pada','di pusat'], a:0, ex:'9 + 16 = 25 > 16.'},
+ {q:'Garis menyinggung lingkaran jika diskriminan hasil substitusinya …', o:['D = 0','D > 0','D < 0','D = 1'], a:0, ex:'Satu titik persekutuan.'},
+ {q:'Persamaan garis singgung x² + y² = 25 di titik (3, 4) adalah …', o:['3x + 4y = 25','4x + 3y = 25','3x − 4y = 25','x + y = 7'], a:0, ex:'x₁x + y₁y = r².'},
+ {q:'Garis singgung bergradien m pada x² + y² = r² adalah …', o:['y = mx ± r√(1 + m²)','y = mx ± r','y = mx ± r²','y = mx'], a:0, ex:'Rumus standar.'},
+ {q:'Lingkaran berpusat (1, 2) melalui (4, 6). Jari-jarinya …', input:true, a:['5'], ex:'√(9 + 16) = 5.'},
+ {q:'Nilai C agar x² + y² − 4x + 2y + C = 0 berjari-jari 3 adalah …', input:true, a:['-4'], ex:'4 + 1 − C = 9.'},
+ {q:'Menara di (0, 0) menjangkau 10 km. Rumah di (6, 7): kuadrat jaraknya …', input:true, a:['85'], ex:'36 + 49 = 85 < 100, masih dapat sinyal.'}
+],'xi3');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gerak & Laju Terkait · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#167a99">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian A · Modul A6 · Penerapan Turunan <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Gerak &amp; Laju Terkait: Bola, Riak Air, dan Balon</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menghubungkan posisi, kecepatan, dan percepatan lewat turunan pertama dan kedua.</li>
+    <li>Menentukan kapan benda mencapai titik tertinggi.</li>
+    <li>Menyelesaikan masalah <b>laju terkait</b>: dua besaran yang berubah bersama-sama.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">⚽ Lab Lempar Bola</button><button data-target="laju">💧 Lab Laju Terkait</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita lempar bola</span><p style="margin:.3em 0">Bayu melempar bola lurus ke atas. Bola melambat, berhenti sesaat di titik tertinggi, lalu jatuh semakin cepat. Ada tiga besaran yang saling berhubungan: <b>tinggi</b> bola, <b>kecepatan</b> (laju perubahan tinggi), dan <b>percepatan</b> (laju perubahan kecepatan). Ketiganya dihubungkan oleh turunan.</p></div>
+  </div>
+  <div class="card"><h2>1. Posisi, kecepatan, percepatan</h2>
+    <table class="t"><tr><th>Besaran</th><th>Rumus</th><th>Arti</th></tr>
+      <tr><td>Posisi / tinggi</td><td>h(t)</td><td>di mana benda berada</td></tr>
+      <tr><td>Kecepatan</td><td>v(t) = h′(t)</td><td>seberapa cepat posisinya berubah</td></tr>
+      <tr><td>Percepatan</td><td>a(t) = v′(t) = h″(t)</td><td>seberapa cepat kecepatannya berubah</td></tr></table>
+    <div class="ex"><span class="t">Contoh: h(t) = 20t − 5t² (meter)</span>v(t) = 20 − 10t, a(t) = −10 m/s² (gravitasi).<br>Titik tertinggi saat v = 0 → t = 2 detik, tinggi h(2) = 40 − 20 = <b>20 m</b>.</div>
+    <div class="note">Hubungan ini juga berjalan mundur: dari percepatan, integral memberi kecepatan, dan integral kecepatan memberi posisi (Bagian B).</div>
+  </div>
+  <div class="card"><h2>2. Laju terkait</h2>
+    <p>Jika dua besaran terhubung oleh rumus, lajunya juga terhubung. Turunkan rumusnya terhadap waktu t (dengan aturan rantai).</p>
+    <div class="grid2">
+      <div class="ex"><span class="t">Riak air</span>Batu jatuh ke kolam. Jari-jari riak bertambah 2 cm/s. Luas A = πr², jadi <b>dA/dt = 2πr · dr/dt</b>. Saat r = 10 cm, luas bertambah 2π·10·2 ≈ <b>125,7 cm²/s</b>.</div>
+      <div class="ex"><span class="t">Tangga merosot</span>Tangga 5 m bersandar di dinding. Kaki tangga ditarik 0,5 m/s. Karena x² + y² = 25, maka <b>dy/dt = −(x/y)·dx/dt</b>. Saat x = 3, y = 4: ujung atas turun 0,375 m/s.</div>
+    </div>
+    <p class="muted">Dipakai untuk memperkirakan penyebaran tumpahan minyak di laut, pengisian tangki air, dan kecepatan bayangan saat berjalan di bawah lampu jalan.</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Lempar Bola ke Atas</h2>
+    <p>Atur kecepatan awal lemparan, lalu tekan <b>Lempar</b> atau geser waktunya. Perhatikan: di titik tertinggi, kecepatannya nol.</p>
+    <div class="ctrl"><label>Kecepatan awal v₀ (m/s) <span class="v" id="v0-v"></span><input type="range" id="v0" min="5" max="30" step="1" value="20"></label><label>Waktu t <span class="v" id="t-v"></span><input type="range" id="t" min="0" max="1" step="0.002" value="0.3"></label></div>
+    <div class="row"><button class="btn" id="go">⚽ Lempar</button></div>
+    <div class="grid2"><svg class="viz" id="sky" viewBox="0 0 220 360" style="max-width:240px;margin:auto"></svg><div><svg class="viz" id="gh" viewBox="0 0 640 180"></svg><svg class="viz" id="gv" viewBox="0 0 640 180"></svg></div></div>
+    <div class="out" id="bOut"></div>
+  </div>
+</section>
+
+<section id="laju" class="panel">
+  <div class="card"><h2>Lab: Laju Terkait</h2>
+    <div class="row" id="ssel"></div>
+    <div class="ctrl"><label>Waktu t (detik) <span class="v" id="lt-v"></span><input type="range" id="lt" min="0.2" max="10" step="0.1" value="3"></label></div>
+    <div class="row"><button class="btn" id="lgo">▶ Jalankan</button></div>
+    <div class="grid2"><svg class="viz" id="lg" viewBox="0 0 320 320" style="max-width:340px;margin:auto"></svg><div class="out" id="lOut"></div></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Gunakan koma untuk desimal. Jawaban dengan π boleh ditulis sebagai desimal (2 angka di belakang koma) jika diminta.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul A6 · Selanjutnya: Bagian B, Integral</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+/* BOLA */
+let an=null;
+function drawB(){
+  const v0=+$('#v0').value, T=v0/5, t=T*+$('#t').value; $('#v0-v').textContent=v0; $('#t-v').textContent=G.fmt(t,2)+' s';
+  const h=x=>v0*x-5*x*x, v=x=>v0-10*x, H=v0*v0/20;
+  const sk=$('#sky'); clear(sk); s('rect',{x:0,y:0,width:220,height:360,fill:'#d9efff'},sk); s('rect',{x:0,y:330,width:220,height:30,fill:'#7cc36a'},sk);
+  const Ys=y=>330-y/46*300; for(let m=0;m<=45;m+=5){ s('line',{x1:0,y1:Ys(m),x2:10,y2:Ys(m),stroke:'#4d5675'},sk); if(m%10===0) txt(sk,14,Ys(m)+4,m+' m',{'font-size':10,'text-anchor':'start',fill:'#4d5675'}); }
+  s('line',{x1:60,y1:Ys(H),x2:200,y2:Ys(H),stroke:'#e8890b','stroke-dasharray':'4 3'},sk);
+  txt(sk,130,Ys(Math.max(0,h(t)))+8,'⚽',{'font-size':24}); txt(sk,130,350,'🧒',{'font-size':22});
+  const vv=v(t); s('line',{x1:165,y1:Ys(h(t)),x2:165,y2:Ys(h(t))-vv*2.2,stroke:vv>=0?'#13987a':'#d1453b','stroke-width':4,'marker-end':''},sk); txt(sk,182,Ys(h(t))-vv*1.1+4,'v',{'font-size':12,'font-weight':900,fill:vv>=0?'#13987a':'#d1453b'});
+  let g=$('#gh'); clear(g); let A=G.axes(g,{x0:0,x1:6,y0:0,y1:46,W:640,H:180,lx:'t (s)',ly:'tinggi h (m)',xs:1,ys:10,padb:26});
+  s('path',{d:G.curve(x=>x<=T?h(x):NaN,0,T,A,200),fill:'none',stroke:'#2d6ae0','stroke-width':3},g); s('circle',{cx:A.X(t),cy:A.Y(h(t)),r:6,fill:'#18213d'},g);
+  g=$('#gv'); clear(g); A=G.axes(g,{x0:0,x1:6,y0:-31,y1:31,W:640,H:180,lx:'t (s)',ly:"kecepatan v = h′ (m/s)",xs:1,ys:10,padb:26});
+  s('path',{d:G.curve(x=>x<=T?v(x):NaN,0,T,A,100),fill:'none',stroke:'#13987a','stroke-width':3},g); s('circle',{cx:A.X(t),cy:A.Y(v(t)),r:6,fill:'#18213d'},g);
+  $('#bOut').innerHTML=`<p><span class="mth">h(t) = ${v0}t − 5t²</span>, <span class="mth">v(t) = h′(t) = ${v0} − 10t</span>, <span class="mth">a(t) = −10</span> m/s².</p>
+   <div class="grid2"><div><p class="muted">Tinggi saat ini</p><p class="big2">${G.fmt(h(t),2)} m</p></div><div><p class="muted">Kecepatan saat ini</p><p class="big2">${G.fmt(vv,2)} m/s ${vv>0.05?'↑':vv<-0.05?'↓':'(berhenti sesaat)'}</p></div></div>
+   <p>Titik tertinggi saat v = 0 → t = ${v0}/10 = <b>${G.fmt(v0/10,1)} s</b>, tinggi <b>${G.fmt(H,2)} m</b>. Bola kembali ke tanah pada t = ${G.fmt(T,1)} s dengan kecepatan −${v0} m/s.</p>`;
+}
+['#v0','#t'].forEach(z=>$(z).oninput=()=>{ cancelAnimationFrame(an); drawB(); });
+$('#go').onclick=()=>{ cancelAnimationFrame(an); const T=+$('#v0').value/5, st=performance.now(); const step=n=>{ const u=Math.min(1,(n-st)/1000/T); $('#t').value=u; drawB(); if(u<1) an=requestAnimationFrame(step); }; an=requestAnimationFrame(step); };
+drawB();
+
+/* LAJU TERKAIT */
+const SC={
+ '💧 Riak air':{d:'Jari-jari riak bertambah 2 cm/s.',draw:(g,t)=>{ const r=2*t; s('rect',{x:0,y:0,width:320,height:320,fill:'#2fa6c9','fill-opacity':.35},g); for(let k=0;k<4;k++){ const rr=r*(1-k*.22); if(rr>0) s('circle',{cx:160,cy:160,r:rr*7,fill:'none',stroke:'#fff','stroke-width':3-k*.5,'stroke-opacity':1-k*.2},g); } s('circle',{cx:160,cy:160,r:4,fill:'#18213d'},g); },
+   out:t=>{ const r=2*t, A=Math.PI*r*r, dA=2*Math.PI*r*2; return `<p>r = 2t = <b>${G.fmt(r,2)} cm</b>, luas A = πr² = <b>${G.fmt(A,2)} cm²</b>.</p><p>Turunkan terhadap t: <span class="mth">dA/dt = 2πr · dr/dt</span> = 2π · ${G.fmt(r,2)} · 2 = <b>${G.fmt(dA,2)} cm²/s</b>.</p><p class="muted">Meskipun jari-jari bertambah tetap (2 cm/s), luasnya bertambah makin cepat, karena keliling riaknya makin panjang.</p>`; }},
+ '🎈 Balon ditiup':{d:'Udara ditiupkan tetap 100 cm³/s ke dalam balon bulat.',draw:(g,t)=>{ const V=100*t, r=Math.cbrt(3*V/(4*Math.PI)); s('rect',{x:0,y:0,width:320,height:320,fill:'#fff6f6'},g); s('circle',{cx:160,cy:150,r:r*9,fill:'#e2456b','fill-opacity':.8},g); s('circle',{cx:160-r*3,cy:150-r*4,r:r*2,fill:'#fff','fill-opacity':.35},g); s('path',{d:`M160,${150+r*9} q-10,40 0,80`,fill:'none',stroke:'#7a4a1a','stroke-width':2},g); },
+   out:t=>{ const V=100*t, r=Math.cbrt(3*V/(4*Math.PI)), dr=100/(4*Math.PI*r*r); return `<p>Volume V = 100t = <b>${G.fmt(V,0)} cm³</b>, sehingga jari-jari r = <b>${G.fmt(r,2)} cm</b>.</p><p>Dari V = 4/3 πr³: <span class="mth">dV/dt = 4πr² · dr/dt</span> → dr/dt = 100 ÷ (4π · ${G.fmt(r,2)}²) = <b>${G.fmt(dr,3)} cm/s</b>.</p><p class="muted">Udara masuk dengan laju tetap, tetapi jari-jari bertambah makin lambat, karena permukaan balon makin luas.</p>`; }},
+ '🪜 Tangga merosot':{d:'Tangga 5 m bersandar di dinding. Kakinya ditarik menjauh 0,4 m/s mulai dari 1 m.',draw:(g,t)=>{ const x=Math.min(4.95,1+.4*t), y=Math.sqrt(25-x*x), k=55, ox=40, oy=290; s('rect',{x:0,y:0,width:320,height:320,fill:'#f3efe6'},g); s('rect',{x:ox-14,y:20,width:14,height:270,fill:'#b9a07a'},g); s('rect',{x:ox-14,y:oy,width:300,height:12,fill:'#8a7a5a'},g); s('line',{x1:ox,y1:oy-y*k,x2:ox+x*k,y2:oy,stroke:'#a0522d','stroke-width':8,'stroke-linecap':'round'},g); txt(g,ox+x*k/2,oy+28,`x = ${G.fmt(x,2)} m`,{'font-size':12,'font-weight':800,fill:'#18213d'}); txt(g,ox+30,oy-y*k/2,`y = ${G.fmt(y,2)} m`,{'font-size':12,'font-weight':800,'text-anchor':'start',fill:'#18213d'}); },
+   out:t=>{ const x=Math.min(4.95,1+.4*t), y=Math.sqrt(25-x*x), dy=-(x/y)*.4; return `<p>x² + y² = 25 → x = <b>${G.fmt(x,2)} m</b>, y = <b>${G.fmt(y,2)} m</b>.</p><p>Turunkan: <span class="mth">2x·dx/dt + 2y·dy/dt = 0</span> → dy/dt = −(x/y)·dx/dt = −(${G.fmt(x,2)}/${G.fmt(y,2)})·0,4 = <b>${G.fmt(dy,3)} m/s</b>.</p><p class="muted">Kaki tangga bergerak dengan laju tetap, tetapi ujung atasnya meluncur turun makin cepat menjelang menyentuh lantai.</p>`; }}};
+let sk='💧 Riak air', la=null;
+$('#ssel').innerHTML=Object.keys(SC).map(k=>`<button class="chipbtn ${k===sk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#ssel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#ssel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); sk=b.dataset.k; drawL(); });
+function drawL(){ const t=+$('#lt').value; $('#lt-v').textContent=G.fmt(t,1)+' s'; const S=SC[sk], g=$('#lg'); clear(g); S.draw(g,t); $('#lOut').innerHTML=`<p class="muted">${S.d}</p>`+S.out(t); }
+$('#lt').oninput=()=>{ cancelAnimationFrame(la); drawL(); };
+$('#lgo').onclick=()=>{ cancelAnimationFrame(la); const st=performance.now(); const step=n=>{ const t=Math.min(10,.2+(n-st)/600); $('#lt').value=t; drawL(); if(t<10) la=requestAnimationFrame(step); }; la=requestAnimationFrame(step); };
+drawL();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Kecepatan', gen(){ const a=rand(1,5), b=rand(1,9), t=rand(1,5); return {q:`Posisi benda s(t) = ${a}t² + ${b}t meter. Kecepatannya pada t = ${t} detik adalah … m/s.`, a:String(2*a*t+b), hint:`v(t) = s′(t) = ${2*a}t + ${b}.`, ex:`${2*a}·${t} + ${b} = ${2*a*t+b}`}; }},
+  {name:'Titik tertinggi', gen(){ const v0=pick([10,15,20,25,30]); return {q:`Bola dilempar ke atas: h(t) = ${v0}t − 5t². Tinggi maksimumnya … m.`, a:String(v0*v0/20), hint:`v = ${v0} − 10t = 0 → t = ${v0/10}.`, ex:`h(${v0/10}) = ${v0*v0/20} m`}; }},
+  {name:'Percepatan', gen(){ const a=rand(1,3), b=rand(1,6), t=rand(1,4); return {q:`s(t) = ${a}t³ − ${b}t². Percepatan pada t = ${t} adalah …`, a:String(6*a*t-2*b), hint:`v = ${3*a}t² − ${2*b}t, a = ${6*a}t − ${2*b}.`, ex:`${6*a}·${t} − ${2*b} = ${6*a*t-2*b}`}; }},
+  {name:'Riak', gen(){ const r=pick([5,10,15,20]), k=pick([1,2,3]); const v=2*Math.PI*r*k; return {q:`Jari-jari riak bertambah ${k} cm/s. Saat r = ${r} cm, luasnya bertambah … cm²/s. (2 desimal, pakai π)`, a:x=>Math.abs(parseFloat(String(x).replace(',','.'))-v)<0.02, show:G.fmt(v,2), hint:'dA/dt = 2πr·dr/dt.', ex:`2π·${r}·${k} = ${G.fmt(v,2)}`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Kecepatan adalah turunan dari …', o:['posisi','percepatan','waktu','massa'], a:0, ex:'v = s′.'},
+ {q:'Percepatan adalah turunan kedua dari …', o:['posisi','kecepatan','percepatan','waktu'], a:0, ex:'a = s″.'},
+ {q:'Di titik tertinggi lemparan, kecepatan bola …', o:['nol','maksimum','−10 m/s','sama dengan tingginya'], a:0, ex:'Berhenti sesaat.'},
+ {q:'h(t) = 20t − 5t². Waktu mencapai titik tertinggi …', o:['2 s','4 s','20 s','1 s'], a:0, ex:'20 − 10t = 0.'},
+ {q:'h(t) = 20t − 5t². Tinggi maksimum …', o:['20 m','40 m','10 m','100 m'], a:0, ex:'h(2) = 20.'},
+ {q:'Percepatan pada h(t) = v₀t − 5t² adalah …', o:['−10 m/s²','v₀','5','0'], a:0, ex:'Gravitasi.'},
+ {q:'Riak air: A = πr². Maka dA/dt = …', o:['2πr·dr/dt','πr²·dr/dt','2πr','π·dr/dt'], a:0, ex:'Aturan rantai.'},
+ {q:'Balon ditiup dengan laju volume tetap. Jari-jarinya bertambah …', o:['makin lambat','makin cepat','tetap','berkurang'], a:0, ex:'Permukaan makin luas.'},
+ {q:'Laju terkait diselesaikan dengan menurunkan rumus terhadap …', o:['waktu t','x saja','jari-jari','konstanta'], a:0, ex:'d/dt kedua ruas.'},
+ {q:'s(t) = 3t² + 2t. Kecepatan saat t = 2 adalah …', input:true, a:['14'], ex:'6t + 2 = 14.'},
+ {q:'h(t) = 30t − 5t². Tinggi maksimumnya … m.', input:true, a:['45'], ex:'t = 3, h = 90 − 45 = 45.'},
+ {q:'Tangga 5 m, x = 3 m, y = 4 m, dx/dt = 0,8 m/s. Laju turun ujung atas |dy/dt| = … m/s.', input:true, a:['0,6','0.6'], ex:'(3/4)·0,8 = 0,6.'}
+],'kalkd6');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barisan &amp; Deret · Matematika SMA Kelas X</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#13987a">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas X</a><div class="brand">√ Matematika SMA <small>· Kelas X</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 3 · Aljabar <span class="lvl pemula">PEMULA</span></span>
+  <h1>Barisan &amp; Deret: Pola yang Bisa Diramal</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menentukan suku ke-n dan jumlah n suku barisan aritmetika dan geometri.</li>
+    <li>Menghitung jumlah deret geometri tak hingga.</li>
+    <li>Menerapkannya pada tabungan, cicilan, pertumbuhan, dan bola memantul.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📊 Lab Tangga Suku</button><button data-target="bola">🏀 Lab Bola Memantul</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Dua cara menabung</span><p style="margin:.3em 0">Rara menabung Rp10.000 pada minggu pertama dan <b>menambah Rp5.000</b> setiap minggu: 10.000, 15.000, 20.000, … Dimas menabung Rp1.000 pada minggu pertama dan <b>menggandakan</b> setiap minggu: 1.000, 2.000, 4.000, … Siapa yang tabungannya lebih banyak setelah 10 minggu? Rara: Rp325.000. Dimas: Rp1.023.000! Pola “tambah tetap” disebut <b>aritmetika</b>, pola “kali tetap” disebut <b>geometri</b>.</p></div>
+  </div>
+  <div class="card"><h2>1. Barisan dan deret aritmetika</h2>
+    <p>Selisih dua suku berurutan tetap, disebut <b>beda</b> b = U<sub>n</sub> − U<sub>n−1</sub>.</p>
+    <div class="grid2"><div class="ex"><span class="t">Suku ke-n</span><span class="mth">U<sub>n</sub> = a + (n − 1)b</span></div><div class="ex"><span class="t">Jumlah n suku</span><span class="mth">S<sub>n</sub> = ½ n (a + U<sub>n</sub>) = ½ n (2a + (n − 1)b)</span></div></div>
+    <div class="note">Cerita Gauss kecil: 1 + 2 + … + 100. Pasangkan 1 + 100, 2 + 99, …, ada 50 pasang bernilai 101. Hasilnya 5.050. Itulah rumus S<sub>n</sub>.</div>
+  </div>
+  <div class="card"><h2>2. Barisan dan deret geometri</h2>
+    <p>Perbandingan dua suku berurutan tetap, disebut <b>rasio</b> r = U<sub>n</sub> / U<sub>n−1</sub>.</p>
+    <div class="grid2"><div class="ex"><span class="t">Suku ke-n</span><span class="mth">U<sub>n</sub> = a · r<sup>n−1</sup></span></div><div class="ex"><span class="t">Jumlah n suku</span><span class="mth">S<sub>n</sub> = a(rⁿ − 1)/(r − 1)</span>, r ≠ 1</div></div>
+    <div class="ex"><span class="t">Deret tak hingga</span>Jika −1 &lt; r &lt; 1, suku-sukunya makin kecil dan jumlahnya menuju <span class="mth">S<sub>∞</sub> = a / (1 − r)</span>. Contoh: ½ + ¼ + ⅛ + … = ½ / (1 − ½) = 1.</div>
+  </div>
+  <div class="card"><h2>3. Penerapan</h2>
+    <table class="t"><tr><th>Keadaan</th><th>Jenis</th><th>Model</th></tr>
+      <tr><td>Bunga tunggal: Rp2 juta, 5%/tahun</td><td>Aritmetika</td><td>M<sub>n</sub> = 2.000.000 + n·100.000</td></tr>
+      <tr><td>Bunga majemuk: Rp2 juta, 5%/tahun</td><td>Geometri</td><td>M<sub>n</sub> = 2.000.000 · 1,05ⁿ</td></tr>
+      <tr><td>Penduduk tumbuh 2%/tahun</td><td>Geometri</td><td>P<sub>n</sub> = P<sub>0</sub> · 1,02ⁿ</td></tr>
+      <tr><td>Harga motor turun 10%/tahun</td><td>Geometri</td><td>H<sub>n</sub> = H<sub>0</sub> · 0,9ⁿ</td></tr>
+      <tr><td>Kursi gedung: baris 1 ada 20, tiap baris +2</td><td>Aritmetika</td><td>U<sub>n</sub> = 20 + (n − 1)·2</td></tr></table>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Tangga Suku</h2>
+    <p>Setiap batang adalah satu suku. Garis menunjukkan jumlah sampai suku itu (deret). Bandingkan pertumbuhan aritmetika dan geometri.</p>
+    <div class="seg" id="ty"><button data-k="ar" class="on">Aritmetika (+b)</button><button data-k="ge">Geometri (×r)</button></div>
+    <div class="ctrl"><label>Suku pertama a <span class="v" id="a-v"></span><input type="range" id="a" min="1" max="20" value="3"></label>
+      <label id="bl">Beda b <span class="v" id="b-v"></span><input type="range" id="b" min="-5" max="8" step="1" value="2"></label>
+      <label>Banyak suku n <span class="v" id="n-v"></span><input type="range" id="n" min="2" max="12" value="8"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 640 320"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="bola" class="panel">
+  <div class="card"><h2>Lab: Bola Memantul (Deret Tak Hingga)</h2>
+    <p>Bola dijatuhkan dari ketinggian h. Setiap memantul, tingginya tinggal r bagian dari tinggi sebelumnya. Bola memantul “selamanya”, tetapi lintasannya punya panjang <b>terbatas</b>!</p>
+    <div class="ctrl"><label>Tinggi awal h (m) <span class="v" id="h-v"></span><input type="range" id="h" min="1" max="10" value="6"></label>
+      <label>Rasio pantulan r <span class="v" id="r-v"></span><input type="range" id="r" min="0.2" max="0.9" step="0.05" value="0.6"></label>
+      <label>Pantulan ditampilkan <span class="v" id="k-v"></span><input type="range" id="k" min="1" max="15" value="6"></label></div>
+    <svg class="viz" id="g2" viewBox="0 0 640 300"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas X · Modul 3</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+let ty='ar';
+$$('#ty button').forEach(b=>b.onclick=()=>{ $$('#ty button').forEach(x=>x.classList.toggle('on',x===b)); ty=b.dataset.k; const e=$('#b');
+  if(ty==='ar'){ e.min=-5; e.max=8; e.step=1; e.value=2; } else { e.min=-2; e.max=3; e.step=0.1; e.value=2; } d1(); });
+function d1(){
+  const a=+$('#a').value, b=+$('#b').value, n=+$('#n').value; $('#a-v').textContent=a; $('#n-v').textContent=n;
+  $('#bl').firstChild.textContent=ty==='ar'?'Beda b ':'Rasio r '; $('#b-v').textContent=G.fmt(b,1);
+  const U=[], S=[]; let sum=0; for(let k=1;k<=n;k++){ const u= ty==='ar' ? a+(k-1)*b : a*Math.pow(b,k-1); U.push(u); sum+=u; S.push(sum); }
+  const vals=U.concat(S,[0]); let mx=Math.max(...vals), mn=Math.min(...vals); if(mx===mn) mx=mn+1;
+  const g=$('#g1'); clear(g); s('rect',{x:0,y:0,width:640,height:320,fill:'var(--card)'},g);
+  const L=60,R=620,T=20,B=280, Y=v=>B-(v-mn)/(mx-mn)*(B-T), w=(R-L)/n;
+  for(let k=0;k<=4;k++){ const v=mn+(mx-mn)*k/4; s('line',{x1:L,y1:Y(v),x2:R,y2:Y(v),stroke:'var(--line)'},g); txt(g,L-6,Y(v)+4,G.fmt(v,Math.abs(v)<10?1:0),{'font-size':11,'text-anchor':'end',fill:'var(--muted)'}); }
+  s('line',{x1:L,y1:Y(0),x2:R,y2:Y(0),stroke:'var(--ink)','stroke-width':1.5},g);
+  U.forEach((u,k)=>{ const x=L+k*w+w*.18; s('rect',{x,y:Math.min(Y(u),Y(0)),width:w*.64,height:Math.max(1,Math.abs(Y(u)-Y(0))),rx:4,fill:'var(--acc)','fill-opacity':.85},g);
+    txt(g,x+w*.32,B+18,'U'+(k+1),{'font-size':11,fill:'var(--muted)'}); if(n<=10) txt(g,x+w*.32,(u>=0?Y(u)-5:Y(u)+14),G.fmt(u,1),{'font-size':10,'font-weight':700}); });
+  let d=''; S.forEach((v,k)=>{ d+=(k?'L':'M')+(L+k*w+w*.5)+','+Y(v); }); s('path',{d,fill:'none',stroke:'var(--b)','stroke-width':3},g);
+  S.forEach((v,k)=>s('circle',{cx:L+k*w+w*.5,cy:Y(v),r:4,fill:'var(--b)'},g));
+  const fmtL=U.slice(0,6).map(u=>G.fmt(u,2)).join(', ')+(n>6?', …':'');
+  let rumus = ty==='ar' ? `U<sub>${n}</sub> = ${a} + (${n} − 1)·${G.fmt(b,1)} = ${G.fmt(U[n-1],2)} &nbsp;·&nbsp; S<sub>${n}</sub> = ½·${n}·(${a} + ${G.fmt(U[n-1],2)}) = ${G.fmt(S[n-1],2)}`
+    : `U<sub>${n}</sub> = ${a}·${G.fmt(b,1)}<sup>${n-1}</sup> = ${G.fmt(U[n-1],2)} &nbsp;·&nbsp; S<sub>${n}</sub> = ${G.fmt(S[n-1],2)}`;
+  let note = ty==='ar' ? (b>0?'Batang naik dengan langkah sama (garis lurus).':b<0?'Beda negatif: suku-suku turun dengan langkah sama.':'Beda 0: semua suku sama.')
+    : (Math.abs(b)<1?`|r| &lt; 1: suku makin kecil, jumlah mendekati S<sub>∞</sub> = ${a}/(1 − ${G.fmt(b,1)}) = ${G.fmt(a/(1-b),2)}.`:b<0?'r negatif: tanda suku berganti-ganti.':b>1?'r &gt; 1: suku membesar sangat cepat (eksponensial).':'r = 1: semua suku sama.');
+  $('#o1').innerHTML=`<div class="big">${fmtL}</div><p>${rumus}</p><p>${note}</p><div class="legend"><span><i style="background:var(--acc)"></i>suku U<sub>n</sub></span><span><i style="background:var(--b)"></i>jumlah S<sub>n</sub></span></div>`;
+}
+['a','b','n'].forEach(id=>$('#'+id).oninput=d1); d1();
+
+function d2(){
+  const h=+$('#h').value, r=+$('#r').value, K=+$('#k').value; $('#h-v').textContent=h; $('#r-v').textContent=G.fmt(r,2); $('#k-v').textContent=K;
+  const g=$('#g2'); clear(g); s('rect',{x:0,y:0,width:640,height:300,fill:'var(--card)'},g);
+  const B=270, sc=230/10; s('line',{x1:20,y1:B,x2:620,y2:B,stroke:'var(--ink)','stroke-width':3},g);
+  let x=40, d=`M${x},${B-h*sc}`, hh=h, path=h; const step=560/(K+1.5);
+  d+=` Q${x+step*0.25},${B-h*sc} ${x+step*0.5},${B}`; x+=step*0.5;
+  for(let k=1;k<=K;k++){ hh*=r; path+=2*hh; d+=` Q${x+step*0.5},${B-2*hh*sc} ${x+step},${B}`; x+=step;
+    txt(g,x-step*0.5,B-hh*sc-8,G.fmt(hh,2),{'font-size':10,fill:'var(--muted)'}); }
+  s('path',{d,fill:'none',stroke:'var(--acc)','stroke-width':2.5},g);
+  s('circle',{cx:40,cy:B-h*sc,r:9,fill:'var(--b)'},g); txt(g,40,B-h*sc-14,h+' m',{'font-weight':800,'font-size':12});
+  const tot=h+2*h*r/(1-r);
+  $('#o2').innerHTML=`<div class="big">Panjang lintasan total = h + 2·(hr + hr² + …) = ${h} + 2·${G.fr(h+'·'+G.fmt(r,2),'1 − '+G.fmt(r,2))} = <b>${G.fmt(tot,2)} m</b></div>
+   <p>Setelah ${K} pantulan, lintasan yang sudah ditempuh ${G.fmt(path,2)} m (${G.fmt(path/tot*100,1)}% dari total). Pantulan berikutnya makin pendek sehingga jumlahnya “berhenti” di ${G.fmt(tot,2)} m.</p>
+   <p class="muted">Rumus cepat: lintasan = h·(1 + r)/(1 − r).</p>`;
+}
+['h','r','k'].forEach(id=>$('#'+id).oninput=d2); d2();
+
+VML.practice($('#prac'),[
+ {name:'Uₙ aritmetika', gen(){ const a=rand(-10,20), b=VML.randNZ(-6,9), n=rand(8,40); return {q:`Barisan ${[0,1,2,3].map(k=>VML.m(a+k*b)).join(', ')}, … Suku ke-${n} adalah …`, a:String(a+(n-1)*b), hint:`a = ${a}, b = ${b}. Pakai Uₙ = a + (n − 1)b.`, ex:`${a} + ${n-1}·${VML.neg(b)} = ${a+(n-1)*b}`}; }},
+ {name:'Sₙ aritmetika', gen(){ const a=rand(1,15), b=rand(1,7), n=rand(10,30); const S=n*(2*a+(n-1)*b)/2; return {q:`Jumlah ${n} suku pertama deret ${a} + ${a+b} + ${a+2*b} + … adalah …`, a:String(S), hint:'Sₙ = ½n(2a + (n − 1)b).', ex:`½·${n}·(${2*a} + ${n-1}·${b}) = ${S}`}; }},
+ {name:'Uₙ geometri', gen(){ const a=rand(1,6), r=pick([2,3,-2]), n=rand(4,r===3?6:8); const u=a*Math.pow(r,n-1); return {q:`Barisan ${[0,1,2].map(k=>VML.m(a*Math.pow(r,k))).join(', ')}, … Suku ke-${n} adalah …`, a:String(u), hint:`a = ${a}, r = ${r}. Uₙ = a·rⁿ⁻¹.`, ex:`${a}·${VML.neg(r)}<sup>${n-1}</sup> = ${u}`}; }},
+ {name:'S∞', gen(){ const p=pick([[1,2],[1,3],[2,3],[1,4],[3,4]]), a=p[1]*rand(2,12); const r=p[0]/p[1]; const S=a/(1-r); return {q:`Jumlah tak hingga deret ${a} + ${VML.num(a*r,2)} + ${VML.num(a*r*r,2)} + … adalah …`, a:String(VML.round(S,6)), hint:`r = ${p[0]}/${p[1]}. S∞ = a/(1 − r).`, ex:`${a}/(1 − ${p[0]}/${p[1]}) = ${VML.num(S,2)}`}; }},
+ {name:'Cari beda', gen(){ const a=rand(-5,15), b=VML.randNZ(-5,8), p=rand(2,5), q=p+rand(3,8); return {q:`Pada barisan aritmetika, U<sub>${p}</sub> = ${a+(p-1)*b} dan U<sub>${q}</sub> = ${a+(q-1)*b}. Beda barisan adalah …`, a:String(b), hint:`Selisih U${q} − U${p} dibagi (${q} − ${p}).`, ex:`(${a+(q-1)*b} − ${VML.neg(a+(p-1)*b)}) / ${q-p} = ${b}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Beda barisan 7, 11, 15, 19, … adalah …', o:['4','7','11','3'], a:0, ex:'11 − 7 = 4.'},
+ {q:'Suku ke-20 barisan 5, 8, 11, … adalah …', o:['62','65','60','57'], a:0, ex:'5 + 19·3 = 62.'},
+ {q:'1 + 2 + 3 + … + 100 = …', o:['5.050','5.000','10.100','4.950'], a:0, ex:'½·100·101.'},
+ {q:'Rasio barisan 3, 12, 48, … adalah …', o:['4','9','3','36'], a:0, ex:'12 : 3 = 4.'},
+ {q:'Suku ke-6 barisan 2, 6, 18, … adalah …', o:['486','162','1.458','54'], a:0, ex:'2·3⁵ = 486.'},
+ {q:'Deret 8 + 4 + 2 + 1 + … jumlahnya …', o:['16','15','∞','12'], a:0, ex:'8/(1 − ½) = 16.'},
+ {q:'Deret geometri tak hingga mempunyai jumlah (konvergen) jika …', o:['−1 < r < 1','r > 1','r = 1','r < −1'], a:0, ex:'Suku harus mengecil.'},
+ {q:'Tabungan berbunga majemuk membentuk barisan …', o:['geometri','aritmetika','konstan','acak'], a:0, ex:'Setiap periode dikali (1 + i).'},
+ {q:'Gedung: baris pertama 20 kursi, setiap baris bertambah 2. Banyak kursi pada baris ke-15 adalah …', o:['48','50','46','300'], a:0, ex:'20 + 14·2 = 48.'},
+ {q:'Jumlah 10 suku pertama 2 + 4 + 8 + … = …', input:true, a:['2046'], ex:'2(2¹⁰ − 1) = 2.046.'},
+ {q:'Bola jatuh dari 4 m, memantul ½ tinggi sebelumnya. Panjang lintasan total (m) = …', input:true, a:['12'], ex:'4·(1 + ½)/(1 − ½) = 12.'},
+ {q:'U₃ = 10 dan U₇ = 26 pada barisan aritmetika. Beda = …', input:true, a:['4'], ex:'16 : 4 = 4.'}
+],'x3');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matriks · Matematika SMA Kelas XI</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>.mx{display:inline-grid;gap:4px 10px;padding:6px 12px;border-left:2.5px solid var(--ink);border-right:2.5px solid var(--ink);border-radius:8px;vertical-align:middle;font-family:var(--mono);font-size:1.05rem;text-align:center}.mx span{min-width:30px;padding:2px 4px;border-radius:6px}.mx span.hl{background:color-mix(in srgb,var(--b) 35%,transparent)}.mx span.hr{background:color-mix(in srgb,var(--a) 30%,transparent)}.mx.res span{cursor:pointer}.mx.res span:hover{outline:2px solid var(--acc)}.mx.res span.on{background:var(--acc);color:#fff}.eqrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:1.3rem;margin:10px 0}</style>
+</head>
+<body style="--acc:#13987a">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XI</a><div class="brand">∘ Matematika SMA <small>· Kelas XI</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 5 · Aljabar <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Matriks: Tabel Angka yang Bisa Menggerakkan Gambar</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Melakukan operasi penjumlahan, perkalian skalar, dan perkalian matriks.</li>
+    <li>Menghitung determinan dan invers matriks 2×2 serta determinan 3×3.</li>
+    <li>Memakai matriks untuk menyelesaikan SPL dan memahami transformasi bidang.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🔷 Lab Transformasi</button><button data-target="kali">✖️ Lab Perkalian</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Nota tiga warung</span><p style="margin:.3em 0">Tiga warung menjual nasi, mi, dan es teh. Data penjualan harian tersusun rapi dalam tabel baris-kolom: itulah <b>matriks</b>. Kalikan matriks penjualan dengan matriks harga, dan pendapatan setiap warung keluar sekaligus. Matriks juga dipakai di grafik komputer untuk memutar dan memperbesar gambar, di Google untuk mengurutkan halaman, dan di AI untuk mengenali wajah.</p></div>
+  </div>
+  <div class="card"><h2>1. Ordo dan operasi dasar</h2>
+    <p>Matriks berordo m×n punya m baris dan n kolom. Dua matriks dijumlahkan jika ordonya sama: jumlahkan elemen yang seletak. Perkalian skalar: kalikan semua elemen.</p>
+    <div class="ex"><span class="t">Transpos</span>Aᵀ menukar baris menjadi kolom. Matriks 2×3 menjadi 3×2.</div>
+  </div>
+  <div class="card"><h2>2. Perkalian dua matriks</h2>
+    <p>A (m×n) × B (n×p) = C (m×p). Elemen c<sub>ij</sub> = <b>baris ke-i A “dikali” kolom ke-j B</b> (kalikan berpasangan lalu jumlahkan). Syarat: banyak kolom A = banyak baris B.</p>
+    <div class="ex"><span class="t">Penerapan</span>Warung A menjual 20 nasi dan 30 es teh; harga nasi 12 ribu, es teh 4 ribu. Pendapatan = [20 30] × [12 ; 4] = 240 + 120 = 360 ribu.</div>
+    <div class="note">Umumnya AB ≠ BA: perkalian matriks <b>tidak komutatif</b>.</div>
+  </div>
+  <div class="card"><h2>3. Determinan dan invers</h2>
+    <div class="grid2"><div class="ex"><span class="t">Matriks 2×2</span>A = [a b ; c d], det A = ad − bc.<br>A⁻¹ = (1/det A)·[d −b ; −c a], ada jika det A ≠ 0.</div>
+    <div class="ex"><span class="t">Matriks 3×3 (Sarrus)</span>Salin dua kolom pertama ke kanan; jumlah hasil kali diagonal turun dikurangi jumlah hasil kali diagonal naik.</div></div>
+    <p>Sifat: det(AB) = det A · det B, det(Aᵀ) = det A, det(A⁻¹) = 1/det A.</p>
+  </div>
+  <div class="card"><h2>4. SPL dengan matriks</h2>
+    <p>Sistem ax + by = p, cx + dy = q ditulis A·X = B, sehingga <b>X = A⁻¹B</b>. Atau dengan aturan Cramer: x = Dₓ/D, y = D_y/D.</p>
+    <div class="ex"><span class="t">Contoh</span>2x + y = 7, x + 3y = 11: D = 5, Dₓ = 21 − 11 = 10, D_y = 22 − 7 = 15, jadi x = 2, y = 3.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Matriks sebagai Transformasi</h2>
+    <p>Matriks [a b ; c d] memindahkan setiap titik (x, y) ke (ax + by, cx + dy). Persegi satuan (abu-abu) berubah menjadi jajargenjang (berwarna). <b>Luas jajargenjang = |det|</b>.</p>
+    <div class="row" id="pre"></div>
+    <div class="ctrl"><label>a <span class="v" id="a-v"></span><input type="range" id="a" min="-3" max="3" step="0.5" value="2"></label><label>b <span class="v" id="b-v"></span><input type="range" id="b" min="-3" max="3" step="0.5" value="1"></label><label>c <span class="v" id="c-v"></span><input type="range" id="c" min="-3" max="3" step="0.5" value="0"></label><label>d <span class="v" id="d-v"></span><input type="range" id="d" min="-3" max="3" step="0.5" value="1.5"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 460 460" style="max-width:460px;margin:auto;display:block"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="kali" class="panel">
+  <div class="card"><h2>Lab: Perkalian Baris × Kolom</h2>
+    <p><b>Ketuk sebuah elemen hasil</b> untuk melihat baris dan kolom mana yang dikalikan.</p>
+    <div class="row"><button class="btn" id="nm">Matriks baru</button><button class="btn soft" id="sw">Tukar urutan (B × A)</button></div>
+    <div class="eqrow" id="eq"></div>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XI · Modul 5</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const PRE={'Identitas':[1,0,0,1],'Dilatasi ×2':[2,0,0,2],'Rotasi 90°':[0,-1,1,0],'Cermin sumbu-y':[-1,0,0,1],'Gusuran':[1,1.5,0,1],'Determinan 0':[1,2,0.5,1]};
+$('#pre').innerHTML=Object.keys(PRE).map(k=>`<button class="chipbtn" data-k="${k}">${k}</button>`).join('');
+$$('#pre .chipbtn').forEach(b=>b.onclick=()=>{ const v=PRE[b.dataset.k]; ['a','b','c','d'].forEach((k,i)=>$('#'+k).value=v[i]); d1(); });
+const M=(v)=>`<span class="mx" style="grid-template-columns:repeat(${v[0].length},auto)">${v.flat().map(x=>`<span>${VML.m(G.fmt(x,2))}</span>`).join('')}</span>`;
+function d1(){
+  const [a,b,c,d]=['a','b','c','d'].map(k=>+$('#'+k).value); ['a','b','c','d'].forEach(k=>$('#'+k+'-v').textContent=G.fmt(+$('#'+k).value,1));
+  const g=$('#g1'); clear(g); const P=VML.plane(g,{xmin:-5,xmax:5,ymin:-5,ymax:5,W:460,H:460,pad:20,lab:1});
+  const T=(x,y)=>[a*x+b*y,c*x+d*y];
+  const gg=s('g',{'clip-path':'url(#cpm)'},g); const cp=s('clipPath',{id:'cpm'},g); s('rect',{x:20,y:20,width:420,height:420},cp);
+  for(let k=-6;k<=6;k++){ const p1=T(k,-6),p2=T(k,6),q1=T(-6,k),q2=T(6,k);
+    s('line',{x1:P.X(p1[0]),y1:P.Y(p1[1]),x2:P.X(p2[0]),y2:P.Y(p2[1]),stroke:'var(--acc)','stroke-opacity':.25},gg); s('line',{x1:P.X(q1[0]),y1:P.Y(q1[1]),x2:P.X(q2[0]),y2:P.Y(q2[1]),stroke:'var(--acc)','stroke-opacity':.25},gg); }
+  s('polygon',{points:[[0,0],[1,0],[1,1],[0,1]].map(([x,y])=>P.X(x)+','+P.Y(y)).join(' '),fill:'var(--muted)','fill-opacity':.25,stroke:'var(--muted)','stroke-width':2},gg);
+  const sq=[[0,0],[1,0],[1,1],[0,1]].map(([x,y])=>T(x,y)); const det=a*d-b*c;
+  s('polygon',{points:sq.map(([x,y])=>P.X(x)+','+P.Y(y)).join(' '),fill:det<0?'var(--e)':'var(--acc)','fill-opacity':.45,stroke:det<0?'var(--e)':'var(--acc)','stroke-width':3},gg);
+  const i=T(1,0), j=T(0,1);
+  s('line',{x1:P.X(0),y1:P.Y(0),x2:P.X(i[0]),y2:P.Y(i[1]),stroke:'var(--b)','stroke-width':4},gg); s('line',{x1:P.X(0),y1:P.Y(0),x2:P.X(j[0]),y2:P.Y(j[1]),stroke:'var(--a)','stroke-width':4},gg);
+  s('circle',{cx:P.X(i[0]),cy:P.Y(i[1]),r:6,fill:'var(--b)'},gg); s('circle',{cx:P.X(j[0]),cy:P.Y(j[1]),r:6,fill:'var(--a)'},gg);
+  const inv = det!==0 ? `A⁻¹ = (1/${G.fmt(det,2)}) · ${M([[d,-b],[-c,a]])}` : '<b>Tidak punya invers</b> (matriks singular): bidang dipipihkan menjadi garis, sehingga tidak bisa dikembalikan.';
+  $('#o1').innerHTML=`<div class="eqrow">A = ${M([[a,b],[c,d]])} &nbsp; det A = ${G.fmt(a,1)}·${G.fmt(d,1)} − ${G.fmt(b,1)}·${G.fmt(c,1)} = <b>${G.fmt(det,2)}</b></div>
+   <p>Kolom pertama (${G.fmt(a,1)}, ${G.fmt(c,1)}) adalah ke mana titik (1, 0) pindah (oranye); kolom kedua (${G.fmt(b,1)}, ${G.fmt(d,1)}) ke mana (0, 1) pindah (biru). Luas persegi satuan menjadi |det| = ${G.fmt(Math.abs(det),2)}. ${det<0?'Determinan negatif: gambar <b>terbalik</b> seperti di cermin.':''}</p><div class="eqrow" style="font-size:1.05rem">${inv}</div>`;
+}
+['a','b','c','d'].forEach(k=>$('#'+k).oninput=d1); d1();
+
+let A2,B2,sel=[0,0],swp=false;
+function newM(){ const m=rand(2,3), n=rand(2,3), p=rand(2,3); A2=Array.from({length:m},()=>Array.from({length:n},()=>rand(-4,5))); B2=Array.from({length:n},()=>Array.from({length:p},()=>rand(-4,5))); sel=[0,0]; swp=false; d2(); }
+const mul=(X,Y)=>X.map(r=>Y[0].map((_,j)=>r.reduce((s2,v,k)=>s2+v*Y[k][j],0)));
+function d2(){
+  const X=swp?B2:A2, Y=swp?A2:B2; const nx=X[0].length, ny=Y.length;
+  const MX=(v,cls,hl)=>`<span class="mx ${cls||''}" style="grid-template-columns:repeat(${v[0].length},auto)">${v.map((r,i)=>r.map((x,j)=>`<span class="${hl?hl(i,j):''}" data-i="${i}" data-j="${j}">${VML.m(x)}</span>`).join('')).join('')}</span>`;
+  if(nx!==ny){ $('#eq').innerHTML=`${MX(X)} × ${MX(Y)}`; $('#o2').innerHTML=`<div class="fb no"><b>Tidak bisa dikalikan!</b> Banyak kolom matriks kiri (${nx}) ≠ banyak baris matriks kanan (${ny}). Inilah bukti bahwa urutan perkalian penting.</div>`; return; }
+  const C=mul(X,Y); if(sel[0]>=C.length||sel[1]>=C[0].length) sel=[0,0]; const [si,sj]=sel;
+  $('#eq').innerHTML=`${MX(X,'',(i)=>i===si?'hl':'')} × ${MX(Y,'',(i,j)=>j===sj?'hr':'')} = ${MX(C,'res',(i,j)=>i===si&&j===sj?'on':'')}`;
+  $$('#eq .res span').forEach(e=>e.onclick=()=>{ sel=[+e.dataset.i,+e.dataset.j]; d2(); });
+  const terms=X[si].map((v,k)=>`${VML.neg(v)}·${VML.neg(Y[k][sj])}`).join(' + ');
+  $('#o2').innerHTML=`<p>Ordo: (${X.length}×${nx}) × (${ny}×${Y[0].length}) = ${C.length}×${C[0].length}.</p><div class="big">c<sub>${si+1}${sj+1}</sub> = baris ${si+1} × kolom ${sj+1} = ${terms} = <b>${VML.m(C[si][sj])}</b></div>`;
+}
+$('#nm').onclick=newM; $('#sw').onclick=()=>{ swp=!swp; sel=[0,0]; $('#sw').textContent=swp?'Kembalikan (A × B)':'Tukar urutan (B × A)'; d2(); };
+A2=[[2,1],[0,3]]; B2=[[1,4],[2,-1]]; d2();
+
+const mt=v=>`<span class="mx" style="grid-template-columns:repeat(${v[0].length},auto);font-size:.95rem">${v.flat().map(x=>`<span>${VML.m(x)}</span>`).join('')}</span>`;
+VML.practice($('#prac'),[
+ {name:'Determinan 2×2', gen(){ const m=[[rand(-6,6),rand(-6,6)],[rand(-6,6),rand(-6,6)]]; const d=m[0][0]*m[1][1]-m[0][1]*m[1][0]; return {q:`Determinan ${mt(m)} = …`, a:String(d), hint:'ad − bc', ex:`${m[0][0]}·${VML.neg(m[1][1])} − ${VML.neg(m[0][1])}·${VML.neg(m[1][0])} = ${d}`}; }},
+ {name:'Elemen AB', gen(){ const A=[[rand(-4,5),rand(-4,5)],[rand(-4,5),rand(-4,5)]], B=[[rand(-4,5),rand(-4,5)],[rand(-4,5),rand(-4,5)]]; const i=rand(0,1), j=rand(0,1); const C=mul(A,B);
+   return {q:`A = ${mt(A)}, B = ${mt(B)}. Elemen baris ${i+1} kolom ${j+1} dari AB = …`, a:String(C[i][j]), hint:`Baris ${i+1} A dikali kolom ${j+1} B.`, ex:`${A[i][0]}·${VML.neg(B[0][j])} + ${VML.neg(A[i][1])}·${VML.neg(B[1][j])} = ${C[i][j]}`}; }},
+ {name:'Invers', gen(){ let a,b,c,d; do{ a=rand(-5,5); b=rand(-5,5); c=rand(-5,5); d=rand(-5,5); }while(Math.abs(a*d-b*c)!==1); const det=a*d-b*c; const inv=[[d*det,-b*det],[-c*det,a*det]]; const i=rand(0,1), j=rand(0,1);
+   return {q:`Invers dari ${mt([[a,b],[c,d]])} mempunyai elemen baris ${i+1} kolom ${j+1} = …`, a:String(inv[i][j]), hint:`det = ${det}. A⁻¹ = (1/det)[d −b ; −c a].`, ex:`A⁻¹ = ${mt(inv)}`}; }},
+ {name:'SPL Cramer', gen(){ let a,b,c,d; do{ a=rand(1,5); b=rand(-4,5); c=rand(-4,5); d=rand(1,5); }while(a*d-b*c===0); const x=rand(-5,6), y=rand(-5,6); const t=rand(0,1);
+   return {q:`${mt([[a,b],[c,d]])} ${mt([['x'],['y']])} = ${mt([[a*x+b*y],[c*x+d*y]])}. Nilai ${t?'y':'x'} = …`, a:String(t?y:x), hint:'X = A⁻¹B atau aturan Cramer.', ex:`x = ${x}, y = ${y}`}; }},
+ {name:'Determinan 3×3', gen(){ const m=[0,1,2].map(()=>[rand(-3,4),rand(-3,4),rand(-3,4)]); const [[a,b,c],[d,e,f],[g,h,i]]=m; const D=a*e*i+b*f*g+c*d*h-c*e*g-a*f*h-b*d*i; return {q:`Determinan ${mt(m)} = …`, a:String(D), hint:'Aturan Sarrus: diagonal turun − diagonal naik.', ex:`(${a*e*i} + ${b*f*g} + ${c*d*h}) − (${c*e*g} + ${a*f*h} + ${b*d*i}) = ${D}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Matriks dengan 2 baris dan 3 kolom berordo …', o:['2×3','3×2','6','5'], a:0, ex:'baris × kolom.'},
+ {q:'A berordo 2×3 dan B berordo 3×4. Ordo AB …', o:['2×4','3×3','4×2','tidak terdefinisi'], a:0, ex:'(2×3)(3×4) = 2×4.'},
+ {q:'Jika A berordo 2×3 dan B berordo 2×3, maka AB …', o:['tidak terdefinisi','berordo 2×3','berordo 3×3','berordo 2×2'], a:0, ex:'Kolom A ≠ baris B.'},
+ {q:'Determinan [4 3 ; 2 5] = …', o:['14','26','20','−14'], a:0, ex:'20 − 6.'},
+ {q:'Matriks [2 4 ; 1 2] tidak mempunyai invers karena …', o:['determinannya 0','ordonya 2×2','elemennya positif','tidak simetris'], a:0, ex:'4 − 4 = 0.'},
+ {q:'Invers [3 1 ; 5 2] adalah …', o:['[2 −1 ; −5 3]','[2 1 ; 5 3]','[−2 1 ; 5 −3]','[3 −1 ; −5 2]'], a:0, ex:'det 1, tukar a↔d, negatifkan b, c.'},
+ {q:'Secara umum AB dan BA …', o:['tidak sama','selalu sama','saling invers','selalu nol'], a:0, ex:'Tidak komutatif.'},
+ {q:'Transpos dari [1 2 3 ; 4 5 6] berordo …', o:['3×2','2×3','3×3','1×6'], a:0, ex:'Baris ↔ kolom.'},
+ {q:'Jika det A = 3 dan det B = −2, maka det(AB) = …', o:['−6','1','6','−1'], a:0, ex:'Dikalikan.'},
+ {q:'Determinan [1 2 0 ; 0 1 3 ; 2 0 1] (Sarrus) = …', input:true, a:['13'], ex:'(1 + 12 + 0) − (0 + 0 + 0) = 13.'},
+ {q:'2x + y = 7 dan x + 3y = 11. Nilai x (dengan Cramer) = …', input:true, a:['2'], ex:'Dₓ/D = 10/5.'},
+ {q:'Elemen baris 1 kolom 1 dari [1 2 ; 3 4] × [5 6 ; 7 8] = …', input:true, a:['19'], ex:'1·5 + 2·7.'}
+],'xi5');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

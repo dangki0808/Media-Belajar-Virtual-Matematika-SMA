@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aturan Perkalian, Pembagian & Rantai · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#c2417f">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian A · Modul A3 · Turunan <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Aturan Perkalian, Pembagian &amp; Rantai</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menurunkan perkalian dua fungsi (aturan perkalian) dan pembagian (aturan pembagian).</li>
+    <li>Menurunkan fungsi di dalam fungsi dengan <b>aturan rantai</b>, seperti roda gigi yang saling memutar.</li>
+    <li>Memahami asal-usul aturan-aturan ini lewat gambar.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">⚙️ Lab Roda Gigi Rantai</button><button data-target="kali">▭ Lab Persegi Panjang Tumbuh</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita sepeda</span><p style="margin:.3em 0">Saat Dika mengayuh pedal sepeda, pedal memutar gir depan, rantai memutar gir belakang, dan gir belakang memutar roda. Jika gir depan 3 kali lebih besar dari gir belakang, setiap satu kayuhan memutar roda 3 kali. Laju roda = laju pedal × perbandingan gir. <b>Laju yang bersambung saling dikalikan.</b> Itulah <b>aturan rantai</b>.</p></div>
+  </div>
+  <div class="card"><h2>1. Aturan rantai (fungsi di dalam fungsi)</h2>
+    <div class="def" style="text-align:center;font-size:1.15rem" id="r1"></div>
+    <p>Cara mudah: <b>turunkan bagian luar</b> (biarkan isinya tetap), lalu <b>kalikan dengan turunan bagian dalam</b>.</p>
+    <table class="t"><tr><th>Fungsi</th><th>Luar · Dalam</th><th>Turunan</th></tr>
+      <tr><td>(3x + 1)⁵</td><td>( )⁵ · 3x + 1</td><td>5(3x + 1)⁴ · 3 = 15(3x + 1)⁴</td></tr>
+      <tr><td>sin(2x)</td><td>sin( ) · 2x</td><td>cos(2x) · 2</td></tr>
+      <tr><td>e<sup>x²</sup></td><td>e<sup>( )</sup> · x²</td><td>e<sup>x²</sup> · 2x</td></tr>
+      <tr><td>√(x² + 9)</td><td>√( ) · x² + 9</td><td>x/√(x² + 9)</td></tr></table>
+  </div>
+  <div class="card"><h2>2. Aturan perkalian</h2>
+    <div class="def" style="text-align:center;font-size:1.15rem"><span class="mth">(<i>u</i>·<i>v</i>)′ = <i>u</i>′·<i>v</i> + <i>u</i>·<i>v</i>′</span></div>
+    <p>Bayangkan persegi panjang yang panjang dan lebarnya sama-sama bertambah. Luasnya bertambah dari dua sisi: pita di samping (u′·v) dan pita di atas (u·v′). Lihat Lab Persegi Panjang Tumbuh.</p>
+    <div class="ex"><span class="t">Contoh</span>(x²·sin x)′ = 2x·sin x + x²·cos x</div>
+    <div class="note"><b>Awas:</b> (u·v)′ <b>bukan</b> u′·v′. Contoh: (x·x)′ = (x²)′ = 2x, padahal 1·1 = 1.</div>
+  </div>
+  <div class="card"><h2>3. Aturan pembagian</h2>
+    <div class="def" style="text-align:center;font-size:1.15rem" id="r3"></div>
+    <p>Jembatan keledai: "<b>bawah kali turunan atas, kurang atas kali turunan bawah, per bawah kuadrat</b>".</p>
+    <div class="ex"><span class="t">Contoh</span>(x/(x + 1))′ = [1·(x + 1) − x·1]/(x + 1)² = 1/(x + 1)²</div>
+  </div>
+  <div class="card"><h2>Di mana dipakai?</h2>
+    <p>Aturan rantai ada di mana-mana: perubahan suhu terhadap waktu = (perubahan suhu terhadap ketinggian) × (laju naik pesawat). Biaya bensin per jam = (harga per liter) × (liter per km) × (km per jam). Kecerdasan buatan (AI) juga belajar dengan aturan rantai yang diulang jutaan kali (<i>backpropagation</i>).</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Roda Gigi Aturan Rantai</h2>
+    <p>Pedal (x) memutar gir tengah (u), gir tengah memutar roda (y). Atur perbandingan setiap pasangan gir dan laju kayuhan.</p>
+    <div class="ctrl"><label>du/dx (gir tengah per putaran pedal) <span class="v" id="a-v"></span><input type="range" id="a" min="0.5" max="4" step="0.5" value="2"></label><label>dy/du (roda per putaran gir tengah) <span class="v" id="b-v"></span><input type="range" id="b" min="0.5" max="4" step="0.5" value="1.5"></label><label>Laju kayuh (putaran/detik) <span class="v" id="c-v"></span><input type="range" id="c" min="0" max="2" step="0.1" value="0.5"></label></div>
+    <svg class="viz" id="gear" viewBox="0 0 640 260"></svg>
+    <div class="out" id="gOut"></div>
+  </div>
+</section>
+
+<section id="kali" class="panel">
+  <div class="card"><h2>Lab: Persegi Panjang Tumbuh (aturan perkalian)</h2>
+    <p>Panjang <span class="mth"><i>u</i>(<i>t</i>) = 2 + <i>t</i></span> dan lebar <span class="mth"><i>v</i>(<i>t</i>) = 1 + 0,5<i>t</i></span> sama-sama bertambah. Saat waktu bertambah Δt, luas bertambah dari tiga bagian.</p>
+    <div class="ctrl"><label>Waktu t <span class="v" id="t-v"></span><input type="range" id="t" min="0" max="3" step="0.1" value="1"></label><label>Δt <span class="v" id="dt-v"></span><input type="range" id="dt" min="0.02" max="1" step="0.02" value="0.6"></label></div>
+    <svg class="viz" id="rect" viewBox="0 0 640 340"></svg>
+    <div class="out" id="rOut"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Tulis turunan seperti <code>15(3x+1)^4</code>, <code>2x*sin(x)+x^2*cos(x)</code>. Bentuk setara dianggap benar.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul A3</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+$('#r1').innerHTML=`<span class="mth">${G.fr('<i>dy</i>','<i>dx</i>')} = ${G.fr('<i>dy</i>','<i>du</i>')} · ${G.fr('<i>du</i>','<i>dx</i>')}</span> &nbsp; atau &nbsp; <span class="mth">[<i>f</i>(<i>g</i>(<i>x</i>))]′ = <i>f</i>′(<i>g</i>(<i>x</i>)) · <i>g</i>′(<i>x</i>)</span>`;
+$('#r3').innerHTML=`<span class="mth">(${G.fr('<i>u</i>','<i>v</i>')})′ = ${G.fr("<i>u</i>′·<i>v</i> − <i>u</i>·<i>v</i>′",'<i>v</i>²')}</span>`;
+
+/* RODA GIGI */
+let ang=0, last=performance.now();
+function gearPath(cx,cy,r,teeth,rot){ let d=''; const n=teeth*2; for(let i=0;i<=n;i++){ const a=rot+i/n*2*Math.PI, rr=i%2?r:r*0.86; d+=(i?'L':'M')+(cx+rr*Math.cos(a)).toFixed(1)+','+(cy+rr*Math.sin(a)).toFixed(1); } return d+'Z'; }
+function drawG(){
+  const a=+$('#a').value, b=+$('#b').value, c=+$('#c').value; $('#a-v').textContent=G.fmt(a,1); $('#b-v').textContent=G.fmt(b,1); $('#c-v').textContent=G.fmt(c,1);
+  const g=$('#gear'); clear(g); s('rect',{x:0,y:0,width:640,height:260,fill:'var(--card)'},g);
+  const R1=70, R2=Math.max(18,R1/a), R3=Math.max(18,70/b);
+  // pedal gear (x), small gear u on same axle? Use meshed chain: x-gear → u-gear, u-axle big gear → y wheel
+  const x1=120,x2=330,x3=530,cy=130;
+  const th=[ang, ang*a, ang*a*b];
+  s('path',{d:gearPath(x1,cy,R1,18,th[0]),fill:'#2d6ae0','fill-opacity':.75,stroke:'#18213d'},g);
+  s('path',{d:gearPath(x2,cy,R2,Math.max(6,Math.round(18/a)),th[1]),fill:'#c2417f','fill-opacity':.75,stroke:'#18213d'},g);
+  s('path',{d:gearPath(x2,cy,R1*.75,14,th[1]),fill:'none',stroke:'#c2417f','stroke-width':2,'stroke-dasharray':'4 3'},g);
+  s('circle',{cx:x3,cy,r:R3+16,fill:'none',stroke:'#18213d','stroke-width':6},g);
+  s('path',{d:gearPath(x3,cy,R3,Math.max(6,Math.round(14/b)),th[2]),fill:'#13987a','fill-opacity':.75,stroke:'#18213d'},g);
+  [[x1,th[0]],[x2,th[1]],[x3,th[2]]].forEach(([x,t],i)=>{ const r=i===0?R1:i===1?R2:R3; s('line',{x1:x,y1:cy,x2:x+r*.8*Math.cos(t),y2:cy+r*.8*Math.sin(t),stroke:'#fff','stroke-width':4,'stroke-linecap':'round'},g); s('circle',{cx:x,cy,r:6,fill:'#fff'},g); });
+  s('line',{x1:x1,y1:cy-R1,x2:x2,y2:cy-R2,stroke:'var(--muted)','stroke-width':2,'stroke-dasharray':'6 4'},g); s('line',{x1:x1,y1:cy+R1,x2:x2,y2:cy+R2,stroke:'var(--muted)','stroke-width':2,'stroke-dasharray':'6 4'},g);
+  s('line',{x1:x2,y1:cy-R1*.75,x2:x3,y2:cy-R3,stroke:'var(--muted)','stroke-width':2,'stroke-dasharray':'6 4'},g); s('line',{x1:x2,y1:cy+R1*.75,x2:x3,y2:cy+R3,stroke:'var(--muted)','stroke-width':2,'stroke-dasharray':'6 4'},g);
+  txt(g,x1,250,'pedal x',{'font-size':14,'font-weight':800,fill:'#2d6ae0'}); txt(g,x2,250,'gir tengah u',{'font-size':14,'font-weight':800,fill:'#c2417f'}); txt(g,x3,250,'roda y',{'font-size':14,'font-weight':800,fill:'#13987a'});
+  $('#gOut').innerHTML=`<p class="big2"><span class="mth">dy/dx = dy/du × du/dx = ${G.fmt(b,1)} × ${G.fmt(a,1)} = ${G.fmt(a*b,2)}</span></p>
+   <p>Setiap 1 putaran pedal memutar roda <b>${G.fmt(a*b,2)}</b> kali. Dengan kayuhan ${G.fmt(c,1)} putaran/detik, roda berputar <b>${G.fmt(a*b*c,2)}</b> putaran/detik.</p>
+   <p class="muted">Aturan rantai: laju dari pasangan yang bersambung saling dikalikan, bukan dijumlahkan.</p>`;
+}
+['#a','#b','#c'].forEach(z=>$(z).oninput=drawG);
+function loop(n){ const dt=(n-last)/1000; last=n; ang+=dt*(+$('#c').value)*2*Math.PI*0.5; if(document.querySelector('#lab.on')) drawG(); requestAnimationFrame(loop); }
+drawG(); requestAnimationFrame(loop);
+
+/* PERSEGI PANJANG */
+function drawR(){
+  const t=+$('#t').value, dt=+$('#dt').value; $('#t-v').textContent=G.fmt(t,1); $('#dt-v').textContent=G.fmt(dt,2);
+  const u=2+t, v=1+.5*t, du=dt, dv=.5*dt, k=60, ox=60, oy=300;
+  const g=$('#rect'); clear(g); s('rect',{x:0,y:0,width:640,height:340,fill:'var(--card)'},g);
+  s('rect',{x:ox,y:oy-v*k,width:u*k,height:v*k,fill:'#2d6ae0','fill-opacity':.3,stroke:'#2d6ae0','stroke-width':2},g);
+  s('rect',{x:ox+u*k,y:oy-v*k,width:du*k,height:v*k,fill:'#e8890b','fill-opacity':.5},g);
+  s('rect',{x:ox,y:oy-(v+dv)*k,width:u*k,height:dv*k,fill:'#13987a','fill-opacity':.5},g);
+  s('rect',{x:ox+u*k,y:oy-(v+dv)*k,width:du*k,height:dv*k,fill:'#d1453b','fill-opacity':.7},g);
+  txt(g,ox+u*k/2,oy-v*k/2+5,'u·v = '+G.fmt(u*v,2),{'font-size':16,'font-weight':800,fill:'#2d6ae0'});
+  txt(g,ox+u*k/2,oy+20,'u = '+G.fmt(u,2),{'font-size':14,'font-weight':700,fill:'var(--ink)'}); txt(g,ox-28,oy-v*k/2,'v = '+G.fmt(v,2),{'font-size':14,'font-weight':700,fill:'var(--ink)'});
+  const A1=du*v, A2=u*dv, A3=du*dv;
+  $('#rOut').innerHTML=`<div class="grid2"><div class="ex"><span class="t" style="color:#e8890b">Pita samping = Δu·v</span>${G.fmt(A1,3)}</div><div class="ex"><span class="t" style="color:#13987a">Pita atas = u·Δv</span>${G.fmt(A2,3)}</div></div>
+   <p>Sudut kecil merah = Δu·Δv = ${G.fmt(A3,4)}. Bagian ini <b>sangat kecil</b> jika Δt kecil, sehingga bisa diabaikan.</p>
+   <p>Jadi <span class="mth">ΔA ≈ Δu·v + u·Δv</span>. Dibagi Δt dan Δt → 0: <b class="mth">(u·v)′ = u′·v + u·v′</b> = 1·${G.fmt(v,2)} + ${G.fmt(u,2)}·0,5 = <b>${G.fmt(v+u*.5,3)}</b>.</p>
+   <p class="muted">Perbesar Δt untuk melihat sudut merah membesar; perkecil untuk melihatnya menghilang.</p>`;
+}
+['#t','#dt'].forEach(z=>$(z).oninput=drawR); drawR();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Rantai pangkat', gen(){ const a=rand(2,5), b=rand(1,7), n=rand(2,6); return {q:`Turunan dari <span class="mth">(${a}<i>x</i> + ${b})<sup>${n}</sup></span> = …`, a:v=>G.sameFn(v,x=>n*a*(a*x+b)**(n-1)), show:`${n*a}(${a}x + ${b})<sup>${n-1}</sup>`, hint:`Luar: ( )<sup>${n}</sup> → ${n}( )<sup>${n-1}</sup>. Dalam: ${a}x + ${b} → ${a}.`, ex:`${n}·(${a}x + ${b})<sup>${n-1}</sup>·${a}`}; }},
+  {name:'Rantai fungsi', gen(){ const k=rand(2,6), it=pick([['sin',x=>k*Math.cos(k*x),`${k} cos(${k}x)`],['cos',x=>-k*Math.sin(k*x),`−${k} sin(${k}x)`],['e',x=>k*Math.exp(k*x),`${k}e<sup>${k}x</sup>`]]);
+    return {q:`Turunan dari <span class="mth">${it[0]==='e'?`<i>e</i><sup>${k}<i>x</i></sup>`:it[0]+'('+k+'<i>x</i>)'}</span> = …`, a:v=>G.sameFn(v,it[1]), show:it[2], hint:`Turunkan bagian luar, lalu kalikan ${k}.`, ex:it[2]}; }},
+  {name:'Perkalian', gen(){ const n=rand(1,3), it=pick([['sin x',Math.sin,Math.cos,'sin x','cos x'],['e<sup>x</sup>',Math.exp,Math.exp,'eˣ','eˣ']]); const F=x=>n*x**(n-1)*it[1](x)+x**n*it[2](x);
+    return {q:`Turunan dari <span class="mth"><i>x</i>${n>1?'<sup>'+n+'</sup>':''}·${it[0]}</span> = …`, a:v=>G.sameFn(v,F), show:`${n===1?'':n}${n>1?'x'+(n-1>1?'<sup>'+(n-1)+'</sup>':''):''}·${it[3]} + x${n>1?'<sup>'+n+'</sup>':''}·${it[4]}`, hint:"u′v + uv′.", ex:'Aturan perkalian.'}; }},
+  {name:'Pembagian', gen(){ const a=rand(1,5); const F=x=>a/((x+a)**2); return {q:`Turunan dari <span class="mth"><i>x</i>/(<i>x</i> + ${a})</span> = …`, a:v=>G.sameFn(v,F), show:`${a}/(x + ${a})²`, hint:"(u′v − uv′)/v² dengan u = x, v = x + "+a+".", ex:`[1·(x + ${a}) − x·1]/(x + ${a})² = ${a}/(x + ${a})²`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Aturan rantai dipakai untuk menurunkan …', o:['fungsi di dalam fungsi','dua fungsi yang dijumlahkan','konstanta','fungsi linear saja'], a:0, ex:'f(g(x)).'},
+ {q:'Pada roda gigi, jika du/dx = 3 dan dy/du = 2, maka dy/dx = …', o:['6','5','1,5','1'], a:0, ex:'Dikalikan.'},
+ {q:'Turunan dari (2x + 1)³ adalah …', o:['6(2x + 1)²','3(2x + 1)²','6(2x + 1)³','2(2x + 1)²'], a:0, ex:'3( )²·2.'},
+ {q:'Turunan dari sin(5x) adalah …', o:['5 cos(5x)','cos(5x)','−5 cos(5x)','5 sin(5x)'], a:0, ex:'cos(5x)·5.'},
+ {q:'Rumus aturan perkalian (u·v)′ = …', o:["u′v + uv′","u′v′","u′v − uv′","uv′"], a:0, ex:'Dua pita.'},
+ {q:'Kesalahan umum: (u·v)′ dianggap sama dengan …', o:["u′·v′","u′v + uv′","(uv)²","u + v"], a:0, ex:'Ini salah!'},
+ {q:'Turunan dari x·eˣ adalah …', o:['eˣ + x·eˣ','x·eˣ','eˣ','2x·eˣ'], a:0, ex:"1·eˣ + x·eˣ."},
+ {q:'Rumus aturan pembagian (u/v)′ = …', o:["(u′v − uv′)/v²","(u′v + uv′)/v²","u′/v′","(uv′ − u′v)/v²"], a:0, ex:'Bawah kali turunan atas, kurang atas kali turunan bawah.'},
+ {q:'Turunan dari e<sup>x²</sup> adalah …', o:['2x·e<sup>x²</sup>','e<sup>x²</sup>','x²·e<sup>x²−1</sup>','2e<sup>x</sup>'], a:0, ex:'Kalikan turunan bagian dalam.'},
+ {q:'f(x) = (x² + 1)³. Nilai f′(1) = …', input:true, a:['24'], ex:'3·(2)²·2 = 24.'},
+ {q:'f(x) = x²·x³ (pakai aturan perkalian). Koefisien hasil turunannya (… x⁴) adalah …', input:true, a:['5'], ex:'2x·x³ + x²·3x² = 5x⁴.'},
+ {q:'Gir pertama 4 putaran per putaran pedal, gir kedua 0,5. Roda berputar … kali tiap kayuhan.', input:true, a:['2'], ex:'4 × 0,5.'}
+],'kalkd3');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

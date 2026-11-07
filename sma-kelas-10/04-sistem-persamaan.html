@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sistem Persamaan Linear · Matematika SMA Kelas X</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>.eq{font-family:var(--mono);background:color-mix(in srgb,var(--acc) 7%,var(--card));border:1px solid var(--line);border-radius:10px;padding:6px 10px;margin:4px 0;overflow-x:auto;white-space:nowrap}.eq b{color:var(--acc)}</style>
+</head>
+<body style="--acc:#c2417f">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas X</a><div class="brand">√ Matematika SMA <small>· Kelas X</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 4 · Aljabar <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Sistem Persamaan Linear: Dua dan Tiga Variabel</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menyelesaikan SPLDV dengan grafik, substitusi, dan eliminasi.</li>
+    <li>Menyelesaikan SPLTV dengan eliminasi bertahap.</li>
+    <li>Menyusun model SPL dari soal cerita belanja, umur, dan campuran.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📐 Lab Dua Garis</button><button data-target="elim">🧺 Lab Eliminasi SPLTV</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Belanja di pasar</span><p style="margin:.3em 0">Ibu membeli 2 kg beras dan 1 kg gula seharga Rp44.000. Tetangganya membeli 1 kg beras dan 2 kg gula seharga Rp46.000. Berapa harga 1 kg beras? Satu persamaan saja tidak cukup, tetapi <b>dua persamaan bersama-sama</b> (sebuah <b>sistem</b>) memberi jawaban pasti: beras Rp14.000, gula Rp16.000.</p></div>
+  </div>
+  <div class="card"><h2>1. SPLDV dan arti grafiknya</h2>
+    <p>Setiap persamaan ax + by = c adalah sebuah <b>garis</b>. Penyelesaian sistem adalah <b>titik potong</b> kedua garis.</p>
+    <table class="t"><tr><th>Kedudukan garis</th><th>Banyak penyelesaian</th><th>Ciri</th></tr>
+      <tr><td>Berpotongan</td><td>Tepat satu</td><td>a₁/a₂ ≠ b₁/b₂</td></tr><tr><td>Sejajar</td><td>Tidak ada</td><td>a₁/a₂ = b₁/b₂ ≠ c₁/c₂</td></tr><tr><td>Berimpit</td><td>Tak hingga</td><td>a₁/a₂ = b₁/b₂ = c₁/c₂</td></tr></table>
+  </div>
+  <div class="card"><h2>2. Metode penyelesaian</h2>
+    <div class="grid2"><div class="ex"><span class="t">Substitusi</span>Dari x + y = 10, maka y = 10 − x. Masukkan ke 2x + 3y = 24: 2x + 30 − 3x = 24, jadi x = 6, y = 4.</div>
+    <div class="ex"><span class="t">Eliminasi</span>2x + y = 44 dan x + 2y = 46. Kalikan persamaan pertama dengan 2: 4x + 2y = 88. Kurangkan: 3x = 42, x = 14. Lalu y = 16.</div></div>
+    <div class="note">Cara paling cepat biasanya <b>gabungan</b>: eliminasi untuk mencari satu variabel, lalu substitusi untuk variabel lainnya.</div>
+  </div>
+  <div class="card"><h2>3. SPLTV: tiga variabel</h2>
+    <ol class="steps"><li>Pilih satu variabel, eliminasi dari dua pasang persamaan. Hasilnya dua persamaan dua variabel (SPLDV).</li><li>Selesaikan SPLDV itu.</li><li>Substitusikan kembali untuk mendapat variabel ketiga.</li></ol>
+    <div class="ex"><span class="t">Contoh</span>x + y + z = 6, x − y + z = 2, 2x + y − z = 1. Kurangkan dua persamaan pertama: 2y = 4, y = 2. Lalu x + z = 4 dan 2x − z = −1, jadi 3x = 3, x = 1, z = 3.</div>
+  </div>
+  <div class="card"><h2>4. Menyusun model dari cerita</h2>
+    <ul><li>Tentukan variabel dengan jelas: “misal x = harga 1 kg beras”.</li><li>Terjemahkan setiap kalimat informasi menjadi satu persamaan.</li><li>Setelah menghitung, <b>cek ke cerita</b>: apakah harganya masuk akal?</li></ul>
+    <div class="ex"><span class="t">Soal umur</span>Umur ayah 3 kali umur anak. Lima tahun lagi jumlah umur mereka 54. Model: a = 3n dan (a + 5) + (n + 5) = 54 → 4n = 44, n = 11, a = 33.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Dua Garis, Satu Titik?</h2>
+    <p>Atur koefisien kedua persamaan. Amati titik potong, atau kapan garisnya sejajar dan berimpit.</p>
+    <div class="grid2">
+      <div class="ctrl"><b style="color:var(--acc)">Garis 1: a₁x + b₁y = c₁</b><label>a₁ <span class="v" id="a1-v"></span><input type="range" id="a1" min="-6" max="6" value="2"></label><label>b₁ <span class="v" id="b1-v"></span><input type="range" id="b1" min="-6" max="6" value="1"></label><label>c₁ <span class="v" id="c1-v"></span><input type="range" id="c1" min="-12" max="12" value="8"></label></div>
+      <div class="ctrl"><b style="color:var(--b)">Garis 2: a₂x + b₂y = c₂</b><label>a₂ <span class="v" id="a2-v"></span><input type="range" id="a2" min="-6" max="6" value="1"></label><label>b₂ <span class="v" id="b2-v"></span><input type="range" id="b2" min="-6" max="6" value="-1"></label><label>c₂ <span class="v" id="c2-v"></span><input type="range" id="c2" min="-12" max="12" value="1"></label></div>
+    </div>
+    <div class="row"><button class="chipbtn" id="sj">Buat sejajar</button><button class="chipbtn" id="bi">Buat berimpit</button><button class="chipbtn" id="ac">Acak</button></div>
+    <svg class="viz" id="g1" viewBox="0 0 480 480" style="max-width:480px;margin:auto;display:block"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="elim" class="panel">
+  <div class="card"><h2>Lab: Eliminasi SPLTV Langkah demi Langkah</h2>
+    <p>Soal cerita belanja dengan tiga barang. Tekan “Langkah berikutnya” untuk melihat proses eliminasi satu per satu.</p>
+    <div class="row"><button class="btn" id="nb">Soal baru</button><button class="btn soft" id="st">Langkah berikutnya →</button></div>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas X · Modul 4</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick, gcd} = VML; const G=GR;
+const T=(a,v,first)=>{ if(a===0) return ''; const sg=a<0?'− ':(first?'':'+ '); const m=Math.abs(a); return sg+(m===1?'':m)+v+' '; };
+const eqs=(a,b,c)=>{ let t=T(a,'x',true)+T(b,'y',a===0); if(!t) t='0 '; return t+'= '+VML.m(c); };
+function d1(){
+  const v={}; ['a1','b1','c1','a2','b2','c2'].forEach(k=>{ v[k]=+$('#'+k).value; $('#'+k+'-v').textContent=VML.m(v[k]); });
+  const g=$('#g1'); clear(g); const P=VML.plane(g,{xmin:-10,xmax:10,ymin:-10,ymax:10,W:480,H:480,pad:20,lab:2});
+  const cp=s('clipPath',{id:'cl'},g); s('rect',{x:20,y:20,width:440,height:440},cp); const gg=s('g',{'clip-path':'url(#cl)'},g);
+  [[v.a1,v.b1,v.c1,'var(--acc)'],[v.a2,v.b2,v.c2,'var(--b)']].forEach(([a,b,c,col],i)=>{ if(a===0&&b===0) return; let pts;
+    if(Math.abs(b)>=Math.abs(a)) pts=[[-10,(c+10*a)/b],[10,(c-10*a)/b]]; else pts=[[(c+10*b)/a,-10],[(c-10*b)/a,10]];
+    s('line',{x1:P.X(pts[0][0]),y1:P.Y(pts[0][1]),x2:P.X(pts[1][0]),y2:P.Y(pts[1][1]),stroke:col,'stroke-width':i?3.5:7,'stroke-opacity':i?1:.55,'stroke-linecap':'round'},gg); });
+  const D=v.a1*v.b2-v.a2*v.b1, Dx=v.c1*v.b2-v.c2*v.b1, Dy=v.a1*v.c2-v.a2*v.c1;
+  let msg;
+  if((v.a1===0&&v.b1===0)||(v.a2===0&&v.b2===0)) msg='<p>Salah satu persamaan tidak membentuk garis (a dan b keduanya 0). Ubah koefisiennya.</p>';
+  else if(D!==0){ const x=Dx/D, y=Dy/D; if(Math.abs(x)<=10&&Math.abs(y)<=10){ s('circle',{cx:P.X(x),cy:P.Y(y),r:8,fill:'var(--ink)',stroke:'#fff','stroke-width':2.5},g); }
+    msg=`<div class="big">Berpotongan di (${VML.fracHTML(Dx,D)} , ${VML.fracHTML(Dy,D)})</div><p>Tepat <b>satu</b> penyelesaian. Cek dengan aturan Cramer: D = ${VML.m(D)}, x = Dₓ/D = ${VML.m(Dx)}/${VML.m(D)}, y = D_y/D = ${VML.m(Dy)}/${VML.m(D)}.</p>`; }
+  else if(Dx===0&&Dy===0) msg='<div class="big">Berimpit</div><p>Kedua persamaan sebenarnya garis yang <b>sama</b>, jadi penyelesaiannya <b>tak hingga</b> banyaknya.</p>';
+  else msg='<div class="big">Sejajar</div><p>Kemiringan sama tetapi garis berbeda. Tidak pernah berpotongan, jadi <b>tidak ada</b> penyelesaian.</p>';
+  $('#o1').innerHTML=`<div class="eq"><b>(1)</b> ${eqs(v.a1,v.b1,v.c1)}</div><div class="eq"><b>(2)</b> ${eqs(v.a2,v.b2,v.c2)}</div>`+msg;
+}
+['a1','b1','c1','a2','b2','c2'].forEach(k=>$('#'+k).oninput=d1);
+const setv=o=>{ for(const k in o) $('#'+k).value=o[k]; d1(); };
+$('#sj').onclick=()=>setv({a2:+$('#a1').value,b2:+$('#b1').value,c2:Math.max(-12,Math.min(12,+$('#c1').value+5))});
+$('#bi').onclick=()=>{ const a=+$('#a1').value,b=+$('#b1').value,c=+$('#c1').value; const k=(Math.abs(a*2)<=6&&Math.abs(b*2)<=6&&Math.abs(c*2)<=12)?2:1; setv({a2:a*k,b2:b*k,c2:c*k}); };
+$('#ac').onclick=()=>{ const x=rand(-5,5), y=rand(-5,5); let a1,b1,a2,b2; do{ a1=rand(-4,4); b1=rand(-4,4); a2=rand(-4,4); b2=rand(-4,4); }while(a1*b2-a2*b1===0||Math.abs(a1*x+b1*y)>12||Math.abs(a2*x+b2*y)>12);
+  setv({a1,b1,c1:a1*x+b1*y,a2,b2,c2:a2*x+b2*y}); };
+d1();
+
+/* LAB 2: SPLTV */
+const BR=[['apel','jeruk','mangga'],['buku','pena','pensil'],['kopi','teh','roti'],['beras','gula','minyak']];
+let P2, step=0;
+function sub(E,F,k1,k2){ return E.map((v,i)=>k1*v-k2*F[i]); }
+function red(E){ const g=E.reduce((a,b)=>gcd(a,b),0)||1; const sg=(E.find(v=>v!==0)||1)<0?-1:1; return E.map(v=>v/g*sg); }
+function fmtE(E,n){ let t=''; ['x','y','z'].forEach((v,i)=>{ t+=T(E[i],v,t===''); }); return (t||'0 ')+'= '+VML.m(E[3]); }
+function newP(){
+  let ok=false; while(!ok){ const it=pick(BR), sol=[rand(2,12),rand(2,12),rand(2,12)];
+    const M=[0,1,2].map(()=>[rand(1,3),rand(1,3),rand(1,3)]); const E=M.map(r=>r.concat([r[0]*sol[0]+r[1]*sol[1]+r[2]*sol[2]]));
+    const E4=red(sub(E[0],E[1],E[1][0],E[0][0])), E5=red(sub(E[0],E[2],E[2][0],E[0][0]));
+    if(E4[1]===0||E5[1]===0) continue; const E6=red(sub(E4,E5,E5[1],E4[1])); if(E6[2]===0) continue;
+    P2={it,sol,E,E4,E5,E6}; ok=true; }
+  step=0; showP();
+}
+function showP(){
+  const {it,sol,E,E4,E5,E6}=P2; const nm=['x','y','z'];
+  let h=`<div class="story" style="margin-top:0"><span class="t">Soal</span>`+E.map((e,i)=>`<div>${['Andi','Bela','Citra'][i]} membeli ${e[0]} ${it[0]}, ${e[1]} ${it[1]}, dan ${e[2]} ${it[2]} seharga Rp${(e[3]*1000).toLocaleString('id-ID')}.</div>`).join('')+`<div class="muted">Misal x, y, z = harga satuan ${it.join(', ')} (dalam ribuan rupiah).</div></div>`;
+  h+=E.map((e,i)=>`<div class="eq"><b>(${i+1})</b> ${fmtE(e)}</div>`).join('');
+  if(step>=1) h+=`<p><b>Langkah 1.</b> Eliminasi x dari (1) dan (2): kalikan (1) dengan ${E[1][0]} dan (2) dengan ${E[0][0]}, lalu kurangkan (dan sederhanakan).</p><div class="eq"><b>(4)</b> ${fmtE(E4)}</div>`;
+  if(step>=2) h+=`<p><b>Langkah 2.</b> Eliminasi x dari (1) dan (3) dengan cara yang sama.</p><div class="eq"><b>(5)</b> ${fmtE(E5)}</div>`;
+  if(step>=3) h+=`<p><b>Langkah 3.</b> Sekarang (4) dan (5) adalah SPLDV dalam y dan z. Eliminasi y:</p><div class="eq"><b>(6)</b> ${fmtE(E6)} → <b>z = ${sol[2]}</b></div>`;
+  if(step>=4) h+=`<p><b>Langkah 4.</b> Substitusi z = ${sol[2]} ke (4): ${fmtE(E4)} → <b>y = ${sol[1]}</b></p>`;
+  if(step>=5) h+=`<p><b>Langkah 5.</b> Substitusi y dan z ke (1): ${fmtE(E[0])} → <b>x = ${sol[0]}</b></p><div class="fb ok"><b>Jawaban:</b> ${it[0]} Rp${(sol[0]*1000).toLocaleString('id-ID')}, ${it[1]} Rp${(sol[1]*1000).toLocaleString('id-ID')}, ${it[2]} Rp${(sol[2]*1000).toLocaleString('id-ID')}. Cek ke (2): ${E[1][0]}·${sol[0]} + ${E[1][1]}·${sol[1]} + ${E[1][2]}·${sol[2]} = ${E[1][3]} ✓</div>`;
+  $('#o2').innerHTML=h; $('#st').disabled=step>=5;
+}
+$('#nb').onclick=newP; $('#st').onclick=()=>{ step++; showP(); }; newP();
+
+/* LATIHAN */
+function spl(){ let a1,b1,a2,b2,x,y; do{ x=rand(-6,9); y=rand(-6,9); a1=VML.randNZ(-5,5); b1=VML.randNZ(-5,5); a2=VML.randNZ(-5,5); b2=VML.randNZ(-5,5); }while(a1*b2-a2*b1===0); return {a1,b1,a2,b2,x,y,c1:a1*x+b1*y,c2:a2*x+b2*y}; }
+VML.practice($('#prac'),[
+ {name:'Cari x', gen(){ const p=spl(); return {q:`<div class="eq">${eqs(p.a1,p.b1,p.c1)}</div><div class="eq">${eqs(p.a2,p.b2,p.c2)}</div>Nilai x = …`, a:String(p.x), hint:'Eliminasi y: samakan koefisien y lalu kurangkan/jumlahkan.', ex:`x = ${p.x}, y = ${p.y}`}; }},
+ {name:'Cari y', gen(){ const p=spl(); return {q:`<div class="eq">${eqs(p.a1,p.b1,p.c1)}</div><div class="eq">${eqs(p.a2,p.b2,p.c2)}</div>Nilai y = …`, a:String(p.y), hint:'Eliminasi x lebih dulu.', ex:`x = ${p.x}, y = ${p.y}`}; }},
+ {name:'Cerita belanja', gen(){ const it=pick(BR), x=rand(3,15), y=rand(2,12); let a1=rand(1,4),b1=rand(1,4),a2=rand(1,4),b2=rand(1,4); while(a1*b2===a2*b1){ b2=rand(1,4); a2=rand(1,4); }
+   return {q:`${a1} ${it[0]} dan ${b1} ${it[1]} harganya Rp${((a1*x+b1*y)*1000).toLocaleString('id-ID')}. ${a2} ${it[0]} dan ${b2} ${it[1]} harganya Rp${((a2*x+b2*y)*1000).toLocaleString('id-ID')}. Harga 1 ${it[0]} (dalam ribu rupiah) = …`, a:String(x), hint:'Misal x = harga 1 '+it[0]+', y = harga 1 '+it[1]+'.', ex:`${it[0]} Rp${x}.000, ${it[1]} Rp${y}.000`}; }},
+ {name:'x + y + z', gen(){ const s3=[rand(1,6),rand(1,6),rand(1,6)]; const E=[[1,1,1],[1,-1,1],[2,1,-1]].map(r=>r[0]*s3[0]+r[1]*s3[1]+r[2]*s3[2]);
+   return {q:`<div class="eq">x + y + z = ${E[0]}</div><div class="eq">x − y + z = ${E[1]}</div><div class="eq">2x + y − z = ${E[2]}</div>Nilai x·y·z = …`, a:String(s3[0]*s3[1]*s3[2]), hint:'Kurangkan dua persamaan pertama untuk mendapatkan y.', ex:`x = ${s3[0]}, y = ${s3[1]}, z = ${s3[2]}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Penyelesaian x + y = 7 dan x − y = 1 adalah …', o:['x = 4, y = 3','x = 3, y = 4','x = 5, y = 2','x = 6, y = 1'], a:0, ex:'Jumlahkan: 2x = 8.'},
+ {q:'Dua garis yang sejajar memiliki penyelesaian …', o:['tidak ada','tepat satu','tak hingga','dua'], a:0, ex:'Tidak berpotongan.'},
+ {q:'2x + 3y = 6 dan 4x + 6y = 12 memiliki …', o:['tak hingga penyelesaian','tepat satu penyelesaian','tidak ada penyelesaian','dua penyelesaian'], a:0, ex:'Persamaan kedua = 2 × persamaan pertama: berimpit.'},
+ {q:'Jika 3x + 2y = 16 dan x = 2, maka y = …', o:['5','4','6','8'], a:0, ex:'6 + 2y = 16.'},
+ {q:'Harga 2 pena dan 3 buku Rp27.000; 1 pena dan 1 buku Rp11.000. Harga 1 buku …', o:['Rp5.000','Rp6.000','Rp7.000','Rp4.000'], a:0, ex:'Dari (2): p = 11 − b. 22 − 2b + 3b = 27 → b = 5.'},
+ {q:'Langkah pertama yang tepat untuk menyelesaikan SPLTV dengan eliminasi adalah …', o:['menghilangkan satu variabel dari dua pasang persamaan','langsung menebak','menggambar tiga garis','menjumlahkan semua koefisien'], a:0, ex:'SPLTV direduksi menjadi SPLDV.'},
+ {q:'x + y + z = 6, y + z = 5, z = 3. Nilai x = …', o:['1','2','3','0'], a:0, ex:'y = 2, x = 6 − 5 = 1.'},
+ {q:'Umur ayah 4 kali umur anak. Selisih umur mereka 27 tahun. Umur anak …', o:['9','12','7','27'], a:0, ex:'4n − n = 27 → n = 9.'},
+ {q:'Titik potong garis y = 2x − 1 dan y = −x + 5 adalah …', o:['(2, 3)','(3, 2)','(1, 4)','(2, 4)'], a:0, ex:'2x − 1 = −x + 5 → x = 2.'},
+ {q:'5x − 2y = 11 dan 3x + 2y = 13. Nilai x = …', input:true, a:['3'], ex:'Jumlahkan: 8x = 24.'},
+ {q:'x + 2y = 10 dan 3x − y = 2. Nilai x + y = …', input:true, a:['6'], ex:'x = 2, y = 4.'},
+ {q:'Jumlah dua bilangan 40 dan selisihnya 12. Bilangan terbesar = …', input:true, a:['26'], ex:'(40 + 12)/2 = 26.'}
+],'x4');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

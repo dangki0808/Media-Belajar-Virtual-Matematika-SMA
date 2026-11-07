@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Antiturunan & Integral Tak Tentu · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#13987a">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian B · Modul B2 · Integral Tak Tentu <span class="lvl pemula">PEMULA</span></span>
+  <h1>Antiturunan: Memutar Balik Turunan</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menjelaskan antiturunan sebagai kebalikan turunan: dari <i>laju</i> kembali ke <i>jumlah</i>.</li>
+    <li>Memahami arti <b>+ C</b> sebagai "nilai awal" yang belum diketahui.</li>
+    <li>Memakai aturan pangkat dan aturan dasar lain untuk mencari integral tak tentu.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🌈 Lab Keluarga Kurva</button><button data-target="mesin">⚙️ Lab Mesin Antiturunan</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita celengan</span><p style="margin:.3em 0">Nisa menabung <b>Rp5.000 setiap hari</b>. Itu adalah <b>laju</b> tabungannya. Berapa isi celengannya setelah <i>t</i> hari? Kira-kira 5.000·<i>t</i>. Tetapi tunggu: berapa isi celengan <b>sebelum</b> ia mulai menabung? Kita tidak tahu! Mungkin kosong, mungkin sudah ada Rp20.000.</p>
+    <p style="margin:.3em 0">Jadi isi celengan = 5.000·<i>t</i> + <b>C</b>, dengan <b>C</b> adalah isi awal. Mencari "jumlah" dari "laju" seperti ini disebut <b>antiturunan</b> atau <b>integral tak tentu</b>.</p></div>
+  </div>
+  <div class="card"><h2>1. Turunan dan antiturunan</h2>
+    <div class="grid2"><div class="ex"><span class="t">Turunan (maju)</span>Dari jumlah ke laju.<br>Posisi → kecepatan<br><span class="mth"><i>x</i>² → 2<i>x</i></span></div><div class="ex"><span class="t">Antiturunan (mundur)</span>Dari laju ke jumlah.<br>Kecepatan → posisi<br><span class="mth">2<i>x</i> → <i>x</i>² + <i>C</i></span></div></div>
+    <p>Ditulis: <span class="mth">∫ 2<i>x</i> <i>dx</i> = <i>x</i>² + <i>C</i></span>. Cara mengeceknya: turunkan hasilnya. Jika kembali ke 2<i>x</i>, jawabanmu benar.</p>
+    <div class="note">Pengingat turunan (lihat Modul A2): turunan <span class="mth"><i>x<sup>n</sup></i></span> adalah <span class="mth"><i>n</i>·<i>x</i><sup><i>n</i>−1</sup></span>. Pangkat turun satu, lalu dikalikan pangkat lama.</div>
+  </div>
+  <div class="card"><h2>2. Aturan pangkat (yang paling sering dipakai)</h2>
+    <div class="def" style="text-align:center;font-size:1.2rem"><span class="mth">∫ <i>x<sup>n</sup></i> <i>dx</i> = ${'{'}fr{'}'} + <i>C</i></span></div>
+    <p><b>Resepnya:</b> naikkan pangkat satu, lalu bagi dengan pangkat yang baru. (Berlaku untuk semua <i>n</i> kecuali −1.)</p>
+    <table class="t"><tr><th>Soal</th><th>Langkah</th><th>Hasil</th></tr>
+      <tr><td>∫ x³ dx</td><td>pangkat 3 → 4, bagi 4</td><td>x⁴/4 + C</td></tr>
+      <tr><td>∫ 6x² dx</td><td>6 · x³/3</td><td>2x³ + C</td></tr>
+      <tr><td>∫ 5 dx</td><td>5 = 5x⁰ → 5x¹/1</td><td>5x + C</td></tr>
+      <tr><td>∫ √x dx</td><td>x<sup>1/2</sup> → x<sup>3/2</sup> ÷ 3/2</td><td>⅔ x<sup>3/2</sup> + C</td></tr>
+      <tr><td>∫ (4x³ − 2x + 1) dx</td><td>kerjakan tiap suku</td><td>x⁴ − x² + x + C</td></tr></table>
+  </div>
+  <div class="card"><h2>3. Aturan dasar lain</h2>
+    <table class="t"><tr><th>Integran</th><th>Antiturunan</th><th>Catatan</th></tr>
+      <tr><td>k (konstanta)</td><td>kx + C</td><td>laju tetap</td></tr>
+      <tr><td>1/x</td><td>ln|x| + C</td><td>pengecualian aturan pangkat (n = −1)</td></tr>
+      <tr><td>e<sup>x</sup></td><td>e<sup>x</sup> + C</td><td>fungsi yang turunannya dirinya sendiri</td></tr>
+      <tr><td>sin x</td><td>−cos x + C</td><td>gelombang</td></tr>
+      <tr><td>cos x</td><td>sin x + C</td><td>gelombang</td></tr>
+      <tr><td>k·f(x) ± g(x)</td><td>k∫f dx ± ∫g dx</td><td>boleh dipisah per suku</td></tr></table>
+  </div>
+  <div class="card"><h2>4. Mencari nilai C dari informasi awal</h2>
+    <div class="ex"><span class="t">Contoh</span>Sebuah tanaman tumbuh dengan laju <span class="mth">2<i>t</i> + 1</span> cm/minggu. Saat ditanam (t = 0) tingginya 5 cm. Tinggi tanaman: <span class="mth"><i>h</i>(<i>t</i>) = <i>t</i>² + <i>t</i> + <i>C</i></span>. Karena h(0) = 5, maka C = 5. Jadi <span class="mth"><i>h</i>(<i>t</i>) = <i>t</i>² + <i>t</i> + 5</span>. Setelah 4 minggu tingginya 16 + 4 + 5 = <b>25 cm</b>.</div>
+  </div>
+  <div class="card"><h2>Kamus kecil</h2>
+    <div class="glos"><div><b>Antiturunan</b>Fungsi F yang turunannya f.</div><div><b>Integral tak tentu</b>Kumpulan semua antiturunan: F(x) + C.</div><div><b>Konstanta C</b>Nilai awal yang belum diketahui. Setiap C memberi satu kurva.</div><div><b>Syarat awal</b>Informasi seperti h(0) = 5 untuk menentukan C.</div></div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Keluarga Kurva + C</h2>
+    <p>Semua kurva di bawah ini punya laju (kemiringan) yang sama, karena hanya digeser naik-turun oleh C. Geser C, atau seret titik oranye untuk membuat kurva melewati titik itu.</p>
+    <div class="row" id="fam"></div>
+    <div class="ctrl"><label>Nilai C <span class="v" id="c-v"></span><input type="range" id="c" min="-4" max="4" step="0.5" value="1"></label><label>Posisi x untuk garis singgung <span class="v" id="x-v"></span><input type="range" id="x" min="-2.5" max="2.5" step="0.1" value="1"></label></div>
+    <svg class="viz" id="fg" viewBox="0 0 640 360"></svg>
+    <div class="out" id="fOut"></div>
+  </div>
+</section>
+
+<section id="mesin" class="panel">
+  <div class="card"><h2>Lab: Mesin Antiturunan</h2>
+    <p>Susun integran dari tiga suku <span class="mth"><i>a</i>·<i>x<sup>n</sup></i></span>. Mesin akan mengintegralkan setiap suku dengan aturan pangkat, lalu mengecek hasilnya dengan menurunkannya kembali.</p>
+    <div id="terms"></div>
+    <div class="out" id="mOut"></div>
+    <div class="card" style="margin-top:12px"><h3 style="margin-top:0">Coba sendiri</h3><p>Tulis jawabanmu untuk integral di atas. Contoh penulisan: <code>x^3/3 + 2x</code> atau <code>1/3x^3+2x</code>. Konstanta C boleh ditulis atau tidak.</p>
+      <div class="row"><input type="text" id="ans" style="flex:1;min-width:200px" placeholder="Jawabanmu" autocomplete="off"><button class="btn" id="cek">Periksa</button></div><div id="aFb"></div></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Untuk antiturunan, tulis seperti <code>x^4/4 + 3x</code>. Pecahan boleh ditulis 1/3x^3. Jawaban yang setara (berbeda C) tetap dianggap benar.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul B2</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+document.querySelector('#materi .def .mth').innerHTML=`∫ <i>x<sup>n</sup></i> <i>dx</i> = ${G.fr('<i>x</i><sup><i>n</i>+1</sup>','<i>n</i> + 1')} + <i>C</i>`;
+/* pembentuk teks polinom */
+const sup=n=>n===1?'':`<sup>${n}</sup>`;
+function frac(p,q){ if(q<0){p=-p;q=-q;} const g=(function gg(a,b){return b?gg(b,a%b):Math.abs(a)})(p,q); return [p/g,q/g]; }
+function termHTML(p,q,n,first){ // koefisien p/q
+  if(p===0) return ''; const sg=p<0?'−':'+'; const ap=Math.abs(p);
+  let co = q===1 ? (ap===1&&n!==0?'':String(ap)) : G.fr(ap,q);
+  const xs = n===0?'':`<i>x</i>${sup(n)}`; if(n===0&&q===1) co=String(ap);
+  return (first?(p<0?'−':''):` ${sg} `)+co+xs; }
+function polyHTML(T){ let out='',first=true; T.forEach(([p,q,n])=>{ const h=termHTML(p,q,n,first); if(h){ out+=h; first=false; } }); return out||'0'; }
+
+/* KELUARGA KURVA */
+const FAM={'f(x) = 2x':{F:x=>x*x,f:x=>2*x,Fs:'x²',fs:'2x'},'f(x) = 3x²':{F:x=>x**3,f:x=>3*x*x,Fs:'x³',fs:'3x²'},'f(x) = cos x':{F:Math.sin,f:Math.cos,Fs:'sin x',fs:'cos x'},'f(x) = 1':{F:x=>x,f:()=>1,Fs:'x',fs:'1'}};
+let fk='f(x) = 2x';
+$('#fam').innerHTML=Object.keys(FAM).map(k=>`<button class="chipbtn ${k===fk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#fam .chipbtn').forEach(b=>b.onclick=()=>{ $$('#fam .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); fk=b.dataset.k; drawF(); });
+let A=null;
+function drawF(){
+  const C=+$('#c').value, x0=+$('#x').value, P=FAM[fk]; $('#c-v').textContent=G.fmt(C); $('#x-v').textContent=G.fmt(x0);
+  const g=$('#fg'); clear(g); A=G.axes(g,{x0:-3,x1:3,y0:-6,y1:9,W:640,H:360,lx:'x',ly:'y',xs:1,ys:2});
+  for(let c=-4;c<=4;c+=1) if(c!==C) s('path',{d:G.curve(x=>P.F(x)+c,-3,3,A),fill:'none',stroke:'var(--muted)','stroke-opacity':.35,'stroke-width':1.5},g);
+  s('path',{d:G.curve(x=>P.F(x)+C,-3,3,A),fill:'none',stroke:'#13987a','stroke-width':4},g);
+  // garis singgung pada beberapa kurva di x0
+  [-2,0,2,C].forEach(c=>{ const y=P.F(x0)+c, m=P.f(x0), d=.8; s('line',{x1:A.X(x0-d),y1:A.Y(y-m*d),x2:A.X(x0+d),y2:A.Y(y+m*d),stroke:c===C?'#e8890b':'#e8890b','stroke-opacity':c===C?1:.45,'stroke-width':c===C?3:2},g); });
+  const py=P.F(x0)+C; s('circle',{cx:A.X(x0),cy:A.Y(py),r:9,fill:'#e8890b',stroke:'#fff','stroke-width':2,style:'cursor:grab'},g);
+  $('#fOut').innerHTML=`<p class="big2"><span class="mth">∫ ${P.fs} <i>dx</i> = ${P.Fs} ${C<0?'−':'+'} ${G.fmt(Math.abs(C))}</span></p>
+   <p>Di x = ${G.fmt(x0)}, semua garis singgung oranye <b>sejajar</b>: kemiringannya sama-sama ${P.fs.replace('x','('+G.fmt(x0)+')')} = <b>${G.fmt(P.f(x0),2)}</b>. Itulah sebabnya semua kurva ini punya turunan yang sama.</p>
+   <p class="muted">Kurva hijau melewati titik (${G.fmt(x0)}, ${G.fmt(py,2)}). Jika kita tahu satu titik yang dilewati (syarat awal), nilai C langsung ketahuan.</p>`;
+}
+['#c','#x'].forEach(z=>$(z).oninput=drawF);
+VML.dragSvg($('#fg'),p=>1,(k,p)=>{ if(!A) return; const x=Math.max(-2.5,Math.min(2.5,Math.round(A.xi(p.x)*10)/10)), y=A.yi(p.y); const C=Math.max(-4,Math.min(4,Math.round((y-FAM[fk].F(x))*2)/2)); $('#x').value=x; $('#c').value=C; drawF(); });
+drawF();
+
+/* MESIN */
+const T0=[[3,2],[-4,1],[5,0]];
+$('#terms').innerHTML=T0.map((t,i)=>`<div class="row" style="gap:6px;margin:6px 0"><b style="width:70px">Suku ${i+1}</b><label>a <select data-i="${i}" data-k="a">${[-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,8,9,10,12].map(v=>`<option ${v===t[0]?'selected':''}>${v}</option>`).join('')}</select></label><label>n <select data-i="${i}" data-k="n">${[0,1,2,3,4,5].map(v=>`<option ${v===t[1]?'selected':''}>${v}</option>`).join('')}</select></label></div>`).join('');
+$$('#terms select').forEach(sl=>sl.oninput=machine);
+let curF=null;
+function machine(){
+  const T=[0,1,2].map(i=>[+$(`#terms select[data-i="${i}"][data-k="a"]`).value,+$(`#terms select[data-i="${i}"][data-k="n"]`).value]);
+  const integrand=polyHTML(T.map(([a,n])=>[a,1,n]));
+  const steps=T.filter(([a])=>a!==0).map(([a,n])=>{ const [p,q]=frac(a,n+1); return `<li><span class="mth">∫ ${termHTML(a,1,n,true)} <i>dx</i></span> → pangkat ${n} naik menjadi ${n+1}, lalu bagi ${n+1} → <b class="mth">${termHTML(p,q,n+1,true)}</b></li>`; });
+  const res=T.filter(([a])=>a!==0).map(([a,n])=>{ const [p,q]=frac(a,n+1); return [p,q,n+1]; });
+  curF=x=>T.reduce((s,[a,n])=>s+a*x**(n+1)/(n+1),0);
+  $('#mOut').innerHTML=`<p class="big2"><span class="mth">∫ (${integrand}) <i>dx</i></span></p><ol>${steps.join('')||'<li>Semua koefisien 0, integralnya hanya C.</li>'}</ol>
+    <p class="big2" style="color:var(--acc)">= <span class="mth">${polyHTML(res)} + <i>C</i></span></p>
+    <div class="note"><b>Cek dengan turunan:</b> turunan dari ${polyHTML(res)} adalah ${polyHTML(res.map(([p,q,n])=>{ const [a,b]=frac(p*n,q); return [a,b,n-1]; }))} ✔ sama dengan integran.</div>`;
+  $('#aFb').innerHTML=''; }
+$('#cek').onclick=()=>{ const v=$('#ans').value.trim(); if(!v) return; const ok=G.sameUpToC(v,curF); let parsed=true; try{ G.parse(v); }catch(e){ parsed=false; }
+  $('#aFb').innerHTML=`<div class="fb ${ok?'ok':parsed?'no':'hint'}">${ok?'<b>✓ Benar!</b> Turunan jawabanmu sama dengan integran.':parsed?'<b>✗ Belum tepat.</b> Turunkan jawabanmu: apakah hasilnya kembali ke integran?':'Penulisan belum terbaca. Contoh: <code>x^3 - 2x^2 + 5x</code>'}</div>`; };
+$('#ans').onkeydown=e=>{ if(e.key==='Enter') $('#cek').click(); };
+machine();
+
+/* LATIHAN */
+const showPoly=T=>polyHTML(T)+' + C';
+VML.practice($('#prac'),[
+  {name:'Satu suku', gen(){ const n=rand(1,5), k=(n+1)*rand(1,3); const [p,q]=frac(k,n+1); const F=x=>k*x**(n+1)/(n+1);
+    return {q:`<span class="mth">∫ ${termHTML(k,1,n,true)} <i>dx</i></span> = …`, a:v=>G.sameUpToC(v,F), show:`<span class="mth">${showPoly([[p,q,n+1]])}</span>`, hint:'Naikkan pangkat satu, lalu bagi dengan pangkat baru.', ex:`${k} · x<sup>${n+1}</sup>/${n+1}`}; }},
+  {name:'Polinom', gen(){ const a=rand(1,4)*3, b=rand(1,5)*2, c=rand(1,9); const F=x=>a*x**3/3+b*x*x/2-c*x;
+    return {q:`<span class="mth">∫ (${a}<i>x</i>² + ${b}<i>x</i> − ${c}) <i>dx</i></span> = …`, a:v=>G.sameUpToC(v,F), show:`<span class="mth">${showPoly([[a/3,1,3],[b/2,1,2],[-c,1,1]])}</span>`, hint:'Kerjakan suku demi suku.', ex:`${a}/3 x³ + ${b}/2 x² − ${c}x + C`}; }},
+  {name:'Cari C', gen(){ const a=rand(1,4)*2, b=rand(1,6), h0=rand(2,20), t=rand(2,5); const H=a/2*t*t+b*t+h0;
+    return {q:`Laju pertumbuhan tanaman ${a}t + ${b} cm/minggu. Tinggi awal (t = 0) ${h0} cm. Berapa tingginya setelah ${t} minggu?`, a:String(H), unit:'cm', hint:`h(t) = ${a/2}t² + ${b}t + C, dengan C = tinggi awal.`, ex:`h(${t}) = ${a/2}·${t*t} + ${b}·${t} + ${h0} = ${H} cm.`}; }},
+  {name:'Fungsi lain', gen(){ const it=pick([['cos x',Math.sin,'sin x'],['sin x',x=>-Math.cos(x),'−cos x'],['e^x',Math.exp,'eˣ'],['1/x',Math.log,'ln|x|'],['2e^x + 3',x=>2*Math.exp(x)+3*x,'2eˣ + 3x']]);
+    return {q:`<span class="mth">∫ ${it[0].replace('e^x','e<sup>x</sup>')} <i>dx</i></span> = …`, a:v=>G.sameUpToC(v,it[1]), show:it[2]+' + C', hint:'Lihat tabel aturan dasar. Tulis e^x, sin(x), cos(x), ln(x).', ex:`Turunan dari ${it[2]} adalah ${it[0]}.`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Antiturunan adalah kebalikan dari …', o:['turunan','perkalian','limit','grafik'], a:0, ex:'Dari laju kembali ke jumlah.'},
+ {q:'<span class="mth">∫ 2x dx</span> = …', o:['x² + C','2x² + C','2 + C','x + C'], a:0, ex:'Turunan x² adalah 2x.'},
+ {q:'<span class="mth">∫ x⁴ dx</span> = …', o:['x⁵/5 + C','4x³ + C','x⁵ + C','x⁴/4 + C'], a:0, ex:'Pangkat naik jadi 5, bagi 5.'},
+ {q:'<span class="mth">∫ 7 dx</span> = …', o:['7x + C','7 + C','0','x⁷ + C'], a:0, ex:'Laju tetap 7 → 7x.'},
+ {q:'Arti "+ C" pada integral tak tentu adalah …', o:['nilai awal yang belum diketahui','kecepatan','hasil turunan','batas atas'], a:0, ex:'Seperti isi celengan sebelum menabung.'},
+ {q:'<span class="mth">∫ cos x dx</span> = …', o:['sin x + C','−sin x + C','−cos x + C','cos x + C'], a:0, ex:'Turunan sin x adalah cos x.'},
+ {q:'<span class="mth">∫ 1/x dx</span> = …', o:['ln|x| + C','x⁰/0 + C','−1/x² + C','1 + C'], a:0, ex:'Pengecualian aturan pangkat.'},
+ {q:'Mengapa kurva x² + 1 dan x² − 3 punya antiturunan "asal" yang sama?', o:['turunannya sama-sama 2x','titik puncaknya sama','keduanya garis lurus','keduanya bernilai nol'], a:0, ex:'Konstanta hilang saat diturunkan.'},
+ {q:'<span class="mth">∫ (6x² − 4x) dx</span> = …', o:['2x³ − 2x² + C','12x − 4 + C','6x³ − 4x² + C','3x³ − 2x + C'], a:0, ex:'6x³/3 − 4x²/2.'},
+ {q:'Tabungan bertambah Rp5.000/hari dan isi awalnya Rp20.000. Isi tabungan setelah 10 hari adalah … rupiah.', input:true, a:['70000','70.000'], ex:'5.000·10 + 20.000 = 70.000.'},
+ {q:'F(x) = x² + C dan F(0) = 3. Nilai F(2) adalah …', input:true, a:['7'], ex:'C = 3, F(2) = 4 + 3 = 7.'},
+ {q:'Koefisien x³ pada hasil <span class="mth">∫ 12x² dx</span> adalah …', input:true, a:['4'], ex:'12x³/3 = 4x³.'}
+],'kalkm2');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

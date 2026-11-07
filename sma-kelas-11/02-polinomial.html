@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Polinomial (Suku Banyak) · Matematika SMA Kelas XI</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>table.hor td{min-width:54px;font-family:var(--mono);font-size:1.05rem}table.hor td.k{background:color-mix(in srgb,var(--b) 18%,var(--card));font-weight:800}table.hor tr.res td{font-weight:800;border-top:2px solid var(--ink)}table.hor td.sisa{background:color-mix(in srgb,var(--acc) 22%,var(--card))}table.hor td.new{animation:fade .4s}</style>
+</head>
+<body style="--acc:#c2417f">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XI</a><div class="brand">∘ Matematika SMA <small>· Kelas XI</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 2 · Aljabar <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Polinomial: Suku Banyak, Akar, dan Teorema Sisa</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menghitung nilai polinomial dan membagi dengan cara Horner.</li>
+    <li>Memakai Teorema Sisa dan Teorema Faktor.</li>
+    <li>Menghubungkan akar dengan grafik serta jumlah dan hasil kali akar.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">〰️ Lab Grafik dari Akar</button><button data-target="horner">🧮 Lab Horner</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Kotak dari selembar karton</span><p style="margin:.3em 0">Dari karton 20 cm × 30 cm, potong persegi x cm di keempat sudut, lalu lipat menjadi kotak tanpa tutup. Volumenya V(x) = x(20 − 2x)(30 − 2x) = 4x³ − 100x² + 600x. Rumus seperti ini, jumlah suku-suku berpangkat bulat, disebut <b>polinomial</b> atau <b>suku banyak</b>. Polinomial dipakai untuk merancang kemasan, lintasan roller coaster, hingga kurva huruf di layar komputer.</p></div>
+  </div>
+  <div class="card"><h2>1. Bentuk dan nilai</h2>
+    <p><span class="mth">P(x) = aₙxⁿ + aₙ₋₁xⁿ⁻¹ + … + a₁x + a₀</span>. Pangkat tertinggi n disebut <b>derajat</b>, aₙ koefisien utama, a₀ suku tetap.</p>
+    <div class="ex"><span class="t">Nilai dengan substitusi</span>P(x) = 2x³ − 3x² + x − 5, maka P(2) = 16 − 12 + 2 − 5 = 1.</div>
+  </div>
+  <div class="card"><h2>2. Pembagian cara Horner</h2>
+    <p>P(x) = (x − k)·H(x) + S. Untuk membagi dengan (x − k): tulis koefisien, turunkan koefisien pertama, lalu berulang <b>kali k, jumlahkan</b>.</p>
+    <table class="t hor"><tr><td class="k">2</td><td>2</td><td>−3</td><td>1</td><td>−5</td></tr><tr><td></td><td></td><td>4</td><td>2</td><td>6</td></tr><tr class="res"><td></td><td>2</td><td>1</td><td>3</td><td class="sisa">1</td></tr></table>
+    <p>Hasil bagi H(x) = 2x² + x + 3, sisa S = 1.</p>
+  </div>
+  <div class="card"><h2>3. Teorema Sisa dan Teorema Faktor</h2>
+    <div class="grid2"><div class="ex"><span class="t">Teorema Sisa</span>Sisa pembagian P(x) oleh (x − k) adalah <b>P(k)</b>. Oleh (ax − b) sisanya P(b/a).</div><div class="ex"><span class="t">Teorema Faktor</span>(x − k) faktor dari P(x) ⟺ <b>P(k) = 0</b> ⟺ k adalah akar.</div></div>
+    <div class="note">Mencari akar bulat: coba faktor-faktor dari suku tetap a₀. Untuk x³ − 6x² + 11x − 6, coba ±1, ±2, ±3, ±6: P(1) = 0, P(2) = 0, P(3) = 0. Jadi akarnya 1, 2, 3.</div>
+  </div>
+  <div class="card"><h2>4. Akar dan koefisien (Vieta)</h2>
+    <p>Untuk ax³ + bx² + cx + d = 0 dengan akar x₁, x₂, x₃:</p>
+    <table class="t"><tr><td>x₁ + x₂ + x₃</td><td>−b/a</td></tr><tr><td>x₁x₂ + x₁x₃ + x₂x₃</td><td>c/a</td></tr><tr><td>x₁x₂x₃</td><td>−d/a</td></tr></table>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Grafik dari Akar</h2>
+    <p>P(x) = a(x − r₁)(x − r₂)(x − r₃). Geser akar-akarnya. Jika dua akar sama (akar kembar), grafik hanya <b>menyinggung</b> sumbu-x di sana.</p>
+    <div class="ctrl"><label>r₁ <span class="v" id="r1-v"></span><input type="range" id="r1" min="-4" max="4" step="0.5" value="-2"></label><label>r₂ <span class="v" id="r2-v"></span><input type="range" id="r2" min="-4" max="4" step="0.5" value="1"></label><label>r₃ <span class="v" id="r3-v"></span><input type="range" id="r3" min="-4" max="4" step="0.5" value="3"></label><label>a <span class="v" id="a-v"></span><input type="range" id="a" min="-2" max="2" step="0.5" value="1"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 600 380"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="horner" class="panel">
+  <div class="card"><h2>Lab: Mesin Horner</h2>
+    <p>Pilih pembagi (x − k). Tekan “Langkah” untuk melihat skema Horner terisi satu per satu. Angka terakhir adalah <b>sisa = P(k)</b>.</p>
+    <div class="row"><button class="btn" id="np">Polinomial baru</button><button class="btn soft" id="stp">Langkah →</button><button class="btn ghost" id="all">Selesaikan</button></div>
+    <div class="ctrl"><label>k <span class="v" id="k-v"></span><input type="range" id="k" min="-4" max="4" value="2"></label></div>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XI · Modul 2</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const SUP=['','','²','³','⁴','⁵'];
+function pstr(c,d=2){ const n=c.length-1; let t=''; c.forEach((v,i)=>{ const p=n-i; if(Math.abs(v)<1e-12) return; const m=Math.abs(v); const coef=(m===1&&p>0)?'':G.fmt(m,d); t+=(t?(v<0?' − ':' + '):(v<0?'−':''))+coef+(p>0?'x'+SUP[p]:''); }); return t||'0'; }
+function mulRoots(a,rs){ let c=[a]; rs.forEach(r=>{ const n=c.concat([0]); for(let i=c.length-1;i>=0;i--) n[i+1]-=r*c[i]; c=n; }); return c; }
+function d1(){
+  const r=[1,2,3].map(i=>+$('#r'+i).value), a=+$('#a').value; r.forEach((v,i)=>$('#r'+(i+1)+'-v').textContent=G.fmt(v,1)); $('#a-v').textContent=G.fmt(a,1);
+  const P=x=>a*(x-r[0])*(x-r[1])*(x-r[2]);
+  const g=$('#g1'); clear(g); const A=G.axes(g,{x0:-5,x1:5,y0:-20,y1:20,W:600,H:380,pad:40,padb:28,xs:1,ys:5,lx:'x',ly:'P(x)'});
+  s('path',{d:G.curve(P,-5,5,A,400),fill:'none',stroke:'var(--acc)','stroke-width':3.5,'clip-path':A.cp},g);
+  const cnt={}; r.forEach(v=>cnt[v]=(cnt[v]||0)+1);
+  Object.keys(cnt).forEach(k=>{ const v=+k; s('circle',{cx:A.X(v),cy:A.Y(0),r:7,fill:cnt[k]>1?'var(--b)':'var(--acc)',stroke:'#fff','stroke-width':2},g); });
+  const y0=P(0); if(Math.abs(y0)<=20) s('circle',{cx:A.X(0),cy:A.Y(y0),r:6,fill:'var(--c)'},g);
+  if(a===0){ $('#o1').innerHTML='<div class="big">a = 0 membuat P(x) = 0 untuk semua x.</div>'; return; }
+  const c=mulRoots(a,r);
+  const mult=Object.keys(cnt).map(k=>`x = ${G.fmt(+k,1)}${cnt[k]>1?` (kembar ${cnt[k]}, ${cnt[k]===2?'menyinggung':'memotong sambil mendatar'})`:''}`).join(', ');
+  $('#o1').innerHTML=`<div class="big">P(x) = ${pstr(c)}</div><p>Akar: ${mult}. Titik potong sumbu-y: P(0) = ${G.fmt(y0,2)} = a·(−r₁)(−r₂)(−r₃).</p>
+   <p>Cek Vieta: jumlah akar = ${G.fmt(r[0]+r[1]+r[2],1)} = −b/a = ${G.fmt(-c[1]/c[0],2)} · hasil kali akar = ${G.fmt(r[0]*r[1]*r[2],2)} = −d/a = ${G.fmt(-c[3]/c[0],2)}</p>
+   <p class="muted">${a>0?'a &gt; 0: grafik berakhir naik di kanan (untuk x besar, P(x) besar).':'a &lt; 0: grafik berakhir turun di kanan.'}</p>`;
+}
+['r1','r2','r3','a'].forEach(k=>$('#'+k).oninput=d1); d1();
+
+let C=[2,-3,1,-5], st=0;
+function newP(){ const deg=pick([3,3,4]); C=[rand(1,3)].concat(Array.from({length:deg},()=>rand(-6,6))); if(rand(0,1)){ const k=rand(-3,3); const q=[rand(1,2)].concat(Array.from({length:deg-1},()=>rand(-4,4))); C=mulRoots(1,[k]).length?polyMul(q,[1,-k]):C; } st=0; d2(); }
+function polyMul(p,q){ const r=Array(p.length+q.length-1).fill(0); p.forEach((a,i)=>q.forEach((b,j)=>r[i+j]+=a*b)); return r; }
+function d2(){
+  const k=+$('#k').value; $('#k-v').textContent=VML.m(k); const n=C.length;
+  const mid=Array(n).fill(null), bot=Array(n).fill(null); bot[0]=C[0]; for(let i=1;i<n;i++){ mid[i]=bot[i-1]*k; bot[i]=C[i]+mid[i]; }
+  const shown=Math.min(st, n-1); // langkah ke-i mengisi kolom i
+  let h=`<div class="big">P(x) = ${pstr(C,0)} &nbsp;dibagi&nbsp; (x ${k<0?'+':'−'} ${Math.abs(k)})</div><div class="scroll"><table class="t hor"><tr><td class="k">${VML.m(k)}</td>${C.map(v=>`<td>${VML.m(v)}</td>`).join('')}</tr>`;
+  h+=`<tr><td></td>${mid.map((v,i)=>`<td class="${i===shown&&st?'new':''}">${v===null||i>shown?'':VML.m(v)}</td>`).join('')}</tr>`;
+  h+=`<tr class="res"><td></td>${bot.map((v,i)=>`<td class="${i===n-1&&shown===n-1?'sisa':''}">${i>shown?'':VML.m(v)}</td>`).join('')}</tr></table></div>`;
+  if(st===0) h+=`<p>Langkah awal: turunkan koefisien pertama (${C[0]}).</p>`;
+  else if(shown<n-1) h+=`<p>Langkah ${shown}: ${VML.m(bot[shown-1])} × ${VML.neg(k)} = ${VML.m(mid[shown])}, lalu ${VML.m(C[shown])} + ${VML.neg(mid[shown])} = ${VML.m(bot[shown])}.</p>`;
+  else { const S=bot[n-1]; h+=`<p>Hasil bagi H(x) = <b>${pstr(bot.slice(0,n-1),0)}</b>, sisa S = <b>${VML.m(S)}</b>.</p><p>Teorema Sisa: P(${VML.m(k)}) = ${VML.m(S)} ✓ ${S===0?`<b style="color:var(--ok)">Sisa 0, jadi (x ${k<0?'+':'−'} ${Math.abs(k)}) adalah FAKTOR dan x = ${VML.m(k)} adalah akar!</b>`:''}</p>`; }
+  $('#o2').innerHTML=h; $('#stp').disabled=shown>=n-1;
+}
+$('#k').oninput=()=>{ d2(); }; $('#np').onclick=newP; $('#stp').onclick=()=>{ st++; d2(); }; $('#all').onclick=()=>{ st=C.length; d2(); };
+d2();
+
+const ev=(c,x)=>c.reduce((a,v)=>a*x+v,0);
+VML.practice($('#prac'),[
+ {name:'Nilai P(k)', gen(){ const c=[rand(1,3),rand(-5,5),rand(-5,5),rand(-9,9)], k=rand(-3,3); return {q:`P(x) = ${pstr(c,0)}. Nilai P(${k}) = …`, a:String(ev(c,k)), hint:'Substitusi atau Horner.', ex:`P(${k}) = ${ev(c,k)}`}; }},
+ {name:'Sisa bagi', gen(){ const c=[rand(1,3),rand(-5,5),rand(-5,5),rand(-5,5),rand(-9,9)].slice(rand(0,1)), k=rand(-3,3); return {q:`Sisa pembagian ${pstr(c,0)} oleh (x ${k<0?'+':'−'} ${Math.abs(k)}) adalah …`, a:String(ev(c,k)), hint:`Teorema Sisa: sisa = P(${k}).`, ex:`P(${k}) = ${ev(c,k)}`}; }},
+ {name:'Faktor → koefisien', gen(){ const k=pick([-2,-1,1,2,3]), a=rand(1,2), b=rand(-4,4), d=rand(-6,6); const p=-(a*k*k*k+b*k*k+d)/k; if(!Number.isInteger(p)) return this.gen();
+   return {q:`(x ${k<0?'+':'−'} ${Math.abs(k)}) adalah faktor dari ${pstr([a,b,0,d],0).replace(/( [+−] \d*)$/,'')} + px ${d<0?'−':'+'} ${Math.abs(d)}. Nilai p = …`, a:String(p), hint:`P(${k}) harus 0.`, ex:`P(${k}) = 0 memberi p = ${p}`}; }},
+ {name:'Vieta kubik', gen(){ const rs=[rand(-4,4),rand(-4,4),rand(-4,4)], a=pick([1,2]); const c=mulRoots(a,rs); const t=rand(0,1);
+   return {q:`Akar-akar ${pstr(c,0)} = 0 adalah x₁, x₂, x₃. Nilai ${t?'x₁·x₂·x₃':'x₁ + x₂ + x₃'} = …`, a:String(t?rs[0]*rs[1]*rs[2]:rs[0]+rs[1]+rs[2]), hint:t?'Hasil kali = −d/a.':'Jumlah = −b/a.', ex:t?`−d/a = ${-c[3]}/${c[0]} = ${rs[0]*rs[1]*rs[2]}`:`−b/a = ${-c[1]}/${c[0]} = ${rs[0]+rs[1]+rs[2]}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Derajat polinomial 4x³ − 2x⁵ + x − 7 adalah …', o:['5','3','4','7'], a:0, ex:'Pangkat tertinggi 5.'},
+ {q:'Nilai P(x) = x³ − 2x + 1 untuk x = 2 adalah …', o:['5','3','9','1'], a:0, ex:'8 − 4 + 1.'},
+ {q:'Sisa pembagian P(x) oleh (x − 3) adalah …', o:['P(3)','P(−3)','P(0)','3'], a:0, ex:'Teorema Sisa.'},
+ {q:'Sisa pembagian x³ + 2x − 5 oleh (x + 1) adalah …', o:['−8','−2','8','−4'], a:0, ex:'P(−1) = −1 − 2 − 5.'},
+ {q:'(x − 2) faktor dari P(x) jika …', o:['P(2) = 0','P(−2) = 0','P(0) = 2','koefisien utama 2'], a:0, ex:'Teorema Faktor.'},
+ {q:'Akar-akar x³ − 6x² + 11x − 6 = 0 adalah …', o:['1, 2, 3','−1, −2, −3','1, −2, 3','2, 3, 6'], a:0, ex:'P(1) = P(2) = P(3) = 0.'},
+ {q:'Jumlah akar 2x³ − 8x² + x + 5 = 0 adalah …', o:['4','−4','8','5/2'], a:0, ex:'−b/a = 8/2.'},
+ {q:'Grafik polinomial yang mempunyai akar kembar di x = 1 akan … sumbu-x di x = 1.', o:['menyinggung','memotong tegak lurus','tidak menyentuh','sejajar'], a:0, ex:'Tanda tidak berubah.'},
+ {q:'Hasil bagi 2x³ − 3x² + x − 5 oleh (x − 2) adalah …', o:['2x² + x + 3','2x² − x + 3','2x² + x − 3','x² + x + 3'], a:0, ex:'Lihat skema Horner di materi.'},
+ {q:'Sisa pembagian x⁴ − 3x + 2 oleh (x − 1) adalah …', input:true, a:['0'], ex:'1 − 3 + 2 = 0.'},
+ {q:'x³ + px − 6 habis dibagi (x − 2). Nilai p = …', input:true, a:['-1'], ex:'8 + 2p − 6 = 0.'},
+ {q:'Hasil kali akar-akar x³ − 4x² + x + 6 = 0 adalah …', input:true, a:['-6'], ex:'−d/a = −6.'}
+],'xi2');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

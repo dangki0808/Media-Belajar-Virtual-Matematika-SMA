@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kalkulus Lab · Turunan &amp; Integral</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .home-hero{padding:44px 0 14px;display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;color:var(--onbg)}
+  .home-hero .chip{background:rgba(255,255,255,.14);color:#ffd27a}
+  .home-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.1rem,6vw,3.5rem);letter-spacing:-.5px;margin:.25em 0}
+  .home-hero h1 em{font-style:normal;background:linear-gradient(90deg,#ffd27a,#e8a317 55%,#7fe0c8);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .home-hero p.lead{font-size:1.1rem;color:var(--onbg-soft);max-width:600px}
+  .stat{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px}
+  .stat div{font-size:.9rem;color:var(--onbg-soft)} .stat b{display:block;font-size:1.7rem;color:#fff}
+  .board{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:26px;padding:12px;backdrop-filter:blur(6px)}
+  .prog{height:6px;background:var(--line);border-radius:9px;margin-top:8px;overflow:hidden}.prog i{display:block;height:100%}
+  .route{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .route div{border-radius:16px;padding:14px;border:1px solid var(--line);background:var(--card)}
+  .route b{display:block;font-size:1.05rem;margin-bottom:4px}
+  .life{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+  .life div{border:1px solid var(--line);border-radius:14px;padding:12px;background:color-mix(in srgb,var(--acc) 5%,var(--card))}
+  .life span{font-size:1.6rem;display:block}
+  .mod .ic{box-shadow:0 6px 14px rgba(0,0,0,.2)}
+  @media (max-width:760px){.home-hero{grid-template-columns:1fr}.board{display:none}.route{grid-template-columns:1fr}}
+</style>
+</head>
+<body style="--acc:#2d47a8">
+<header class="top"><div class="wrap"><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="home-hero">
+  <div>
+    <span class="chip">Laboratorium Kalkulus untuk Semua Orang · Turunan &amp; Integral</span>
+    <h1>Kalkulus itu tentang perubahan: <em>seberapa cepat, dan berapa totalnya.</em></h1>
+    <p class="lead"><b>Bagian A · Turunan</b> menjawab "seberapa cepat berubah tepat saat ini?" (speedometer, harga paling untung, puncak bukit). <b>Bagian B · Integral</b> menjawab "berapa totalnya?" (jarak, isi tempayan, luas tambak, tagihan air). Empat belas modul dengan cerita sehari-hari, grafik yang bisa digeser, latihan tak terbatas, dan kuis. Cocok untuk pelajar, mahasiswa, guru, dan siapa pun, termasuk yang tidak berlatar belakang IPA atau teknik.</p>
+    <div class="stat"><div><b>14</b>modul</div><div><b>28</b>lab interaktif</div><div><b>168</b>soal kuis</div><div><b id="avg">–</b>rata-rata nilaimu</div></div>
+  </div>
+  <div class="board"><svg viewBox="0 0 360 280" width="100%" aria-hidden="true">
+    <rect width="360" height="280" rx="18" fill="rgba(255,255,255,.04)"/>
+    <line x1="30" y1="240" x2="340" y2="240" stroke="#fff" stroke-opacity=".6" stroke-width="2"/><line x1="40" y1="250" x2="40" y2="20" stroke="#fff" stroke-opacity=".6" stroke-width="2"/>
+    <g fill="#e8a317" fill-opacity=".55" stroke="#ffd27a" stroke-width="1">
+      <rect x="70" y="180" width="30" height="60"/><rect x="100" y="140" width="30" height="100"/><rect x="130" y="112" width="30" height="128"/><rect x="160" y="98" width="30" height="142"/><rect x="190" y="100" width="30" height="140"/><rect x="220" y="118" width="30" height="122"/><rect x="250" y="150" width="30" height="90"/></g>
+    <path d="M60,215 C110,120 170,70 220,95 S290,170 320,200" fill="none" stroke="#7fe0c8" stroke-width="4"/>
+    <text x="250" y="60" font-family="Georgia,serif" font-size="56" font-style="italic" fill="#fff" fill-opacity=".9">∂ ∫</text>
+    <line x1="150" y1="40" x2="290" y2="170" stroke="#ff8fb1" stroke-width="3" stroke-dasharray="6 4"/><text x="180" y="268" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" fill-opacity=".8">turunan = kemiringan · integral = luas</text>
+  </svg></div>
+</section>
+
+<div class="card"><h2>Jalur belajar</h2>
+  <p>Urutan yang disarankan: <b>Bagian A dulu, lalu Bagian B</b>, karena integral adalah kebalikan dari turunan. Jika hanya ingin memahami idenya, pilih jalur pemula.</p>
+  <div class="route">
+    <div style="border-left:5px solid #13987a"><b>🌱 Pemula / umum</b>A1, A2, A5 lalu B1, B2, B7. Ide utama lewat cerita: laju, optimasi, dan total.</div>
+    <div style="border-left:5px solid #e8890b"><b>📈 Menengah (SMA)</b>A3, A4, A6 lalu B3, B5, B6. Aturan rantai, grafik, gerak, integral tentu, luas, volume.</div>
+    <div style="border-left:5px solid #7a4fd6"><b>🚀 Lanjut (mahasiswa)</b>B4 dan B8. Substitusi, parsial, rata-rata, titik berat, integral tak wajar.</div>
+  </div>
+  <div class="note" style="margin-top:12px"><b>Hubungan kedua bagian:</b> turunan mengubah <i>jumlah</i> menjadi <i>laju</i> (posisi → kecepatan). Integral mengubah <i>laju</i> kembali menjadi <i>jumlah</i> (kecepatan → posisi). Keduanya dihubungkan oleh Teorema Dasar Kalkulus (Modul B3).</div>
+</div>
+
+<h2 class="onbg">Bagian A · Turunan <span style="font-size:1rem;opacity:.8">(laju perubahan)</span></h2>
+<div class="mods" id="modsA"></div>
+<h2 class="onbg">Bagian B · Integral <span style="font-size:1rem;opacity:.8">(menjumlahkan menjadi total)</span></h2>
+<div class="mods" id="mods"></div>
+
+<div class="card"><h2>Kalkulus di sekitar kita</h2>
+  <div class="life">
+    <div><span>📸</span><b>Kamera tilang</b><br>Posisi → kecepatan sesaat (turunan)</div><div><span>💰</span><b>Harga jual</b><br>Untung terbesar saat turunan = 0</div><div><span>📦</span><b>Kemasan</b><br>Kaleng dan kardus paling hemat bahan</div><div><span>🛵</span><b>Perjalanan</b><br>Kecepatan → jarak tempuh</div>
+    <div><span>🚿</span><b>Air PDAM</b><br>Debit → total pemakaian dan tagihan</div>
+    <div><span>🦐</span><b>Tambak &amp; sawah</b><br>Lebar terukur → luas lahan</div>
+    <div><span>🏺</span><b>Tempayan</b><br>Jari-jari tiap ketinggian → isi dalam liter</div>
+    <div><span>🛒</span><b>Pasar</b><br>Kurva permintaan → surplus konsumen</div>
+    <div><span>💊</span><b>Obat</b><br>Kadar dalam darah → AUC (paparan total)</div>
+    <div><span>🌡️</span><b>Cuaca</b><br>Suhu tiap jam → suhu rata-rata harian</div>
+    <div><span>🌉</span><b>Konstruksi</b><br>Kepadatan → titik berat dan keseimbangan</div>
+  </div>
+</div>
+
+<div class="card"><h2>Kamus kecil untuk pemula</h2>
+  <div class="glos">
+    <div><b>Fungsi f(x)</b>Aturan yang memberi satu nilai untuk setiap x, misalnya kecepatan pada setiap jam.</div>
+    <div><b>Laju</b>Banyaknya perubahan per satuan (per jam, per meter, per hari).</div>
+    <div><b>Turunan</b>Laju perubahan sesaat; kemiringan grafik.</div>
+    <div><b>Integral</b>Total yang terkumpul dari laju; luas di bawah grafik.</div>
+    <div><b>Antiturunan</b>Fungsi yang turunannya adalah f.</div>
+    <div><b>dx</b>Potongan yang sangat tipis.</div><div><b>Limit</b>Nilai yang didekati, misalnya saat selang waktu dibuat mendekati nol.</div><div><b>Optimasi</b>Mencari nilai terbesar atau terkecil.</div>
+  </div>
+</div>
+
+<div class="card"><h2>Cara memakai</h2>
+  <p>Setiap modul berisi <b>📖 Cerita &amp; Materi</b>, dua <b>🧪 Lab</b> interaktif (geser slider atau seret titik di grafik), <b>✏️ Latihan</b> dengan soal acak tak terbatas, dan <b>🏆 Kuis</b> 12 soal dengan pembahasan. Pada latihan turunan dan antiturunan, kamu boleh menulis jawaban dalam bentuk apa pun yang setara, misalnya <code>6x^2 - 4</code> atau <code>x^3/3 + 2x</code>.</p>
+  <p class="muted">Semua berkas berjalan tanpa internet. Buka <b>index.html</b> di browser, atau unggah seluruh folder ke hosting (misalnya GitHub Pages) lalu sematkan alamatnya di Google Sites atau LMS. Nilai tersimpan di perangkat masing-masing pengguna.</p>
+  <div class="row"><button class="btn ghost" id="reset">Hapus semua nilai di perangkat ini</button></div>
+</div>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Media Belajar Turunan, Integral &amp; Penerapannya · untuk pelajar, mahasiswa, guru, dan masyarakat umum</div></footer>
+<script src="assets/core.js"></script>
+<script>
+const MA=[
+ ['a1-limit-laju.html','Limit & Laju Perubahan','Kamera tilang: kecepatan rata-rata vs sesaat, kaca pembesar.','📸','#2d6ae0','kalkd1','Pemula'],
+ ['a2-aturan-turunan.html','Aturan Dasar Turunan','Aturan pangkat, sin, cos, eˣ, dan pelacak kemiringan.','📈','#13987a','kalkd2','Pemula'],
+ ['a3-aturan-rantai.html','Perkalian, Pembagian & Rantai','Roda gigi sepeda dan persegi panjang yang tumbuh.','⚙️','#c2417f','kalkd3','Menengah'],
+ ['a4-grafik-ekstrem.html','Naik-Turun, Puncak & Lembah','Jalan bukit, titik stasioner, senyum dan cemberut.','⛰️','#7a4fd6','kalkd4','Menengah'],
+ ['a5-optimasi.html','Optimasi: Paling Untung & Hemat','Kotak karton, kaleng, kandang ayam, harga martabak.','💰','#e8890b','kalkd5','Untuk semua'],
+ ['a6-gerak-laju-terkait.html','Gerak & Laju Terkait','Lempar bola, riak air, balon, tangga merosot.','⚽','#167a99','kalkd6','Menengah']];
+const M=[
+ ['01-apa-itu-integral.html','Apa itu Integral?','Menjumlahkan potongan kecil: perjalanan motor dan persegi panjang tipis.','🛵','#2d6ae0','kalkm1','Pemula'],
+ ['02-antiturunan.html','Antiturunan & Integral Tak Tentu','Memutar balik turunan, arti + C, aturan pangkat.','🌈','#13987a','kalkm2','Pemula'],
+ ['03-integral-tentu.html','Integral Tentu & Teorema Dasar','F(b) − F(a), luas bertanda, bak penampung air.','🛁','#7a4fd6','kalkm3','Menengah'],
+ ['04-teknik-integrasi.html','Teknik Substitusi & Parsial','Ganti nama dan tukar peran, dengan cara tabel.','🔄','#c2417f','kalkm4','Lanjut'],
+ ['05-luas-daerah.html','Luas Daerah','Luas di antara dua kurva dan luas tambak udang.','🦐','#e8890b','kalkm5','Menengah'],
+ ['06-volume-benda-putar.html','Volume Benda Putar','Tumpukan cakram, mesin bubut, dan isi tempayan.','🏺','#167a99','kalkm6','Menengah'],
+ ['07-penerapan-kehidupan.html','Integral dalam Kehidupan','Air PDAM, UMKM, surplus pasar, pegas, dan obat.','🛒','#13987a','kalkm7','Untuk semua'],
+ ['08-rata-rata-titik-berat.html','Rata-rata, Titik Berat & Tak Wajar','Suhu rata-rata, papan seimbang, dan batas ∞.','⚖️','#d9a400','kalkm8','Lanjut']];
+function card(P,[f,t,d,ic,c,k,l],i){ const b=VML.store.get(k); if(b!=null){window._s+=b;window._c++;}
+    return `<a class="mod" href="${f}"><div class="ic" style="background:linear-gradient(135deg,${c},${i%2?'#2d47a8':'#e8a317'})">${ic}</div><span class="muted" style="font-size:.8rem;font-weight:700">MODUL ${P}${i+1} · ${l.toUpperCase()}</span><h3>${t}</h3><p>${d}</p>
+      <div class="best" style="color:${c}">${b!=null?'Nilai kuis terbaik: '+b:'Belum mengerjakan kuis'}</div><div class="prog"><i style="width:${b||0}%;background:linear-gradient(90deg,#2d47a8,#e8a317)"></i></div></a>`; }
+function render(){ window._s=0; window._c=0; document.getElementById('modsA').innerHTML=MA.map((m,i)=>card('A',m,i)).join(''); document.getElementById('mods').innerHTML=M.map((m,i)=>card('B',m,i)).join('');
+  document.getElementById('avg').textContent = window._c ? Math.round(window._s/window._c) : '–'; }
+render();
+document.getElementById('reset').onclick=()=>{ if(confirm('Hapus semua nilai kuis yang tersimpan di perangkat ini?')){ MA.concat(M).forEach(m=>{ try{localStorage.removeItem('kalk:'+m[5]);}catch(e){} }); render(); } };
+window.addEventListener('pageshow',render);
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

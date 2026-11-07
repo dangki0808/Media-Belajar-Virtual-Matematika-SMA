@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trigonometri · Matematika SMA Kelas X</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#0f7fb8">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas X</a><div class="brand">√ Matematika SMA <small>· Kelas X</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 7 · Geometri <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Trigonometri: Mengukur yang Tak Terjangkau</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menentukan sin, cos, dan tan pada segitiga siku-siku.</li>
+    <li>Menghafal nilai sudut istimewa dan tanda di setiap kuadran.</li>
+    <li>Menghitung tinggi dan jarak dengan sudut elevasi, serta memakai aturan sinus dan cosinus.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📐 Lab Segitiga</button><button data-target="unit">⭕ Lab Lingkaran Satuan</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Setinggi apa menara masjid itu?</span><p style="margin:.3em 0">Kamu berdiri 30 m dari kaki menara dan membidik puncaknya dengan sudut 45°. Tanpa memanjat, tinggi menara bisa dihitung: tinggi = 30 × tan 45° = 30 m (ditambah tinggi matamu). Para pelaut, arsitek, dan ahli astronomi sejak ribuan tahun lalu memakai cara ini untuk mengukur gunung, laut, dan bahkan jarak ke bulan.</p></div>
+  </div>
+  <div class="card"><h2>1. Perbandingan pada segitiga siku-siku</h2>
+    <p>Untuk sudut lancip θ: sisi <b>de</b>pan, sisi <b>sa</b>mping, sisi <b>mi</b>ring.</p>
+    <div class="grid3"><div class="ex"><span class="t">sin θ</span>depan / miring</div><div class="ex"><span class="t">cos θ</span>samping / miring</div><div class="ex"><span class="t">tan θ</span>depan / samping</div></div>
+    <div class="note">Jembatan keledai: <b>SINDEMI · COSAMI · TANDESA</b>. Kebalikannya: csc = 1/sin, sec = 1/cos, cot = 1/tan.</div>
+  </div>
+  <div class="card"><h2>2. Sudut istimewa</h2>
+    <table class="t"><tr><th>θ</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr>
+      <tr><th>sin</th><td>0</td><td>½</td><td>½√2</td><td>½√3</td><td>1</td></tr>
+      <tr><th>cos</th><td>1</td><td>½√3</td><td>½√2</td><td>½</td><td>0</td></tr>
+      <tr><th>tan</th><td>0</td><td>⅓√3</td><td>1</td><td>√3</td><td>—</td></tr></table>
+    <p class="muted">Trik: baris sin adalah ½√0, ½√1, ½√2, ½√3, ½√4. Baris cos adalah kebalikannya.</p>
+  </div>
+  <div class="card"><h2>3. Sudut di semua kuadran</h2>
+    <p>Pada lingkaran satuan, titik untuk sudut θ adalah (cos θ, sin θ). Tanda yang <b>positif</b> di tiap kuadran: <b>I semua · II sin · III tan · IV cos</b> (“<i>Semua Sindikat Tangannya Kosong</i>”).</p>
+    <div class="ex"><span class="t">Sudut berelasi</span>sin 150° = sin (180° − 30°) = sin 30° = ½ · cos 120° = −cos 60° = −½ · tan 225° = tan 45° = 1</div>
+    <div class="note">Identitas dasar: <span class="mth">sin²θ + cos²θ = 1</span> (Pythagoras pada lingkaran satuan).</div>
+  </div>
+  <div class="card"><h2>4. Segitiga sembarang</h2>
+    <div class="grid2"><div class="ex"><span class="t">Aturan sinus</span>a/sin A = b/sin B = c/sin C</div><div class="ex"><span class="t">Aturan cosinus</span>a² = b² + c² − 2bc cos A</div></div>
+    <div class="ex"><span class="t">Luas segitiga</span>L = ½ · b · c · sin A. Contoh: sisi 8 dan 10 mengapit sudut 30°, luas = ½·8·10·½ = 20.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Segitiga Siku-Siku Ajaib</h2>
+    <p>Ubah sudut θ dan ukuran segitiga. Perhatikan: jika sudut tetap, perbandingan sisi <b>tidak berubah</b> walau segitiganya diperbesar. Itulah sebabnya sin, cos, tan hanya bergantung pada sudut.</p>
+    <div class="ctrl"><label>Sudut θ <span class="v" id="t-v"></span><input type="range" id="t" min="5" max="85" value="35"></label><label>Sisi miring (m) <span class="v" id="h-v"></span><input type="range" id="h" min="2" max="10" step="0.5" value="8"></label></div>
+    <div class="row" id="sp"></div>
+    <svg class="viz" id="g1" viewBox="0 0 640 330"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="unit" class="panel">
+  <div class="card"><h2>Lab: Lingkaran Satuan</h2>
+    <p>Putar sudut θ dari 0° sampai 360°. Koordinat titik P adalah (cos θ, sin θ). Kanan: grafik y = sin θ yang “digambar” oleh tinggi titik P.</p>
+    <div class="ctrl"><label>Sudut θ <span class="v" id="u-v"></span><input type="range" id="u" min="0" max="360" value="150"></label></div>
+    <div class="row"><button class="btn" id="play">▶ Putar</button></div>
+    <svg class="viz" id="g2" viewBox="0 0 680 300"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Jawaban pecahan boleh seperti <code>1/2</code> atau desimal <code>0,5</code>.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas X · Modul 7</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR; const R=Math.PI/180;
+$('#sp').innerHTML=[30,45,60].map(a=>`<button class="chipbtn" data-a="${a}">${a}°</button>`).join('');
+$$('#sp .chipbtn').forEach(b=>b.onclick=()=>{ $('#t').value=b.dataset.a; d1(); });
+const EX={30:['½','½√3','⅓√3'],45:['½√2','½√2','1'],60:['½√3','½','√3']};
+function d1(){
+  const t=+$('#t').value, h=+$('#h').value; $('#t-v').textContent=t+'°'; $('#h-v').textContent=G.fmt(h,1);
+  const de=h*Math.sin(t*R), sa=h*Math.cos(t*R);
+  const g=$('#g1'); clear(g); s('rect',{x:0,y:0,width:640,height:330,fill:'var(--card)'},g);
+  const sc=Math.min(440/10, 260/10), Ax=80, Ay=290, Bx=Ax+sa*sc, Cy=Ay-de*sc;
+  s('polygon',{points:`${Ax},${Ay} ${Bx},${Ay} ${Bx},${Cy}`,fill:'color-mix(in srgb,var(--acc) 12%,transparent)',stroke:'var(--ink)','stroke-width':2},g);
+  s('polyline',{points:`${Bx-14},${Ay} ${Bx-14},${Ay-14} ${Bx},${Ay-14}`,fill:'none',stroke:'var(--ink)'},g);
+  s('path',{d:`M${Ax+40},${Ay} A40,40 0 0 0 ${Ax+40*Math.cos(t*R)},${Ay-40*Math.sin(t*R)}`,fill:'none',stroke:'var(--b)','stroke-width':3},g);
+  txt(g,Ax+56*Math.cos(t*R/2),Ay-56*Math.sin(t*R/2)+5,'θ',{'font-weight':800,fill:'var(--b)'});
+  s('line',{x1:Bx,y1:Ay,x2:Bx,y2:Cy,stroke:'var(--e)','stroke-width':5},g); s('line',{x1:Ax,y1:Ay,x2:Bx,y2:Ay,stroke:'var(--c)','stroke-width':5},g); s('line',{x1:Ax,y1:Ay,x2:Bx,y2:Cy,stroke:'var(--a)','stroke-width':5},g);
+  txt(g,Bx+10,(Ay+Cy)/2,'depan '+G.fmt(de,2),{'text-anchor':'start','font-weight':700,fill:'var(--e)','font-size':13});
+  txt(g,(Ax+Bx)/2,Ay+22,'samping '+G.fmt(sa,2),{'font-weight':700,fill:'var(--c)','font-size':13});
+  txt(g,(Ax+Bx)/2-26,(Ay+Cy)/2-8,'miring '+G.fmt(h,1),{'font-weight':700,fill:'var(--a)','font-size':13,'text-anchor':'end'});
+  const sn=Math.sin(t*R), cs=Math.cos(t*R), tn=Math.tan(t*R);
+  const ex=EX[t]?` <span class="muted">(tepat: sin ${EX[t][0]}, cos ${EX[t][1]}, tan ${EX[t][2]})</span>`:'';
+  $('#o1').innerHTML=`<table class="t"><tr><th>sin ${t}°</th><td>${G.fmt(de,2)} / ${G.fmt(h,1)} = <b>${G.fmt(sn,4)}</b></td></tr><tr><th>cos ${t}°</th><td>${G.fmt(sa,2)} / ${G.fmt(h,1)} = <b>${G.fmt(cs,4)}</b></td></tr><tr><th>tan ${t}°</th><td>${G.fmt(de,2)} / ${G.fmt(sa,2)} = <b>${G.fmt(tn,4)}</b></td></tr></table>
+  <p>${ex} Cek identitas: sin² + cos² = ${G.fmt(sn*sn,4)} + ${G.fmt(cs*cs,4)} = ${G.fmt(sn*sn+cs*cs,4)} ✓</p>
+  <div class="ex"><span class="t">Penerapan</span>Tangga sepanjang ${G.fmt(h,1)} m bersandar ke dinding dengan sudut ${t}° terhadap lantai. Ujung atasnya setinggi ${G.fmt(h,1)} × sin ${t}° ≈ ${G.fmt(de,2)} m, kakinya berjarak ${G.fmt(sa,2)} m dari dinding.</div>`;
+}
+['t','h'].forEach(k=>$('#'+k).oninput=d1); d1();
+
+function quad(u){ return u<90?'I':u<180?'II':u<270?'III':'IV'; }
+function d2(){
+  const u=+$('#u').value; $('#u-v').textContent=u+'°';
+  const g=$('#g2'); clear(g); s('rect',{x:0,y:0,width:680,height:300,fill:'var(--card)'},g);
+  const cx=150, cy=150, r=110; const c=Math.cos(u*R), sn=Math.sin(u*R);
+  ['I','II','III','IV'].forEach((q,i)=>{ const ang=(45+90*i)*R; txt(g,cx+130*Math.cos(ang),cy-130*Math.sin(ang)+5,q,{'font-weight':800,fill:quad(u)===q?'var(--acc)':'var(--muted)','font-size':14}); });
+  s('line',{x1:cx-135,y1:cy,x2:cx+135,y2:cy,stroke:'var(--ink)'},g); s('line',{x1:cx,y1:cy-135,x2:cx,y2:cy+135,stroke:'var(--ink)'},g);
+  s('circle',{cx,cy,r,fill:'none',stroke:'var(--line)','stroke-width':3},g);
+  const big=u>180?1:0; if(u>0) s('path',{d:`M${cx+30},${cy} A30,30 0 ${big} 0 ${cx+30*c},${cy-30*sn}`,fill:'none',stroke:'var(--b)','stroke-width':3},g);
+  const Px=cx+r*c, Py=cy-r*sn;
+  s('line',{x1:cx,y1:cy,x2:Px,y2:Py,stroke:'var(--ink)','stroke-width':2},g);
+  s('line',{x1:Px,y1:cy,x2:Px,y2:Py,stroke:'var(--e)','stroke-width':4},g); s('line',{x1:cx,y1:cy,x2:Px,y2:cy,stroke:'var(--c)','stroke-width':4},g);
+  s('circle',{cx:Px,cy:Py,r:7,fill:'var(--acc)',stroke:'#fff','stroke-width':2},g); txt(g,Px+(c>=0?12:-12),Py+(sn>=0?-8:18),'P',{'font-weight':800,fill:'var(--acc)','text-anchor':c>=0?'start':'end'});
+  // gelombang sinus
+  const X0=320, W=340, Y=v=>cy-v*r*0.9, Xs=a=>X0+a/360*W;
+  s('line',{x1:X0,y1:cy,x2:X0+W,y2:cy,stroke:'var(--ink)'},g); [90,180,270,360].forEach(a=>{ s('line',{x1:Xs(a),y1:cy-4,x2:Xs(a),y2:cy+4,stroke:'var(--ink)'},g); txt(g,Xs(a),cy+18,a+'°',{'font-size':11,fill:'var(--muted)'}); });
+  let d=''; for(let a=0;a<=360;a+=3) d+=(a?'L':'M')+Xs(a).toFixed(1)+','+Y(Math.sin(a*R)).toFixed(1); s('path',{d,fill:'none',stroke:'var(--line)','stroke-width':3},g);
+  let d2=''; for(let a=0;a<=u;a+=2) d2+=(a?'L':'M')+Xs(a).toFixed(1)+','+Y(Math.sin(a*R)).toFixed(1); if(d2) s('path',{d:d2,fill:'none',stroke:'var(--e)','stroke-width':3.5},g);
+  s('line',{x1:Px,y1:Py,x2:Xs(u),y2:Y(sn),stroke:'var(--e)','stroke-dasharray':'3 4'},g); s('circle',{cx:Xs(u),cy:Y(sn),r:6,fill:'var(--e)'},g);
+  txt(g,X0+W-10,30,'y = sin θ',{'text-anchor':'end','font-weight':800,fill:'var(--e)'});
+  const ref = u<=90?u: u<=180?180-u: u<=270?u-180: 360-u;
+  const sg=v=>Math.abs(v)<1e-9?'0':v>0?'positif':'negatif';
+  $('#o2').innerHTML=`<div class="big">P = (cos ${u}°, sin ${u}°) = (${G.fmt(c,3)} ; ${G.fmt(sn,3)})</div>
+   <p>Kuadran <b>${quad(u)}</b> · sudut acuan ${ref}° · sin ${sg(sn)}, cos ${sg(c)}, tan ${Math.abs(c)<1e-9?'tak terdefinisi':sg(sn/c)}.</p>
+   <p class="muted">Contoh: sin ${u}° = ${sn<-1e-9?'−':''}sin ${ref}° = ${G.fmt(sn,3)}. Panjang garis merah = |sin θ|, garis hijau = |cos θ|.</p>`;
+}
+$('#u').oninput=d2; d2();
+let tm=null; $('#play').onclick=()=>{ if(tm){ clearInterval(tm); tm=null; $('#play').textContent='▶ Putar'; return; } $('#play').textContent='⏸ Berhenti';
+  tm=setInterval(()=>{ const e=$('#u'); e.value=(+e.value+3)%361; d2(); },40); };
+
+const SPV={sin:{0:'0',30:'1/2',90:'1'},cos:{0:'1',60:'1/2',90:'0'},tan:{0:'0',45:'1'}};
+VML.practice($('#prac'),[
+ {name:'Sudut istimewa', gen(){ const it=pick([['sin 30°','1/2'],['cos 60°','1/2'],['tan 45°','1'],['sin 90°','1'],['cos 0°','1'],['sin² 45°','1/2'],['cos² 30°','3/4'],['tan² 60°','3'],['sin 150°','1/2'],['cos 120°','-1/2'],['tan 135°','-1'],['sin 210°','-1/2'],['cos 300°','1/2'],['sin 270°','-1'],['2 sin 30° · cos 60°','1/2'],['sin² 60° + cos² 60°','1']]);
+   return {q:`Nilai <span class="mth">${it[0]}</span> = …`, a:it[1], hint:'Pakai tabel sudut istimewa, perhatikan tanda kuadran.', ex:`${it[0]} = ${it[1]}`}; }},
+ {name:'Dari sisi segitiga', gen(){ const tr=pick([[3,4,5],[5,12,13],[8,15,17],[7,24,25],[6,8,10]]); const f=pick(['sin','cos','tan']); const [de,sa,mi]=rand(0,1)?tr:[tr[1],tr[0],tr[2]];
+   const ans= f==='sin'?VML.fracTxt(de,mi): f==='cos'?VML.fracTxt(sa,mi): VML.fracTxt(de,sa);
+   return {q:`Segitiga siku-siku dengan sisi di depan sudut α = ${de} dan sisi di samping α = ${sa}. Nilai ${f} α = …`, a:ans, hint:`Cari sisi miring dulu: √(${de}² + ${sa}²) = ${mi}.`, ex:`Sisi miring ${mi}; ${f} α = ${ans}`}; }},
+ {name:'Tinggi benda', gen(){ const d=rand(4,40), t=pick([45,30,60]); if(t===45) return {q:`Seorang anak berdiri ${d} m dari tiang bendera dan melihat puncaknya dengan sudut elevasi 45° (abaikan tinggi mata). Tinggi tiang (m) = …`, a:String(d), hint:'tinggi = jarak × tan 45°', ex:`${d} × 1 = ${d}`};
+   const m=2*rand(3,20); return t===30 ? {q:`Layang-layang dengan benang lurus ${m} m membentuk sudut 30° dengan tanah. Tinggi layang-layang (m) = …`, a:String(m/2), hint:'tinggi = benang × sin 30°', ex:`${m} × ½ = ${m/2}`} : {q:`Tangga ${m} m bersandar ke dinding membentuk sudut 60° dengan lantai. Jarak kaki tangga ke dinding (m) = …`, a:String(m/2), hint:'jarak = tangga × cos 60°', ex:`${m} × ½ = ${m/2}`}; }},
+ {name:'Luas segitiga', gen(){ const b=2*rand(2,10), c=rand(3,12); return {q:`Segitiga dengan dua sisi ${b} cm dan ${c} cm yang mengapit sudut 30°. Luasnya (cm²) = …`, a:String(b*c/4), hint:'L = ½·b·c·sin A', ex:`½·${b}·${c}·½ = ${b*c/4}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Pada segitiga siku-siku, sin α = …', o:['depan/miring','samping/miring','depan/samping','miring/depan'], a:0, ex:'SINDEMI.'},
+ {q:'Nilai cos 60° = …', o:['½','½√3','½√2','1'], a:0, ex:'Sudut istimewa.'},
+ {q:'Nilai tan 45° = …', o:['1','0','√3','½'], a:0, ex:'depan = samping.'},
+ {q:'Sudut 210° terletak di kuadran …', o:['III','II','IV','I'], a:0, ex:'180° < 210° < 270°.'},
+ {q:'Di kuadran II, yang bernilai positif hanya …', o:['sin','cos','tan','semua'], a:0, ex:'Semua Sindikat Tangannya Kosong.'},
+ {q:'sin 150° = …', o:['½','−½','½√3','−½√3'], a:0, ex:'sin(180° − 30°) = sin 30°.'},
+ {q:'Jika sin α = 3/5 (α lancip), maka cos α = …', o:['4/5','3/4','5/4','5/3'], a:0, ex:'Segitiga 3-4-5.'},
+ {q:'sin²x + cos²x = …', o:['1','0','2','tan x'], a:0, ex:'Identitas Pythagoras.'},
+ {q:'Rumus aturan cosinus adalah …', o:['a² = b² + c² − 2bc cos A','a/sin A = b/sin B','L = ½ab sin C','a² = b² + c²'], a:0, ex:'Untuk dua sisi dan sudut apit.'},
+ {q:'Dari jarak 20 m, puncak pohon terlihat dengan sudut elevasi 45°. Tinggi pohon (m) = …', input:true, a:['20'], ex:'20 × tan 45° = 20.'},
+ {q:'Luas segitiga dengan sisi 6 dan 10 yang mengapit sudut 30° adalah …', input:true, a:['15'], ex:'½·6·10·½ = 15.'},
+ {q:'Nilai cos 180° = …', input:true, a:['-1'], ex:'Titik (−1, 0).'}
+],'x7');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

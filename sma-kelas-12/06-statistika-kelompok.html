@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Statistika Data Berkelompok · Matematika SMA Kelas XII</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#1f9d55">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XII</a><div class="brand">∂ Matematika SMA <small>· Kelas XII</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 6 · Data <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Statistika Data Berkelompok: Histogram, Ogive, dan Ukuran Data</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Membaca tabel distribusi frekuensi, histogram, dan ogive.</li>
+    <li>Menghitung mean, median, dan modus data berkelompok.</li>
+    <li>Menentukan kuartil dan persentil dari ogive.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📊 Lab Histogram</button><button data-target="ogive">📈 Lab Ogive &amp; Persentil</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Nilai UTBK satu angkatan</span><p style="margin:.3em 0">Data nilai 300 siswa terlalu panjang untuk diurutkan satu per satu. Guru mengelompokkannya: berapa siswa bernilai 41–50, 51–60, dan seterusnya. Tabel seperti ini disebut <b>distribusi frekuensi</b>. Dari tabel saja kita bisa memperkirakan rata-rata, nilai tengah, nilai yang paling banyak, dan batas nilai 25% teratas.</p></div>
+  </div>
+  <div class="card"><h2>1. Istilah penting</h2>
+    <ul><li><b>Tepi bawah</b> kelas = batas bawah − 0,5. <b>Panjang kelas</b> p = selisih tepi bawah dua kelas berurutan.</li><li><b>Titik tengah</b> xᵢ = (batas bawah + batas atas)/2.</li><li><b>Frekuensi kumulatif</b> F = jumlah frekuensi sampai kelas itu. Grafiknya disebut <b>ogive</b>.</li></ul>
+  </div>
+  <div class="card"><h2>2. Rumus ukuran data berkelompok</h2>
+    <table class="t"><tr><th>Ukuran</th><th>Rumus</th></tr>
+      <tr><td>Mean</td><td>x̄ = Σ fᵢxᵢ / Σ fᵢ</td></tr>
+      <tr><td>Median</td><td>Me = Tb + ((½n − F)/f) · p</td></tr>
+      <tr><td>Modus</td><td>Mo = Tb + (d₁/(d₁ + d₂)) · p</td></tr>
+      <tr><td>Kuartil ke-i</td><td>Qᵢ = Tb + ((i/4·n − F)/f) · p</td></tr></table>
+    <p class="muted">Tb: tepi bawah kelas yang dimaksud; F: frekuensi kumulatif <b>sebelum</b> kelas itu; f: frekuensi kelas itu; d₁, d₂: selisih frekuensi kelas modus dengan kelas sebelum dan sesudahnya.</p>
+  </div>
+  <div class="card"><h2>3. Contoh</h2>
+    <table class="t"><tr><th>Nilai</th><th>41–50</th><th>51–60</th><th>61–70</th><th>71–80</th><th>81–90</th></tr><tr><th>f</th><td>3</td><td>7</td><td>12</td><td>6</td><td>2</td></tr></table>
+    <p>n = 30. Kelas median (data ke-15) adalah 61–70: Tb = 60,5, F = 10, f = 12. Me = 60,5 + (15 − 10)/12 · 10 ≈ 64,67. Kelas modus juga 61–70: d₁ = 5, d₂ = 6, Mo = 60,5 + 5/11 · 10 ≈ 65,05.</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Histogram Hidup</h2>
+    <p>Atur frekuensi setiap kelas (nilai 41–100). Lihat mean, median, dan modus bergeser. Garis ▲ mean, garis hijau median, garis merah modus.</p>
+    <div class="ctrl" id="fs"></div>
+    <div class="row"><button class="btn ghost" id="rnd">Data acak</button><button class="btn ghost" id="sym">Simetris</button><button class="btn ghost" id="skw">Miring kanan</button></div>
+    <svg class="viz" id="g1" viewBox="0 0 600 320"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="ogive" class="panel">
+  <div class="card"><h2>Lab: Ogive dan Persentil</h2>
+    <p>Ogive menghubungkan tepi atas kelas dengan frekuensi kumulatifnya. Pilih persentase: garis mendatar memotong ogive tepat di nilai persentil itu.</p>
+    <div class="ctrl"><label>Persentil ke- <span class="v" id="k-v"></span><input type="range" id="k" min="1" max="99" value="75"></label></div>
+    <div class="row"><button class="chipbtn" data-p="25">Q₁ (25%)</button><button class="chipbtn" data-p="50">Median (50%)</button><button class="chipbtn" data-p="75">Q₃ (75%)</button><button class="chipbtn" data-p="90">P₉₀</button></div>
+    <svg class="viz" id="g2" viewBox="0 0 600 330"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Jawaban desimal boleh dibulatkan dua angka di belakang koma, misalnya <code>64,67</code>.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XII · Modul 6</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const LB=[41,51,61,71,81,91], P=10; let F=[3,7,12,6,2,0];
+$('#fs').innerHTML=LB.map((b,i)=>`<label>${b}–${b+9} <span class="v" id="f${i}-v"></span><input type="range" id="f${i}" min="0" max="20" value="${F[i]}"></label>`).join('');
+LB.forEach((_,i)=>$('#f'+i).oninput=()=>{ F[i]=+$('#f'+i).value; draw(); });
+const setF=a=>{ F=a.slice(); F.forEach((v,i)=>$('#f'+i).value=v); draw(); };
+$('#rnd').onclick=()=>setF(LB.map(()=>rand(1,14))); $('#sym').onclick=()=>setF([2,6,12,12,6,2]); $('#skw').onclick=()=>setF([10,14,8,4,2,1]);
+function stats(F){
+  const n=F.reduce((a,b)=>a+b,0); if(!n) return null; const xm=LB.map(b=>b+4.5); const mean=F.reduce((a,f,i)=>a+f*xm[i],0)/n;
+  const q=(r)=>{ const t=r*n; let c=0; for(let i=0;i<F.length;i++){ if(c+F[i]>=t&&F[i]>0) return {v:LB[i]-0.5+(t-c)/F[i]*P,i,Fb:c,f:F[i],t}; c+=F[i]; } return {v:LB[5]+9.5,i:5,Fb:c,f:F[5],t}; };
+  const mi=F.indexOf(Math.max(...F)); const d1=F[mi]-(F[mi-1]||0), d2=F[mi]-(F[mi+1]||0); const mo=LB[mi]-0.5+(d1+d2?d1/(d1+d2):0.5)*P;
+  return {n,mean,xm,q,mi,d1,d2,mo};
+}
+function draw(){
+  F.forEach((v,i)=>$('#f'+i+'-v').textContent=v); const S=stats(F);
+  const g=$('#g1'); clear(g); const fmax=Math.max(...F,4);
+  const A=G.axes(g,{x0:40.5,x1:100.5,y0:0,y1:fmax*1.15,W:600,H:320,pad:40,padb:28,xs:10,ys:fmax>10?4:2,lx:'nilai',ly:'f'});
+  F.forEach((f,i)=>{ s('rect',{x:A.X(LB[i]-0.5),y:A.Y(f),width:A.X(LB[i]+9.5)-A.X(LB[i]-0.5),height:A.Y(0)-A.Y(f),fill:'var(--acc)','fill-opacity':.5,stroke:'var(--acc)','stroke-width':2},g); if(f) txt(g,A.X(LB[i]+4.5),A.Y(f)-6,String(f),{'font-size':12,'font-weight':700}); });
+  if(!S){ $('#o1').innerHTML='<p>Semua frekuensi 0.</p>'; return; }
+  const me=S.q(0.5);
+  [[S.mean,'var(--b)'],[me.v,'var(--ok)'],[S.mo,'var(--bad)']].forEach(([v,c])=>s('line',{x1:A.X(v),y1:A.Y(0),x2:A.X(v),y2:A.Y(fmax*1.12),stroke:c,'stroke-width':2.5,'stroke-dasharray':'6 4'},g));
+  s('polygon',{points:`${A.X(S.mean)},${A.Y(0)} ${A.X(S.mean)-8},${A.Y(0)+14} ${A.X(S.mean)+8},${A.Y(0)+14}`,fill:'var(--b)'},g);
+  $('#o1').innerHTML=`<table class="t"><tr><th>Mean</th><td>Σfx/n = ${G.fmt(F.reduce((a,f,i)=>a+f*S.xm[i],0),1)}/${S.n} = <b>${G.fmt(S.mean,2)}</b></td></tr>
+   <tr><th>Median</th><td>kelas ${LB[me.i]}–${LB[me.i]+9}: ${G.fmt(LB[me.i]-0.5,1)} + ((${G.fmt(me.t,1)} − ${me.Fb})/${me.f})·10 = <b>${G.fmt(me.v,2)}</b></td></tr>
+   <tr><th>Modus</th><td>kelas ${LB[S.mi]}–${LB[S.mi]+9}: ${G.fmt(LB[S.mi]-0.5,1)} + (${S.d1}/(${S.d1} + ${S.d2}))·10 = <b>${G.fmt(S.mo,2)}</b></td></tr></table>
+   <p class="muted">${Math.abs(S.mean-me.v)<1?'Data hampir simetris: mean ≈ median ≈ modus.':S.mean>me.v?'Mean &gt; median: data miring ke kanan (ada nilai-nilai tinggi yang sedikit).':'Mean &lt; median: data miring ke kiri.'}</p>`;
+  d2();
+}
+function d2(){
+  const k=+$('#k').value; $('#k-v').textContent=k; const S=stats(F); const g=$('#g2'); clear(g);
+  if(!S){ $('#o2').innerHTML=''; return; }
+  const A=G.axes(g,{x0:40.5,x1:100.5,y0:0,y1:S.n*1.08,W:600,H:330,pad:40,padb:28,xs:10,lx:'nilai',ly:'F kumulatif'});
+  let c=0, d=`M${A.X(40.5)},${A.Y(0)}`; F.forEach((f,i)=>{ c+=f; d+=`L${A.X(LB[i]+9.5)},${A.Y(c)}`; s('circle',{cx:A.X(LB[i]+9.5),cy:A.Y(c),r:4,fill:'var(--acc)'},g); });
+  s('path',{d,fill:'none',stroke:'var(--acc)','stroke-width':3},g);
+  const r=S.q(k/100);
+  s('line',{x1:A.X(40.5),y1:A.Y(r.t),x2:A.X(r.v),y2:A.Y(r.t),stroke:'var(--b)','stroke-width':2,'stroke-dasharray':'6 4'},g);
+  s('line',{x1:A.X(r.v),y1:A.Y(r.t),x2:A.X(r.v),y2:A.Y(0),stroke:'var(--b)','stroke-width':2,'stroke-dasharray':'6 4'},g);
+  s('circle',{cx:A.X(r.v),cy:A.Y(r.t),r:7,fill:'var(--b)',stroke:'#fff','stroke-width':2},g);
+  $('#o2').innerHTML=`<div class="big">P<sub>${k}</sub> = ${G.fmt(LB[r.i]-0.5,1)} + ((${k}/100·${S.n} − ${r.Fb})/${r.f})·10 = ${G.fmt(r.v,2)}</div><p>Artinya sekitar ${k}% siswa bernilai di bawah ${G.fmt(r.v,2)}, dan ${100-k}% di atasnya.</p>`;
+}
+$('#k').oninput=d2; $$('#ogive .chipbtn').forEach(b=>b.onclick=()=>{ $('#k').value=b.dataset.p; d2(); });
+draw();
+
+const r2=v=>Math.round(v*100)/100;
+const tbl=Fs=>`<table class="t"><tr><th>Nilai</th>${LB.slice(0,Fs.length).map(b=>`<td>${b}–${b+9}</td>`).join('')}</tr><tr><th>f</th>${Fs.map(f=>`<td>${f}</td>`).join('')}</tr></table>`;
+const mk=()=>{ const Fs=[rand(1,6),rand(3,10),rand(6,15),rand(3,10),rand(1,6)]; return Fs; };
+VML.practice($('#prac'),[
+ {name:'Mean', gen(){ const Fs=mk(); const n=Fs.reduce((a,b)=>a+b,0); const m=Fs.reduce((a,f,i)=>a+f*(LB[i]+4.5),0)/n; return {q:`Rata-rata data berikut (pakai titik tengah):${tbl(Fs)}`, a:v=>Math.abs(Number(VML.norm(v))-m)<0.011, show:G.fmt(r2(m),2), hint:'Titik tengah: 45,5; 55,5; 65,5; 75,5; 85,5.', ex:`Σfx/n = ${G.fmt(Fs.reduce((a,f,i)=>a+f*(LB[i]+4.5),0),1)}/${n} ≈ ${G.fmt(m,2)}`}; }},
+ {name:'Median', gen(){ const Fs=mk(); const S=stats(Fs.concat([0])); const me=S.q(.5); return {q:`Median data berikut:${tbl(Fs)}`, a:v=>Math.abs(Number(VML.norm(v))-me.v)<0.011, show:G.fmt(r2(me.v),2), hint:`n = ${S.n}. Cari kelas yang memuat data ke-${G.fmt(S.n/2,1)}.`, ex:`${G.fmt(LB[me.i]-0.5,1)} + ((${G.fmt(me.t,1)} − ${me.Fb})/${me.f})·10 ≈ ${G.fmt(me.v,2)}`}; }},
+ {name:'Modus', gen(){ const Fs=mk(); const S=stats(Fs.concat([0])); if(Fs.filter(f=>f===Fs[S.mi]).length>1) return this.gen(); return {q:`Modus data berikut:${tbl(Fs)}`, a:v=>Math.abs(Number(VML.norm(v))-S.mo)<0.011, show:G.fmt(r2(S.mo),2), hint:'Kelas dengan frekuensi terbesar; d₁ dan d₂ selisih dengan tetangganya.', ex:`${G.fmt(LB[S.mi]-0.5,1)} + (${S.d1}/(${S.d1} + ${S.d2}))·10 ≈ ${G.fmt(S.mo,2)}`}; }},
+ {name:'Kelas median', gen(){ const Fs=mk(); const S=stats(Fs.concat([0])); const me=S.q(.5); return {q:`Tepi bawah kelas median data berikut adalah …${tbl(Fs)}`, a:String(LB[me.i]-0.5), hint:`Data ke-${G.fmt(S.n/2,1)} ada di kelas mana? Tepi bawah = batas bawah − 0,5.`, ex:`${G.fmt(LB[me.i]-0.5,1)}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Tepi bawah kelas 51–60 adalah …', o:['50,5','51','50','51,5'], a:0, ex:'51 − 0,5.'},
+ {q:'Titik tengah kelas 61–70 adalah …', o:['65,5','65','66','60,5'], a:0, ex:'(61 + 70)/2.'},
+ {q:'Panjang kelas pada tabel 41–50, 51–60, … adalah …', o:['10','9','11','5'], a:0, ex:'50,5 − 40,5.'},
+ {q:'Grafik frekuensi kumulatif disebut …', o:['ogive','histogram','poligon frekuensi','diagram lingkaran'], a:0, ex:'Ogive.'},
+ {q:'Pada rumus median, F adalah …', o:['frekuensi kumulatif sebelum kelas median','frekuensi kelas median','jumlah data','panjang kelas'], a:0, ex:'Kumulatif sebelum.'},
+ {q:'Kelas modus adalah kelas dengan …', o:['frekuensi terbesar','titik tengah terbesar','frekuensi kumulatif terbesar','frekuensi terkecil'], a:0, ex:'Paling sering.'},
+ {q:'Jika mean > median, distribusi data cenderung …', o:['miring ke kanan','miring ke kiri','simetris','seragam'], a:0, ex:'Ekor di kanan.'},
+ {q:'Q₃ sama dengan persentil ke- …', o:['75','25','50','30'], a:0, ex:'3/4.'},
+ {q:'Histogram dengan batang tertinggi di tengah dan sisi kiri-kanan sama tinggi menunjukkan data …', o:['simetris','miring kanan','miring kiri','tidak dapat dibaca'], a:0, ex:'Mean ≈ median ≈ modus.'},
+ {q:'Data 41–50 (3), 51–60 (7), 61–70 (12), 71–80 (6), 81–90 (2). Kelas median: tepi bawahnya …', input:true, a:['60.5','60,5'], show:'60,5', ex:'Data ke-15 di kelas 61–70.'},
+ {q:'Data yang sama: rata-ratanya (titik tengah) = …', input:true, a:['64.5','64,5'], show:'64,5', ex:'(136,5 + 388,5 + 786 + 453 + 171)/30 = 1.935/30 = 64,5.'},
+ {q:'Data yang sama: modus ≈ … (2 desimal)', input:true, a:v=>Math.abs(Number(VML.norm(v))-65.045)<0.011, show:'65,05', ex:'60,5 + 5/11·10.'}
+],'xii6');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

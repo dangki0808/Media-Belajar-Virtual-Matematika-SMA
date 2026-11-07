@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apa itu Integral? · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#2d6ae0">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian B · Modul B1 · Intuisi <span class="lvl pemula">PEMULA</span></span>
+  <h1>Apa itu Integral? Menjumlahkan Potongan-potongan Kecil</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menjelaskan integral dengan bahasa sehari-hari: <i>menjumlahkan banyak potongan kecil menjadi satu total</i>.</li>
+    <li>Melihat bahwa jarak tempuh sama dengan luas daerah di bawah grafik kecepatan.</li>
+    <li>Menaksir luas dengan persegi panjang (jumlah Riemann) dan melihat taksirannya makin tepat.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🛵 Lab Perjalanan Motor</button><button data-target="potong">🔪 Lab Potong Persegi Panjang</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita</span><p style="margin:.3em 0">Raka naik motor dari Sumbawa Besar ke pantai. Jika ia melaju <b>tetap 40 km/jam</b> selama <b>2 jam</b>, jaraknya mudah dihitung: 40 × 2 = <b>80 km</b>.</p>
+    <p style="margin:.3em 0">Tetapi di jalan nyata kecepatan selalu berubah: pelan di pasar, kencang di jalan lurus, berhenti di lampu merah. Bagaimana menghitung jaraknya? Caranya: <b>potong waktu perjalanan menjadi potongan-potongan kecil</b>. Di setiap potongan kecil, kecepatannya hampir tetap. Hitung jarak tiap potongan, lalu <b>jumlahkan semuanya</b>. Itulah ide integral.</p></div>
+  </div>
+  <div class="card"><h2>1. Jarak = luas di bawah grafik kecepatan</h2>
+    <p>Pada grafik kecepatan (sumbu tegak) terhadap waktu (sumbu datar), perkalian <b>kecepatan × waktu</b> adalah <b>luas persegi panjang</b>. Jadi jarak tempuh selalu sama dengan <b>luas daerah di bawah grafik kecepatan</b>, berapa pun bentuk grafiknya.</p>
+    <svg class="viz" id="m1" viewBox="0 0 640 260"></svg>
+  </div>
+  <div class="card"><h2>2. Memotong menjadi persegi panjang tipis</h2>
+    <p>Jika grafiknya melengkung, kita isi daerahnya dengan banyak persegi panjang tipis. Lebar tiap potongan ditulis <span class="mth">Δ<i>x</i></span> (baca: <i>delta x</i>, artinya "sedikit perubahan x"). Tinggi tiap potongan adalah nilai fungsi <span class="mth"><i>f</i>(<i>x</i>)</span> di potongan itu.</p>
+    <div class="def">Jumlah luas potongan = <span class="mth"><i>f</i>(<i>x</i><sub>1</sub>)Δ<i>x</i> + <i>f</i>(<i>x</i><sub>2</sub>)Δ<i>x</i> + … + <i>f</i>(<i>x<sub>n</sub></i>)Δ<i>x</i></span>. Ini disebut <b>jumlah Riemann</b>.</div>
+  </div>
+  <div class="card"><h2>3. Potongan sangat tipis → integral</h2>
+    <p>Makin banyak potongan (makin tipis), jumlahnya makin mendekati luas sebenarnya. Hasil akhirnya ditulis:</p>
+    <p style="text-align:center;font-size:1.4rem" id="sym"></p>
+    <div class="grid2">
+      <div class="ex"><span class="t">Arti setiap bagian</span><br><b>∫</b> = huruf S yang dipanjangkan, singkatan <i>summa</i> (jumlah).<br><b>a</b> dan <b>b</b> = batas bawah dan batas atas (mulai dan selesai).<br><b>f(x)</b> = tinggi potongan (yang dijumlahkan).<br><b>dx</b> = lebar potongan yang sangat-sangat tipis.</div>
+      <div class="ex"><span class="t">Cara membaca</span><br>"Integral dari a sampai b, f(x) dx."<br><br>Kata <b>integral</b> berasal dari bahasa Latin <i>integer</i> yang artinya <b>utuh</b>: menyatukan potongan menjadi satu kesatuan.</div>
+    </div>
+  </div>
+  <div class="card"><h2>4. Integral ada di sekitar kita</h2>
+    <table class="t"><tr><th>Yang diketahui (laju)</th><th>Yang dicari (total)</th></tr>
+      <tr><td>Kecepatan motor (km/jam)</td><td>Jarak tempuh (km)</td></tr>
+      <tr><td>Debit air keran (liter/menit)</td><td>Air yang tertampung di bak (liter)</td></tr>
+      <tr><td>Curah hujan (mm/jam)</td><td>Total hujan sehari (mm)</td></tr>
+      <tr><td>Penjualan per jam (porsi/jam)</td><td>Total penjualan sehari (porsi)</td></tr>
+      <tr><td>Lebar sawah di setiap titik (m)</td><td>Luas sawah (m²)</td></tr></table>
+    <div class="note"><b>Kunci:</b> setiap kali kita tahu <b>laju</b> (sesuatu per satuan waktu atau per satuan panjang) dan ingin tahu <b>total</b>-nya, kita sedang memakai integral.</div>
+  </div>
+  <div class="card"><h2>Kamus kecil</h2>
+    <div class="glos"><div><b>Integran</b>Fungsi yang diintegralkan, f(x).</div><div><b>Batas integral</b>a (bawah) dan b (atas): dari mana sampai mana.</div><div><b>Jumlah Riemann</b>Jumlah luas persegi panjang tipis sebagai taksiran.</div><div><b>Δx</b>Lebar satu potongan.</div></div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Perjalanan Motor</h2>
+    <p>Pilih pola kecepatan, lalu tekan <b>Jalan</b> atau geser waktunya. Perhatikan: jarak yang ditempuh motor selalu sama dengan luas daerah biru di bawah grafik.</p>
+    <div class="row" id="prof"></div>
+    <div class="ctrl"><label>Waktu <span class="v" id="t-v"></span><input type="range" id="t" min="0" max="3" step="0.01" value="1.5"></label></div>
+    <div class="row"><button class="btn" id="go">▶ Jalan</button></div>
+    <svg class="viz" id="road" viewBox="0 0 640 90"></svg>
+    <svg class="viz" id="vt" viewBox="0 0 640 320"></svg>
+    <div class="out" id="mOut"></div>
+  </div>
+</section>
+
+<section id="potong" class="panel">
+  <div class="card"><h2>Lab: Potong Persegi Panjang</h2>
+    <p>Pilih kurva dan banyak potongan. Bandingkan jumlah luas persegi panjang dengan luas sebenarnya.</p>
+    <div class="row" id="fsel"></div>
+    <div class="ctrl"><label>Banyak potongan <i>n</i> <span class="v" id="n-v"></span><input type="range" id="n" min="1" max="60" value="4"></label><label>Batas atas <i>b</i> <span class="v" id="b-v"></span><input type="range" id="b" min="1" max="4" step="0.5" value="3"></label></div>
+    <div class="row"><div class="seg" id="cara"><button data-v="L" class="on">Tinggi dari kiri</button><button data-v="M">Tengah</button><button data-v="R">Kanan</button></div><button class="btn ghost" id="anim">✨ Perhalus otomatis</button></div>
+    <svg class="viz" id="rs" viewBox="0 0 640 340"></svg>
+    <div class="out" id="rOut"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Gunakan koma untuk desimal, misalnya 12,5.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul B1</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+$('#sym').innerHTML=`<span class="mth">${G.int('<i>a</i>','<i>b</i>')} <i>f</i>(<i>x</i>) <i>dx</i></span>`;
+/* gambar materi */
+(()=>{ const g=$('#m1'); const A=G.axes(g,{x0:0,x1:3,y0:0,y1:60,W:640,H:260,lx:'waktu (jam)',ly:'kecepatan (km/jam)',xs:.5,ys:10});
+  s('rect',{x:A.X(0),y:A.Y(40),width:A.X(2)-A.X(0),height:A.Y(0)-A.Y(40),fill:'#2d6ae0','fill-opacity':.25,stroke:'#2d6ae0','stroke-width':2},g);
+  txt(g,(A.X(0)+A.X(2))/2,A.Y(20),'luas = 40 × 2 = 80 km',{'font-size':16,'font-weight':800,fill:'#2d6ae0'}); })();
+
+/* LAB MOTOR */
+const PROF={
+  'Tetap 40':{f:t=>40,F:t=>40*t,d:'Kecepatan tidak berubah: grafiknya datar, daerahnya persegi panjang.'},
+  'Makin kencang':{f:t=>15*t,F:t=>7.5*t*t,d:'Kecepatan naik teratur: daerahnya segitiga, luas = ½ × alas × tinggi.'},
+  'Ada lampu merah':{f:t=>t<1?40:t<1.25?0:t<2?50:30,F:t=>t<1?40*t:t<1.25?40:t<2?40+50*(t-1.25):40+37.5+30*(t-2),d:'Saat berhenti kecepatannya 0, jadi tidak ada luas: jarak tidak bertambah.'},
+  'Naik-turun':{f:t=>35+15*Math.sin(2.2*t),F:t=>35*t+15*(1-Math.cos(2.2*t))/2.2,d:'Grafik melengkung: kita perlu potongan-potongan kecil untuk menghitung luasnya.'}};
+let pk='Naik-turun', anim=null;
+$('#prof').innerHTML=Object.keys(PROF).map(k=>`<button class="chipbtn ${k===pk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#prof .chipbtn').forEach(b=>b.onclick=()=>{ $$('#prof .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); pk=b.dataset.k; drawM(); });
+function drawM(){
+  const t=+$('#t').value, P=PROF[pk]; $('#t-v').textContent=G.fmt(t)+' jam';
+  const g=$('#vt'); clear(g); const A=G.axes(g,{x0:0,x1:3,y0:0,y1:60,W:640,H:320,lx:'waktu (jam)',ly:'kecepatan (km/jam)',xs:.5,ys:10});
+  if(t>0) s('path',{d:G.region(P.f,0,t,A,()=>0,300),fill:'#2d6ae0','fill-opacity':.28},g);
+  s('path',{d:G.curve(P.f,0,3,A,600),fill:'none',stroke:'#e8890b','stroke-width':3.5},g);
+  s('line',{x1:A.X(t),y1:A.Y(0),x2:A.X(t),y2:A.Y(60),stroke:'#2d6ae0','stroke-dasharray':'5 5'},g);
+  s('circle',{cx:A.X(t),cy:A.Y(P.f(t)),r:6,fill:'#e8890b'},g);
+  const D=P.F(t), tot=P.F(3);
+  const r=$('#road'); clear(r); s('rect',{x:0,y:30,width:640,height:44,rx:8,fill:'#3d4252'},r); for(let x=10;x<640;x+=40) s('rect',{x,y:50,width:20,height:4,fill:'#fff','fill-opacity':.7},r);
+  txt(r,20,22,'🏠 Sumbawa Besar',{'text-anchor':'start','font-size':13,'font-weight':700,fill:'var(--ink)'}); txt(r,630,22,'🏖️ Pantai',{'text-anchor':'end','font-size':13,'font-weight':700,fill:'var(--ink)'});
+  txt(r,20+D/tot*580,62,'🛵',{'font-size':30});
+  $('#mOut').innerHTML=`<p class="big2">Jarak tempuh = ${G.fmt(D,1)} km</p><p>Kecepatan saat ini <b>${G.fmt(P.f(t),1)} km/jam</b>. Luas daerah biru dari jam 0 sampai jam ${G.fmt(t)} = <b>${G.fmt(D,1)}</b>.</p><p class="muted">${P.d}</p>
+   <p>Dalam bahasa integral: <span class="mth">${G.int('0',G.fmt(t))} <i>v</i>(<i>t</i>) <i>dt</i> = ${G.fmt(D,1)}</span> km.</p>`;
+}
+$('#t').oninput=()=>{ cancelAnimationFrame(anim); drawM(); };
+$('#go').onclick=()=>{ cancelAnimationFrame(anim); const st=performance.now(); const step=n=>{ const t=Math.min(3,(n-st)/2500*3); $('#t').value=t; drawM(); if(t<3) anim=requestAnimationFrame(step); }; anim=requestAnimationFrame(step); };
+drawM();
+
+/* LAB RIEMANN */
+const FS={'x²':{f:x=>x*x,F:x=>x**3/3,y1:16},'½x + 1':{f:x=>x/2+1,F:x=>x*x/4+x,y1:3.5},'√x':{f:Math.sqrt,F:x=>2/3*x**1.5,y1:2.2},'gelombang':{f:x=>1.5+Math.sin(2*x),F:x=>1.5*x+(1-Math.cos(2*x))/2,y1:2.8}};
+let fk='x²', rt=null;
+$('#fsel').innerHTML=Object.keys(FS).map(k=>`<button class="chipbtn ${k===fk?'on':''}" data-k="${k}">f(x) = ${k}</button>`).join('');
+$$('#fsel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#fsel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); fk=b.dataset.k; drawR(); });
+$$('#cara button').forEach(b=>b.onclick=()=>{ $$('#cara button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); drawR(); });
+function drawR(){
+  const n=+$('#n').value, b=+$('#b').value, F=FS[fk], c=$('#cara .on').dataset.v; $('#n-v').textContent=n; $('#b-v').textContent=G.fmt(b);
+  const g=$('#rs'); clear(g); let ymax=0; for(let x=0;x<=4.2;x+=.05) ymax=Math.max(ymax,F.f(x)); ymax*=1.08; const A=G.axes(g,{x0:0,x1:4.2,y0:0,y1:ymax,W:640,H:340,lx:'x',ly:'f(x)'});
+  const dx=b/n; let sum=0;
+  for(let i=0;i<n;i++){ const xl=i*dx, xs=c==='L'?xl:c==='R'?xl+dx:xl+dx/2, h=F.f(xs); sum+=h*dx;
+    s('rect',{x:A.X(xl),y:A.Y(Math.max(h,0)),width:Math.max(.5,A.X(xl+dx)-A.X(xl)),height:Math.abs(A.Y(0)-A.Y(h)),fill:'#e8a317','fill-opacity':.45,stroke:'#b9770a','stroke-width':n>30?.4:1.2},g);
+    if(n<=12) s('circle',{cx:A.X(xs),cy:A.Y(h),r:3.5,fill:'#b9770a'},g); }
+  s('path',{d:G.curve(F.f,0,4.2,A),fill:'none',stroke:'#2d6ae0','stroke-width':3},g);
+  const ex=F.F(b)-F.F(0), err=Math.abs(sum-ex)/ex*100;
+  $('#rOut').innerHTML=`<div class="grid2"><div><p class="muted">Jumlah luas ${n} persegi panjang</p><p class="big2">${G.fmt(sum,4)}</p></div><div><p class="muted">Luas sebenarnya (integral)</p><p class="big2">${G.fmt(ex,4)}</p></div></div>
+    <p>Lebar tiap potongan Δx = ${G.fmt(b)} ÷ ${n} = <b>${G.fmt(dx,4)}</b>. Selisih dengan luas sebenarnya: <b>${G.fmt(err,2)}%</b>.</p>
+    <p class="muted">${err<0.5?'Hampir tepat! Dengan potongan yang sangat tipis, jumlahnya menjadi integral.':'Tambah banyak potongan untuk melihat selisihnya mengecil.'}</p>`;
+}
+['#n','#b'].forEach(x=>$(x).oninput=()=>{ clearInterval(rt); drawR(); });
+$('#anim').onclick=()=>{ clearInterval(rt); let n=1; $('#n').value=1; drawR(); rt=setInterval(()=>{ n=n<10?n+1:n+5; if(n>60){ clearInterval(rt); return; } $('#n').value=n; drawR(); },450); };
+drawR();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Jarak tetap', gen(){ const v=pick([30,40,45,50,60]), t=pick([1.5,2,2.5,3]); return {q:`Sebuah bus melaju tetap ${v} km/jam selama ${G.fmt(t)} jam. Berapa luas daerah di bawah grafik kecepatannya (= jarak)?`, a:String(v*t), unit:'km', hint:'Luas persegi panjang = tinggi × lebar.', ex:`${v} × ${G.fmt(t)} = ${G.fmt(v*t)} km.`}; }},
+  {name:'Potongan waktu', gen(){ const v=[rand(2,6)*10,rand(2,6)*10,rand(2,6)*10]; const d=.5; const S=v.reduce((a,b)=>a+b,0)*d; return {q:`Kecepatan sepeda motor pada setiap setengah jam adalah ${v.join(' km/jam, ')} km/jam. Taksir jarak tempuh selama 1,5 jam.`, a:String(S), unit:'km', hint:'Jumlahkan kecepatan × 0,5 jam untuk setiap potongan.', ex:`(${v.join(' + ')}) × 0,5 = ${G.fmt(S)} km.`}; }},
+  {name:'Segitiga', gen(){ const a=pick([5,10,20]), t=pick([2,3,4]); return {q:`Kecepatan mobil naik teratur v = ${a}t km/jam, mulai dari diam. Berapa jarak tempuh selama ${t} jam? (luas segitiga)`, a:String(a*t*t/2), unit:'km', hint:'Luas segitiga = ½ × alas × tinggi. Tinggi = kecepatan akhir.', ex:`½ × ${t} × ${a*t} = ${a*t*t/2} km.`}; }},
+  {name:'Jumlah Riemann', gen(){ const n=pick([2,4]), b=4, dx=b/n; const xs=[...Array(n)].map((_,i)=>(i+1)*dx); const S=xs.reduce((a,x)=>a+x*x*dx,0); return {q:`Taksir luas di bawah f(x) = x² dari 0 sampai 4 dengan ${n} persegi panjang, tinggi diambil dari <b>ujung kanan</b> tiap potongan.`, a:String(S), hint:`Δx = ${dx}. Titik kanannya ${xs.join(', ')}.`, ex:`(${xs.map(x=>x+'²').join(' + ')}) × ${dx} = ${S}.`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Dalam bahasa sehari-hari, integral paling tepat diartikan sebagai …', o:['menjumlahkan banyak potongan kecil menjadi satu total','membagi bilangan menjadi pecahan','mencari kemiringan garis','menggambar grafik'], a:0, ex:'Integral = menyatukan potongan-potongan kecil.'},
+ {q:'Pada grafik kecepatan terhadap waktu, jarak tempuh sama dengan …', o:['luas daerah di bawah grafik','tinggi grafik tertinggi','kemiringan grafik','panjang garis grafik'], a:0, ex:'Kecepatan × waktu = luas.'},
+ {q:'Lambang ∫ berasal dari huruf …', o:['S (summa = jumlah)','I (integer)','F (fungsi)','D (diferensial)'], a:0, ex:'Leibniz memakai huruf S panjang untuk summa.'},
+ {q:'Pada <span class="mth">∫<sub>1</sub><sup>4</sup> f(x) dx</span>, angka 4 disebut …', o:['batas atas','batas bawah','integran','konstanta'], a:0, ex:'a = batas bawah, b = batas atas.'},
+ {q:'Jika potongan persegi panjang dibuat makin tipis, jumlah luasnya akan …', o:['makin mendekati luas sebenarnya','makin jauh dari luas sebenarnya','selalu sama dengan nol','tidak berubah'], a:0, ex:'Itulah gagasan limit jumlah Riemann.'},
+ {q:'Sebuah keran mengalirkan 12 liter/menit selama 5 menit. Air yang tertampung adalah …', o:['60 liter','17 liter','2,4 liter','12 liter'], a:0, ex:'12 × 5 = 60 (luas persegi panjang).'},
+ {q:'Bagian "dx" pada lambang integral melambangkan …', o:['lebar potongan yang sangat tipis','nilai fungsi','batas atas','hasil akhir'], a:0, ex:'dx = Δx yang sangat kecil.'},
+ {q:'Situasi berikut yang memakai ide integral adalah …', o:['menghitung total hujan sehari dari data curah hujan per jam','menghitung kecepatan dari jarak dan waktu','mencari nilai tengah data','mengurutkan bilangan'], a:0, ex:'Dari laju (mm/jam) ke total (mm).'},
+ {q:'Mobil melaju 20 km/jam selama 1 jam, lalu 60 km/jam selama 0,5 jam. Jarak totalnya …', o:['50 km','80 km','40 km','30 km'], a:0, ex:'20×1 + 60×0,5 = 50.'},
+ {q:'Kecepatan v = 10t km/jam dari t = 0 sampai t = 2 jam. Jarak tempuhnya (luas segitiga) …', input:true, a:['20'], ex:'½ × 2 × 20 = 20 km.'},
+ {q:'Taksir luas di bawah f(x) = x dari 0 sampai 2 dengan 2 persegi panjang, tinggi dari ujung kanan.', input:true, a:['3'], ex:'Δx = 1, tinggi 1 dan 2 → (1 + 2) × 1 = 3. (Luas sebenarnya 2.)'},
+ {q:'Penjual es kelapa melayani rata-rata 15 gelas/jam selama 6 jam. Total penjualannya … gelas.', input:true, a:['90'], ex:'15 × 6 = 90.'}
+],'kalkm1');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

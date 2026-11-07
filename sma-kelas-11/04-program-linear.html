@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Program Linear · Matematika SMA Kelas XI</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#e07b1f">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XI</a><div class="brand">∘ Matematika SMA <small>· Kelas XI</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 4 · Optimasi <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Program Linear: Untung Terbesar dengan Bahan Terbatas</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menyusun model matematika (kendala dan fungsi tujuan) dari soal cerita.</li>
+    <li>Menggambar daerah penyelesaian sistem pertidaksamaan linear.</li>
+    <li>Menentukan nilai optimum dengan uji titik pojok dan garis selidik.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🥐 Lab Toko Roti</button><button data-target="model">📝 Lab Cerita → Model</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Bu Sari dan oven kecilnya</span><p style="margin:.3em 0">Bu Sari membuat roti dan kue. Satu roti butuh 2 ons tepung, satu kue 1 ons. Tepung tersedia 40 ons. Oven hanya muat 25 loyang sehari. Untung roti Rp4.000, kue Rp3.000. Berapa roti dan kue agar untung terbesar? Ini masalah <b>program linear</b>: memaksimalkan atau meminimalkan sesuatu dengan sumber daya terbatas. Pabrik, petani, dan perusahaan logistik memakainya setiap hari.</p></div>
+  </div>
+  <div class="card"><h2>1. Model matematika</h2>
+    <ol class="steps"><li><b>Variabel:</b> x = banyak roti, y = banyak kue.</li><li><b>Kendala:</b> 2x + y ≤ 40 (tepung), x + y ≤ 25 (oven), x ≥ 0, y ≥ 0.</li><li><b>Fungsi tujuan:</b> maksimumkan Z = 4.000x + 3.000y.</li></ol>
+  </div>
+  <div class="card"><h2>2. Daerah penyelesaian</h2>
+    <p>Gambar setiap garis kendala (cari titik potong sumbu), lalu arsir sisi yang memenuhi. Uji titik (0, 0): 0 ≤ 40 benar, jadi daerahnya di sisi yang memuat titik asal. Irisan semua daerah disebut <b>daerah penyelesaian</b> (daerah layak).</p>
+  </div>
+  <div class="card"><h2>3. Mencari nilai optimum</h2>
+    <div class="grid2"><div class="ex"><span class="t">Uji titik pojok</span>Nilai optimum selalu terjadi di salah satu <b>titik pojok</b>. Hitung Z di setiap pojok, pilih yang terbesar/terkecil. Pojok: (0,0), (20,0), (15,10), (0,25). Z(15,10) = 90.000 adalah maksimum.</div>
+    <div class="ex"><span class="t">Garis selidik</span>Gambar garis 4x + 3y = k dan geser sejajar. Titik terakhir yang disentuh saat garis keluar dari daerah layak adalah titik maksimum.</div></div>
+    <div class="note">Titik pojok hasil perpotongan dua garis dicari dengan eliminasi: 2x + y = 40 dan x + y = 25 → x = 15, y = 10.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Toko Roti Bu Sari</h2>
+    <p>Atur persediaan dan keuntungan. Daerah berwarna adalah semua pilihan produksi yang mungkin. Geser <b>garis selidik</b> (garis putus-putus) untuk mencari untung terbesar.</p>
+    <div class="grid2"><div class="ctrl"><label>Tepung tersedia (ons) <span class="v" id="t-v"></span><input type="range" id="t" min="20" max="60" value="40"></label><label>Kapasitas oven (loyang) <span class="v" id="o-v"></span><input type="range" id="o" min="10" max="40" value="25"></label></div>
+    <div class="ctrl"><label>Untung roti (ribu) <span class="v" id="p-v"></span><input type="range" id="p" min="1" max="8" value="4"></label><label>Untung kue (ribu) <span class="v" id="q-v"></span><input type="range" id="q" min="1" max="8" value="3"></label><label>Garis selidik Z = k <span class="v" id="k-v"></span><input type="range" id="k" min="0" max="100" value="40"></label></div></div>
+    <svg class="viz" id="g1" viewBox="0 0 480 440" style="max-width:520px;margin:auto;display:block"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="model" class="panel">
+  <div class="card"><h2>Lab: Dari Cerita ke Model</h2>
+    <p>Baca cerita, susun modelnya sendiri di kertas, lalu tebak nilai maksimumnya. Buka model dan titik pojok untuk memeriksa.</p>
+    <div class="row"><button class="btn" id="ns">Cerita baru</button><button class="btn soft" id="sm">Tampilkan model</button><button class="btn soft" id="sv">Tampilkan titik pojok</button></div>
+    <div class="out" id="o2"></div>
+    <div class="row" style="margin-top:10px"><input type="text" id="ans" inputmode="decimal" placeholder="Nilai maksimum (dalam ribu rupiah)"><button class="btn" id="ck">Periksa</button></div><div id="fb"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XI · Modul 4</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+/* daerah layak: potong kotak dengan setengah bidang ax + by <= c */
+function clip(poly,a,b,c){ const out=[]; for(let i=0;i<poly.length;i++){ const P=poly[i], Q=poly[(i+1)%poly.length]; const fp=a*P[0]+b*P[1]-c, fq=a*Q[0]+b*Q[1]-c;
+  if(fp<=1e-9) out.push(P); if((fp<-1e-9&&fq>1e-9)||(fp>1e-9&&fq<-1e-9)){ const t=fp/(fp-fq); out.push([P[0]+t*(Q[0]-P[0]),P[1]+t*(Q[1]-P[1])]); } } return out; }
+function region(cons,M){ let poly=[[0,0],[M,0],[M,M],[0,M]]; cons.forEach(([a,b,c])=>{ poly=clip(poly,a,b,c); }); const u=[]; poly.forEach(p=>{ const r=[Math.round(p[0]*1000)/1000,Math.round(p[1]*1000)/1000]; if(!u.some(q=>Math.abs(q[0]-r[0])<1e-6&&Math.abs(q[1]-r[1])<1e-6)) u.push(r); }); return u; }
+const nf=v=>G.fmt(v,2);
+function d1(){
+  const T=+$('#t').value, O=+$('#o').value, p=+$('#p').value, q=+$('#q').value; ['t','o','p','q'].forEach(k=>$('#'+k+'-v').textContent=$('#'+k).value);
+  const cons=[[2,1,T],[1,1,O]]; const M=Math.max(T,O)+5; const V=region(cons,M);
+  const best=V.reduce((b,v)=>{ const z=p*v[0]+q*v[1]; return z>b.z?{v,z}:b; },{v:[0,0],z:-1});
+  const ke=$('#k'); ke.max=Math.ceil(best.z*1.25); const k=+ke.value; $('#k-v').textContent=k+' ribu';
+  const g=$('#g1'); clear(g); const W=Math.max(T/2,O)+4, Hh=Math.max(T,O)+4;
+  const A=G.axes(g,{x0:0,x1:W,y0:0,y1:Hh,W:480,H:440,pad:40,padb:30,lx:'x (roti)',ly:'y (kue)'});
+  s('polygon',{points:V.map(v=>A.X(v[0])+','+A.Y(v[1])).join(' '),fill:'color-mix(in srgb,var(--acc) 30%,transparent)',stroke:'var(--acc)','stroke-width':2},g);
+  s('path',{d:G.curve(x=>T-2*x,0,W,A),stroke:'var(--a)','stroke-width':2.5,fill:'none','clip-path':A.cp},g); txt(g,A.X(Math.min(W-1,T/2))-6,A.Y(3),'2x + y = '+T,{'font-size':11,'text-anchor':'end',fill:'var(--a)','font-weight':700});
+  s('path',{d:G.curve(x=>O-x,0,W,A),stroke:'var(--e)','stroke-width':2.5,fill:'none','clip-path':A.cp},g); txt(g,A.X(1),A.Y(O)-6,'x + y = '+O,{'font-size':11,'text-anchor':'start',fill:'var(--e)','font-weight':700});
+  s('path',{d:G.curve(x=>(k-p*x)/q,0,W,A),stroke:'var(--ink)','stroke-width':2,'stroke-dasharray':'7 5',fill:'none','clip-path':A.cp},g);
+  V.forEach(v=>{ const isB=v===best.v; s('circle',{cx:A.X(v[0]),cy:A.Y(v[1]),r:isB?8:5.5,fill:isB?'var(--ok)':'var(--ink)',stroke:'#fff','stroke-width':2},g); });
+  const touch = k>=best.z-0.5 && k<=best.z+0.5;
+  $('#o1').innerHTML=`<p><b>Model:</b> 2x + y ≤ ${T}, x + y ≤ ${O}, x ≥ 0, y ≥ 0. Maksimumkan Z = ${p}x + ${q}y (ribu rupiah).</p>
+   <table class="t"><tr><th>Titik pojok</th>${V.map(v=>`<td>(${nf(v[0])}, ${nf(v[1])})</td>`).join('')}</tr><tr><th>Z</th>${V.map(v=>{ const z=p*v[0]+q*v[1]; return `<td style="${v===best.v?'font-weight:800;color:var(--ok)':''}">${nf(z)}</td>`; }).join('')}</tr></table>
+   <p>Maksimum <b>Rp${(Math.round(best.z*1000)).toLocaleString('id-ID')}</b> di (${nf(best.v[0])}, ${nf(best.v[1])}): buat ${nf(best.v[0])} roti dan ${nf(best.v[1])} kue. ${touch?'<b style="color:var(--ok)">Garis selidikmu tepat menyentuh titik maksimum!</b>':k>best.z?'Garis selidik sudah di luar daerah layak: untung sebesar itu mustahil.':'Garis selidik masih memotong daerah layak, geser lebih jauh.'}</p>
+   ${(!Number.isInteger(best.v[0])||!Number.isInteger(best.v[1]))?'<p class="muted">Pojoknya bukan bilangan bulat. Dalam kenyataan, periksa titik bulat terdekat di dalam daerah.</p>':''}`;
+}
+['t','o','p','q','k'].forEach(k=>$('#'+k).oninput=d1); d1();
+
+/* LAB 2 */
+const ST=[
+ {nm:'Pedagang buah', x:'mangga', y:'jeruk', u:'kg', n1:'modal Rp{n} ribu', t1:'modal Rp{n} ribu', n2:'{n} bagian ruang gerobak', t2:'ruang gerobak {n} bagian'},
+ {nm:'Penjahit', x:'kemeja', y:'celana', u:'potong', n1:'{n} m kain', t1:'kain {n} m', n2:'{n} jam kerja', t2:'waktu {n} jam kerja'},
+ {nm:'Peternak', x:'karung pakan A', y:'karung pakan B', u:'karung', n1:'{n} m² gudang', t1:'gudang {n} m²', n2:'{n} ratus ribu rupiah', t2:'dana {n} ratus ribu rupiah'},
+ {nm:'Kerajinan kulit', x:'tas', y:'dompet', u:'buah', n1:'{n} dm² kulit', t1:'kulit {n} dm²', n2:'{n} jam kerja', t2:'waktu {n} jam kerja'}];
+const F=(t,n)=>t.replace('{n}',n);
+let S2;
+function newS(){ let ok=false; while(!ok){ const st=pick(ST); const a1=rand(1,5),b1=rand(1,5),a2=rand(1,4),b2=rand(1,4); if(a1*b2===a2*b1) continue; const X=rand(4,15), Y=rand(4,15); const c1=a1*X+b1*Y, c2=a2*X+b2*Y; const p=rand(2,9), q=rand(2,9);
+  const V=region([[a1,b1,c1],[a2,b2,c2]],200); const best=V.reduce((b,v)=>{ const z=p*v[0]+q*v[1]; return z>b.z?{v,z}:b; },{v:[0,0],z:-1}); if(!V.every(v=>Number.isInteger(v[0])&&Number.isInteger(v[1]))) continue;
+  S2={st,a1,b1,c1,a2,b2,c2,p,q,V,best}; ok=true; }
+  const {st,a1,b1,c1,a2,b2,c2,p,q}=S2;
+  $('#o2').innerHTML=`<div class="story" style="margin-top:0"><span class="t">${st.nm}</span><p style="margin:.3em 0">Setiap ${st.x} memerlukan ${F(st.n1,a1)} dan ${F(st.n2,a2)}. Setiap ${st.y} memerlukan ${F(st.n1,b1)} dan ${F(st.n2,b2)}. Tersedia ${F(st.t1,c1)} dan ${F(st.t2,c2)}. Keuntungan per ${st.x} Rp${p}.000 dan per ${st.y} Rp${q}.000. Tentukan keuntungan maksimum.</p></div><div id="mx"></div>`;
+  $('#ans').value=''; $('#fb').innerHTML='';
+}
+$('#ns').onclick=newS;
+$('#sm').onclick=()=>{ const {st,a1,b1,c1,a2,b2,c2,p,q}=S2; $('#mx').innerHTML=`<p><b>Model:</b> misal x = banyak ${st.x}, y = banyak ${st.y}.<br>${a1}x + ${b1}y ≤ ${c1} &nbsp;(${st.t1.split(' ')[0]})<br>${a2}x + ${b2}y ≤ ${c2} &nbsp;(${st.t2.split(' ')[0]})<br>x ≥ 0, y ≥ 0. Maksimumkan Z = ${p}x + ${q}y (ribu).</p>`; };
+$('#sv').onclick=()=>{ $('#sm').onclick(); const {V,p,q,best}=S2; $('#mx').innerHTML+=`<table class="t"><tr><th>Pojok</th>${V.map(v=>`<td>(${v[0]}, ${v[1]})</td>`).join('')}</tr><tr><th>Z</th>${V.map(v=>`<td>${p*v[0]+q*v[1]}</td>`).join('')}</tr></table><p>Maksimum <b>${best.z}</b> ribu di (${best.v[0]}, ${best.v[1]}).</p>`; };
+const chk=()=>{ const ok=VML.match($('#ans').value,String(S2.best.z)); $('#fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'✓ Benar!':'✗ Belum tepat.'}</b> ${ok?'':'Coba hitung Z di setiap titik pojok.'}</div>`; };
+$('#ck').onclick=chk; $('#ans').onkeydown=e=>{ if(e.key==='Enter') chk(); };
+newS();
+
+VML.practice($('#prac'),[
+ {name:'Nilai di pojok', gen(){ const a=rand(2,9), b=rand(2,9), x=rand(0,12), y=rand(0,12); return {q:`Nilai fungsi tujuan Z = ${a}x + ${b}y di titik pojok (${x}, ${y}) adalah …`, a:String(a*x+b*y), hint:'Substitusikan x dan y.', ex:`${a}·${x} + ${b}·${y} = ${a*x+b*y}`}; }},
+ {name:'Titik potong garis', gen(){ let a1,b1,a2,b2; do{ a1=rand(1,4); b1=rand(1,4); a2=rand(1,4); b2=rand(1,4); }while(a1*b2===a2*b1); const x=rand(1,10), y=rand(1,10); const t=rand(0,1);
+   return {q:`Titik pojok dari perpotongan ${a1}x + ${b1}y = ${a1*x+b1*y} dan ${a2}x + ${b2}y = ${a2*x+b2*y}. Nilai ${t?'y':'x'} = …`, a:String(t?y:x), hint:'Eliminasi salah satu variabel.', ex:`(${x}, ${y})`}; }},
+ {name:'Maksimum', gen(){ let V,cons,p,q; do{ const a1=rand(1,3),b1=rand(1,3),a2=rand(1,3),b2=rand(1,3); if(a1*b2===a2*b1) continue; const X=rand(2,10),Y=rand(2,10); cons=[[a1,b1,a1*X+b1*Y],[a2,b2,a2*X+b2*Y]]; V=region(cons,200); p=rand(1,8); q=rand(1,8); }while(!V||!V.every(v=>Number.isInteger(v[0])&&Number.isInteger(v[1])));
+   const z=Math.max(...V.map(v=>p*v[0]+q*v[1])); return {q:`Nilai maksimum Z = ${p}x + ${q}y dengan kendala ${cons[0][0]}x + ${cons[0][1]}y ≤ ${cons[0][2]}, ${cons[1][0]}x + ${cons[1][1]}y ≤ ${cons[1][2]}, x ≥ 0, y ≥ 0 adalah …`, a:String(z), hint:'Cari semua titik pojok (termasuk titik potong dua garis), lalu uji Z.', ex:`Pojok: ${V.map(v=>'('+v[0]+','+v[1]+')').join(', ')} → maks ${z}`}; }},
+ {name:'Minimum', gen(){ const a=rand(1,4), b=rand(1,4), c=rand(10,30); const p=rand(2,9), q=rand(2,9); const vx=c/a, vy=c/b; const z=Math.min(p*vx,q*vy); if(!Number.isInteger(z)) return this.gen();
+   return {q:`Nilai minimum Z = ${p}x + ${q}y dengan kendala ${a}x + ${b}y ≥ ${c}, x ≥ 0, y ≥ 0 adalah …`, a:String(z), hint:`Pojok daerah: (${G.fmt(vx,2)}, 0) dan (0, ${G.fmt(vy,2)}).`, ex:`Z(${G.fmt(vx,2)},0) = ${G.fmt(p*vx,2)}, Z(0,${G.fmt(vy,2)}) = ${G.fmt(q*vy,2)} → min ${z}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Dalam program linear, fungsi yang dimaksimumkan atau diminimumkan disebut …', o:['fungsi tujuan','fungsi kendala','garis selidik','daerah layak'], a:0, ex:'Fungsi objektif.'},
+ {q:'Nilai optimum fungsi tujuan selalu terjadi pada …', o:['titik pojok daerah penyelesaian','titik (0, 0)','tengah daerah','sumbu-y'], a:0, ex:'Teorema titik pojok.'},
+ {q:'Titik (2, 3) memenuhi 3x + 2y ≤ 10?', o:['Tidak, karena 12 > 10','Ya, karena 12 ≤ 10','Ya, karena 5 ≤ 10','Tidak dapat ditentukan'], a:0, ex:'3·2 + 2·3 = 12.'},
+ {q:'Garis 2x + 3y = 12 memotong sumbu-x di …', o:['(6, 0)','(4, 0)','(0, 4)','(12, 0)'], a:0, ex:'y = 0 → x = 6.'},
+ {q:'Daerah x + y ≤ 6 berada di … garis x + y = 6 (yang memuat titik asal).', o:['sebelah bawah/kiri','sebelah atas/kanan','tepat pada','di luar kuadran I'], a:0, ex:'(0, 0) memenuhi.'},
+ {q:'Titik pojok perpotongan x + y = 10 dan 2x + y = 16 adalah …', o:['(6, 4)','(4, 6)','(8, 2)','(5, 5)'], a:0, ex:'Kurangkan: x = 6.'},
+ {q:'Z = 3x + 5y di pojok (0, 0), (8, 0), (6, 4), (0, 7). Nilai maksimum Z …', o:['38','35','24','42'], a:0, ex:'(6,4): 18 + 20 = 38.'},
+ {q:'Garis selidik untuk Z = 4x + 3y adalah garis …', o:['4x + 3y = k','3x + 4y = k','4x − 3y = k','x + y = k'], a:0, ex:'Sejajar fungsi tujuan.'},
+ {q:'Kendala “banyak barang tidak boleh negatif” ditulis …', o:['x ≥ 0, y ≥ 0','x ≤ 0','x + y ≥ 0 saja','x > y'], a:0, ex:'Syarat non-negatif.'},
+ {q:'Nilai maksimum Z = 2x + 3y pada pojok (0,0), (5,0), (3,2), (0,4) adalah …', input:true, a:['12'], ex:'(3,2): 12; (0,4): 12. Maksimum 12.'},
+ {q:'Roti untung Rp4.000, kue Rp3.000. Membuat 15 roti dan 10 kue memberi untung (ribu) …', input:true, a:['90'], ex:'60 + 30 = 90.'},
+ {q:'Nilai minimum Z = 5x + 2y dengan x + y ≥ 8, x ≥ 0, y ≥ 0 adalah …', input:true, a:['16'], ex:'Pojok (8,0): 40, (0,8): 16.'}
+],'xi4');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

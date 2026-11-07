@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nilai Rata-rata, Titik Berat & Integral Tak Wajar · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#d9a400">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian B · Modul B8 · Pengayaan <span class="lvl lanjut">LANJUT</span></span>
+  <h1>Nilai Rata-rata, Titik Berat &amp; Integral Tak Wajar</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menghitung nilai rata-rata sebuah fungsi, misalnya suhu rata-rata dalam sehari.</li>
+    <li>Menentukan titik seimbang (pusat massa) sebuah papan yang tebalnya tidak rata.</li>
+    <li>Memahami integral dengan batas tak hingga dan kapan hasilnya tetap berupa angka.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🌡️ Lab Suhu Rata-rata</button><button data-target="papan">⚖️ Lab Titik Seimbang</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>1. Nilai rata-rata fungsi</h2>
+    <div class="story"><span class="t">Cerita pasir di nampan</span><p style="margin:.3em 0">Bayangkan pasir di nampan yang permukaannya bergelombang. Jika nampan digoyang, pasir menjadi rata. Tinggi pasir yang rata itulah <b>nilai rata-rata</b>. Jumlah pasirnya (luas) tetap sama, hanya bentuknya menjadi persegi panjang.</p></div>
+    <div class="def" style="text-align:center;font-size:1.2rem" id="avg"></div>
+    <p>Artinya: luas di bawah kurva dibagi lebar selang. Mirip rata-rata biasa (jumlah data ÷ banyak data), tetapi datanya tak terhingga banyaknya.</p>
+    <div class="ex"><span class="t">Contoh</span>Rata-rata f(x) = x² pada [0, 3] = (1/3)·∫₀³ x² dx = (1/3)·9 = <b>3</b>.</div>
+    <p class="muted">Dipakai untuk suhu rata-rata harian (BMKG), kecepatan rata-rata, daya listrik rata-rata, dan harga saham rata-rata.</p>
+  </div>
+  <div class="card"><h2>2. Titik berat (pusat massa)</h2>
+    <div class="story"><span class="t">Cerita jungkat-jungkit</span><p style="margin:.3em 0">Papan kayu yang tebalnya rata seimbang tepat di tengah. Tetapi jika satu ujungnya lebih tebal, titik seimbangnya bergeser ke ujung yang berat. Di mana tepatnya? Integral menjawabnya.</p></div>
+    <p>Jika kepadatan papan di posisi x adalah λ(x) (kg per meter), maka:</p>
+    <div class="def" style="text-align:center;font-size:1.2rem" id="cm"></div>
+    <p class="muted">Dipakai saat merancang jembatan, perahu (agar tidak terbalik), letak mesin pada kendaraan, hingga posisi muatan di pesawat.</p>
+  </div>
+  <div class="card"><h2>3. Integral tak wajar (batas tak hingga)</h2>
+    <p>Bisakah luas daerah yang panjangnya tak hingga bernilai berhingga? Bisa! Contohnya <span class="mth" id="imp"></span>.</p>
+    <div class="grid2"><div class="ex"><span class="t">Konvergen (ada nilainya)</span>∫₁^∞ 1/x² dx = 1<br>∫₀^∞ e<sup>−x</sup> dx = 1</div><div class="ex"><span class="t">Divergen (tak hingga)</span>∫₁^∞ 1/x dx = ∞<br>Kurvanya turun terlalu lambat.</div></div>
+    <p>Cara menghitungnya: ganti ∞ dengan batas <i>b</i>, hitung integralnya, lalu lihat apa yang terjadi jika <i>b</i> makin besar (limit).</p>
+    <p class="muted">Penerapan: total obat yang diserap hingga habis dari tubuh (AUC sampai ∞), energi yang dibutuhkan roket untuk lepas dari gravitasi bumi, dan peluang dalam statistika.</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Suhu Rata-rata Harian</h2>
+    <p>Atur pola suhu sehari. Garis putus-putus emas adalah suhu rata-rata. Luas daerah di atas garis rata-rata sama dengan luas "lubang" di bawahnya.</p>
+    <div class="ctrl"><label>Suhu dasar (°C) <span class="v" id="m-v"></span><input type="range" id="m" min="18" max="32" step="0.5" value="27"></label><label>Selisih siang-malam (amplitudo) <span class="v" id="A-v"></span><input type="range" id="A" min="0" max="8" step="0.5" value="5"></label><label>Hujan sore (penurunan) <span class="v" id="H-v"></span><input type="range" id="H" min="0" max="6" step="0.5" value="2"></label></div>
+    <div class="row"><div class="seg" id="win"><button data-v="0,24" class="on">24 jam</button><button data-v="6,18">Siang 06–18</button><button data-v="18,30">Malam 18–06</button></div></div>
+    <svg class="viz" id="tg" viewBox="0 0 640 340"></svg>
+    <div class="out" id="tOut"></div>
+  </div>
+</section>
+
+<section id="papan" class="panel">
+  <div class="card"><h2>Lab: Titik Seimbang Papan</h2>
+    <p>Papan sepanjang 4 m punya kepadatan <span class="mth">λ(<i>x</i>) = <i>p</i> + <i>q</i>·<i>x</i></span>. Seret segitiga penopang (atau gunakan slider) sampai papan seimbang, lalu bandingkan dengan hasil integral.</p>
+    <div class="ctrl"><label>p (kepadatan di ujung kiri) <span class="v" id="p-v"></span><input type="range" id="p" min="1" max="10" step="0.5" value="2"></label><label>q (pertambahan kepadatan) <span class="v" id="q-v"></span><input type="range" id="q" min="-2" max="4" step="0.25" value="1.5"></label><label>Posisi penopang <span class="v" id="f-v"></span><input type="range" id="f" min="0.2" max="3.8" step="0.05" value="2"></label></div>
+    <div class="row"><button class="btn ghost" id="show">🎯 Tunjukkan titik berat</button></div>
+    <svg class="viz" id="bd" viewBox="0 0 640 300"></svg>
+    <div class="out" id="pOut"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Pecahan boleh ditulis seperti 4/3 atau desimal 1,33 (sampai 2 desimal).</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul B8</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+$('#avg').innerHTML=`<span class="mth"><i>f</i><sub>rata-rata</sub> = ${G.fr('1','<i>b</i> − <i>a</i>')} ${G.int('<i>a</i>','<i>b</i>')} <i>f</i>(<i>x</i>) <i>dx</i></span>`;
+$('#cm').innerHTML=`<span class="mth"><i>x̄</i> = ${G.fr(`${G.int('0','<i>L</i>')} <i>x</i>·λ(<i>x</i>) <i>dx</i>`,`${G.int('0','<i>L</i>')} λ(<i>x</i>) <i>dx</i>`)}</span>`;
+$('#imp').innerHTML=`${G.int('1','∞')} ${G.fr('1','<i>x</i>²')} <i>dx</i> = lim<sub><i>b</i>→∞</sub> (1 − 1/<i>b</i>) = 1`;
+
+/* SUHU */
+function T(t){ const m=+$('#m').value, A=+$('#A').value, H=+$('#H').value; return m+A*Math.sin(Math.PI*(t-9)/12)-H*Math.exp(-((((t%24)+24)%24-16)**2)/3); }
+function drawT(){
+  ['m','A','H'].forEach(k=>$('#'+k+'-v').textContent=G.fmt(+$('#'+k).value,1)+(k==='m'?'°C':k==='A'?'°C':'°C'));
+  const [a,b]=$('#win .on').dataset.v.split(',').map(Number);
+  const g=$('#tg'); clear(g); const A=G.axes(g,{x0:a,x1:b,y0:14,y1:40,W:640,H:340,lx:'jam',ly:'suhu (°C)',xs:2,ys:4});
+  const avg=G.simpson(T,a,b,600)/(b-a);
+  s('path',{d:G.region(x=>Math.max(T(x),avg),a,b,A,()=>avg),fill:'#e8890b','fill-opacity':.35},g);
+  s('path',{d:G.region(()=>avg,a,b,A,x=>Math.min(T(x),avg)),fill:'#2d6ae0','fill-opacity':.3},g);
+  s('path',{d:G.curve(T,a,b,A,400),fill:'none',stroke:'#d1453b','stroke-width':3.5},g);
+  s('line',{x1:A.X(a),y1:A.Y(avg),x2:A.X(b),y2:A.Y(avg),stroke:'#d9a400','stroke-width':3,'stroke-dasharray':'8 5'},g);
+  txt(g,A.X(b)-6,A.Y(avg)-8,`rata-rata ${G.fmt(avg,2)}°C`,{'text-anchor':'end','font-size':13,'font-weight':800,fill:'#9a7300'});
+  // label jam > 24
+  let mx=-1e9,mn=1e9,tmx=0,tmn=0; for(let x=a;x<=b;x+=.05){ const v=T(x); if(v>mx){mx=v;tmx=x;} if(v<mn){mn=v;tmn=x;} }
+  const hh=x=>String(Math.floor(((x%24)+24)%24)).padStart(2,'0')+'.'+String(Math.round((x%1)*60)%60).padStart(2,'0');
+  const above=G.simpson(x=>Math.max(T(x)-avg,0),a,b,600), below=G.simpson(x=>Math.max(avg-T(x),0),a,b,600);
+  $('#tOut').innerHTML=`<p class="big2">Suhu rata-rata = ${G.fmt(avg,2)} °C</p><p>Dihitung dengan <span class="mth">${G.fr('1',b-a)} ${G.int(a,b)} <i>T</i>(<i>t</i>) <i>dt</i></span>.</p>
+   <p>Terpanas ${G.fmt(mx,1)} °C sekitar pukul ${hh(tmx)}; terdingin ${G.fmt(mn,1)} °C sekitar pukul ${hh(tmn)}.</p>
+   <p class="muted">Luas oranye (di atas rata-rata) = ${G.fmt(above,2)}, luas biru (di bawah rata-rata) = ${G.fmt(below,2)}. Keduanya sama, seperti pasir yang diratakan. Perhatikan: rata-rata ini bisa berbeda dari (terpanas + terdingin)/2 = ${G.fmt((mx+mn)/2,2)} °C.</p>`;
+}
+['#m','#A','#H'].forEach(z=>$(z).oninput=drawT);
+$$('#win button').forEach(b=>b.onclick=()=>{ $$('#win button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); drawT(); });
+drawT();
+
+/* PAPAN */
+let showCM=false, BX=null;
+function drawP(){
+  const p=+$('#p').value, q=+$('#q').value, f=+$('#f').value, L=4; ['p','q'].forEach(k=>$('#'+k+'-v').textContent=G.fmt(+$('#'+k).value,2)); $('#f-v').textContent=G.fmt(f,2)+' m';
+  const lam=x=>Math.max(0.05,p+q*x), M=G.simpson(lam,0,L,400), Mx=G.simpson(x=>x*lam(x),0,L,400), cm=Mx/M;
+  const torque=G.simpson(x=>(x-f)*lam(x),0,L,400); // positif → miring kanan turun
+  const ang=Math.max(-4,Math.min(4,torque*0.8)), X0=60, W=520, X=x=>X0+x/L*W, cy=160;
+  BX=x=>Math.max(0.2,Math.min(3.8,(x-X0)/W*L));
+  const g=$('#bd'); clear(g); s('rect',{x:0,y:0,width:640,height:300,fill:'var(--card)'},g);
+  const G2=s('g',{transform:`rotate(${ang} ${X(f)} ${cy})`},g);
+  let lmax=0; for(let x=0;x<=L;x+=.1) lmax=Math.max(lmax,lam(x));
+  const th=x=>8+lam(x)/lmax*34; let d=`M${X(0)},${cy}`; for(let x=0;x<=L+1e-9;x+=.05) d+=`L${X(x)},${cy-th(x)}`; d+=`L${X(L)},${cy}Z`;
+  s('path',{d,fill:'#b97a3a',stroke:'#7a4a1a','stroke-width':2},G2);
+  for(let k=0;k<=4;k++) txt(G2,X(k),cy+16,k+' m',{'font-size':11,fill:'var(--muted)'});
+  if(showCM){ s('line',{x1:X(cm),y1:cy-60,x2:X(cm),y2:cy+4,stroke:'#13987a','stroke-width':3,'stroke-dasharray':'5 3'},G2); txt(G2,X(cm),cy-66,'titik berat',{'font-size':12,'font-weight':800,fill:'#13987a'}); }
+  s('path',{d:`M${X(f)},${cy+2} l-22,42 h44 Z`,fill:'#d9a400',stroke:'#9a7300','stroke-width':2,style:'cursor:ew-resize'},g);
+  s('rect',{x:20,y:cy+44,width:600,height:8,fill:'var(--line)'},g);
+  const bal=Math.abs(f-cm)<0.05;
+  $('#pOut').innerHTML=`<p>Massa papan <span class="mth">M = ∫₀⁴ λ(x) dx</span> = <b>${G.fmt(M,2)} kg</b>. Momen <span class="mth">∫₀⁴ x·λ(x) dx</span> = ${G.fmt(Mx,2)}.</p>
+   <p class="big2">Titik berat x̄ = ${G.fmt(Mx,2)} / ${G.fmt(M,2)} = ${G.fmt(cm,3)} m</p>
+   <div class="fb ${bal?'ok':'hint'}">${bal?'<b>✓ Seimbang!</b> Penopang tepat di titik berat.':`Penopang di ${G.fmt(f,2)} m. Papan miring ke <b>${torque>0?'kanan':'kiri'}</b>. Geser penopang ke ${torque>0?'kanan':'kiri'}.`}</div>
+   <p class="muted">${q>0?'Ujung kanan lebih padat, sehingga titik berat bergeser ke kanan dari tengah (2 m).':q<0?'Ujung kiri lebih padat, sehingga titik berat bergeser ke kiri dari tengah.':'Kepadatan merata, sehingga titik berat tepat di tengah.'}</p>`;
+}
+['#p','#q','#f'].forEach(z=>$(z).oninput=drawP);
+$('#show').onclick=()=>{ showCM=!showCM; $('#show').textContent=showCM?'🙈 Sembunyikan titik berat':'🎯 Tunjukkan titik berat'; drawP(); };
+VML.dragSvg($('#bd'),pt=>pt.y>140?1:null,(k,pt)=>{ $('#f').value=Math.round(BX(pt.x)*20)/20; drawP(); });
+drawP();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Rata-rata', gen(){ const b=pick([2,3,6]), k=pick([1,3]); const v=k*b*b/3; return {q:`Nilai rata-rata f(x) = ${k===1?'':k}x² pada selang [0, ${b}] adalah …`, a:String(v), hint:`(1/${b}) × ∫₀^${b} ${k}x² dx.`, ex:`(1/${b}) × ${k*b**3/3} = ${v}`}; }},
+  {name:'Rata-rata linear', gen(){ const m=rand(1,5), c=rand(0,10), a=rand(0,3), b=a+rand(2,5); const v=m*(a+b)/2+c; return {q:`Kecepatan sepeda v(t) = ${m}t + ${c} km/jam. Kecepatan rata-rata dari t = ${a} sampai t = ${b} jam adalah …`, a:String(v), unit:'km/jam', hint:'Untuk fungsi linear, rata-ratanya sama dengan nilai di titik tengah selang.', ex:`v(${(a+b)/2}) = ${v}`}; }},
+  {name:'Titik berat', gen(){ const p=rand(1,4), q=rand(1,3), L=pick([2,3]); const M=p*L+q*L*L/2, Mx=p*L*L/2+q*L**3/3, cm=Mx/M;
+    return {q:`Batang sepanjang ${L} m berkepadatan λ(x) = ${p} + ${q}x kg/m. Titik beratnya di x̄ = … m (2 desimal)`, a:v=>Math.abs(parseFloat(String(v).replace(',','.'))-cm)<0.006||(String(v).includes('/')&&VML.match(v,String(cm))), show:G.fmt(cm,2)+' m', hint:`M = ∫₀^${L} (${p} + ${q}x) dx, momen = ∫₀^${L} x(${p} + ${q}x) dx.`, ex:`M = ${G.fmt(M,2)}, momen = ${G.fmt(Mx,2)}, x̄ = ${G.fmt(cm,3)}`}; }},
+  {name:'Tak wajar', gen(){ const n=pick([2,3,4]), a=pick([1,2]); const v=1/((n-1)*a**(n-1)); return {q:`<span class="mth">∫ dari ${a} sampai ∞ 1/x<sup>${n}</sup> dx</span> = … (boleh pecahan)`, a:String(v), show:`1/${(n-1)*a**(n-1)}`, hint:`Antiturunan x<sup>−${n}</sup> adalah −x<sup>−${n-1}</sup>/${n-1}. Saat b → ∞ bagian b hilang.`, ex:`0 − (−1/(${n-1}·${a}<sup>${n-1}</sup>)) = 1/${(n-1)*a**(n-1)}`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Rumus nilai rata-rata fungsi f pada [a, b] adalah …', o:['(1/(b − a)) ∫ f(x) dx','∫ f(x) dx','(f(a) + f(b))/2','(b − a) ∫ f(x) dx'], a:0, ex:'Luas dibagi lebar selang.'},
+ {q:'Analogi nilai rata-rata fungsi yang paling tepat adalah …', o:['meratakan pasir bergelombang di nampan','mengukur panjang kurva','mencari titik tertinggi','menghitung kemiringan'], a:0, ex:'Luas tetap, bentuk menjadi rata.'},
+ {q:'Rata-rata f(x) = 2x pada [0, 4] adalah …', o:['4','8','16','2'], a:0, ex:'(1/4)·16 = 4.'},
+ {q:'Papan dengan kepadatan merata seimbang di …', o:['tengah-tengah','ujung kiri','ujung kanan','sepertiga panjang'], a:0, ex:'Simetris.'},
+ {q:'Jika ujung kanan papan lebih padat, titik beratnya bergeser ke …', o:['kanan','kiri','tengah','tidak berubah'], a:0, ex:'Mendekati bagian yang berat.'},
+ {q:'Rumus titik berat x̄ adalah …', o:['∫xλ dx / ∫λ dx','∫λ dx / ∫x dx','∫xλ dx','L/2'], a:0, ex:'Momen dibagi massa.'},
+ {q:'Integral tak wajar adalah integral yang …', o:['batasnya tak hingga atau fungsinya tak terdefinisi di suatu titik','hasilnya negatif','tidak punya antiturunan','batasnya sama'], a:0, ex:'Contoh ∫₁^∞.'},
+ {q:'∫₁^∞ 1/x² dx = …', o:['1','∞','0','2'], a:0, ex:'lim (1 − 1/b) = 1.'},
+ {q:'∫₁^∞ 1/x dx bernilai …', o:['tak hingga (divergen)','1','0','ln 2'], a:0, ex:'ln b → ∞.'},
+ {q:'Rata-rata f(x) = x² pada [0, 3] adalah …', input:true, a:['3'], ex:'(1/3)·9 = 3.'},
+ {q:'∫₀^∞ e<sup>−x</sup> dx = …', input:true, a:['1'], ex:'lim (1 − e<sup>−b</sup>) = 1.'},
+ {q:'Kecepatan v(t) = 2t + 1 dari t = 0 sampai 4. Kecepatan rata-ratanya …', input:true, a:['5'], ex:'(1/4)·∫(2t + 1)dt = (1/4)·20 = 5.'}
+],'kalkm8');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

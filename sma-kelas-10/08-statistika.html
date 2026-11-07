@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Statistika Data Tunggal · Matematika SMA Kelas X</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#1f9d55">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas X</a><div class="brand">√ Matematika SMA <small>· Kelas X</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 8 · Data <span class="lvl pemula">PEMULA</span></span>
+  <h1>Statistika Data Tunggal: Membaca Cerita di Balik Angka</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menghitung mean, median, dan modus serta memilih ukuran yang tepat.</li>
+    <li>Menentukan kuartil, jangkauan, dan diagram kotak-garis.</li>
+    <li>Menghitung ragam dan simpangan baku, serta rata-rata gabungan.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">⚫ Lab Diagram Titik</button><button data-target="gab">⚖️ Lab Pencilan &amp; Gabungan</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Gaji rata-rata yang menipu</span><p style="margin:.3em 0">Sebuah usaha kecil punya 9 karyawan bergaji Rp3 juta dan 1 pemilik bergaji Rp43 juta. “Gaji rata-rata di sini Rp7 juta!” kata iklannya. Benar secara hitungan, tetapi menyesatkan: 9 dari 10 orang hanya mendapat Rp3 juta. <b>Median</b> (Rp3 juta) jauh lebih jujur. Statistika mengajari kita memilih ukuran yang tepat.</p></div>
+  </div>
+  <div class="card"><h2>1. Ukuran pemusatan</h2>
+    <table class="t"><tr><th>Ukuran</th><th>Cara</th><th>Cocok untuk</th></tr>
+      <tr><td><b>Mean</b> (rata-rata)</td><td>x̄ = jumlah data / banyak data</td><td>data tanpa pencilan</td></tr>
+      <tr><td><b>Median</b></td><td>nilai tengah setelah data diurutkan</td><td>data dengan pencilan (gaji, harga rumah)</td></tr>
+      <tr><td><b>Modus</b></td><td>nilai yang paling sering muncul</td><td>data kategori (ukuran baju terlaris)</td></tr></table>
+    <div class="ex"><span class="t">Contoh</span>Data 4, 7, 7, 8, 9: mean = 35/5 = 7, median = 7, modus = 7. Jika banyak data genap, median = rata-rata dua data tengah.</div>
+  </div>
+  <div class="card"><h2>2. Ukuran letak dan penyebaran</h2>
+    <ul><li><b>Kuartil</b> membagi data terurut menjadi 4 bagian sama: Q₁, Q₂ (= median), Q₃. Q₁ adalah median separuh bawah, Q₃ median separuh atas.</li>
+      <li><b>Jangkauan</b> = data terbesar − terkecil. <b>Jangkauan antarkuartil</b> = Q₃ − Q₁.</li>
+      <li><b>Ragam</b> (varians) s² = rata-rata dari (xᵢ − x̄)². <b>Simpangan baku</b> s = √s².</li></ul>
+    <div class="note">Data dikatakan <b>pencilan</b> jika lebih kecil dari Q₁ − 1,5·(Q₃ − Q₁) atau lebih besar dari Q₃ + 1,5·(Q₃ − Q₁).</div>
+  </div>
+  <div class="card"><h2>3. Rata-rata gabungan</h2>
+    <p><span class="mth">x̄<sub>gab</sub> = (n₁x̄₁ + n₂x̄₂) / (n₁ + n₂)</span>. Rata-rata dua kelas <b>tidak</b> boleh dirata-rata begitu saja jika banyak siswanya berbeda.</p>
+    <div class="ex"><span class="t">Contoh</span>Kelas A: 30 siswa, rata-rata 80. Kelas B: 20 siswa, rata-rata 70. Gabungan = (2.400 + 1.400)/50 = 76, bukan 75.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Diagram Titik Interaktif</h2>
+    <p>Ketuk kolom nilai untuk <b>menambah</b> data. Segitiga ▲ adalah rata-rata (titik seimbang), garis hijau median. Di bawahnya diagram kotak-garis.</p>
+    <div class="row"><button class="btn" id="rnd">Data acak</button><button class="btn soft" id="undo">Hapus terakhir</button><button class="btn ghost" id="clr">Kosongkan</button></div>
+    <svg class="viz" id="g1" viewBox="0 0 640 360" style="cursor:pointer"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="gab" class="panel">
+  <div class="card"><h2>Lab: Pengaruh Pencilan</h2>
+    <p>Gaji 9 karyawan (juta rupiah) tetap. Geser gaji orang ke-10. Siapa yang lebih “tahan” terhadap pencilan: mean atau median?</p>
+    <div class="ctrl"><label>Gaji orang ke-10 (juta) <span class="v" id="w-v"></span><input type="range" id="w" min="2" max="60" value="43"></label></div>
+    <svg class="viz" id="g2" viewBox="0 0 640 170"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+  <div class="card"><h2>Lab: Rata-rata Gabungan</h2>
+    <div class="grid2"><div class="ctrl"><label>Banyak siswa kelas A <span class="v" id="n1-v"></span><input type="range" id="n1" min="5" max="40" value="30"></label><label>Rata-rata A <span class="v" id="m1-v"></span><input type="range" id="m1" min="50" max="100" value="80"></label></div>
+    <div class="ctrl"><label>Banyak siswa kelas B <span class="v" id="n2-v"></span><input type="range" id="n2" min="5" max="40" value="20"></label><label>Rata-rata B <span class="v" id="m2-v"></span><input type="range" id="m2" min="50" max="100" value="70"></label></div></div>
+    <svg class="viz" id="g3" viewBox="0 0 640 130"></svg>
+    <div class="out" id="o3"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas X · Modul 8</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const med=a=>{ const b=a.slice().sort((x,y)=>x-y), n=b.length; if(!n) return NaN; return n%2?b[(n-1)/2]:(b[n/2-1]+b[n/2])/2; };
+const quart=a=>{ const b=a.slice().sort((x,y)=>x-y), n=b.length; const lo=b.slice(0,Math.floor(n/2)), hi=b.slice(Math.ceil(n/2)); return [med(lo.length?lo:b),med(b),med(hi.length?hi:b)]; };
+const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+const modus=a=>{ const c={}; a.forEach(v=>c[v]=(c[v]||0)+1); const m=Math.max(...Object.values(c)); if(m===1) return 'tidak ada (semua muncul sekali)'; const ks=Object.keys(c).filter(k=>c[k]===m).map(Number).sort((x,y)=>x-y); return ks.length>3?'lebih dari 3 nilai':ks.join(' dan ')+` (muncul ${m}×)`; };
+let D=[6,7,7,8,5,9,7,8,6,10,4];
+const X=v=>60+(v-1)*58;
+function d1(){
+  const g=$('#g1'); clear(g); s('rect',{x:0,y:0,width:640,height:360,fill:'var(--card)'},g);
+  const base=230; for(let v=1;v<=10;v++){ s('rect',{x:X(v)-27,y:20,width:54,height:base-14,fill:'var(--acc)','fill-opacity':.04,rx:8,'data-v':v,class:'col'},g); }
+  s('line',{x1:30,y1:base,x2:610,y2:base,stroke:'var(--ink)','stroke-width':2},g);
+  for(let v=1;v<=10;v++) txt(g,X(v),base+20,String(v),{'font-weight':700,'font-size':13});
+  const cnt={}; D.forEach(v=>{ cnt[v]=(cnt[v]||0)+1; s('circle',{cx:X(v),cy:base-14-(cnt[v]-1)*20,r:8.5,fill:'var(--acc)'},g); });
+  if(D.length){
+    const m=mean(D), md=med(D), [q1,q2,q3]=quart(D), mn=Math.min(...D), mx=Math.max(...D);
+    s('polygon',{points:`${X(m)},${base+26} ${X(m)-10},${base+44} ${X(m)+10},${base+44}`,fill:'var(--b)'},g);
+    s('line',{x1:X(md),y1:24,x2:X(md),y2:base,stroke:'var(--ok)','stroke-width':2.5,'stroke-dasharray':'6 4'},g);
+    const by=300; s('line',{x1:X(mn),y1:by,x2:X(q1),y2:by,stroke:'var(--ink)','stroke-width':2},g); s('line',{x1:X(q3),y1:by,x2:X(mx),y2:by,stroke:'var(--ink)','stroke-width':2},g);
+    s('rect',{x:X(q1),y:by-18,width:Math.max(2,X(q3)-X(q1)),height:36,fill:'color-mix(in srgb,var(--acc) 25%,transparent)',stroke:'var(--ink)','stroke-width':2},g);
+    s('line',{x1:X(q2),y1:by-18,x2:X(q2),y2:by+18,stroke:'var(--ok)','stroke-width':3},g);
+    [mn,mx].forEach(v=>s('line',{x1:X(v),y1:by-10,x2:X(v),y2:by+10,stroke:'var(--ink)','stroke-width':2},g));
+    [['Q₁',q1],['Q₃',q3]].forEach(([l,v])=>txt(g,X(v),by+34,l,{'font-size':11,fill:'var(--muted)'}));
+    const v2=D.reduce((a,x)=>a+(x-m)**2,0)/D.length;
+    const srt=D.slice().sort((a,b)=>a-b);
+    $('#o1').innerHTML=`<p><b>Data terurut (n = ${D.length}):</b> ${srt.join(', ')}</p>
+     <table class="t"><tr><th>Mean ▲</th><td>${srt.reduce((a,b)=>a+b,0)} / ${D.length} = <b>${G.fmt(m,2)}</b></td><th>Median</th><td><b>${G.fmt(md,2)}</b></td></tr>
+     <tr><th>Modus</th><td>${modus(D)}</td><th>Jangkauan</th><td>${mx} − ${mn} = ${mx-mn}</td></tr>
+     <tr><th>Q₁ · Q₃</th><td>${G.fmt(q1,2)} · ${G.fmt(q3,2)}</td><th>Antarkuartil</th><td>${G.fmt(q3-q1,2)}</td></tr>
+     <tr><th>Ragam s²</th><td>${G.fmt(v2,3)}</td><th>Simpangan baku s</th><td>${G.fmt(Math.sqrt(v2),3)}</td></tr></table>
+     <p class="muted">Mean adalah titik seimbang: jika setiap titik adalah kelereng di atas papan, papan seimbang tepat di atas ▲.</p>`;
+  } else $('#o1').innerHTML='<p>Belum ada data. Ketuk kolom untuk menambah.</p>';
+}
+$('#g1').addEventListener('click',e=>{ const p=VML.svgPoint($('#g1'),e); const v=Math.round((p.x-60)/58)+1; if(v>=1&&v<=10&&p.y<240){ const c=D.filter(x=>x===v).length; if(c<10){ D.push(v); d1(); } } });
+$('#rnd').onclick=()=>{ const n=rand(8,15), c=rand(4,8); D=Array.from({length:n},()=>Math.max(1,Math.min(10,c+rand(-3,3)))); d1(); };
+$('#undo').onclick=()=>{ D.pop(); d1(); }; $('#clr').onclick=()=>{ D=[]; d1(); };
+d1();
+
+const W9=[3,3,3,3,3,3,3,3,3];
+function d2(){
+  const w=+$('#w').value; $('#w-v').textContent=w; const all=W9.concat([w]); const m=mean(all), md=med(all);
+  const g=$('#g2'); clear(g); s('rect',{x:0,y:0,width:640,height:170,fill:'var(--card)'},g);
+  const Xs=v=>40+(v/60)*570; s('line',{x1:30,y1:100,x2:620,y2:100,stroke:'var(--ink)','stroke-width':2},g);
+  for(let v=0;v<=60;v+=10){ s('line',{x1:Xs(v),y1:96,x2:Xs(v),y2:104,stroke:'var(--ink)'},g); txt(g,Xs(v),122,v+' jt',{'font-size':11,fill:'var(--muted)'}); }
+  W9.forEach((v,i)=>s('circle',{cx:Xs(v),cy:88-i*8,r:6,fill:'var(--acc)'},g)); s('circle',{cx:Xs(w),cy:88,r:8,fill:'var(--bad)'},g);
+  s('polygon',{points:`${Xs(m)},104 ${Xs(m)-9},122 ${Xs(m)+9},122`,fill:'var(--b)'},g); txt(g,Xs(m),142,'mean '+G.fmt(m,1),{'font-size':12,'font-weight':800,fill:'var(--b)'});
+  txt(g,Xs(md),20,'median '+G.fmt(md,1),{'font-size':12,'font-weight':800,fill:'var(--ok)','text-anchor':'start'});
+  $('#o2').innerHTML=`<p>Mean = ${G.fmt(m,2)} juta, median = ${G.fmt(md,2)} juta. ${w>10?'Satu nilai ekstrem menarik <b>mean</b> jauh ke kanan, sedangkan <b>median</b> tidak bergerak.':'Tanpa pencilan, mean dan median berdekatan.'}</p>`;
+}
+$('#w').oninput=d2; d2();
+function d3(){
+  const n1=+$('#n1').value,m1=+$('#m1').value,n2=+$('#n2').value,m2=+$('#m2').value; ['n1','m1','n2','m2'].forEach(k=>$('#'+k+'-v').textContent=$('#'+k).value);
+  const mg=(n1*m1+n2*m2)/(n1+n2);
+  const g=$('#g3'); clear(g); s('rect',{x:0,y:0,width:640,height:130,fill:'var(--card)'},g);
+  const Xs=v=>40+(v-50)/50*560; s('line',{x1:30,y1:80,x2:620,y2:80,stroke:'var(--ink)','stroke-width':4},g);
+  for(let v=50;v<=100;v+=10) txt(g,Xs(v),104,String(v),{'font-size':11,fill:'var(--muted)'});
+  s('rect',{x:Xs(m1)-n1/2,y:80-n1*1.4,width:n1,height:n1*1.4,fill:'var(--a)',rx:3},g); txt(g,Xs(m1),74-n1*1.4,'A',{'font-weight':800,'font-size':12});
+  s('rect',{x:Xs(m2)-n2/2,y:80-n2*1.4,width:n2,height:n2*1.4,fill:'var(--e)',rx:3},g); txt(g,Xs(m2),74-n2*1.4,'B',{'font-weight':800,'font-size':12});
+  s('polygon',{points:`${Xs(mg)},82 ${Xs(mg)-11},104 ${Xs(mg)+11},104`,fill:'var(--b)'},g);
+  $('#o3').innerHTML=`<div class="big">x̄ gabungan = (${n1}·${m1} + ${n2}·${m2}) / ${n1+n2} = <b>${G.fmt(mg,2)}</b></div><p class="muted">Rata-rata biasa (${m1} + ${m2})/2 = ${G.fmt((m1+m2)/2,1)} hanya benar jika banyak siswa kedua kelas sama. Titik seimbang ▲ lebih dekat ke kelas yang <b>lebih banyak</b> siswanya.</p>`;
+}
+['n1','m1','n2','m2'].forEach(k=>$('#'+k).oninput=d3); d3();
+
+const DS=()=>{ const n=rand(5,9); return Array.from({length:n},()=>rand(3,10)); };
+VML.practice($('#prac'),[
+ {name:'Mean', gen(){ let d; do{ d=DS(); }while(d.reduce((a,b)=>a+b,0)%d.length); const m=mean(d); return {q:`Rata-rata data ${d.join(', ')} adalah …`, a:String(m), hint:'Jumlahkan semua, bagi banyak data.', ex:`${d.reduce((a,b)=>a+b,0)} / ${d.length} = ${m}`}; }},
+ {name:'Median', gen(){ const d=DS(); const md=med(d); return {q:`Median data ${d.join(', ')} adalah …`, a:String(md), hint:'Urutkan dulu!', ex:`Terurut: ${d.slice().sort((a,b)=>a-b).join(', ')} → median ${VML.num(md)}`}; }},
+ {name:'Kuartil', gen(){ const n=pick([7,8,9,11]); const d=Array.from({length:n},()=>rand(40,95)); const [q1,,q3]=quart(d); const t=rand(0,1); return {q:`Data: ${d.join(', ')}. Nilai ${t?'Q₃':'Q₁'} = …`, a:String(t?q3:q1), hint:'Urutkan, bagi menjadi separuh bawah dan atas, lalu cari median tiap separuh.', ex:`Terurut: ${d.slice().sort((a,b)=>a-b).join(', ')} → Q₁ = ${VML.num(q1)}, Q₃ = ${VML.num(q3)}`}; }},
+ {name:'Ragam', gen(){ const m=rand(4,8); const dev=pick([[-2,0,2],[-1,1,-1,1],[-3,1,2],[-2,-1,1,2],[-1,0,1],[-4,0,4],[-3,-1,1,3]]); const d=dev.map(x=>x+m); const v=dev.reduce((a,x)=>a+x*x,0)/dev.length;
+   return {q:`Ragam (varians) data ${d.join(', ')} adalah …`, a:String(VML.round(v,6)), show:VML.fracTxt(dev.reduce((a,x)=>a+x*x,0),dev.length), hint:`Rata-ratanya ${m}. Hitung rata-rata kuadrat selisih.`, ex:`(${dev.map(x=>x*x).join(' + ')}) / ${dev.length} = ${VML.fracTxt(dev.reduce((a,x)=>a+x*x,0),dev.length)}`}; }},
+ {name:'Gabungan', gen(){ const n1=rand(2,8)*5, n2=rand(2,8)*5; let m1=rand(60,90), m2; do{ m2=rand(60,90); }while((n1*m1+n2*m2)%(n1+n2)); return {q:`Rata-rata ${n1} siswa putra ${m1}, rata-rata ${n2} siswa putri ${m2}. Rata-rata gabungan = …`, a:String((n1*m1+n2*m2)/(n1+n2)), hint:'(n₁x̄₁ + n₂x̄₂)/(n₁ + n₂)', ex:`(${n1*m1} + ${n2*m2}) / ${n1+n2} = ${(n1*m1+n2*m2)/(n1+n2)}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Rata-rata data 5, 7, 8, 6, 9 adalah …', o:['7','6','8','35'], a:0, ex:'35/5.'},
+ {q:'Median data 3, 9, 4, 7, 5, 8 adalah …', o:['6','5','7','4,5'], a:0, ex:'Terurut 3,4,5,7,8,9 → (5 + 7)/2.'},
+ {q:'Modus data 2, 4, 4, 5, 6, 6, 6, 7 adalah …', o:['6','4','5','5,5'], a:0, ex:'6 muncul 3 kali.'},
+ {q:'Ukuran yang paling tepat untuk “ukuran sepatu terlaris” adalah …', o:['modus','mean','median','jangkauan'], a:0, ex:'Paling sering muncul.'},
+ {q:'Untuk data harga rumah yang memuat beberapa rumah sangat mahal, ukuran pemusatan terbaik …', o:['median','mean','modus','ragam'], a:0, ex:'Median tahan pencilan.'},
+ {q:'Jangkauan data 12, 7, 20, 15, 9 adalah …', o:['13','8','20','5'], a:0, ex:'20 − 7.'},
+ {q:'Q₂ selalu sama dengan …', o:['median','mean','modus','Q₃ − Q₁'], a:0, ex:'Kuartil tengah.'},
+ {q:'Jika setiap data ditambah 5, maka simpangan bakunya …', o:['tetap','bertambah 5','dikali 5','menjadi 0'], a:0, ex:'Penyebaran tidak berubah.'},
+ {q:'Kelas A (20 siswa) rata-rata 70, kelas B (30 siswa) rata-rata 80. Rata-rata gabungan …', o:['76','75','74','78'], a:0, ex:'(1400 + 2400)/50.'},
+ {q:'Ragam data 2, 4, 6 adalah … (pecahan)', input:true, a:['8/3'], ex:'Mean 4, (4 + 0 + 4)/3 = 8/3.'},
+ {q:'Rata-rata 4 bilangan 15. Ditambah satu bilangan, rata-ratanya 16. Bilangan itu …', input:true, a:['20'], ex:'80 − 60 = 20.'},
+ {q:'Q₁ data 1, 3, 4, 6, 8, 9, 11, 12 adalah …', input:true, a:['3.5','3,5','7/2'], show:'3,5', ex:'Separuh bawah 1,3,4,6 → (3 + 4)/2.'}
+],'x8');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

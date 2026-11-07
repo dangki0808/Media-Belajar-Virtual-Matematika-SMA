@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMA Kelas X · Virtual Math Lab SMA</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .home-hero{padding:44px 0 14px;display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;color:var(--onbg)}
+  .home-hero .chip{background:rgba(255,255,255,.14);color:#ffc2ae}
+  .home-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.1rem,6vw,3.5rem);letter-spacing:-.5px;margin:.25em 0}
+  .home-hero h1 em{font-style:normal;background:linear-gradient(90deg,#ffc2ae,#f2795c 55%,#7fe0d8);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .home-hero p.lead{font-size:1.1rem;color:var(--onbg-soft);max-width:600px}
+  .stat{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px}
+  .stat div{font-size:.9rem;color:var(--onbg-soft)} .stat b{display:block;font-size:1.7rem;color:#fff}
+  .board{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:26px;padding:12px;backdrop-filter:blur(6px)}
+  .prog{height:6px;background:var(--line);border-radius:9px;margin-top:8px;overflow:hidden}.prog i{display:block;height:100%}
+  .route{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .route div{border-radius:16px;padding:14px;border:1px solid var(--line);background:var(--card)}
+  .route b{display:block;font-size:1.05rem;margin-bottom:4px}
+  .life{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+  .life div{border:1px solid var(--line);border-radius:14px;padding:12px;background:color-mix(in srgb,var(--acc) 5%,var(--card))}
+  .life span{font-size:1.6rem;display:block}
+  .mod .ic{box-shadow:0 6px 14px rgba(0,0,0,.2)}
+  @media (max-width:760px){.home-hero{grid-template-columns:1fr}.board{display:none}.route{grid-template-columns:1fr}}
+</style>
+</head>
+<body style="--acc:#0e8a8f">
+<header class="top"><div class="wrap"><a class="back" href="../index.html">← Beranda SMA</a><div class="brand">√ Matematika SMA <small>· Kelas X · Samudra Senja</small></div></div></header>
+<div class="wrap">
+<section class="home-hero">
+  <div>
+    <span class="chip">Fase E · Kurikulum Merdeka · 8 modul</span>
+    <h1>Matematika Kelas X: <em>dari pangkat sampai peluang data.</em></h1>
+    <p class="lead">Pangkat dan logaritma untuk pertumbuhan, barisan untuk tabungan, sistem persamaan untuk belanja, parabola untuk lemparan bola, trigonometri untuk mengukur menara, dan statistika untuk membaca data. Setiap topik dimulai dari cerita sehari-hari, lalu dibuktikan sendiri lewat lab yang bisa digeser.</p>
+    <div class="stat"><div><b>8</b>modul</div><div><b>16</b>lab interaktif</div><div><b>96</b>soal kuis</div><div><b id="avg">–</b>rata-rata nilaimu</div></div>
+  </div>
+  <div class="board"><svg viewBox="0 0 360 280" width="100%" aria-hidden="true"><rect width="360" height="280" rx="18" fill="rgba(255,255,255,.04)"/><line x1="30" y1="240" x2="340" y2="240" stroke="#fff" stroke-opacity=".6" stroke-width="2"/><line x1="40" y1="250" x2="40" y2="20" stroke="#fff" stroke-opacity=".6" stroke-width="2"/><path d="M40,236 C120,232 180,215 230,170 S300,60 330,20" fill="none" stroke="#f2795c" stroke-width="4"/><path d="M60,60 C120,250 220,250 290,60" fill="none" stroke="#7fe0d8" stroke-width="4" stroke-dasharray="8 6"/><text x="60" y="52" font-family="Georgia,serif" font-size="44" font-style="italic" fill="#fff" fill-opacity=".9">aˣ</text><text x="190" y="120" font-family="Georgia,serif" font-size="30" font-style="italic" fill="#fff" fill-opacity=".8">√ log</text><text x="180" y="268" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" fill-opacity=".8">tumbuh · lengkung · ukur · data</text></svg></div>
+</section>
+<div class="card"><h2>Peta belajar</h2><p>Modul bisa dipelajari berurutan. Modul 1–2 adalah dasar bilangan berpangkat, Modul 3–6 aljabar dan fungsi, Modul 7–8 geometri dan data.</p><div class="route"><div style="border-left:5px solid #0e8a8f"><b>🔢 Bilangan</b>Eksponen, bentuk akar, logaritma, dan barisan-deret: bahasa pertumbuhan.</div><div style="border-left:5px solid #f2795c"><b>📐 Aljabar & Fungsi</b>SPLDV/SPLTV, fungsi kuadrat, dan pertidaksamaan.</div><div style="border-left:5px solid #7a4fd6"><b>📏 Geometri & Data</b>Trigonometri segitiga siku-siku dan statistika data tunggal.</div></div></div>
+<h2 class="onbg">Modul Kelas X</h2>
+<div class="mods" id="mods"></div>
+<div class="card"><h2>Matematika Kelas X di sekitar kita</h2><div class="life"><div><span>🦠</span><b>Kesehatan</b><br>Pertumbuhan bakteri dan peluruhan obat (eksponen)</div><div><span>🌋</span><b>Gempa</b><br>Skala Richter adalah logaritma</div><div><span>🏦</span><b>Tabungan</b><br>Bunga majemuk = barisan geometri</div><div><span>🛒</span><b>Belanja</b><br>Harga satuan dari beberapa nota (SPL)</div><div><span>🏀</span><b>Olahraga</b><br>Lintasan bola berbentuk parabola</div><div><span>🚚</span><b>Logistik</b><br>Batas muatan dan toleransi (pertidaksamaan)</div><div><span>🕌</span><b>Bangunan</b><br>Tinggi menara dengan sudut elevasi</div><div><span>📊</span><b>Rapor</b><br>Rata-rata, median, dan simpangan nilai</div></div></div>
+<div class="card"><h2>Kamus kecil</h2><div class="glos"><div><b>Eksponen</b>Pangkat; perkalian berulang.</div><div><b>Logaritma</b>Kebalikan pangkat: mencari pangkatnya.</div><div><b>Beda & rasio</b>Selisih tetap (aritmetika) atau pengali tetap (geometri).</div><div><b>Eliminasi</b>Menghilangkan satu variabel dengan menjumlah/mengurangkan persamaan.</div><div><b>Diskriminan</b>D = b² − 4ac; menentukan banyak akar.</div><div><b>Interval</b>Rentang nilai, misalnya [2, 5).</div><div><b>Sudut elevasi</b>Sudut pandang ke atas dari garis mendatar.</div><div><b>Simpangan baku</b>Ukuran seberapa menyebar data dari rata-ratanya.</div></div></div>
+<div class="card"><h2>Cara memakai</h2>
+  <p>Setiap modul berisi <b>📖 Cerita &amp; Materi</b>, dua <b>🧪 Lab</b> interaktif, <b>✏️ Latihan</b> dengan soal acak tak terbatas (dua kali kesempatan menjawab, ada petunjuk), dan <b>🏆 Kuis</b> 12 soal dengan pembahasan. Ukur kesiapan ujian di menu <b>📝 Tryout</b> dan buka <b>📘 Rumus</b> untuk ringkasan.</p>
+  <p class="muted">Semua berkas berjalan tanpa internet. Nilai tersimpan di perangkat masing-masing pengguna.</p>
+  <div class="row"><button class="btn ghost" id="reset">Hapus nilai Kelas X di perangkat ini</button></div>
+</div>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · SMA Kelas X · Kurikulum Merdeka</div></footer>
+<script src="assets/core.js"></script>
+<script>
+const M=[["01-eksponen-akar.html", "Eksponen & Bentuk Akar", "Bakteri membelah, tabungan majemuk, dan penyederhana akar.", "aˣ", "#0e8a8f", "x1", "Pemula"], ["02-logaritma.html", "Logaritma", "Pangkat berapa? Cermin eksponen, skala gempa, pH, desibel.", "log", "#2b6fd6", "x2", "Menengah"], ["03-barisan-deret.html", "Barisan & Deret", "Tabungan bertambah tetap vs berlipat, bola memantul.", "∑", "#13987a", "x3", "Pemula"], ["04-sistem-persamaan.html", "SPLDV & SPLTV", "Dua garis berpotongan dan belanja tiga barang.", "⨯", "#c2417f", "x4", "Menengah"], ["05-fungsi-kuadrat.html", "Fungsi Kuadrat", "Parabola hidup, titik puncak, dan kebun terluas.", "x²", "#7a4fd6", "x5", "Menengah"], ["06-pertidaksamaan.html", "Pertidaksamaan", "Garis bilangan tanda, rasional, dan nilai mutlak.", "≤", "#d97706", "x6", "Menengah"], ["07-trigonometri.html", "Trigonometri", "Mengukur menara, segitiga ajaib, lingkaran satuan.", "θ", "#0f7fb8", "x7", "Menengah"], ["08-statistika.html", "Statistika Data Tunggal", "Diagram titik, kotak-garis, pencilan, rata-rata gabungan.", "x̄", "#1f9d55", "x8", "Pemula"]];
+const C2='#0e8a8f', C3='#f2795c';
+function card([f,t,d,ic,c,k,l],i){ const b=VML.store.get(k); if(b!=null){window._s+=b;window._c++;}
+    return `<a class="mod" href="${f}"><div class="ic" style="background:linear-gradient(135deg,${c},${i%2?C2:C3})">${ic}</div><span class="muted" style="font-size:.8rem;font-weight:700">MODUL ${i+1} · ${l.toUpperCase()}</span><h3>${t}</h3><p>${d}</p>
+      <div class="best" style="color:${c}">${b!=null?'Nilai kuis terbaik: '+b:'Belum mengerjakan kuis'}</div><div class="prog"><i style="width:${b||0}%;background:linear-gradient(90deg,${C2},${C3})"></i></div></a>`; }
+function render(){ window._s=0; window._c=0; document.getElementById('mods').innerHTML=M.map((m,i)=>card(m,i)).join('');
+  document.getElementById('avg').textContent = window._c ? Math.round(window._s/window._c) : '–'; }
+render();
+document.getElementById('reset').onclick=()=>{ if(confirm('Hapus semua nilai kuis Kelas X yang tersimpan di perangkat ini?')){ M.forEach(m=>{ try{localStorage.removeItem('sma10:'+m[5]);}catch(e){} }); render(); } };
+window.addEventListener('pageshow',render);
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Integral dalam Kehidupan · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#13987a">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian B · Modul B7 · Penerapan <span class="lvl pemula">UNTUK SEMUA</span></span>
+  <h1>Integral dalam Kehidupan: Air, Usaha, Uang, dan Kesehatan</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Mengenali pola "<b>dari laju ke total</b>" di berbagai bidang: rumah tangga, usaha, pertanian, kesehatan.</li>
+    <li>Menghitung surplus konsumen dan produsen di pasar (ekonomi).</li>
+    <li>Memahami penerapan integral di fisika (usaha), farmasi (kadar obat), dan kependudukan.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📊 Lab Dari Laju ke Total</button><button data-target="pasar">🛒 Lab Surplus Pasar</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Satu ide, banyak penerapan</h2>
+    <div class="story"><span class="t">Rumus inti</span><p style="margin:.3em 0;font-size:1.15rem"><b>TOTAL</b> = ∫ <b>LAJU</b> d(waktu atau jarak)</p><p style="margin:.3em 0">Apa pun bidangmu, jika kamu punya data "berapa banyak per jam / per hari / per meter" dan ingin tahu "berapa banyak semuanya", kamu sedang memakai integral, meskipun dengan kalkulator atau spreadsheet.</p></div>
+  </div>
+  <div class="card"><h2>1. Rumah tangga &amp; lingkungan</h2>
+    <table class="t"><tr><th>Laju</th><th>Total</th><th>Contoh</th></tr>
+      <tr><td>Debit air (L/menit)</td><td>Pemakaian air (L), tagihan PDAM</td><td>Mandi 10 menit dengan shower 9 L/menit = 90 L</td></tr>
+      <tr><td>Daya listrik (watt)</td><td>Energi (kWh), tagihan listrik</td><td>Kipas 50 W selama 8 jam = 0,4 kWh</td></tr>
+      <tr><td>Curah hujan (mm/jam)</td><td>Total hujan (mm), risiko banjir</td><td>BMKG menjumlahkan data curah hujan per jam</td></tr></table>
+  </div>
+  <div class="card"><h2>2. Usaha &amp; ekonomi</h2>
+    <ul><li><b>Pendapatan total</b> = ∫ laju penjualan × harga.</li><li><b>Biaya total</b> = biaya tetap + ∫ biaya marginal dq. Biaya marginal adalah biaya untuk membuat satu unit tambahan.</li>
+      <li><b>Surplus konsumen</b>: "untung" pembeli karena harga pasar lebih murah dari yang sanggup mereka bayar. Rumusnya <span class="mth" id="sk"></span>.</li>
+      <li><b>Surplus produsen</b>: "untung" penjual karena harga pasar lebih tinggi dari harga minimum yang mau mereka terima.</li></ul>
+    <div class="ex"><span class="t">Contoh UMKM</span>Biaya marginal membuat kue lapis C′(q) = 4.000 − 20q rupiah per loyang (makin banyak, makin hemat), biaya tetap Rp100.000. Biaya membuat 50 loyang: 100.000 + ∫₀⁵⁰ (4.000 − 20q) dq = 100.000 + 200.000 − 25.000 = <b>Rp275.000</b>.</div>
+  </div>
+  <div class="card"><h2>3. Fisika: usaha (kerja)</h2>
+    <p>Jika gaya berubah sepanjang jalan, usaha = <span class="mth" id="w"></span>. Contoh: menarik pegas. Gaya pegas F = kx makin besar saat makin teregang, jadi usaha = ∫₀ˣ kx dx = ½kx².</p>
+    <div class="ex"><span class="t">Contoh</span>Pegas k = 200 N/m ditarik 0,1 m: usaha = ½ · 200 · 0,1² = <b>1 joule</b>.</div>
+  </div>
+  <div class="card"><h2>4. Kesehatan &amp; farmasi</h2>
+    <p>Setelah minum obat, kadarnya dalam darah naik lalu turun. Dokter dan apoteker memakai <b>AUC</b> (<i>Area Under the Curve</i>), yaitu luas di bawah grafik kadar obat terhadap waktu, untuk mengukur berapa banyak obat yang benar-benar diserap tubuh. AUC adalah integral!</p>
+  </div>
+  <div class="card"><h2>5. Pertanian &amp; kependudukan</h2>
+    <p>Pertambahan tinggi tanaman per minggu → tinggi total. Laju kelahiran dikurangi laju kematian → pertambahan penduduk. Laju panen per hari → total hasil panen musim ini.</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Dari Laju ke Total</h2>
+    <p>Pilih skenario. Grafik kiri adalah <b>laju</b>, kanan adalah <b>total</b> yang terkumpul. Geser waktunya.</p>
+    <div class="row" id="ssel"></div>
+    <div class="ctrl"><label>Waktu <span class="v" id="t-v"></span><input type="range" id="t" min="0" max="1" step="0.005" value="0.6"></label></div>
+    <div class="grid2"><svg class="viz" id="g1" viewBox="0 0 640 300"></svg><svg class="viz" id="g2" viewBox="0 0 640 300"></svg></div>
+    <div class="out" id="sOut"></div>
+  </div>
+</section>
+
+<section id="pasar" class="panel">
+  <div class="card"><h2>Lab: Surplus di Pasar Cabai</h2>
+    <p>Kurva <b>permintaan</b> (biru) turun karena makin murah makin banyak dibeli. Kurva <b>penawaran</b> (merah) naik karena makin mahal makin banyak dijual. Geser parameternya dan lihat luas surplus.</p>
+    <div class="ctrl"><label>Harga tertinggi yang mau dibayar pembeli (ribu Rp/kg) <span class="v" id="a-v"></span><input type="range" id="a" min="60" max="120" step="5" value="100"></label>
+      <label>Kepekaan pembeli <span class="v" id="b-v"></span><input type="range" id="b" min="0.5" max="3" step="0.1" value="1.5"></label>
+      <label>Harga minimum penjual (ribu Rp/kg) <span class="v" id="c-v"></span><input type="range" id="c" min="5" max="40" step="1" value="20"></label>
+      <label>Kepekaan penjual <span class="v" id="d-v"></span><input type="range" id="d" min="0.3" max="2" step="0.1" value="1"></label></div>
+    <svg class="viz" id="mk" viewBox="0 0 640 380"></svg>
+    <div class="out" id="mOut"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul B7</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+$('#sk').innerHTML=`SK = ${G.int('0','<i>q</i>*')} [<i>D</i>(<i>q</i>) − <i>p</i>*] <i>dq</i>`; $('#w').innerHTML=`W = ${G.int('<i>a</i>','<i>b</i>')} <i>F</i>(<i>x</i>) <i>dx</i>`;
+/* SKENARIO */
+const SC={
+ '🚿 Air PDAM':{T:24,tu:'jam',r:t=>{ const p=(c,w,h)=>h*Math.exp(-((t-c)**2)/(2*w*w)); return 2+p(6,1,55)+p(12,1.5,25)+p(18.5,1.2,45); },ru:'liter/jam',tu2:'liter',note:(tot)=>`Tagihan ≈ ${G.fmt(tot/1000,2)} m³ × Rp6.000 = <b>Rp${Math.round(tot/1000*6000).toLocaleString('id-ID')}</b> per hari. Puncak pemakaian pada pagi dan sore hari (mandi, mencuci).`,story:'Debit air yang masuk ke rumah sepanjang hari.'},
+ '🥥 Es kelapa muda':{T:12,tu:'jam (sejak 07.00)',r:t=>Math.max(0,30*Math.sin(Math.PI*t/12)+8*Math.sin(Math.PI*t/3)**2),ru:'gelas/jam',tu2:'gelas',note:(tot)=>`Pendapatan ≈ ${Math.round(tot)} × Rp8.000 = <b>Rp${(Math.round(tot)*8000).toLocaleString('id-ID')}</b>. Ramai saat siang yang terik.`,story:'Laju penjualan warung es kelapa di pantai.'},
+ '🌧️ Curah hujan':{T:24,tu:'jam',r:t=>Math.max(0,12*Math.exp(-((t-15)**2)/6)+4*Math.exp(-((t-20)**2)/3)),ru:'mm/jam',tu2:'mm',note:(tot)=>`${tot>50?'Hujan lebat (lebih dari 50 mm/hari): waspada genangan.':tot>20?'Hujan sedang.':'Hujan ringan.'} BMKG mengategorikan hujan harian berdasarkan total ini.`,story:'Intensitas hujan dalam sehari.'},
+ '💊 Kadar obat (AUC)':{T:12,tu:'jam setelah minum',r:t=>10*(Math.exp(-0.35*t)-Math.exp(-1.6*t)),ru:'mg/L',tu2:'mg·jam/L',note:(tot)=>`AUC menunjukkan paparan total obat. Puncak kadar sekitar jam ke-1,2. Obat diminum lagi saat kadarnya sudah turun.`,story:'Kadar obat dalam darah setelah satu kali minum.'},
+ '🌱 Pertumbuhan padi':{T:16,tu:'minggu',r:t=>9*Math.exp(-((t-6)**2)/12),ru:'cm/minggu',tu2:'cm',note:(tot)=>`Tinggi padi bertambah sekitar ${G.fmt(tot,0)} cm (ditambah tinggi bibit awal). Pertumbuhan paling cepat pada fase anakan, lalu melambat menjelang panen.`,story:'Laju pertambahan tinggi tanaman padi.'}};
+let sk='🚿 Air PDAM';
+$('#ssel').innerHTML=Object.keys(SC).map(k=>`<button class="chipbtn ${k===sk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#ssel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#ssel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); sk=b.dataset.k; drawS(); });
+function drawS(){
+  const S=SC[sk], u=+$('#t').value, t=S.T*u; $('#t-v').textContent=G.fmt(t,1)+' '+S.tu;
+  let rmax=0; for(let x=0;x<=S.T;x+=S.T/300) rmax=Math.max(rmax,S.r(x));
+  let g=$('#g1'); clear(g); let A=G.axes(g,{x0:0,x1:S.T,y0:0,y1:rmax*1.15,W:640,H:300,lx:S.tu.split(' ')[0],ly:S.ru});
+  s('path',{d:G.region(S.r,0,t,A,()=>0,300),fill:'#13987a','fill-opacity':.35},g); s('path',{d:G.curve(S.r,0,S.T,A,400),fill:'none',stroke:'#13987a','stroke-width':3},g);
+  s('line',{x1:A.X(t),y1:A.Y(0),x2:A.X(t),y2:A.Y(rmax*1.15),stroke:'#e8890b','stroke-dasharray':'5 4','stroke-width':2},g);
+  const Tf=x=>G.simpson(S.r,0,x,200), tot=Tf(S.T), cur=Tf(t);
+  g=$('#g2'); clear(g); A=G.axes(g,{x0:0,x1:S.T,y0:0,y1:tot*1.12,W:640,H:300,lx:S.tu.split(' ')[0],ly:'total ('+S.tu2+')'});
+  const pts=[]; for(let k=0;k<=120;k++){ const x=S.T*k/120; pts.push([x,Tf(x)]); } const TF=x=>{ const i=Math.min(119,Math.floor(x/S.T*120)), w=x/S.T*120-i; return pts[i][1]*(1-w)+pts[i+1][1]*w; };
+  s('path',{d:G.curve(TF,0,S.T,A,240),fill:'none',stroke:'var(--muted)','stroke-dasharray':'4 4','stroke-width':2},g);
+  s('path',{d:G.curve(TF,0,t,A,240),fill:'none',stroke:'#2d6ae0','stroke-width':4},g); s('circle',{cx:A.X(t),cy:A.Y(cur),r:7,fill:'#e8890b'},g);
+  $('#sOut').innerHTML=`<p class="muted">${S.story}</p><div class="grid2"><div><p class="muted">Laju saat ini</p><p class="big2">${G.fmt(S.r(t),1)} ${S.ru}</p></div><div><p class="muted">Total terkumpul sampai saat ini</p><p class="big2">${G.fmt(cur,1)} ${S.tu2}</p></div></div>
+   <p>Total sepanjang periode: <b>${G.fmt(tot,1)} ${S.tu2}</b> = luas hijau penuh di grafik kiri.</p><p>${S.note(tot)}</p>`;
+}
+$('#t').oninput=drawS; drawS();
+
+/* PASAR */
+function drawM(){
+  const a=+$('#a').value, b=+$('#b').value, c=+$('#c').value, d=+$('#d').value; ['a','b','c','d'].forEach(k=>$('#'+k+'-v').textContent=G.fmt(+$('#'+k).value,1));
+  const D=q=>a-b*q, S=q=>c+d*q, qe=(a-c)/(b+d), pe=D(qe), qmax=Math.min(a/b,80);
+  const g=$('#mk'); clear(g); const A=G.axes(g,{x0:0,x1:Math.max(qmax,qe*1.6),y0:0,y1:a*1.1,W:640,H:380,lx:'jumlah (ton)',ly:'harga (ribu Rp/kg)'});
+  s('path',{d:G.region(D,0,qe,A,()=>pe),fill:'#2d6ae0','fill-opacity':.3},g); s('path',{d:G.region(()=>pe,0,qe,A,S),fill:'#d1453b','fill-opacity':.3},g);
+  s('path',{d:G.curve(D,0,qmax,A),fill:'none',stroke:'#2d6ae0','stroke-width':3.5},g); s('path',{d:G.curve(S,0,Math.max(qmax,qe*1.6),A),fill:'none',stroke:'#d1453b','stroke-width':3.5},g);
+  s('line',{x1:A.X(0),y1:A.Y(pe),x2:A.X(qe),y2:A.Y(pe),stroke:'var(--ink)','stroke-dasharray':'5 4'},g); s('line',{x1:A.X(qe),y1:A.Y(0),x2:A.X(qe),y2:A.Y(pe),stroke:'var(--ink)','stroke-dasharray':'5 4'},g);
+  s('circle',{cx:A.X(qe),cy:A.Y(pe),r:7,fill:'#18213d'},g); txt(g,A.X(qe)+10,A.Y(pe)-10,'keseimbangan',{'text-anchor':'start','font-size':13,'font-weight':800,fill:'var(--ink)'});
+  txt(g,A.X(qe*.3),A.Y((a+pe)/2)+16,'surplus konsumen',{'font-size':12,'font-weight':800,fill:'#2d6ae0'}); txt(g,A.X(qe*.3),A.Y((pe+c)/2)+16,'surplus produsen',{'font-size':12,'font-weight':800,fill:'#d1453b'});
+  const SKv=G.simpson(q=>D(q)-pe,0,qe), SPv=G.simpson(q=>pe-S(q),0,qe);
+  $('#mOut').innerHTML=`<p>Keseimbangan pasar: D(q) = S(q) → ${a} − ${G.fmt(b,1)}q = ${c} + ${G.fmt(d,1)}q → <b>q* = ${G.fmt(qe,2)} ton</b>, <b>p* = Rp${G.fmt(pe,1)} ribu/kg</b>.</p>
+   <div class="grid2"><div class="ex"><span class="t">Surplus konsumen (biru)</span>∫₀^q* (D(q) − p*) dq = <b>${G.fmt(SKv,1)}</b> juta rupiah<br><span class="muted">Penghematan pembeli yang sebenarnya sanggup membayar lebih mahal.</span></div>
+   <div class="ex"><span class="t">Surplus produsen (merah)</span>∫₀^q* (p* − S(q)) dq = <b>${G.fmt(SPv,1)}</b> juta rupiah<br><span class="muted">Keuntungan tambahan penjual yang sebenarnya mau menjual lebih murah.</span></div></div>
+   <p class="muted">(Satuan: ton × ribu Rp/kg = juta rupiah.) Ekonom memakai luas ini untuk menilai dampak kebijakan seperti subsidi pupuk atau operasi pasar cabai.</p>`;
+}
+['#a','#b','#c','#d'].forEach(z=>$(z).oninput=drawM); drawM();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Air', gen(){ const d=pick([6,8,9,10,12]), m=pick([5,8,10,15]); return {q:`Shower mengalirkan ${d} liter/menit. Berapa liter air terpakai jika mandi ${m} menit?`, a:String(d*m), unit:'liter', hint:'Laju tetap × waktu.', ex:`${d} × ${m} = ${d*m} liter.`}; }},
+  {name:'Biaya UMKM', gen(){ const a=pick([3000,4000,5000]), b=pick([10,20,40]), q=pick([20,30,50]), F=pick([50000,100000]); const v=F+a*q-b*q*q/2;
+    return {q:`Biaya marginal C′(q) = ${a.toLocaleString('id-ID')} − ${b}q rupiah, biaya tetap Rp${F.toLocaleString('id-ID')}. Biaya total untuk ${q} unit?`, a:String(v), unit:'rupiah', hint:`Biaya tetap + ∫₀^${q} (${a} − ${b}q) dq.`, ex:`${F} + ${a}·${q} − ${b/2}·${q}² = ${v.toLocaleString('id-ID')}`}; }},
+  {name:'Pegas', gen(){ const k=pick([100,200,400,500]), x=pick([0.1,0.2,0.3]); const v=k*x*x/2; return {q:`Pegas dengan k = ${k} N/m ditarik sejauh ${G.fmt(x)} m dari posisi diam. Berapa usaha yang dibutuhkan?`, a:String(+v.toFixed(4)), unit:'joule', hint:'W = ∫₀ˣ kx dx = ½kx².', ex:`½ · ${k} · ${G.fmt(x)}² = ${G.fmt(v,3)} J`}; }},
+  {name:'Surplus', gen(){ const a=pick([40,60,80]), b=2, pe=pick([20,30].filter(p=>p<a)); const qe=(a-pe)/b; const v=(a-pe)*qe/2;
+    return {q:`Fungsi permintaan p = ${a} − ${b}q. Harga pasar p* = ${pe}. Berapa surplus konsumen?`, a:String(v), hint:`q* = (${a} − ${pe})/${b} = ${qe}. Luas segitiga ½ × q* × (${a} − ${pe}).`, ex:`½ × ${qe} × ${a-pe} = ${v}`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Pola umum penerapan integral adalah …', o:['dari laju ke total','dari total ke laju','dari luas ke keliling','dari pecahan ke desimal'], a:0, ex:'Total = ∫ laju.'},
+ {q:'Data daya listrik (watt) sepanjang hari diintegralkan menjadi …', o:['energi (kWh)','tegangan (volt)','arus (ampere)','frekuensi'], a:0, ex:'Energi = ∫ daya dt.'},
+ {q:'Kipas 50 watt menyala 10 jam memakai energi …', o:['0,5 kWh','5 kWh','50 kWh','500 kWh'], a:0, ex:'50 × 10 = 500 Wh = 0,5 kWh.'},
+ {q:'Biaya marginal adalah …', o:['biaya untuk membuat satu unit tambahan','biaya tetap','total biaya','harga jual'], a:0, ex:'Turunan biaya total.'},
+ {q:'Surplus konsumen digambarkan sebagai luas di antara …', o:['kurva permintaan dan garis harga pasar','kurva penawaran dan sumbu-x','dua sumbu','garis harga dan sumbu-x'], a:0, ex:'D(q) − p*.'},
+ {q:'Di farmasi, AUC adalah singkatan dari …', o:['Area Under the Curve','Average Usage Count','Absorbsi Utama Cepat','Analisis Uji Coba'], a:0, ex:'Luas di bawah kurva kadar obat.'},
+ {q:'Usaha untuk menarik pegas F = kx sejauh x adalah …', o:['½kx²','kx','kx²','2kx'], a:0, ex:'∫ kx dx.'},
+ {q:'Laju kelahiran dikurangi laju kematian, lalu diintegralkan, menghasilkan …', o:['pertambahan jumlah penduduk','umur rata-rata','kepadatan per km²','angka harapan hidup'], a:0, ex:'Dari laju ke total.'},
+ {q:'Curah hujan 10 mm/jam selama 3 jam menghasilkan total hujan …', o:['30 mm','13 mm','3,3 mm','300 mm'], a:0, ex:'10 × 3.'},
+ {q:'Penjualan martabak 12 porsi/jam selama 5 jam, harga Rp20.000/porsi. Pendapatannya … rupiah.', input:true, a:['1200000','1.200.000'], ex:'60 porsi × 20.000.'},
+ {q:'Pegas k = 100 N/m ditarik 0,2 m. Usahanya … joule.', input:true, a:['2'], ex:'½·100·0,04 = 2.'},
+ {q:'Permintaan p = 50 − q, harga pasar 30. Surplus konsumen = …', input:true, a:['200'], ex:'q* = 20, ½·20·20 = 200.'}
+],'kalkm7');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

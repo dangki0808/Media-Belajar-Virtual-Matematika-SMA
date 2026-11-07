@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teknik Integrasi: Substitusi & Parsial · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#c2417f">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian B · Modul B4 · Teknik Integrasi <span class="lvl lanjut">LANJUT</span></span>
+  <h1>Teknik Integrasi: Substitusi &amp; Parsial</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Memakai <b>substitusi</b> untuk menyederhanakan integral dengan "mengganti nama" bagian yang rumit.</li>
+    <li>Memakai <b>integral parsial</b> untuk perkalian dua fungsi, termasuk dengan cara tabel.</li>
+    <li>Memilih teknik yang cocok dan mengecek jawaban dengan turunan.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🔄 Lab Langkah Substitusi</button><button data-target="parsial">🧮 Lab Tabel Parsial</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mengapa butuh teknik?</h2>
+    <div class="story"><span class="t">Analogi</span><p style="margin:.3em 0">Aturan pangkat seperti kunci yang cocok untuk pintu sederhana. Untuk pintu yang lebih rumit kita butuh trik. <b>Substitusi</b> seperti memberi nama panggilan: "Muhammad Raka Pratama" cukup dipanggil "Raka" supaya urusan jadi singkat. <b>Parsial</b> seperti bertukar tugas dalam kerja kelompok: bagian yang sulit dikerjakan lebih dulu oleh yang ahli, sehingga sisanya mudah.</p></div>
+  </div>
+  <div class="card"><h2>1. Substitusi (ganti nama)</h2>
+    <p>Cari bagian di dalam integral yang <b>turunannya juga muncul</b> di integral itu. Beri nama <b>u</b>.</p>
+    <ol><li>Pilih <span class="mth"><i>u</i></span> (biasanya bagian "di dalam" kurung atau pangkat).</li><li>Hitung <span class="mth"><i>du</i> = <i>u</i>′ <i>dx</i></span>.</li><li>Ganti semua menjadi u, lalu integralkan.</li><li>Kembalikan u ke bentuk x.</li></ol>
+    <div class="ex"><span class="t">Contoh</span><span class="mth">∫ 2<i>x</i>(<i>x</i>² + 1)⁵ <i>dx</i></span><br>Misal u = x² + 1 → du = 2x dx.<br>Integral menjadi <span class="mth">∫ <i>u</i>⁵ <i>du</i> = <i>u</i>⁶/6 + C</span> = <b>(x² + 1)⁶/6 + C</b>.</div>
+    <div class="note">Substitusi adalah kebalikan dari <b>aturan rantai</b> pada turunan.</div>
+  </div>
+  <div class="card"><h2>2. Integral parsial (tukar peran)</h2>
+    <div class="def" style="text-align:center;font-size:1.2rem"><span class="mth">∫ <i>u</i> <i>dv</i> = <i>u</i>·<i>v</i> − ∫ <i>v</i> <i>du</i></span></div>
+    <p>Dipakai untuk perkalian dua jenis fungsi, misalnya <span class="mth"><i>x</i>·<i>e<sup>x</sup></i></span> atau <span class="mth"><i>x</i>·sin <i>x</i></span>. Pilih u yang menjadi <b>lebih sederhana</b> jika diturunkan. Panduan urutan pilihan u: <b>LIATE</b> = Logaritma, Invers trigonometri, Aljabar (x, x²), Trigonometri, Eksponen.</p>
+    <div class="ex"><span class="t">Contoh</span><span class="mth">∫ <i>x</i> <i>e<sup>x</sup></i> <i>dx</i></span>: u = x (du = dx), dv = eˣ dx (v = eˣ).<br>= x·eˣ − ∫ eˣ dx = <b>x·eˣ − eˣ + C</b>.</div>
+  </div>
+  <div class="card"><h2>3. Cara tabel (cepat untuk xⁿ × fungsi lain)</h2>
+    <p>Kolom kiri: turunkan u terus sampai 0. Kolom kanan: integralkan dv terus. Kalikan menyilang dengan tanda bergantian <b>+ − + −</b>.</p>
+  </div>
+  <div class="card"><h2>4. Memilih teknik</h2>
+    <table class="t"><tr><th>Bentuk</th><th>Coba</th></tr>
+      <tr><td>Ada fungsi di dalam fungsi, dan turunan bagian dalamnya ikut muncul</td><td>Substitusi</td></tr>
+      <tr><td>Perkalian x (atau xⁿ) dengan eˣ, sin x, cos x, ln x</td><td>Parsial</td></tr>
+      <tr><td>Polinom biasa</td><td>Aturan pangkat (Modul 2)</td></tr></table>
+    <p class="muted">Penerapan: substitusi sering muncul pada rumus peluruhan obat dan bunga majemuk kontinu; parsial muncul saat menghitung nilai rata-rata sinyal listrik dan total produksi dengan pertumbuhan eksponensial.</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Langkah Substitusi</h2>
+    <p>Pilih soal, lalu tekan <b>Langkah berikutnya</b>. Grafik menunjukkan integran (ungu) dan hasil integral (hijau). Kemiringan kurva hijau selalu sama dengan tinggi kurva ungu.</p>
+    <div class="row" id="ssel"></div>
+    <div class="row"><button class="btn" id="snext">Langkah berikutnya ▶</button><button class="btn ghost" id="sreset">Ulangi</button></div>
+    <div class="grid2"><div class="out" id="sOut"></div><svg class="viz" id="sg" viewBox="0 0 640 360"></svg></div>
+  </div>
+</section>
+
+<section id="parsial" class="panel">
+  <div class="card"><h2>Lab: Tabel Parsial</h2>
+    <p>Pilih soal. Tekan <b>Isi tabel</b> untuk melihat baris demi baris dan cara mengalikan menyilang.</p>
+    <div class="row" id="psel"></div>
+    <div class="row"><button class="btn" id="pnext">Isi tabel ▶</button><button class="btn ghost" id="preset">Ulangi</button></div>
+    <div class="out" id="pOut"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Tulis jawaban seperti <code>(x^2+1)^6/6</code>, <code>x*e^x - e^x</code>, <code>-cos(3x)/3</code>. Jawaban setara dianggap benar.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul B4</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+/* SUBSTITUSI */
+const SUB=[
+ {n:'2x(x²+1)⁵',q:'∫ 2<i>x</i>(<i>x</i>² + 1)⁵ <i>dx</i>',u:'<i>u</i> = <i>x</i>² + 1',du:'<i>du</i> = 2<i>x</i> <i>dx</i>',nu:'∫ <i>u</i>⁵ <i>du</i>',ru:'<i>u</i>⁶/6 + <i>C</i>',r:'(<i>x</i>² + 1)⁶/6 + <i>C</i>',f:x=>2*x*(x*x+1)**5,F:x=>(x*x+1)**6/6,y:[-20,40],xr:[-1.1,1.1]},
+ {n:'cos(3x)',q:'∫ cos(3<i>x</i>) <i>dx</i>',u:'<i>u</i> = 3<i>x</i>',du:'<i>du</i> = 3 <i>dx</i> → <i>dx</i> = <i>du</i>/3',nu:'⅓ ∫ cos <i>u</i> <i>du</i>',ru:'⅓ sin <i>u</i> + <i>C</i>',r:'⅓ sin(3<i>x</i>) + <i>C</i>',f:x=>Math.cos(3*x),F:x=>Math.sin(3*x)/3,y:[-1.3,1.3],xr:[-3,3]},
+ {n:'x·e^(x²)',q:'∫ <i>x</i>·<i>e</i><sup><i>x</i>²</sup> <i>dx</i>',u:'<i>u</i> = <i>x</i>²',du:'<i>du</i> = 2<i>x</i> <i>dx</i> → <i>x dx</i> = <i>du</i>/2',nu:'½ ∫ <i>e<sup>u</sup></i> <i>du</i>',ru:'½ <i>e<sup>u</sup></i> + <i>C</i>',r:'½ <i>e</i><sup><i>x</i>²</sup> + <i>C</i>',f:x=>x*Math.exp(x*x),F:x=>Math.exp(x*x)/2,y:[-4,6],xr:[-1.4,1.4]},
+ {n:'2x/(x²+4)',q:'∫ 2<i>x</i>/(<i>x</i>² + 4) <i>dx</i>',u:'<i>u</i> = <i>x</i>² + 4',du:'<i>du</i> = 2<i>x</i> <i>dx</i>',nu:'∫ 1/<i>u</i> <i>du</i>',ru:'ln|<i>u</i>| + <i>C</i>',r:'ln(<i>x</i>² + 4) + <i>C</i>',f:x=>2*x/(x*x+4),F:x=>Math.log(x*x+4),y:[-1,3.5],xr:[-4,4]},
+ {n:'(2x+1)⁴',q:'∫ (2<i>x</i> + 1)⁴ <i>dx</i>',u:'<i>u</i> = 2<i>x</i> + 1',du:'<i>du</i> = 2 <i>dx</i> → <i>dx</i> = <i>du</i>/2',nu:'½ ∫ <i>u</i>⁴ <i>du</i>',ru:'<i>u</i>⁵/10 + <i>C</i>',r:'(2<i>x</i> + 1)⁵/10 + <i>C</i>',f:x=>(2*x+1)**4,F:x=>(2*x+1)**5/10,y:[-4,10],xr:[-1.4,0.6]},
+ {n:'sin x·cos x',q:'∫ sin <i>x</i> · cos <i>x</i> <i>dx</i>',u:'<i>u</i> = sin <i>x</i>',du:'<i>du</i> = cos <i>x</i> <i>dx</i>',nu:'∫ <i>u</i> <i>du</i>',ru:'<i>u</i>²/2 + <i>C</i>',r:'½ sin² <i>x</i> + <i>C</i>',f:x=>Math.sin(x)*Math.cos(x),F:x=>Math.sin(x)**2/2,y:[-.7,.7],xr:[-3,3]}];
+let si=0, sstep=0;
+$('#ssel').innerHTML=SUB.map((p,i)=>`<button class="chipbtn ${i?'':'on'}" data-i="${i}">${p.n}</button>`).join('');
+$$('#ssel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#ssel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); si=+b.dataset.i; sstep=0; drawS(); });
+function drawS(){
+  const P=SUB[si]; const L=[['Soal',P.q],['1. Pilih bagian dalam',P.u],['2. Turunkan',P.du],['3. Ganti semuanya dengan u',P.nu],['4. Integralkan',P.ru],['5. Kembalikan ke x',`<b>${P.r}</b>`]];
+  $('#sOut').innerHTML=L.slice(0,sstep+1).map(([h,b],i)=>`<div class="ex" style="${i===sstep?'border-color:var(--acc)':''}"><span class="t">${h}</span><span class="mth" style="white-space:normal">${b}</span></div>`).join('')+(sstep>=5?'<div class="fb ok"><b>✓ Selesai.</b> Cek: turunkan hasilnya dengan aturan rantai, dan kamu akan kembali ke soal.</div>':'');
+  $('#snext').disabled=sstep>=5;
+  const g=$('#sg'); clear(g); const A=G.axes(g,{x0:P.xr[0],x1:P.xr[1],y0:P.y[0],y1:P.y[1],W:640,H:360,lx:'x',ly:'y'});
+  s('path',{d:G.curve(P.f,P.xr[0],P.xr[1],A,400),fill:'none',stroke:'#7a4fd6','stroke-width':3},g);
+  if(sstep>=5) s('path',{d:G.curve(P.F,P.xr[0],P.xr[1],A,400),fill:'none',stroke:'#13987a','stroke-width':3.5},g);
+  txt(g,630,30,'ungu: integran',{'text-anchor':'end','font-size':13,'font-weight':700,fill:'#7a4fd6'}); if(sstep>=5) txt(g,630,48,'hijau: hasil (C = 0)',{'text-anchor':'end','font-size':13,'font-weight':700,fill:'#13987a'});
+}
+$('#snext').onclick=()=>{ if(sstep<5){ sstep++; drawS(); } }; $('#sreset').onclick=()=>{ sstep=0; drawS(); }; drawS();
+
+/* PARSIAL TABEL */
+const PAR=[
+ {n:'x·eˣ',q:'∫ <i>x</i> <i>e<sup>x</sup></i> <i>dx</i>',D:['<i>x</i>','1','0'],I:['<i>e<sup>x</sup></i>','<i>e<sup>x</sup></i>','<i>e<sup>x</sup></i>'],r:'<i>x</i><i>e<sup>x</sup></i> − <i>e<sup>x</sup></i> + <i>C</i>',t:['+<i>x</i>·<i>e<sup>x</sup></i>','−1·<i>e<sup>x</sup></i>']},
+ {n:'x·sin x',q:'∫ <i>x</i> sin <i>x</i> <i>dx</i>',D:['<i>x</i>','1','0'],I:['sin <i>x</i>','−cos <i>x</i>','−sin <i>x</i>'],r:'−<i>x</i> cos <i>x</i> + sin <i>x</i> + <i>C</i>',t:['+<i>x</i>·(−cos <i>x</i>)','−1·(−sin <i>x</i>)']},
+ {n:'x²·eˣ',q:'∫ <i>x</i>² <i>e<sup>x</sup></i> <i>dx</i>',D:['<i>x</i>²','2<i>x</i>','2','0'],I:['<i>e<sup>x</sup></i>','<i>e<sup>x</sup></i>','<i>e<sup>x</sup></i>','<i>e<sup>x</sup></i>'],r:'<i>e<sup>x</sup></i>(<i>x</i>² − 2<i>x</i> + 2) + <i>C</i>',t:['+<i>x</i>²<i>e<sup>x</sup></i>','−2<i>x</i><i>e<sup>x</sup></i>','+2<i>e<sup>x</sup></i>']},
+ {n:'x·cos x',q:'∫ <i>x</i> cos <i>x</i> <i>dx</i>',D:['<i>x</i>','1','0'],I:['cos <i>x</i>','sin <i>x</i>','−cos <i>x</i>'],r:'<i>x</i> sin <i>x</i> + cos <i>x</i> + <i>C</i>',t:['+<i>x</i>·sin <i>x</i>','−1·(−cos <i>x</i>)']},
+ {n:'x²·sin x',q:'∫ <i>x</i>² sin <i>x</i> <i>dx</i>',D:['<i>x</i>²','2<i>x</i>','2','0'],I:['sin <i>x</i>','−cos <i>x</i>','−sin <i>x</i>','cos <i>x</i>'],r:'−<i>x</i>² cos <i>x</i> + 2<i>x</i> sin <i>x</i> + 2 cos <i>x</i> + <i>C</i>',t:['+<i>x</i>²·(−cos <i>x</i>)','−2<i>x</i>·(−sin <i>x</i>)','+2·cos <i>x</i>']}];
+let pi=0, pstep=0;
+$('#psel').innerHTML=PAR.map((p,i)=>`<button class="chipbtn ${i?'':'on'}" data-i="${i}">${p.n}</button>`).join('');
+$$('#psel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#psel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); pi=+b.dataset.i; pstep=0; drawP(); });
+function drawP(){
+  const P=PAR[pi], n=P.D.length, sg=['+','−','+','−'];
+  const rows=P.D.map((d,i)=>`<tr style="opacity:${i<=pstep?1:.15}"><td style="font-weight:900;color:var(--acc)">${sg[i]}</td><td class="mth">${d}</td><td class="mth">${P.I[i]}</td><td class="mth" style="color:var(--acc)">${i<n-1&&i<pstep?P.t[i]+' ↘':''}</td></tr>`).join('');
+  const done=pstep>=n-1;
+  $('#pOut').innerHTML=`<p class="big2"><span class="mth">${P.q}</span></p><table class="t"><tr><th>tanda</th><th>D (turunkan)</th><th>I (integralkan)</th><th>hasil kali menyilang</th></tr>${rows}</table>
+    <p class="muted">Kalikan D baris ke-k dengan I baris ke-(k+1), pakai tanda baris ke-k. Berhenti saat D bernilai 0.</p>
+    ${done?`<div class="fb ok"><b>Hasil:</b> <span class="mth">${P.t.join(' ')}</span> = <b class="mth">${P.r}</b></div>`:''}`;
+  $('#pnext').disabled=done;
+}
+$('#pnext').onclick=()=>{ pstep++; drawP(); }; $('#preset').onclick=()=>{ pstep=0; drawP(); }; drawP();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Substitusi pangkat', gen(){ const a=rand(1,3), b=rand(1,5), n=rand(2,5); const F=x=>(a*x*x+b)**(n+1)/(n+1);
+    return {q:`<span class="mth">∫ ${2*a}<i>x</i>(${a}<i>x</i>² + ${b})<sup>${n}</sup> <i>dx</i></span> = …`, a:v=>G.sameUpToC(v,F), show:`(${a}x² + ${b})<sup>${n+1}</sup>/${n+1} + C`, hint:`Misal u = ${a}x² + ${b}, du = ${2*a}x dx.`, ex:`∫ u<sup>${n}</sup> du = u<sup>${n+1}</sup>/${n+1}`}; }},
+  {name:'Substitusi linear', gen(){ const k=rand(2,5), it=pick([['cos',x=>Math.sin(k*x)/k,`sin(${k}x)/${k}`],['sin',x=>-Math.cos(k*x)/k,`−cos(${k}x)/${k}`],['e',x=>Math.exp(k*x)/k,`e<sup>${k}x</sup>/${k}`]]);
+    return {q:`<span class="mth">∫ ${it[0]==='e'?`<i>e</i><sup>${k}<i>x</i></sup>`:it[0]+'('+k+'<i>x</i>)'} <i>dx</i></span> = …`, a:v=>G.sameUpToC(v,it[1]), show:it[2]+' + C', hint:`Misal u = ${k}x, dx = du/${k}.`, ex:`Hasilnya dibagi ${k}.`}; }},
+  {name:'Parsial', gen(){ const it=pick([['<i>x</i> <i>e<sup>x</sup></i>',x=>x*Math.exp(x)-Math.exp(x),'x·eˣ − eˣ'],['<i>x</i> cos <i>x</i>',x=>x*Math.sin(x)+Math.cos(x),'x sin x + cos x'],['<i>x</i> sin <i>x</i>',x=>-x*Math.cos(x)+Math.sin(x),'−x cos x + sin x'],['ln <i>x</i>',x=>x*Math.log(x)-x,'x ln x − x']]);
+    return {q:`<span class="mth">∫ ${it[0]} <i>dx</i></span> = …`, a:v=>G.sameUpToC(v,it[1]), show:it[2]+' + C', hint:'∫u dv = uv − ∫v du. Pilih u = x (atau u = ln x).', ex:'Gunakan rumus parsial atau tabel.'}; }},
+  {name:'Tentu + substitusi', gen(){ const n=pick([1,2,3]); const F=x=>(x*x+1)**(n+1)/(n+1); const v=F(1)-F(0);
+    return {q:`<span class="mth">${G.int(0,1)} 2<i>x</i>(<i>x</i>² + 1)<sup>${n}</sup> <i>dx</i></span> = … <span class="muted">(boleh pecahan)</span>`, a:String(v), show:`${G.fmt(v,4)} = (2<sup>${n+1}</sup> − 1)/${n+1}`, hint:'Dengan u = x² + 1, batasnya berubah: x = 0 → u = 1, x = 1 → u = 2.', ex:`∫₁² u<sup>${n}</sup> du = (2<sup>${n+1}</sup> − 1)/${n+1}`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Teknik substitusi paling tepat dipakai pada …', o:['∫ 2x(x² + 3)⁴ dx','∫ x eˣ dx','∫ x² dx','∫ 5 dx'], a:0, ex:'Turunan x² + 3 (yaitu 2x) ikut muncul.'},
+ {q:'Pada ∫ 2x(x² + 1)⁵ dx, pilihan u yang tepat adalah …', o:['x² + 1','2x','x','(x² + 1)⁵'], a:0, ex:'Bagian dalam yang turunannya muncul.'},
+ {q:'Substitusi adalah kebalikan dari aturan … pada turunan.', o:['rantai','perkalian','pangkat','konstanta'], a:0, ex:'Aturan rantai.'},
+ {q:'∫ cos(5x) dx = …', o:['sin(5x)/5 + C','5 sin(5x) + C','−sin(5x)/5 + C','sin(5x) + C'], a:0, ex:'u = 5x, dx = du/5.'},
+ {q:'Rumus integral parsial adalah ∫ u dv = …', o:['uv − ∫ v du','uv + ∫ v du','u′v′','∫ u du · ∫ dv'], a:0, ex:'Tukar peran u dan v.'},
+ {q:'Teknik parsial paling tepat dipakai pada …', o:['∫ x sin x dx','∫ 3x² dx','∫ (2x+1)⁴ dx','∫ 2x/(x²+1) dx'], a:0, ex:'Perkalian aljabar dengan trigonometri.'},
+ {q:'Pada ∫ x eˣ dx dengan cara parsial, pilihan u yang baik adalah …', o:['x','eˣ','x eˣ','1'], a:0, ex:'x menjadi 1 jika diturunkan (lebih sederhana).'},
+ {q:'∫ x eˣ dx = …', o:['x eˣ − eˣ + C','x eˣ + C','eˣ + C','x²eˣ/2 + C'], a:0, ex:'uv − ∫v du.'},
+ {q:'Urutan LIATE untuk memilih u dimulai dari …', o:['Logaritma','Eksponen','Trigonometri','Aljabar'], a:0, ex:'L-I-A-T-E.'},
+ {q:'∫ 2x/(x² + 4) dx = …', o:['ln(x² + 4) + C','2 ln x + C','x²/(x²/2 + 4x)','1/(x² + 4) + C'], a:0, ex:'u = x² + 4, ∫du/u.'},
+ {q:'Hitung <span class="mth">∫<sub>0</sub><sup>1</sup> 2x(x² + 1) dx</span>.', input:true, a:['1,5','1.5','3/2'], ex:'u dari 1 ke 2: ∫u du = (4 − 1)/2 = 1,5.'},
+ {q:'Pada cara tabel untuk ∫ x² eˣ dx, berapa banyak suku hasil kali menyilang?', input:true, a:['3'], ex:'x² → 2x → 2 → 0: tiga suku.'}
+],'kalkm4');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

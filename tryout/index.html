@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tryout Matematika SMA · Virtual Math Lab</title>
+<style>
+:root{--bg:#eef1f7;--bg2:#f7efe9;--card:#ffffff;--ink:#1b2236;--muted:#5d6479;--line:#dfe3ee;--green:#1f3352;--orange:#d9572b;--gold:#f2795c;--ok:#1f8a5b;--no:#c2412b}
+@media (prefers-color-scheme:dark){:root{--bg:#11151f;--bg2:#171b27;--card:#1c2231;--ink:#eef1f8;--muted:#a8afc4;--line:#2e364b;--green:#8fb4ff;--orange:#ff9a76;--ok:#52c48f;--no:#f07a64}}
+*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;font-family:"Nunito","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);font-size:17px;line-height:1.6;background:radial-gradient(900px 500px at 100% 0%,color-mix(in srgb,var(--gold) 20%,transparent),transparent 60%),linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;min-height:100vh}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.3px;line-height:1.2}
+.eyebrow{font-size:.75rem;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:var(--orange)}
+.hero{padding:30px 0 10px}.hero h1{font-size:clamp(2rem,5vw,3rem);margin:.2em 0}.hero h1 em{color:var(--orange)}.hero p{color:var(--muted);max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:18px 0}
+.lv{font:inherit;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:4px;transition:transform .15s,box-shadow .15s;min-height:150px}
+.lv:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.08)}
+.lv .tag{font-size:.72rem;font-weight:900;letter-spacing:1px;color:#fff;background:var(--green);border-radius:99px;padding:2px 10px;align-self:flex-start}
+@media (prefers-color-scheme:dark){.lv .tag{color:#10201a}}
+.lv.osn .tag{background:var(--orange)}
+.lv b{font-family:Georgia,serif;font-size:1.3rem}.lv small{color:var(--muted)}
+.lv .bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:auto}.lv .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--gold))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:20px;margin:18px 0}
+.btn{font:inherit;font-weight:800;border-radius:14px;cursor:pointer;min-height:46px;padding:10px 18px;border:0;background:var(--green);color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--green) 60%,#000)}
+@media (prefers-color-scheme:dark){.btn{color:#0d1a15}}
+.btn.ghost{background:transparent;color:var(--green);border:1.5px solid var(--green);box-shadow:none}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.exam-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 0 4px}
+.exam-head h2{margin:0;font-size:1.5rem}.exam-head .t{margin-left:auto;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.nums{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.nums button{font:inherit;font-weight:800;width:40px;height:40px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.nums button.ans{background:color-mix(in srgb,var(--green) 18%,var(--card));border-color:var(--green)}
+.nums button.cur{outline:3px solid var(--gold)}
+.nums button.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.nums button.no{background:var(--no);color:#fff;border-color:var(--no)}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:0 12px 26px rgba(60,40,10,.07)}
+.qno{font-weight:900;color:var(--orange);font-size:.9rem}
+.qtext{font-size:1.15rem;margin:6px 0 14px}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;text-align:left;display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:10px 14px;cursor:pointer;min-height:52px}
+.opt:hover{border-color:var(--green)}
+.opt .L{flex:0 0 32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--line)}
+.opt.sel{border-color:var(--green);background:color-mix(in srgb,var(--green) 10%,var(--card))}.opt.sel .L{background:var(--green);color:#fff}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--card))}.opt.right .L{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--no);background:color-mix(in srgb,var(--no) 12%,var(--card))}.opt.wrong .L{background:var(--no);color:#fff}
+.nav{display:flex;justify-content:space-between;gap:10px;margin:14px 0;flex-wrap:wrap}
+.ex{margin-top:12px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--gold) 16%,var(--card));border-left:5px solid var(--gold)}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;font-size:.9em;margin:0 2px}
+.fr sup{border-bottom:1.5px solid currentColor;padding:0 2px 1px;font-size:1em;vertical-align:baseline}.fr sub{font-size:1em;padding-top:1px;vertical-align:baseline}
+.score{font-family:Georgia,serif;font-size:3.6rem;font-weight:700;color:var(--green);line-height:1}
+.muted{color:var(--muted)}.hide{display:none!important}
+table.h{width:100%;border-collapse:collapse;font-size:.92rem}table.h td,table.h th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding:18px 0 30px;margin-top:30px}
+@media print{.nums,.nav,#home,.no-print{display:none!important}.qcard{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<main id="home">
+  <section class="hero"><span class="eyebrow">Tryout SMA · UTBK/SNBT · OSN</span>
+    <h1>Coba tryout seperti <em>ujian sebenarnya.</em></h1>
+    <p>Soal pilihan ganda per kelas (X, XI, XII) bergaya asesmen sekolah, paket Penalaran &amp; Pengetahuan Kuantitatif bergaya UTBK/SNBT, paket campuran, dan Tantangan OSN SMA. Satu set berisi 10 soal (UTBK 15 soal). Angka soal selalu berubah sehingga bisa dikerjakan berulang. Pembahasan muncul setelah jawaban dikumpulkan.</p></section>
+  <div class="grid" id="levels"></div>
+  <div class="card"><h3 style="margin-top:0">Riwayat tryout</h3><div id="hist" class="muted"></div>
+    <p class="muted" style="font-size:.9rem;margin-bottom:0">Untuk guru: setiap set bisa dicetak sebagai lembar soal (tombol 🖨️ pada halaman hasil). Nilai tersimpan di perangkat ini.</p></div>
+</main>
+
+<main id="exam" class="hide">
+  <div class="exam-head"><button class="btn ghost" id="quit">← Keluar</button><h2 id="ex-title"></h2><span class="t" id="clock">00:00</span></div>
+  <div class="nums" id="nums"></div>
+  <div class="qcard" id="qcard"></div>
+  <div class="nav"><button class="btn ghost" id="prev">← Sebelumnya</button><button class="btn ghost" id="nextq">Berikutnya →</button><button class="btn" id="submit">Kumpulkan jawaban</button></div>
+</main>
+
+<main id="result" class="hide"></main>
+<footer>Tryout SMA · Virtual Math Lab · Soal disusun ulang dengan angka acak mengikuti tipe soal asesmen sekolah, UTBK/SNBT, dan olimpiade. Soal asli tidak disalin.</footer>
+</div>
+<script src="bank.js"></script>
+<script src="../shared/nav.js"></script>
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const st={ get(k,d){ try{ const v=JSON.parse(localStorage.getItem('tosma:'+k)); return v==null?d:v; }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem('tosma:'+k,JSON.stringify(v)); }catch(e){} } };
+const LV=[[10,'Kelas X','Eksponen, logaritma, barisan, SPL, kuadrat, trigonometri, statistika','KELAS'],[11,'Kelas XI','Komposisi & invers, polinomial, lingkaran, program linear, matriks, peluang','KELAS'],[12,'Kelas XII','Limit, turunan, integral, transformasi, dimensi tiga, data berkelompok','KELAS'],['snbt','UTBK/SNBT Kuantitatif','Penalaran matematika & pengetahuan kuantitatif bergaya UTBK','UTBK'],['campur','Paket Campuran','Acak dari seluruh materi SMA + UTBK','CAMPUR'],['osn','Tantangan OSN SMA','Teori bilangan, kombinatorika, aljabar tingkat olimpiade','OLIMPIADE']];
+const SZ=l=>l==='snbt'||l==='campur'?15:10;
+const name=l=>LV.find(x=>String(x[0])===String(l))[1];
+function home(){
+  const best=st.get('best',{}), cnt=st.get('cnt',{});
+  $('#levels').innerHTML=LV.map(([l,n,d,tg])=>{ const b=best[l]; return `<button class="lv ${l==='osn'||l==='snbt'?'osn':''}" data-l="${l}"><span class="tag">${LV.find(x=>x[0]===l)[3]}</span><b>${n}</b><small>${d}</small><small><b style="font-size:.9rem">${cnt[l]||0}</b> set selesai${b!=null?` · terbaik <b style="font-size:.9rem">${b}</b>`:''}</small><div class="bar"><i style="width:${b||0}%"></i></div></button>`; }).join('');
+  document.querySelectorAll('.lv').forEach(b=>b.onclick=()=>start(b.dataset.l));
+  const H=st.get('hist',[]); $('#hist').innerHTML=H.length?`<table class="h"><tr><th>Tanggal</th><th>Tryout</th><th>Nilai</th><th>Waktu</th></tr>${H.slice(-10).reverse().map(h=>`<tr><td>${h.t}</td><td>${name(h.l)}</td><td><b>${h.s}</b></td><td>${h.d}</td></tr>`).join('')}</table>`:'Belum ada tryout. Pilih salah satu kartu di atas.';
+}
+let E=null, clock=null;
+const mmss=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+function show(v){ ['home','exam','result'].forEach(x=>$('#'+x).classList.toggle('hide',x!==v)); window.scrollTo(0,0); }
+function start(l){ l=isNaN(+l)?l:+l; E={l,Q:TRYOUT.makeSet(l,SZ(l)),A:Array(SZ(l)).fill(null),i:0,sec:0,done:false}; show('exam'); $('#ex-title').textContent='Tryout '+name(l);
+  clearInterval(clock); clock=setInterval(()=>{ E.sec++; $('#clock').textContent='⏱ '+mmss(E.sec); },1000); $('#clock').textContent='⏱ 00:00'; draw(); }
+function draw(){
+  const q=E.Q[E.i];
+  $('#nums').innerHTML=E.Q.map((_,i)=>{ let c=''; if(E.done) c=E.A[i]===E.Q[i].ans?'ok':'no'; else if(E.A[i]!=null) c='ans'; return `<button class="${c} ${i===E.i?'cur':''}" data-i="${i}" aria-label="Soal ${i+1}">${i+1}</button>`; }).join('');
+  document.querySelectorAll('#nums button').forEach(b=>b.onclick=()=>{ E.i=+b.dataset.i; draw(); });
+  $('#qcard').innerHTML=`<div class="qno">Soal ${E.i+1} dari ${E.Q.length}</div><div class="qtext">${q.q}</div><div class="opts">${q.opts.map((o,j)=>{ let c=''; if(E.done){ if(j===q.ans) c='right'; else if(E.A[E.i]===j) c='wrong'; } else if(E.A[E.i]===j) c='sel'; return `<button class="opt ${c}" data-j="${j}"><span class="L">${'ABCDE'[j]}</span><span>${o}</span></button>`; }).join('')}</div>${E.done?`<div class="ex"><b>${E.A[E.i]===q.ans?'✓ Benar.':E.A[E.i]==null?'— Tidak dijawab.':'✗ Belum tepat.'}</b> Jawaban: <b>${'ABCDE'[q.ans]}</b>. ${q.ex}</div>`:''}`;
+  if(!E.done) document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ E.A[E.i]=+b.dataset.j; draw(); if(E.i<E.Q.length-1) setTimeout(()=>{ E.i++; draw(); },250); });
+  $('#prev').disabled=E.i===0; $('#nextq').disabled=E.i===E.Q.length-1;
+  $('#submit').textContent=E.done?'Lihat ringkasan nilai':`Kumpulkan jawaban (${E.A.filter(a=>a!=null).length}/${E.Q.length})`;
+}
+$('#prev').onclick=()=>{ if(E.i>0){ E.i--; draw(); } }; $('#nextq').onclick=()=>{ if(E.i<E.Q.length-1){ E.i++; draw(); } };
+$('#quit').onclick=()=>{ if(!E.done&&E.A.some(a=>a!=null)&&!confirm('Keluar dari tryout? Jawaban belum dikumpulkan.')) return; clearInterval(clock); show('home'); home(); };
+$('#submit').onclick=()=>{ if(E.done) return result();
+  const kosong=E.A.filter(a=>a==null).length; if(kosong&&!confirm(`Masih ada ${kosong} soal belum dijawab. Tetap kumpulkan?`)) return;
+  clearInterval(clock); E.done=true; const ok=E.A.filter((a,i)=>a===E.Q[i].ans).length, s=Math.round(ok/E.Q.length*100);
+  const best=st.get('best',{}), cnt=st.get('cnt',{}); if(best[E.l]==null||s>best[E.l]) best[E.l]=s; cnt[E.l]=(cnt[E.l]||0)+1; st.set('best',best); st.set('cnt',cnt);
+  const d=new Date(); const H=st.get('hist',[]); H.push({t:d.toLocaleDateString('id-ID'),l:E.l,s,d:mmss(E.sec)}); st.set('hist',H.slice(-100)); E.ok=ok; result(); };
+function result(){
+  const s=Math.round(E.ok/E.Q.length*100), msg=s===100?'Luar biasa! Semua benar.':s>=80?'Hebat! Kamu siap menghadapi ujian.':s>=60?'Cukup baik. Pelajari pembahasan soal yang salah.':'Ayo pelajari lagi materinya, lalu coba set baru.';
+  $('#result').innerHTML=`<div class="card" style="text-align:center;margin-top:24px"><span class="eyebrow">Hasil tryout</span><h2 style="margin:.3em 0">${name(E.l)}</h2><div class="score">${s}</div><p>${E.ok} dari ${E.Q.length} soal benar · waktu ${mmss(E.sec)}</p><p><b>${msg}</b></p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="rev">Lihat pembahasan</button><button class="btn ghost" id="again">Set baru</button><button class="btn ghost no-print" id="print">🖨️ Cetak soal & pembahasan</button><button class="btn ghost" id="back">Pilih tryout lain</button></div></div>
+    <div id="printable" class="hide"></div>`;
+  show('result');
+  $('#rev').onclick=()=>{ E.i=E.Q.findIndex((q,i)=>E.A[i]!==q.ans); if(E.i<0) E.i=0; show('exam'); draw(); };
+  $('#again').onclick=()=>start(E.l); $('#back').onclick=()=>{ show('home'); home(); };
+  $('#print').onclick=()=>{ const p=$('#printable'); p.classList.remove('hide'); p.innerHTML=`<h2>Tryout ${name(E.l)}</h2>`+E.Q.map((q,i)=>`<div class="qcard" style="margin:10px 0"><div class="qno">Soal ${i+1}</div><div class="qtext">${q.q}</div><ol type="A">${q.opts.map(o=>`<li>${o}</li>`).join('')}</ol><div class="ex">Jawaban: <b>${'ABCDE'[q.ans]}</b>. ${q.ex}</div></div>`).join(''); window.print(); };
+}
+home();
+})();
+</script>
+</body></html>

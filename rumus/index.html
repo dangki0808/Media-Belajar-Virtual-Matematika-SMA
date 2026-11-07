@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ringkasan Rumus SMA · Virtual Math Lab</title>
+<style>
+:root{--bg:#eef1f7;--bg2:#f7efe9;--card:#fff;--ink:#1b2236;--muted:#5d6479;--line:#dfe3ee;--navy:#1f3352;--coral:#d9572b;--x:#0e8a8f;--xi:#6a3fb0;--xii:#b5452a}
+@media (prefers-color-scheme:dark){:root{--bg:#11151f;--bg2:#171b27;--card:#1c2231;--ink:#eef1f8;--muted:#a8afc4;--line:#2e364b;--navy:#8fb4ff;--coral:#ff9a76;--x:#4fd1c5;--xi:#b79cff;--xii:#ff9b7e}}
+*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);font-size:16px;line-height:1.55;background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;min-height:100vh}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;letter-spacing:-.3px}
+.hero{padding:28px 0 6px}.hero h1{font-size:clamp(1.9rem,5vw,2.8rem);margin:.2em 0}.hero p{color:var(--muted);max-width:680px}
+.eyebrow{font-size:.75rem;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:var(--coral)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0 4px;position:sticky;top:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);padding:8px 0;z-index:5}
+.bar input{font:inherit;padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);flex:1;min-width:200px}
+.bar button{font:inherit;font-weight:800;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.bar button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+@media (prefers-color-scheme:dark){.bar button.on{color:#111}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px;margin:12px 0 24px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;border-top:6px solid var(--c)}
+.box h3{margin:.1em 0 .4em;font-size:1.15rem}.box h3 small{display:block;font-family:"Segoe UI",system-ui,sans-serif;font-size:.72rem;font-weight:900;letter-spacing:1px;color:var(--c);text-transform:uppercase}
+.box ul{margin:0;padding-left:1.1em}.box li{margin:3px 0}
+.m{font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.05em}
+.box a{color:var(--c);font-weight:700;font-size:.9rem}
+h2.sec{margin:26px 0 0;color:var(--c)}
+footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding:18px 0 30px}
+@media print{.bar,.vnav{display:none}.box{break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero"><span class="eyebrow">Ringkasan rumus · Kelas X–XII</span><h1>Satu halaman untuk semua rumus penting</h1><p>Cocok dibaca sebelum kuis, tryout, atau UTBK. Ketik kata kunci untuk mencari, atau cetak halaman ini sebagai lembar ringkasan. Setiap kotak terhubung ke modul lab-nya.</p></section>
+<div class="bar"><input type="search" id="q" placeholder="🔍 Cari rumus, misalnya diskriminan" aria-label="Cari rumus"><button data-k="all" class="on">Semua</button><button data-k="x">Kelas X</button><button data-k="xi">Kelas XI</button><button data-k="xii">Kelas XII</button><button onclick="window.print()">🖨️ Cetak</button></div>
+<div id="out"></div>
+</div>
+<div class="wrap"><footer>Virtual Math Lab SMA · Ringkasan Rumus</footer></div>
+<script>
+const D=[
+ ['x','Eksponen & Bentuk Akar','../sma-kelas-10/01-eksponen-akar.html',['a<sup>m</sup>·a<sup>n</sup> = a<sup>m+n</sup> · a<sup>m</sup>:a<sup>n</sup> = a<sup>m−n</sup>','(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup> · a<sup>0</sup> = 1 · a<sup>−n</sup> = 1/a<sup>n</sup>','a<sup>m/n</sup> = ⁿ√(a<sup>m</sup>)','√(a²b) = a√b · a/√b = a√b/b','Pertumbuhan/peluruhan: N(t) = N₀·a<sup>t</sup>']],
+ ['x','Logaritma','../sma-kelas-10/02-logaritma.html',['a<sup>c</sup> = b ⟺ <sup>a</sup>log b = c','log(bc) = log b + log c · log(b/c) = log b − log c','log bⁿ = n log b','<sup>a</sup>log b = log b / log a','<sup>a</sup>log b · <sup>b</sup>log c = <sup>a</sup>log c · a<sup>ᵃlog b</sup> = b']],
+ ['x','Barisan & Deret','../sma-kelas-10/03-barisan-deret.html',['Aritmetika: Uₙ = a + (n − 1)b','Sₙ = ½n(a + Uₙ) = ½n(2a + (n − 1)b)','Geometri: Uₙ = a·rⁿ⁻¹','Sₙ = a(rⁿ − 1)/(r − 1)','S∞ = a/(1 − r), −1 &lt; r &lt; 1']],
+ ['x','SPLDV & SPLTV','../sma-kelas-10/04-sistem-persamaan.html',['Metode: grafik, substitusi, eliminasi, gabungan','Satu solusi: a₁/a₂ ≠ b₁/b₂','Tak ada solusi: a₁/a₂ = b₁/b₂ ≠ c₁/c₂','Cramer: x = Dₓ/D, y = D_y/D']],
+ ['x','Fungsi Kuadrat','../sma-kelas-10/05-fungsi-kuadrat.html',['D = b² − 4ac','x = (−b ± √D)/(2a)','Puncak (−b/(2a), −D/(4a))','x₁ + x₂ = −b/a · x₁x₂ = c/a','Definit positif: a &gt; 0, D &lt; 0']],
+ ['x','Pertidaksamaan','../sma-kelas-10/06-pertidaksamaan.html',['Dikali/dibagi negatif → tanda dibalik','Kuadrat/rasional: pembuat nol + garis bilangan','Penyebut ≠ 0 (bulatan kosong)','|x − a| &lt; r ⟺ a − r &lt; x &lt; a + r','|x − a| &gt; r ⟺ x &lt; a − r atau x &gt; a + r']],
+ ['x','Trigonometri','../sma-kelas-10/07-trigonometri.html',['sin = de/mi · cos = sa/mi · tan = de/sa','sin²θ + cos²θ = 1','Kuadran positif: I semua, II sin, III tan, IV cos','a/sin A = b/sin B = c/sin C','a² = b² + c² − 2bc cos A · L = ½bc sin A']],
+ ['x','Statistika Data Tunggal','../sma-kelas-10/08-statistika.html',['x̄ = Σx/n · median = data tengah','Q₁, Q₃ = median separuh bawah/atas','s² = Σ(x − x̄)²/n · s = √s²','x̄ gab = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂)']],
+ ['xi','Komposisi & Invers','../sma-kelas-11/01-komposisi-invers.html',['(g∘f)(x) = g(f(x)); umumnya g∘f ≠ f∘g','f(x) = ax + b → f⁻¹(x) = (x − b)/a','f(x) = (ax + b)/(cx + d) → f⁻¹(x) = (−dx + b)/(cx − a)','(g∘f)⁻¹ = f⁻¹∘g⁻¹']],
+ ['xi','Polinomial','../sma-kelas-11/02-polinomial.html',['P(x) = (x − k)H(x) + S','Teorema sisa: S = P(k); oleh (ax − b): P(b/a)','Teorema faktor: P(k) = 0','Kubik: Σx = −b/a · Σx₁x₂ = c/a · x₁x₂x₃ = −d/a']],
+ ['xi','Lingkaran','../sma-kelas-11/03-lingkaran.html',['(x − a)² + (y − b)² = r²','x² + y² + Ax + By + C = 0: pusat (−A/2, −B/2)','r = √(A²/4 + B²/4 − C)','Singgung di (x₁, y₁) pada x² + y² = r²: x₁x + y₁y = r²','Singgung bergradien m: y = mx ± r√(1 + m²)']],
+ ['xi','Program Linear','../sma-kelas-11/04-program-linear.html',['Model: variabel, kendala, fungsi tujuan','Optimum di titik pojok daerah layak','Garis selidik: ax + by = k digeser sejajar']],
+ ['xi','Matriks','../sma-kelas-11/05-matriks.html',['(m×n)(n×p) = m×p; umumnya AB ≠ BA','det [a b ; c d] = ad − bc','A⁻¹ = (1/det)[d −b ; −c a]','AX = B → X = A⁻¹B · XA = B → X = BA⁻¹','det(AB) = det A · det B']],
+ ['xi','Peluang','../sma-kelas-11/06-peluang.html',['P(n,r) = n!/(n − r)! · siklis (n − 1)!','C(n,r) = n!/(r!(n − r)!)','P(A) = n(A)/n(S) · P(Aᶜ) = 1 − P(A)','Fh = n·P(A)','P(A∪B) = P(A) + P(B) − P(A∩B) · bebas: P(A∩B) = P(A)P(B)']],
+ ['xii','Limit','../sma-kelas-12/01-limit.html',['Substitusi → faktorkan (0/0) → kalikan sekawan','x → ∞ rasional: m &lt; n → 0, m = n → rasio koef., m &gt; n → ∞','√(ax² + bx + c) − √(ax² + px + q) → (b − p)/(2√a)']],
+ ['xii','Turunan','../sma-kelas-12/02-turunan.html',['(axⁿ)′ = anxⁿ⁻¹','(uv)′ = u′v + uv′ · (u/v)′ = (u′v − uv′)/v²','[f(g(x))]′ = f′(g(x))·g′(x)','Garis singgung: y − f(a) = f′(a)(x − a)','f′ = 0 stasioner; f″ &lt; 0 maks, f″ &gt; 0 min']],
+ ['xii','Integral','../sma-kelas-12/03-integral.html',['∫axⁿ dx = a xⁿ⁺¹/(n + 1) + C','∫ₐᵇ f(x) dx = F(b) − F(a)','Luas = ∫(atas − bawah) dx','Parabola–garis: L = D√D/(6a²)']],
+ ['xii','Transformasi','../sma-kelas-12/04-transformasi.html',['Translasi: (x + a, y + b)','Refleksi sb-x (x, −y) · sb-y (−x, y) · y = x (y, x) · y = −x (−y, −x)','Rotasi 90° (−y, x) · 180° (−x, −y)','Dilatasi k: (kx, ky), luas × k²','Komposisi: M = M₂·M₁']],
+ ['xii','Dimensi Tiga','../sma-kelas-12/05-dimensi-tiga.html',['Kubus: diagonal sisi a√2, ruang a√3','Balok: diagonal ruang √(p² + l² + t²)','Jarak = ruas tegak lurus; trik luas segitiga','Kubus: titik ke diagonal ruang a√6/3; A ke BDE a√3/3']],
+ ['xii','Data Berkelompok','../sma-kelas-12/06-statistika-kelompok.html',['x̄ = Σfᵢxᵢ/Σfᵢ','Me = Tb + ((½n − F)/f)·p','Mo = Tb + (d₁/(d₁ + d₂))·p','Qᵢ = Tb + ((i/4·n − F)/f)·p']]
+];
+const COL={x:'var(--x)',xi:'var(--xi)',xii:'var(--xii)'}, NM={x:'Kelas X',xi:'Kelas XI',xii:'Kelas XII'};
+let flt='all';
+function render(){
+  const q=document.getElementById('q').value.toLowerCase().trim(); let h='';
+  ['x','xi','xii'].forEach(k=>{ if(flt!=='all'&&flt!==k) return; const items=D.filter(d=>d[0]===k&&(!q||(d[1]+' '+d[3].join(' ')).toLowerCase().replace(/<[^>]+>/g,'').includes(q)));
+    if(!items.length) return; h+=`<h2 class="sec" style="--c:${COL[k]}">${NM[k]}</h2><div class="grid">`+items.map(d=>`<div class="box" style="--c:${COL[k]}"><h3><small>${NM[k]}</small>${d[1]}</h3><ul>${d[3].map(r=>`<li class="m">${r}</li>`).join('')}</ul><a href="${d[2]}">Buka lab →</a></div>`).join('')+'</div>'; });
+  document.getElementById('out').innerHTML=h||'<p class="muted">Tidak ada rumus yang cocok.</p>';
+}
+document.getElementById('q').oninput=render;
+document.querySelectorAll('.bar button[data-k]').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.bar button[data-k]').forEach(x=>x.classList.toggle('on',x===b)); flt=b.dataset.k; render(); });
+render();
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

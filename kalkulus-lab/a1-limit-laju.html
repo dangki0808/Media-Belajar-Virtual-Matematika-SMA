@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Limit & Laju Perubahan · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#2d6ae0">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian A · Modul A1 · Turunan <span class="lvl pemula">PEMULA</span></span>
+  <h1>Limit &amp; Laju Perubahan: Seberapa Cepat Tepat Saat Ini?</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Membedakan <b>laju rata-rata</b> (selama selang waktu) dan <b>laju sesaat</b> (tepat pada satu saat).</li>
+    <li>Memahami <b>limit</b> sebagai "mendekati sedekat mungkin tanpa harus sampai".</li>
+    <li>Memahami definisi turunan sebagai kemiringan garis singgung.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📸 Lab Kamera Kecepatan</button><button data-target="zoom">🔍 Lab Kaca Pembesar</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita kamera tilang</span><p style="margin:.3em 0">Raka menempuh 60 km dalam 1 jam. Kecepatan <b>rata-ratanya</b> 60 km/jam. Tetapi kamera tilang di jalan raya memotret motornya tepat pukul 08.17 dan mencatat <b>72 km/jam</b>. Bagaimana kamera tahu kecepatan pada <b>satu saat</b> itu?</p>
+    <p style="margin:.3em 0">Kamera mengukur jarak yang ditempuh dalam waktu yang <b>sangat singkat</b>, misalnya 0,01 detik, lalu membaginya. Makin singkat selang waktunya, makin dekat hasilnya ke kecepatan sesaat. Ide "makin singkat, mendekati nol" inilah <b>limit</b>, dan hasilnya disebut <b>turunan</b>.</p></div>
+  </div>
+  <div class="card"><h2>1. Laju rata-rata</h2>
+    <div class="def" style="text-align:center;font-size:1.15rem" id="ar"></div>
+    <p>Dalam grafik, laju rata-rata adalah <b>kemiringan garis potong</b> (garis yang menghubungkan dua titik pada kurva).</p>
+    <div class="ex"><span class="t">Contoh</span>Tinggi tanaman 12 cm pada minggu ke-2 dan 30 cm pada minggu ke-5. Laju rata-rata = (30 − 12)/(5 − 2) = <b>6 cm/minggu</b>.</div>
+  </div>
+  <div class="card"><h2>2. Limit: mendekati tanpa harus sampai</h2>
+    <p>Lihat <span class="mth"><i>f</i>(<i>x</i>) = (<i>x</i>² − 1)/(<i>x</i> − 1)</span>. Di x = 1 hasilnya 0/0 (tidak terdefinisi). Tetapi jika x <b>mendekati</b> 1:</p>
+    <table class="t"><tr><th>x</th><td>0,9</td><td>0,99</td><td>0,999</td><td>→ 1 ←</td><td>1,001</td><td>1,01</td><td>1,1</td></tr><tr><th>f(x)</th><td>1,9</td><td>1,99</td><td>1,999</td><td><b>2</b></td><td>2,001</td><td>2,01</td><td>2,1</td></tr></table>
+    <p>Ditulis <span class="mth">lim<sub><i>x</i>→1</sub> (<i>x</i>² − 1)/(<i>x</i> − 1) = 2</span>. Cara cepat: faktorkan (x − 1)(x + 1)/(x − 1) = x + 1, lalu masukkan x = 1.</p>
+  </div>
+  <div class="card"><h2>3. Turunan = laju sesaat</h2>
+    <div class="def" style="text-align:center;font-size:1.15rem" id="df"></div>
+    <p>Artinya: ambil dua titik yang jaraknya h, hitung kemiringannya, lalu buat h <b>mendekati nol</b>. Garis potong berubah menjadi <b>garis singgung</b>.</p>
+    <div class="ex"><span class="t">Contoh: f(x) = x²</span>
+      <span class="mth">(<i>x</i> + <i>h</i>)² − <i>x</i>² = 2<i>xh</i> + <i>h</i>²</span>, dibagi h menjadi <span class="mth">2<i>x</i> + <i>h</i></span>. Jika h → 0, hasilnya <b>f′(x) = 2x</b>.<br>Jadi di x = 3, kemiringan kurva x² adalah 6.</div>
+    <div class="note">Notasi turunan: <b>f′(x)</b> (dibaca "f aksen x") atau <b>dy/dx</b> (dibaca "d y d x"), artinya perubahan y yang sangat kecil dibagi perubahan x yang sangat kecil.</div>
+  </div>
+  <div class="card"><h2>Turunan di sekitar kita</h2>
+    <table class="t"><tr><th>Besaran</th><th>Turunannya (laju)</th></tr>
+      <tr><td>Posisi kendaraan</td><td>Kecepatan (speedometer)</td></tr><tr><td>Kecepatan</td><td>Percepatan (seberapa cepat tancap gas)</td></tr>
+      <tr><td>Jumlah penduduk</td><td>Laju pertumbuhan penduduk</td></tr><tr><td>Total biaya produksi</td><td>Biaya marginal (biaya 1 unit tambahan)</td></tr>
+      <tr><td>Suhu pasien</td><td>Laju naik-turun demam</td></tr></table>
+  </div>
+  <div class="card"><h2>Kamus kecil</h2>
+    <div class="glos"><div><b>Garis potong (sekan)</b>Garis yang melalui dua titik pada kurva.</div><div><b>Garis singgung</b>Garis yang "menyentuh" kurva di satu titik dengan arah yang sama.</div><div><b>Limit</b>Nilai yang didekati saat x mendekati suatu bilangan.</div><div><b>Turunan</b>Laju perubahan sesaat; kemiringan garis singgung.</div></div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Kamera Kecepatan</h2>
+    <p>Grafik menunjukkan posisi motor <span class="mth"><i>s</i>(<i>t</i>) = 5<i>t</i>² + 10<i>t</i></span> meter. Pilih saat <i>t</i>, lalu perkecil selang waktu <i>h</i>. Garis potong (oranye) makin mendekati garis singgung (hijau).</p>
+    <div class="ctrl"><label>Saat t (detik) <span class="v" id="t-v"></span><input type="range" id="t" min="0.5" max="4" step="0.1" value="2"></label><label>Selang waktu h <span class="v" id="h-v"></span><input type="range" id="h" min="0" max="100" step="1" value="10"></label></div>
+    <div class="row"><button class="btn" id="go">▶ Perkecil h otomatis</button></div>
+    <svg class="viz" id="sg" viewBox="0 0 640 360"></svg>
+    <div class="out" id="sOut"></div>
+  </div>
+</section>
+
+<section id="zoom" class="panel">
+  <div class="card"><h2>Lab: Kaca Pembesar</h2>
+    <p>Perbesar grafik di sekitar satu titik. Kurva yang "mulus" akan tampak <b>makin lurus</b>, dan kemiringan garis lurus itu adalah turunannya. Coba juga |x| di x = 0: sudutnya tetap lancip, jadi turunannya tidak ada.</p>
+    <div class="row" id="fsel"></div>
+    <div class="ctrl"><label>Titik x₀ <span class="v" id="x0-v"></span><input type="range" id="x0" min="-2" max="2" step="0.1" value="1"></label><label>Perbesaran <span class="v" id="z-v"></span><input type="range" id="z" min="0" max="3" step="0.05" value="0"></label></div>
+    <svg class="viz" id="zg" viewBox="0 0 640 360"></svg>
+    <div class="out" id="zOut"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Gunakan koma untuk desimal, misalnya 2,5.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul A1</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+$('#ar').innerHTML=`<span class="mth">laju rata-rata = ${G.fr('perubahan nilai','perubahan waktu')} = ${G.fr('<i>f</i>(<i>b</i>) − <i>f</i>(<i>a</i>)','<i>b</i> − <i>a</i>')}</span>`;
+$('#df').innerHTML=`<span class="mth"><i>f</i>′(<i>x</i>) = lim<sub><i>h</i>→0</sub> ${G.fr('<i>f</i>(<i>x</i> + <i>h</i>) − <i>f</i>(<i>x</i>)','<i>h</i>')}</span>`;
+
+/* KAMERA */
+const S=t=>5*t*t+10*t, V=t=>10*t+10; let an=null;
+const hv=()=>{ const u=+$('#h').value; return u===0?0.001:Math.max(0.001,2*(u/100)**2); };
+function drawS(){
+  const t=+$('#t').value, h=hv(); $('#t-v').textContent=G.fmt(t,1)+' s'; $('#h-v').textContent=G.fmt(h,3)+' s';
+  const g=$('#sg'); clear(g); const A=G.axes(g,{x0:0,x1:6,y0:0,y1:200,W:640,H:360,lx:'waktu t (detik)',ly:'posisi s (meter)',xs:1,ys:25});
+  s('path',{d:G.curve(S,0,6,A),fill:'none',stroke:'#2d6ae0','stroke-width':3.5},g);
+  const m=(S(t+h)-S(t))/h, tg=V(t);
+  const line=(k,c,dash,w)=>s('line',{x1:A.X(0),y1:A.Y(S(t)-k*t),x2:A.X(6),y2:A.Y(S(t)+k*(6-t)),stroke:c,'stroke-width':w,'stroke-dasharray':dash||'','clip-path':A.cp},g);
+  line(tg,'#13987a','7 5',2.5); line(m,'#e8890b','',3);
+  s('circle',{cx:A.X(t),cy:A.Y(S(t)),r:7,fill:'#18213d'},g); s('circle',{cx:A.X(t+h),cy:A.Y(S(t+h)),r:6,fill:'#e8890b'},g);
+  if(h>0.15){ s('line',{x1:A.X(t),y1:A.Y(S(t)),x2:A.X(t+h),y2:A.Y(S(t)),stroke:'var(--muted)','stroke-dasharray':'3 3'},g); s('line',{x1:A.X(t+h),y1:A.Y(S(t)),x2:A.X(t+h),y2:A.Y(S(t+h)),stroke:'var(--muted)','stroke-dasharray':'3 3'},g); }
+  $('#sOut').innerHTML=`<div class="grid2"><div><p class="muted">Kecepatan rata-rata selama ${G.fmt(h,3)} detik (garis oranye)</p><p class="big2">${G.fmt(m,3)} m/s</p></div><div><p class="muted">Kecepatan sesaat (turunan, garis hijau)</p><p class="big2">${G.fmt(tg,3)} m/s</p></div></div>
+   <p>Rumusnya: <span class="mth">[<i>s</i>(${G.fmt(t,1)} + ${G.fmt(h,3)}) − <i>s</i>(${G.fmt(t,1)})] ÷ ${G.fmt(h,3)}</span> = (${G.fmt(S(t+h),3)} − ${G.fmt(S(t),2)}) ÷ ${G.fmt(h,3)} = ${G.fmt(m,3)}.</p>
+   <p class="muted">${h<0.01?'h hampir nol: kedua garis hampir berimpit. Inilah limit!':'Perkecil h, dan lihat angka oranye makin dekat ke angka hijau.'} Turunannya s′(t) = 10t + 10, jadi s′(${G.fmt(t,1)}) = ${G.fmt(tg,2)} m/s ≈ ${G.fmt(tg*3.6,1)} km/jam.</p>`;
+}
+['#t','#h'].forEach(z=>$(z).oninput=()=>{ cancelAnimationFrame(an); drawS(); });
+$('#go').onclick=()=>{ cancelAnimationFrame(an); const st=performance.now(); const step=n=>{ const u=Math.max(0,1-(n-st)/3000); $('#h').value=Math.round(100*u); drawS(); if(u>0) an=requestAnimationFrame(step); }; an=requestAnimationFrame(step); };
+drawS();
+
+/* KACA PEMBESAR */
+const FZ={'x²':{f:x=>x*x,d:x=>2*x,ds:'2x'},'sin x':{f:Math.sin,d:Math.cos,ds:'cos x'},'x³ − x':{f:x=>x**3-x,d:x=>3*x*x-1,ds:'3x² − 1'},'|x|':{f:Math.abs,d:x=>x===0?NaN:Math.sign(x),ds:'tidak ada di x = 0'}};
+let fk='x²';
+$('#fsel').innerHTML=Object.keys(FZ).map(k=>`<button class="chipbtn ${k===fk?'on':''}" data-k="${k}">f(x) = ${k}</button>`).join('');
+$$('#fsel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#fsel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); fk=b.dataset.k; if(fk==='|x|') $('#x0').value=0; drawZ(); });
+function drawZ(){
+  const F=FZ[fk], x0=+$('#x0').value, zz=10**(+$('#z').value), w=2.5/zz; $('#x0-v').textContent=G.fmt(x0,1); $('#z-v').textContent=G.fmt(zz,zz<10?1:0)+'×';
+  const y0=F.f(x0), g=$('#zg'); clear(g); const A=G.axes(g,{x0:x0-w,x1:x0+w,y0:y0-w*0.56,y1:y0+w*0.56,W:640,H:360,lx:'x',ly:'y',pad:62});
+  s('path',{d:G.curve(F.f,x0-w,x0+w,A,600),fill:'none',stroke:'#2d6ae0','stroke-width':3.5},g); s('circle',{cx:A.X(x0),cy:A.Y(y0),r:6,fill:'#e8890b'},g);
+  const d=F.d(x0);
+  $('#zOut').innerHTML=isFinite(d)?`<p>Di x₀ = ${G.fmt(x0,1)}, perbesaran ${G.fmt(zz,0)}×: kurva ${zz>30?'<b>tampak seperti garis lurus</b>':'masih tampak melengkung'}.</p><p class="big2">Kemiringan (turunan) = f′(${G.fmt(x0,1)}) = ${G.fmt(d,3)}</p><p class="muted">Rumus turunan: f′(x) = ${F.ds}. Sifat "tampak lurus jika diperbesar" ini yang membuat turunan masuk akal: dalam jarak sangat dekat, kurva berperilaku seperti garis.</p>`
+   :`<p>Di x = 0, grafik |x| membentuk <b>sudut lancip</b> yang tidak pernah menjadi lurus, berapa pun perbesarannya. Kemiringan dari kiri −1, dari kanan +1.</p><p class="big2">Turunan di x = 0 tidak ada.</p><p class="muted">Turunan hanya ada jika kurvanya "mulus" di titik itu.</p>`;
+}
+['#x0','#z'].forEach(z=>$(z).oninput=drawZ); drawZ();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Laju rata-rata', gen(){ const a=rand(1,4), b=a+rand(1,4), h1=rand(5,30), r=rand(2,9); const h2=h1+r*(b-a); return {q:`Tinggi tanaman ${h1} cm pada minggu ke-${a} dan ${h2} cm pada minggu ke-${b}. Laju pertumbuhan rata-ratanya … cm/minggu.`, a:String(r), hint:'(nilai akhir − nilai awal) ÷ (waktu akhir − waktu awal).', ex:`(${h2} − ${h1}) ÷ (${b} − ${a}) = ${r}`}; }},
+  {name:'Limit faktor', gen(){ const a=rand(1,6); return {q:`<span class="mth">lim<sub><i>x</i>→${a}</sub> (<i>x</i>² − ${a*a})/(<i>x</i> − ${a})</span> = …`, a:String(2*a), hint:`Faktorkan: x² − ${a*a} = (x − ${a})(x + ${a}).`, ex:`x + ${a} di x = ${a} → ${2*a}`}; }},
+  {name:'Limit substitusi', gen(){ const a=rand(-3,4), b=rand(1,5), c=rand(-5,5); return {q:`<span class="mth">lim<sub><i>x</i>→${a}</sub> (${b}<i>x</i>² ${c<0?'−':'+'} ${Math.abs(c)})</span> = …`, a:String(b*a*a+c), hint:'Fungsi polinom: langsung masukkan nilai x.', ex:`${b}·(${a})² ${c<0?'−':'+'} ${Math.abs(c)} = ${b*a*a+c}`}; }},
+  {name:'Kemiringan x²', gen(){ const k=rand(1,4), x=rand(-3,4); return {q:`Kemiringan garis singgung kurva y = ${k===1?'':k}x² di x = ${x} adalah …`, a:String(2*k*x), hint:`Turunan ${k}x² adalah ${2*k}x.`, ex:`${2*k} × ${x} = ${2*k*x}`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Kecepatan yang ditunjukkan speedometer pada satu saat disebut kecepatan …', o:['sesaat','rata-rata','total','awal'], a:0, ex:'Laju sesaat = turunan.'},
+ {q:'Laju rata-rata digambarkan sebagai kemiringan garis …', o:['potong (melalui dua titik)','singgung','datar','tegak'], a:0, ex:'Garis sekan.'},
+ {q:'Turunan digambarkan sebagai kemiringan garis …', o:['singgung','potong','sumbu-x','sumbu-y'], a:0, ex:'Garis singgung di satu titik.'},
+ {q:'Arti "lim h → 0" adalah …', o:['h dibuat mendekati nol','h sama dengan nol','h sangat besar','h dihapus'], a:0, ex:'Mendekati, tidak harus sama.'},
+ {q:'lim<sub>x→2</sub> (x² − 4)/(x − 2) = …', o:['4','0','2','tidak ada'], a:0, ex:'x + 2 → 4.'},
+ {q:'Jarak 120 km ditempuh dalam 2 jam. Kecepatan rata-ratanya …', o:['60 km/jam','240 km/jam','120 km/jam','30 km/jam'], a:0, ex:'120 ÷ 2.'},
+ {q:'Turunan f(x) = x² adalah …', o:['2x','x','x³/3','2'], a:0, ex:'Dari definisi limit.'},
+ {q:'Notasi dy/dx dibaca …', o:['turunan y terhadap x','y dibagi x','integral y','y dikali x'], a:0, ex:'Perubahan y kecil ÷ perubahan x kecil.'},
+ {q:'Fungsi |x| di x = 0 …', o:['tidak punya turunan','turunannya 0','turunannya 1','turunannya −1'], a:0, ex:'Ada sudut lancip.'},
+ {q:'Hitung lim<sub>x→3</sub> (x² − 9)/(x − 3).', input:true, a:['6'], ex:'x + 3 = 6.'},
+ {q:'Suhu naik dari 30 °C pukul 10 menjadi 36 °C pukul 13. Laju rata-ratanya … °C/jam.', input:true, a:['2'], ex:'6 ÷ 3.'},
+ {q:'Kemiringan kurva y = x² di x = 5 adalah …', input:true, a:['10'], ex:'2 × 5.'}
+],'kalkd1');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

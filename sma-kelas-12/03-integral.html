@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Integral · Matematika SMA Kelas XII</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#13987a">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XII</a><div class="brand">∂ Matematika SMA <small>· Kelas XII</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 3 · Kalkulus <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Integral: Menjumlahkan Potongan Kecil Menjadi Total</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menentukan integral tak tentu fungsi aljabar sebagai kebalikan turunan.</li>
+    <li>Menghitung integral tentu dengan Teorema Dasar Kalkulus.</li>
+    <li>Menghitung luas daerah di bawah kurva dan di antara dua kurva.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">▥ Lab Persegi Panjang Tipis</button><button data-target="luas">🌾 Lab Luas Antara Kurva</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Tagihan air PDAM</span><p style="margin:.3em 0">Meteran air mencatat <b>debit</b> (liter per menit) yang naik-turun sepanjang hari. Berapa total air yang terpakai? Potong hari menjadi selang-selang kecil, kalikan debit dengan lamanya, lalu jumlahkan semua potongan. Jika potongannya makin tipis, jumlahnya makin tepat: itulah <b>integral</b>. Turunan mengubah total menjadi laju; integral mengubah laju kembali menjadi total.</p></div>
+  </div>
+  <div class="card"><h2>1. Integral tak tentu</h2>
+    <p>Integral tak tentu adalah <b>antiturunan</b>: ∫f(x) dx = F(x) + C jika F′(x) = f(x). Konstanta C muncul karena turunan konstanta adalah 0.</p>
+    <table class="t"><tr><th>Rumus</th><th>Contoh</th></tr>
+      <tr><td>∫axⁿ dx = a/(n + 1) · xⁿ⁺¹ + C (n ≠ −1)</td><td>∫6x² dx = 2x³ + C</td></tr>
+      <tr><td>∫k dx = kx + C</td><td>∫5 dx = 5x + C</td></tr>
+      <tr><td>∫(ax + b)ⁿ dx = (ax + b)ⁿ⁺¹ / (a(n + 1)) + C</td><td>∫(2x + 1)³ dx = (2x + 1)⁴/8 + C</td></tr></table>
+    <div class="note">Resepnya kebalikan aturan pangkat turunan: <b>pangkat ditambah satu, lalu dibagi pangkat baru</b>.</div>
+  </div>
+  <div class="card"><h2>2. Integral tentu dan Teorema Dasar Kalkulus</h2>
+    <p><span class="mth">∫<sub>a</sub><sup>b</sup> f(x) dx = F(b) − F(a)</span>. Hasilnya bilangan (tanpa C).</p>
+    <div class="ex"><span class="t">Contoh</span>∫<sub>1</sub><sup>3</sup> 3x² dx = [x³]<sub>1</sub><sup>3</sup> = 27 − 1 = 26.</div>
+    <p>Sifat: ∫<sub>a</sub><sup>a</sup> f = 0, ∫<sub>a</sub><sup>b</sup> f = −∫<sub>b</sub><sup>a</sup> f, dan ∫<sub>a</sub><sup>c</sup> f = ∫<sub>a</sub><sup>b</sup> f + ∫<sub>b</sub><sup>c</sup> f.</p>
+  </div>
+  <div class="card"><h2>3. Luas daerah</h2>
+    <ul><li>Luas di bawah kurva y = f(x) ≥ 0 dari a ke b: L = ∫<sub>a</sub><sup>b</sup> f(x) dx.</li><li>Jika kurva di bawah sumbu-x, integralnya negatif: ambil nilai mutlaknya.</li><li>Luas di antara dua kurva: <b>L = ∫ (atas − bawah) dx</b>, batasnya titik potong kedua kurva.</li></ul>
+    <div class="ex"><span class="t">Rumus cepat</span>Luas daerah antara parabola dan garis yang dibatasi titik potongnya: L = D√D / (6a²), dengan D diskriminan persamaan selisihnya.</div>
+  </div>
+  <div class="card"><h2>Ingin lebih dalam?</h2><p>Buka <a href="../kalkulus-lab/index.html"><b>Kalkulus Lab</b></a> (14 modul): volume benda putar, teknik substitusi dan parsial, serta penerapan integral dalam ekonomi, kesehatan, dan teknik.</p></div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Persegi Panjang Tipis (Jumlah Riemann)</h2>
+    <p>Luas di bawah kurva didekati dengan n persegi panjang. Tambah n dan lihat jumlahnya mendekati nilai integral sebenarnya.</p>
+    <div class="row" id="fs"></div>
+    <div class="seg" id="md"><button data-k="L">Titik kiri</button><button data-k="M" class="on">Titik tengah</button><button data-k="R">Titik kanan</button></div>
+    <div class="ctrl"><label>Batas atas b <span class="v" id="b-v"></span><input type="range" id="b" min="1" max="4" step="0.5" value="3"></label><label>Banyak persegi panjang n <span class="v" id="n-v"></span><input type="range" id="n" min="1" max="60" value="6"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 600 340"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="luas" class="panel">
+  <div class="card"><h2>Lab: Luas Sawah antara Sungai dan Jalan</h2>
+    <p>Sungai berbentuk parabola y = x², jalan berbentuk garis y = mx + c. Sawah adalah daerah di antara keduanya. Atur jalan dan hitung luasnya.</p>
+    <div class="ctrl"><label>Gradien jalan m <span class="v" id="m-v"></span><input type="range" id="m" min="-3" max="3" step="0.5" value="1"></label><label>Konstanta c <span class="v" id="c-v"></span><input type="range" id="c" min="0.5" max="6" step="0.5" value="2"></label></div>
+    <svg class="viz" id="g2" viewBox="0 0 600 360"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Integral tak tentu: tulis seperti <code>x^3 + 2x</code> (boleh tanpa + C). Bentuk setara dianggap benar.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XII · Modul 3 · Lebih dalam: <a href="../kalkulus-lab/index.html">Kalkulus Lab</a></div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const FS={'x²':{f:x=>x*x,F:x=>x**3/3,nm:'x³/3'},'x² − 2x + 3':{f:x=>x*x-2*x+3,F:x=>x**3/3-x*x+3*x,nm:'x³/3 − x² + 3x'},'2x + 1':{f:x=>2*x+1,F:x=>x*x+x,nm:'x² + x'},'√x':{f:Math.sqrt,F:x=>2/3*Math.pow(x,1.5),nm:'⅔x√x'}};
+let fk='x²', md='M';
+$('#fs').innerHTML=Object.keys(FS).map(k=>`<button class="chipbtn ${k===fk?'on':''}" data-k="${k}">f(x) = ${k}</button>`).join('');
+$$('#fs .chipbtn').forEach(b=>b.onclick=()=>{ $$('#fs .chipbtn').forEach(x=>x.classList.toggle('on',x===b)); fk=b.dataset.k; d1(); });
+$$('#md button').forEach(b=>b.onclick=()=>{ $$('#md button').forEach(x=>x.classList.toggle('on',x===b)); md=b.dataset.k; d1(); });
+function d1(){
+  const F=FS[fk], b=+$('#b').value, n=+$('#n').value; $('#b-v').textContent=G.fmt(b,1); $('#n-v').textContent=n;
+  const ymax=Math.max(...Array.from({length:41},(_,k)=>F.f(4*k/40)))*1.05;
+  const g=$('#g1'); clear(g); const A=G.axes(g,{x0:0,x1:4.2,y0:0,y1:ymax,W:600,H:340,pad:44,padb:28,xs:.5,lx:'x',ly:'y'});
+  const w=b/n; let S=0;
+  for(let i=0;i<n;i++){ const xl=i*w, xs= md==='L'?xl: md==='R'?xl+w: xl+w/2; const h=F.f(xs); S+=h*w;
+    s('rect',{x:A.X(xl),y:A.Y(Math.max(h,0)),width:Math.max(0.5,A.X(xl+w)-A.X(xl)),height:Math.abs(A.Y(0)-A.Y(h)),fill:'var(--b)','fill-opacity':.35,stroke:'var(--b)','stroke-width':n>30?.5:1.5},g); }
+  s('path',{d:G.curve(F.f,0,4.2,A,300),fill:'none',stroke:'var(--acc)','stroke-width':3.5,'clip-path':A.cp},g);
+  s('line',{x1:A.X(b),y1:A.Y(0),x2:A.X(b),y2:A.Y(F.f(b)),stroke:'var(--ink)','stroke-width':2},g);
+  const I=F.F(b)-F.F(0);
+  $('#o1').innerHTML=`<div class="big">Jumlah ${n} persegi panjang ≈ ${G.fmt(S,4)} &nbsp;·&nbsp; ∫<sub>0</sub><sup>${G.fmt(b,1)}</sup> ${fk} dx = ${G.fmt(I,4)}</div>
+   <p>Antiturunan F(x) = ${F.nm}, jadi integralnya F(${G.fmt(b,1)}) − F(0) = ${G.fmt(I,4)}. Selisih pendekatan: ${G.fmt(Math.abs(S-I),4)} (${G.fmt(Math.abs(S-I)/I*100,2)}%).</p>
+   <p class="muted">Lebar tiap persegi panjang Δx = ${G.fmt(b,1)}/${n} = ${G.fmt(w,4)}. Saat n → ∞, jumlahnya tepat sama dengan integral.</p>`;
+}
+['b','n'].forEach(k=>$('#'+k).oninput=d1); d1();
+
+function d2(){
+  const m=+$('#m').value, c=+$('#c').value; $('#m-v').textContent=G.fmt(m,1); $('#c-v').textContent=G.fmt(c,1);
+  const D=m*m+4*c, x1=(m-Math.sqrt(D))/2, x2=(m+Math.sqrt(D))/2; const top=x=>m*x+c, bot=x=>x*x;
+  const L=Math.pow(D,1.5)/6;
+  const g=$('#g2'); clear(g); const A=G.axes(g,{x0:-4,x1:4,y0:-1,y1:14,W:600,H:360,pad:40,padb:28,xs:1,ys:2,lx:'x',ly:'y'});
+  s('path',{d:G.region(top,x1,x2,A,bot),fill:'var(--c)','fill-opacity':.35,'clip-path':A.cp},g);
+  s('path',{d:G.curve(bot,-4,4,A),fill:'none',stroke:'var(--a)','stroke-width':3.5,'clip-path':A.cp},g);
+  s('path',{d:G.curve(top,-4,4,A),fill:'none',stroke:'var(--b)','stroke-width':3.5,'clip-path':A.cp},g);
+  [x1,x2].forEach(x=>s('circle',{cx:A.X(x),cy:A.Y(x*x),r:6,fill:'var(--ink)'},g));
+  txt(g,A.X(3.2),A.Y(11.6),'y = x²',{'font-weight':800,fill:'var(--a)'});
+  $('#o2').innerHTML=`<p>Titik potong: x² = ${G.fmt(m,1)}x + ${G.fmt(c,1)} → x² ${m<0?'+':'−'} ${G.fmt(Math.abs(m),1)}x − ${G.fmt(c,1)} = 0 → x₁ ≈ ${G.fmt(x1,3)}, x₂ ≈ ${G.fmt(x2,3)}.</p>
+   <div class="big">L = ∫<sub>x₁</sub><sup>x₂</sup> [(${G.fmt(m,1)}x + ${G.fmt(c,1)}) − x²] dx ≈ ${G.fmt(L,3)} satuan luas</div>
+   <p class="muted">Rumus cepat: D = m² + 4c = ${G.fmt(D,2)}, L = D√D/(6a²) = ${G.fmt(L,3)}. Cek numerik (Simpson): ${G.fmt(G.simpson(x=>top(x)-bot(x),x1,x2),3)}.</p>`;
+}
+['m','c'].forEach(k=>$('#'+k).oninput=d2); d2();
+
+const pw=(c,n)=>`${c===1?'':c}x${n>1?['','','²','³','⁴'][n]:''}`;
+VML.practice($('#prac'),[
+ {name:'Tak tentu', gen(){ const n=rand(1,3), a=(n+1)*rand(1,4), b=rand(1,8); return {q:`∫ (${pw(a,n)} + ${b}) dx = …`, a:v=>G.sameUpToC(v,x=>a/(n+1)*Math.pow(x,n+1)+b*x), show:`${a/(n+1)===1?'':a/(n+1)}x${['','','²','³','⁴'][n+1]} + ${b}x + C`, hint:'Pangkat +1, lalu bagi pangkat baru.', ex:`${a/(n+1)===1?'':a/(n+1)}x${['','','²','³','⁴'][n+1]} + ${b}x + C`}; }},
+ {name:'Integral tentu', gen(){ const a=pick([3,6]), b=rand(-4,4), p=rand(0,2), q=p+rand(1,3); const F=x=>a/3*x**3+b*x; return {q:`∫<sub>${p}</sub><sup>${q}</sup> (${a}x² ${b<0?'−':'+'} ${Math.abs(b)}) dx = …`, a:String(F(q)-F(p)), hint:`F(x) = ${a/3===1?'':a/3}x³ ${b<0?'−':'+'} ${Math.abs(b)}x. Hitung F(${q}) − F(${p}).`, ex:`${F(q)} − ${F(p)} = ${F(q)-F(p)}`}; }},
+ {name:'Luas bawah kurva', gen(){ const k=rand(1,4); return {q:`Luas daerah yang dibatasi y = ${2*k}x, sumbu-x, dan garis x = ${k+1} (dari x = 0) adalah …`, a:String(k*(k+1)**2), hint:`∫₀^${k+1} ${2*k}x dx = ${k}x² dari 0 sampai ${k+1}.`, ex:`${k}·${(k+1)**2} = ${k*(k+1)**2}`}; }},
+ {name:'Luas antara kurva', gen(){ const p=rand(-3,1), q=p+pick([1,2,3,6]); // y = -(x-p)(x-q) di atas sumbu-x
+   const L=(q-p)**3/6; return {q:`Luas daerah antara kurva y = −x² ${p+q<0?'−':'+'} ${Math.abs(p+q)}x ${-p*q<0?'−':'+'} ${Math.abs(p*q)} dan sumbu-x adalah …`.replace('+ 0x','').replace('− 0x','').replace(/ [+−] 0$/,''), a:String(VML.round(L,6)), show:VML.fracTxt((q-p)**3,6), hint:`Titik potong x = ${p} dan x = ${q}. Rumus cepat L = (x₂ − x₁)³/6 untuk a = −1.`, ex:`(${q} − ${VML.neg(p)})³/6 = ${VML.fracTxt((q-p)**3,6)}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'∫ 6x² dx = …', o:['2x³ + C','12x + C','6x³ + C','3x² + C'], a:0, ex:'6/3 · x³.'},
+ {q:'∫ 5 dx = …', o:['5x + C','0','5 + C','x⁵ + C'], a:0, ex:'Konstanta.'},
+ {q:'Konstanta C pada integral tak tentu muncul karena …', o:['turunan konstanta adalah 0','integral selalu ditambah 1','agar jawaban lebih panjang','C adalah luas'], a:0, ex:'Banyak fungsi punya turunan sama.'},
+ {q:'∫₁³ 2x dx = …', o:['8','9','4','6'], a:0, ex:'9 − 1.'},
+ {q:'∫₀² x³ dx = …', o:['4','8','2','16'], a:0, ex:'16/4.'},
+ {q:'∫ₐᵃ f(x) dx = …', o:['0','f(a)','2a','tidak terdefinisi'], a:0, ex:'Batas sama.'},
+ {q:'Luas antara dua kurva dihitung dengan ∫ (…) dx', o:['kurva atas − kurva bawah','kurva bawah − kurva atas','kurva atas × kurva bawah','kurva atas + kurva bawah'], a:0, ex:'Tinggi potongan.'},
+ {q:'∫ (2x + 1)³ dx = …', o:['(2x + 1)⁴/8 + C','(2x + 1)⁴/4 + C','3(2x + 1)² + C','(2x + 1)⁴ + C'], a:0, ex:'Bagi 2·4.'},
+ {q:'Jika debit air f(t) liter/menit, maka ∫ f(t) dt menyatakan …', o:['total air yang mengalir','debit sesaat','percepatan aliran','waktu aliran'], a:0, ex:'Laju → total.'},
+ {q:'∫₀³ (x² + 1) dx = …', input:true, a:['12'], ex:'9 + 3.'},
+ {q:'Luas daerah di bawah y = 3x² dari x = 0 sampai x = 2 adalah …', input:true, a:['8'], ex:'[x³] = 8.'},
+ {q:'Luas daerah antara y = x² dan y = 4 adalah … (pecahan)', input:true, a:['32/3'], ex:'∫₋₂² (4 − x²) dx = 32/3.'}
+],'xii3');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMA Kelas XI · Virtual Math Lab SMA</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .home-hero{padding:44px 0 14px;display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;color:var(--onbg)}
+  .home-hero .chip{background:rgba(255,255,255,.14);color:#ffd877}
+  .home-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.1rem,6vw,3.5rem);letter-spacing:-.5px;margin:.25em 0}
+  .home-hero h1 em{font-style:normal;background:linear-gradient(90deg,#ffd877,#f0b429 55%,#f39ac8);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .home-hero p.lead{font-size:1.1rem;color:var(--onbg-soft);max-width:600px}
+  .stat{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px}
+  .stat div{font-size:.9rem;color:var(--onbg-soft)} .stat b{display:block;font-size:1.7rem;color:#fff}
+  .board{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:26px;padding:12px;backdrop-filter:blur(6px)}
+  .prog{height:6px;background:var(--line);border-radius:9px;margin-top:8px;overflow:hidden}.prog i{display:block;height:100%}
+  .route{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .route div{border-radius:16px;padding:14px;border:1px solid var(--line);background:var(--card)}
+  .route b{display:block;font-size:1.05rem;margin-bottom:4px}
+  .life{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+  .life div{border:1px solid var(--line);border-radius:14px;padding:12px;background:color-mix(in srgb,var(--acc) 5%,var(--card))}
+  .life span{font-size:1.6rem;display:block}
+  .mod .ic{box-shadow:0 6px 14px rgba(0,0,0,.2)}
+  @media (max-width:760px){.home-hero{grid-template-columns:1fr}.board{display:none}.route{grid-template-columns:1fr}}
+</style>
+</head>
+<body style="--acc:#6a3fb0">
+<header class="top"><div class="wrap"><a class="back" href="../index.html">← Beranda SMA</a><div class="brand">∘ Matematika SMA <small>· Kelas XI · Ungu Mahkota</small></div></div></header>
+<div class="wrap">
+<section class="home-hero">
+  <div>
+    <span class="chip">Fase F · Kurikulum Merdeka · 6 modul</span>
+    <h1>Matematika Kelas XI: <em>fungsi, bentuk, dan keputusan terbaik.</em></h1>
+    <p class="lead">Mesin fungsi berantai, polinomial untuk merancang kemasan, lingkaran untuk jangkauan sinyal, program linear untuk untung terbesar, matriks yang menggerakkan gambar, dan peluang untuk mengambil keputusan di tengah ketidakpastian.</p>
+    <div class="stat"><div><b>6</b>modul</div><div><b>12</b>lab interaktif</div><div><b>72</b>soal kuis</div><div><b id="avg">–</b>rata-rata nilaimu</div></div>
+  </div>
+  <div class="board"><svg viewBox="0 0 360 280" width="100%" aria-hidden="true"><rect width="360" height="280" rx="18" fill="rgba(255,255,255,.04)"/><circle cx="120" cy="130" r="80" fill="none" stroke="#f0b429" stroke-width="4"/><line x1="20" y1="230" x2="240" y2="20" stroke="#f39ac8" stroke-width="3" stroke-dasharray="8 6"/><polygon points="200,240 330,240 330,170 260,130 200,170" fill="#f0b429" fill-opacity=".35" stroke="#ffd877" stroke-width="2"/><text x="230" y="80" font-family="Georgia,serif" font-size="44" font-style="italic" fill="#fff" fill-opacity=".9">g∘f</text><text x="180" y="268" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" fill-opacity=".8">fungsi · lingkaran · optimasi · peluang</text></svg></div>
+</section>
+<div class="card"><h2>Peta belajar</h2><p>Modul 1–2 memperdalam aljabar fungsi, Modul 3 geometri analitik, Modul 4–5 alat pengambil keputusan, Modul 6 peluang.</p><div class="route"><div style="border-left:5px solid #6a3fb0"><b>⚙️ Fungsi & Aljabar</b>Komposisi, invers, polinomial, teorema sisa.</div><div style="border-left:5px solid #f0b429"><b>📐 Geometri & Matriks</b>Persamaan lingkaran, garis singgung, matriks dan transformasi.</div><div style="border-left:5px solid #d0458f"><b>🎯 Keputusan</b>Program linear dan teori peluang untuk memilih yang terbaik.</div></div></div>
+<h2 class="onbg">Modul Kelas XI</h2>
+<div class="mods" id="mods"></div>
+<div class="card"><h2>Matematika Kelas XI di sekitar kita</h2><div class="life"><div><span>🧾</span><b>Kasir</b><br>Diskon dan pajak berurutan (komposisi)</div><div><span>🌡️</span><b>Termometer</b><br>Konversi °C ↔ °F (invers)</div><div><span>📦</span><b>Kemasan</b><br>Volume kotak sebagai polinomial</div><div><span>📡</span><b>Sinyal</b><br>Jangkauan menara berbentuk lingkaran</div><div><span>🏭</span><b>Produksi</b><br>Untung maksimum dengan bahan terbatas</div><div><span>🖼️</span><b>Grafis</b><br>Memutar & memperbesar gambar dengan matriks</div><div><span>🎟️</span><b>Undian</b><br>Peluang menang dan kombinasi nomor</div><div><span>🛡️</span><b>Asuransi</b><br>Frekuensi harapan klaim</div></div></div>
+<div class="card"><h2>Kamus kecil</h2><div class="glos"><div><b>Komposisi</b>Menjalankan dua fungsi berurutan: (g∘f)(x) = g(f(x)).</div><div><b>Invers</b>Fungsi yang membatalkan kerja fungsi lain.</div><div><b>Horner</b>Cara cepat membagi polinomial dengan (x − k).</div><div><b>Teorema Sisa</b>Sisa bagi P(x) oleh (x − k) adalah P(k).</div><div><b>Kuasa titik</b>Hasil substitusi titik ke persamaan lingkaran dikurangi r².</div><div><b>Titik pojok</b>Sudut daerah layak; tempat nilai optimum.</div><div><b>Determinan</b>Bilangan dari matriks persegi; faktor skala luas.</div><div><b>Kombinasi</b>Banyak cara memilih tanpa memperhatikan urutan.</div></div></div>
+<div class="card"><h2>Cara memakai</h2>
+  <p>Setiap modul berisi <b>📖 Cerita &amp; Materi</b>, dua <b>🧪 Lab</b> interaktif, <b>✏️ Latihan</b> dengan soal acak tak terbatas (dua kali kesempatan menjawab, ada petunjuk), dan <b>🏆 Kuis</b> 12 soal dengan pembahasan. Ukur kesiapan ujian di menu <b>📝 Tryout</b> dan buka <b>📘 Rumus</b> untuk ringkasan.</p>
+  <p class="muted">Semua berkas berjalan tanpa internet. Nilai tersimpan di perangkat masing-masing pengguna.</p>
+  <div class="row"><button class="btn ghost" id="reset">Hapus nilai Kelas XI di perangkat ini</button></div>
+</div>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · SMA Kelas XI · Kurikulum Merdeka</div></footer>
+<script src="assets/core.js"></script>
+<script>
+const M=[["01-komposisi-invers.html", "Fungsi Komposisi & Invers", "Diskon dulu atau pajak dulu? Mesin berantai dan cermin invers.", "g∘f", "#6a3fb0", "xi1", "Menengah"], ["02-polinomial.html", "Polinomial (Suku Banyak)", "Grafik dari akar, mesin Horner, teorema sisa & faktor.", "P(x)", "#c2417f", "xi2", "Menengah"], ["03-lingkaran.html", "Persamaan Lingkaran", "Jangkauan menara sinyal dan garis singgung.", "○", "#2b6fd6", "xi3", "Menengah"], ["04-program-linear.html", "Program Linear", "Toko roti, daerah layak, titik pojok, garis selidik.", "max", "#e07b1f", "xi4", "Menengah"], ["05-matriks.html", "Matriks", "Transformasi bidang, determinan, invers, perkalian.", "[ ]", "#13987a", "xi5", "Menengah"], ["06-peluang.html", "Teori Peluang", "Simulasi koin & dadu, permutasi, kombinasi.", "P(A)", "#d0458f", "xi6", "Menengah"]];
+const C2='#6a3fb0', C3='#f0b429';
+function card([f,t,d,ic,c,k,l],i){ const b=VML.store.get(k); if(b!=null){window._s+=b;window._c++;}
+    return `<a class="mod" href="${f}"><div class="ic" style="background:linear-gradient(135deg,${c},${i%2?C2:C3})">${ic}</div><span class="muted" style="font-size:.8rem;font-weight:700">MODUL ${i+1} · ${l.toUpperCase()}</span><h3>${t}</h3><p>${d}</p>
+      <div class="best" style="color:${c}">${b!=null?'Nilai kuis terbaik: '+b:'Belum mengerjakan kuis'}</div><div class="prog"><i style="width:${b||0}%;background:linear-gradient(90deg,${C2},${C3})"></i></div></a>`; }
+function render(){ window._s=0; window._c=0; document.getElementById('mods').innerHTML=M.map((m,i)=>card(m,i)).join('');
+  document.getElementById('avg').textContent = window._c ? Math.round(window._s/window._c) : '–'; }
+render();
+document.getElementById('reset').onclick=()=>{ if(confirm('Hapus semua nilai kuis Kelas XI yang tersimpan di perangkat ini?')){ M.forEach(m=>{ try{localStorage.removeItem('sma11:'+m[5]);}catch(e){} }); render(); } };
+window.addEventListener('pageshow',render);
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

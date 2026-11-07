@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Integral Tentu & Teorema Dasar Kalkulus · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#7a4fd6">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian B · Modul B3 · Integral Tentu <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Integral Tentu &amp; Teorema Dasar Kalkulus</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menghitung integral tentu dengan rumus <span class="mth">F(b) − F(a)</span>.</li>
+    <li>Memahami mengapa luas di bawah sumbu-x dihitung negatif (seperti uang keluar).</li>
+    <li>Melihat hubungan laju dan jumlah lewat fungsi akumulasi (Teorema Dasar Kalkulus).</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📐 Lab Geser Batas</button><button data-target="bak">🛁 Lab Bak Penampung</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita odometer</span><p style="margin:.3em 0">Odometer motor menunjukkan <b>1.250 km</b> saat berangkat jam 08.00 dan <b>1.310 km</b> saat tiba jam 10.00. Tanpa melihat speedometer sepanjang jalan, kita tahu jarak tempuhnya: <b>1.310 − 1.250 = 60 km</b>.</p>
+    <p style="margin:.3em 0">Padahal jarak itu adalah luas di bawah grafik kecepatan (Modul 1). Jadi <b>luas di bawah grafik laju = selisih dua angka "penghitung total"</b>. Inilah <b>Teorema Dasar Kalkulus</b>, jembatan antara turunan dan integral.</p></div>
+  </div>
+  <div class="card"><h2>1. Teorema Dasar Kalkulus</h2>
+    <div class="def" style="text-align:center;font-size:1.25rem" id="tdk"></div>
+    <p>dengan <span class="mth"><i>F</i></span> adalah antiturunan dari <span class="mth"><i>f</i></span>. Biasanya ditulis dengan kurung siku: <span class="mth">[<i>F</i>(<i>x</i>)]<sub><i>a</i></sub><sup><i>b</i></sup> = <i>F</i>(<i>b</i>) − <i>F</i>(<i>a</i>)</span>.</p>
+    <div class="ex" id="contoh"></div>
+    <div class="note">Konstanta C tidak perlu ditulis, karena akan saling menghapus: (F(b) + C) − (F(a) + C) = F(b) − F(a).</div>
+  </div>
+  <div class="card"><h2>2. Luas bertanda: masuk dan keluar</h2>
+    <p>Bayangkan grafik arus kas warung: di atas sumbu-x berarti <b>uang masuk</b>, di bawah sumbu-x berarti <b>uang keluar</b>. Integral tentu menghitung <b>saldo bersih</b>, sehingga bagian di bawah sumbu bernilai negatif.</p>
+    <div class="grid2"><div class="ex"><span class="t">Integral tentu</span>= luas di atas − luas di bawah (saldo bersih)</div><div class="ex"><span class="t">Luas daerah sebenarnya</span>= luas di atas + luas di bawah (semua dihitung positif)</div></div>
+  </div>
+  <div class="card"><h2>3. Sifat-sifat penting</h2>
+    <table class="t"><tr><th>Sifat</th><th>Arti sehari-hari</th></tr>
+      <tr><td>∫<sub>a</sub><sup>a</sup> f dx = 0</td><td>Tidak bergerak waktunya, tidak ada jarak.</td></tr>
+      <tr><td>∫<sub>a</sub><sup>b</sup> f dx = −∫<sub>b</sub><sup>a</sup> f dx</td><td>Membalik arah perjalanan membalik tanda.</td></tr>
+      <tr><td>∫<sub>a</sub><sup>c</sup> f dx = ∫<sub>a</sub><sup>b</sup> f dx + ∫<sub>b</sub><sup>c</sup> f dx</td><td>Perjalanan dapat dibagi menjadi dua etape.</td></tr>
+      <tr><td>∫ k·f dx = k ∫ f dx</td><td>Dua kali lebih cepat, dua kali lebih jauh.</td></tr></table>
+  </div>
+  <div class="card"><h2>4. Fungsi akumulasi</h2>
+    <p>Jika kita mulai menghitung dari titik tetap a sampai titik x yang terus bergerak, kita mendapat fungsi baru:</p>
+    <p style="text-align:center;font-size:1.2rem" id="akum"></p>
+    <p><b>A(x)</b> adalah "penghitung total", seperti odometer atau isi bak air. Laju pertambahan A tepat sama dengan f: <span class="mth"><i>A</i>′(<i>x</i>) = <i>f</i>(<i>x</i>)</span>. Saat keran deras, isi bak naik cepat; saat keran ditutup, isi bak tetap.</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Geser Batas a dan b</h2>
+    <p>Pilih fungsi, lalu geser batas a dan b (atau seret garisnya di grafik). Hijau dihitung positif, merah negatif.</p>
+    <div class="row" id="fsel"></div>
+    <div class="ctrl"><label>Batas bawah a <span class="v" id="a-v"></span><input type="range" id="a" min="-3" max="3" step="0.1" value="-1"></label><label>Batas atas b <span class="v" id="b-v"></span><input type="range" id="b" min="-3" max="3" step="0.1" value="2"></label></div>
+    <svg class="viz" id="gb" viewBox="0 0 640 360"></svg>
+    <div class="out" id="bOut"></div>
+  </div>
+</section>
+
+<section id="bak" class="panel">
+  <div class="card"><h2>Lab: Bak Penampung Air</h2>
+    <p>Grafik atas adalah <b>debit</b> keran (m³/jam): positif berarti mengisi, negatif berarti air dibuang. <b>Seret titik-titik ungu</b> untuk mengubah debit. Grafik bawah adalah <b>isi bak</b>, yaitu integral dari debit.</p>
+    <div class="ctrl"><label>Waktu <span class="v" id="t-v"></span><input type="range" id="t" min="0" max="8" step="0.05" value="5"></label><label>Isi awal bak <span class="v" id="v0-v"></span><input type="range" id="v0" min="0" max="10" step="1" value="2"></label></div>
+    <div class="grid2"><div><svg class="viz" id="rate" viewBox="0 0 640 260"></svg><svg class="viz" id="vol" viewBox="0 0 640 260"></svg></div><div><svg class="viz" id="tank" viewBox="0 0 240 300" style="max-width:260px;margin:auto"></svg><div class="out" id="tOut"></div></div></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Jawaban berupa bilangan. Pecahan boleh ditulis 8/3 atau desimal 2,67.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul B3</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+$('#tdk').innerHTML=`<span class="mth">${G.int('<i>a</i>','<i>b</i>')} <i>f</i>(<i>x</i>) <i>dx</i> = <i>F</i>(<i>b</i>) − <i>F</i>(<i>a</i>)</span>`;
+$('#contoh').innerHTML=`<span class="t">Contoh</span><span class="mth">${G.int('1','3')} 2<i>x</i> <i>dx</i> = [<i>x</i>²]<sub>1</sub><sup>3</sup> = 3² − 1² = 9 − 1 = <b>8</b></span><br><span class="mth">${G.int('0','2')} (3<i>x</i>² + 1) <i>dx</i> = [<i>x</i>³ + <i>x</i>]<sub>0</sub><sup>2</sup> = (8 + 2) − (0 + 0) = <b>10</b></span>`;
+$('#akum').innerHTML=`<span class="mth"><i>A</i>(<i>x</i>) = ${G.int('<i>a</i>','<i>x</i>')} <i>f</i>(<i>t</i>) <i>dt</i></span>`;
+
+/* GESER BATAS */
+const FS={'x²':{f:x=>x*x,F:x=>x**3/3,Fs:'x³/3',y:[-2,9]},'x':{f:x=>x,F:x=>x*x/2,Fs:'x²/2',y:[-3.5,3.5]},'x² − 1':{f:x=>x*x-1,F:x=>x**3/3-x,Fs:'x³/3 − x',y:[-2,8.5]},'sin x':{f:Math.sin,F:x=>-Math.cos(x),Fs:'−cos x',y:[-1.5,1.5]},'x³ − 2x':{f:x=>x**3-2*x,F:x=>x**4/4-x*x,Fs:'x⁴/4 − x²',y:[-6,6]}};
+let fk='x² − 1', A=null;
+$('#fsel').innerHTML=Object.keys(FS).map(k=>`<button class="chipbtn ${k===fk?'on':''}" data-k="${k}">f(x) = ${k}</button>`).join('');
+$$('#fsel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#fsel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); fk=b.dataset.k; drawB(); });
+function drawB(){
+  const a=+$('#a').value, b=+$('#b').value, P=FS[fk]; $('#a-v').textContent=G.fmt(a); $('#b-v').textContent=G.fmt(b);
+  const g=$('#gb'); clear(g); A=G.axes(g,{x0:-3,x1:3,y0:P.y[0],y1:P.y[1],W:640,H:360,lx:'x',ly:'y',xs:1});
+  const lo=Math.min(a,b), hi=Math.max(a,b);
+  s('path',{d:G.region(x=>Math.max(P.f(x),0),lo,hi,A),fill:'#13987a','fill-opacity':.35},g);
+  s('path',{d:G.region(x=>Math.min(P.f(x),0),lo,hi,A),fill:'#d1453b','fill-opacity':.35},g);
+  s('path',{d:G.curve(P.f,-3,3,A),fill:'none',stroke:'#7a4fd6','stroke-width':3.5},g);
+  [[a,'a'],[b,'b']].forEach(([v,l])=>{ s('line',{x1:A.X(v),y1:A.Y(P.y[0]),x2:A.X(v),y2:A.Y(P.y[1]),stroke:'#e8890b','stroke-width':2.5,'stroke-dasharray':'6 4'},g); s('circle',{cx:A.X(v),cy:A.Y(P.y[1])+12,r:12,fill:'#e8890b',style:'cursor:ew-resize'},g); txt(g,A.X(v),A.Y(P.y[1])+17,l,{'font-size':14,'font-weight':900,fill:'#fff'}); });
+  const val=P.F(b)-P.F(a), pos=G.simpson(x=>Math.max(P.f(x),0),lo,hi,800), neg=G.simpson(x=>Math.max(-P.f(x),0),lo,hi,800);
+  $('#bOut').innerHTML=`<p class="big2"><span class="mth">${G.int(G.fmt(a),G.fmt(b))} (${fk}) <i>dx</i> = ${G.fmt(val,3)}</span></p>
+   <p>Dengan Teorema Dasar Kalkulus: F(x) = ${P.Fs}, jadi F(${G.fmt(b)}) − F(${G.fmt(a)}) = ${G.fmt(P.F(b),3)} − (${G.fmt(P.F(a),3)}) = <b>${G.fmt(val,3)}</b>.</p>
+   <div class="grid2"><div class="ex"><span class="t">Hijau (positif)</span>${G.fmt(a<=b?pos:-pos,3)}</div><div class="ex"><span class="t">Merah (negatif)</span>${G.fmt(a<=b?-neg:neg,3)}</div></div>
+   <p>Luas daerah sebenarnya (semua positif) = <b>${G.fmt(pos+neg,3)}</b>.${a>b?' <span class="muted">Karena a &gt; b, tandanya terbalik.</span>':''}</p>`;
+}
+['#a','#b'].forEach(z=>$(z).oninput=drawB);
+VML.dragSvg($('#gb'),p=>{ if(!A) return null; const x=A.xi(p.x); return Math.abs(x-+$('#a').value)<Math.abs(x-+$('#b').value)?'a':'b'; },(k,p)=>{ const v=Math.max(-3,Math.min(3,Math.round(A.xi(p.x)*10)/10)); $('#'+k).value=v; drawB(); });
+drawB();
+
+/* BAK */
+const R=[3,4,2,0,-2,-1,2,3,1]; // debit di t = 0..8
+let RA=null;
+const rf=t=>{ const i=Math.min(7,Math.floor(t)), u=t-i; return R[i]*(1-u)+R[i+1]*u; };
+const Vf=(t,v0)=>{ let v=v0; const k=Math.floor(t); for(let i=0;i<k;i++) v+=(R[i]+R[i+1])/2; const u=t-k; if(k<8) v+=R[k]*u+(R[k+1]-R[k])*u*u/2; return v; };
+function drawT(){
+  const t=+$('#t').value, v0=+$('#v0').value; $('#t-v').textContent=G.fmt(t)+' jam'; $('#v0-v').textContent=v0+' m³';
+  let g=$('#rate'); clear(g); RA=G.axes(g,{x0:0,x1:8,y0:-5,y1:6,W:640,H:260,lx:'jam',ly:'debit (m³/jam)',xs:1,ys:2,padb:28});
+  s('path',{d:G.region(x=>Math.max(rf(x),0),0,t,RA),fill:'#13987a','fill-opacity':.35},g); s('path',{d:G.region(x=>Math.min(rf(x),0),0,t,RA),fill:'#d1453b','fill-opacity':.35},g);
+  s('path',{d:G.curve(rf,0,8,RA,320),fill:'none',stroke:'#7a4fd6','stroke-width':3},g);
+  R.forEach((r,i)=>s('circle',{cx:RA.X(i),cy:RA.Y(r),r:8,fill:'#7a4fd6',stroke:'#fff','stroke-width':2,style:'cursor:ns-resize'},g));
+  s('line',{x1:RA.X(t),y1:RA.Y(-5),x2:RA.X(t),y2:RA.Y(6),stroke:'#e8890b','stroke-dasharray':'5 4','stroke-width':2},g);
+  let vmax=0, vmin=0; for(let x=0;x<=8;x+=.1){ const v=Vf(x,v0); vmax=Math.max(vmax,v); vmin=Math.min(vmin,v); }
+  g=$('#vol'); clear(g); const VA=G.axes(g,{x0:0,x1:8,y0:Math.min(0,Math.floor(vmin)),y1:Math.ceil(vmax+1),W:640,H:260,lx:'jam',ly:'isi bak (m³)',xs:1,padb:28});
+  s('path',{d:G.curve(x=>Vf(x,v0),0,8,VA,320),fill:'none',stroke:'var(--muted)','stroke-width':2,'stroke-dasharray':'4 4'},g);
+  s('path',{d:G.curve(x=>Vf(x,v0),0,t,VA,320),fill:'none',stroke:'#2d6ae0','stroke-width':4},g);
+  const V=Vf(t,v0), r=rf(t); s('circle',{cx:VA.X(t),cy:VA.Y(V),r:7,fill:'#e8890b'},g);
+  const d=.6; s('line',{x1:VA.X(t-d),y1:VA.Y(V-r*d),x2:VA.X(t+d),y2:VA.Y(V+r*d),stroke:'#e8890b','stroke-width':3},g);
+  // tangki
+  const tk=$('#tank'); clear(tk); const cap=Math.max(20,Math.ceil(vmax/5)*5); s('rect',{x:40,y:30,width:160,height:240,rx:10,fill:'none',stroke:'var(--ink)','stroke-width':4},tk);
+  const hgt=Math.max(0,Math.min(1,V/cap))*236; s('rect',{x:42,y:268-hgt,width:156,height:hgt,fill:'#2d6ae0','fill-opacity':.6},tk);
+  txt(tk,120,20,r>0?'🚰 mengisi':r<0?'🕳️ membuang':'⏸ berhenti',{'font-size':14,'font-weight':800,fill:'var(--ink)'}); txt(tk,120,290,`${G.fmt(V,2)} m³`,{'font-size':16,'font-weight':900,fill:'var(--ink)'});
+  $('#tOut').innerHTML=`<p>Debit saat ini: <b>${G.fmt(r,2)} m³/jam</b>.</p><p>Isi bak: <span class="mth">${G.fmt(v0)} + ${G.int('0',G.fmt(t))} <i>r</i>(<i>t</i>) <i>dt</i> = <b>${G.fmt(V,2)}</b></span> m³.</p>
+   <p class="muted">Kemiringan garis oranye pada grafik isi bak = debit saat itu. Inilah Teorema Dasar Kalkulus: <span class="mth"><i>V</i>′(<i>t</i>) = <i>r</i>(<i>t</i>)</span>. ${r<0?'Debit negatif, sehingga grafik isi bak turun.':''}</p>`;
+}
+['#t','#v0'].forEach(z=>$(z).oninput=drawT);
+VML.dragSvg($('#rate'),p=>{ if(!RA) return null; const i=Math.round(RA.xi(p.x)); return i>=0&&i<=8?i:null; },(i,p)=>{ R[i]=Math.max(-5,Math.min(6,Math.round(RA.yi(p.y)*2)/2)); drawT(); });
+drawT();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Pangkat', gen(){ const n=pick([1,2,3]), a=rand(0,2), b=a+rand(1,3), k=rand(1,4)*(n+1); const F=x=>k*x**(n+1)/(n+1); const v=F(b)-F(a);
+    return {q:`<span class="mth">${G.int(a,b)} ${k}<i>x</i>${n>1?'<sup>'+n+'</sup>':''} <i>dx</i></span> = …`, a:String(v), hint:`Antiturunannya ${k/(n+1)}x^${n+1}. Hitung F(${b}) − F(${a}).`, ex:`[${k/(n+1)}x<sup>${n+1}</sup>] dari ${a} sampai ${b} = ${F(b)} − ${F(a)} = ${v}`}; }},
+  {name:'Polinom', gen(){ const a=0, b=rand(1,3), p=rand(1,3)*3, q=rand(1,5)*2, r=rand(1,6); const F=x=>p/3*x**3+q/2*x*x+r*x; const v=F(b)-F(a);
+    return {q:`<span class="mth">${G.int(a,b)} (${p}<i>x</i>² + ${q}<i>x</i> + ${r}) <i>dx</i></span> = …`, a:String(v), hint:'Integralkan tiap suku, lalu masukkan batas atas dikurangi batas bawah.', ex:`[${p/3}x³ + ${q/2}x² + ${r}x] dari 0 sampai ${b} = ${v}`}; }},
+  {name:'Bertanda', gen(){ const c=rand(1,3); const F=x=>x*x/2-c*x; const a=0, b=c; const v=F(b)-F(a);
+    return {q:`<span class="mth">${G.int(a,b)} (<i>x</i> − ${c}) <i>dx</i></span> = … <span class="muted">(perhatikan: grafiknya di bawah sumbu-x)</span>`, a:String(v), hint:'Hasilnya negatif karena daerahnya di bawah sumbu-x.', ex:`[x²/2 − ${c}x] dari 0 sampai ${c} = ${G.fmt(v)}`}; }},
+  {name:'Cerita', gen(){ const a=rand(2,6), b=rand(1,4), T=rand(2,5); const v=a*T+b*T*T/2;
+    return {q:`Debit air ke kolam ikan r(t) = ${a} + ${b}t m³/jam. Berapa m³ air yang masuk dari t = 0 sampai t = ${T} jam?`, a:String(v), unit:'m³', hint:`Hitung ∫₀^${T} (${a} + ${b}t) dt.`, ex:`[${a}t + ${b/2}t²] dari 0 sampai ${T} = ${G.fmt(v)} m³.`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Teorema Dasar Kalkulus menyatakan <span class="mth">∫<sub>a</sub><sup>b</sup> f(x) dx</span> = …', o:['F(b) − F(a)','F(a) − F(b)','f(b) − f(a)','F(b) + F(a)'], a:0, ex:'F adalah antiturunan f.'},
+ {q:'<span class="mth">∫<sub>0</sub><sup>3</sup> 2x dx</span> = …', o:['9','6','3','18'], a:0, ex:'[x²] = 9 − 0.'},
+ {q:'<span class="mth">∫<sub>1</sub><sup>2</sup> 3x² dx</span> = …', o:['7','8','9','3'], a:0, ex:'[x³] = 8 − 1.'},
+ {q:'Mengapa konstanta C tidak ditulis pada integral tentu?', o:['karena C saling menghapus saat dikurangkan','karena C selalu nol','karena C sama dengan b','karena tidak boleh'], a:0, ex:'(F(b)+C) − (F(a)+C).'},
+ {q:'Jika grafik berada di bawah sumbu-x, integral tentunya bernilai …', o:['negatif','positif','nol','tak terhingga'], a:0, ex:'Seperti uang keluar.'},
+ {q:'<span class="mth">∫<sub>2</sub><sup>2</sup> f(x) dx</span> = …', o:['0','2','f(2)','4'], a:0, ex:'Batas sama → 0.'},
+ {q:'Jika ∫<sub>0</sub><sup>5</sup> f dx = 12 dan ∫<sub>0</sub><sup>2</sup> f dx = 4, maka ∫<sub>2</sub><sup>5</sup> f dx = …', o:['8','16','3','−8'], a:0, ex:'Etape: 12 − 4 = 8.'},
+ {q:'Pada bak air, jika debit r(t) positif maka isi bak …', o:['bertambah','berkurang','tetap','kosong'], a:0, ex:'V′(t) = r(t) > 0.'},
+ {q:'Odometer 1.250 km pukul 8 dan 1.310 km pukul 10. Integral kecepatan dari pukul 8 sampai 10 adalah …', o:['60 km','30 km','1.310 km','2.560 km'], a:0, ex:'F(b) − F(a).'},
+ {q:'Hitung <span class="mth">∫<sub>0</sub><sup>2</sup> (x + 1) dx</span>.', input:true, a:['4'], ex:'[x²/2 + x] = 2 + 2 = 4.'},
+ {q:'Hitung <span class="mth">∫<sub>0</sub><sup>1</sup> 4x³ dx</span>.', input:true, a:['1'], ex:'[x⁴] = 1.'},
+ {q:'Debit 5 m³/jam selama 3 jam lalu 2 m³/jam selama 2 jam. Total air yang masuk … m³.', input:true, a:['19'], ex:'15 + 4 = 19.'}
+],'kalkm3');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

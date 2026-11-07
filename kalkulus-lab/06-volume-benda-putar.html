@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Volume Benda Putar · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#167a99">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian B · Modul B6 · Penerapan Ruang <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Volume Benda Putar: dari Tumpukan Koin sampai Tempayan</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Membayangkan benda putar sebagai tumpukan cakram (koin) yang sangat tipis.</li>
+    <li>Menghitung volume dengan metode cakram dan metode cincin.</li>
+    <li>Menghitung isi wadah berbentuk lengkung, seperti tempayan, gelas, dan galon.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🪵 Lab Mesin Bubut</button><button data-target="wadah">🏺 Lab Isi Tempayan</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita pengrajin gerabah</span><p style="margin:.3em 0">Pengrajin gerabah memutar tanah liat di atas meja putar. Tangannya hanya membentuk <b>garis tepi</b> (profil), tetapi putaran membuatnya menjadi benda bulat: kendi, tempayan, atau mangkuk. Berapa liter air yang muat? Bayangkan tempayan dipotong melintang menjadi <b>tumpukan koin</b> yang sangat tipis. Setiap koin berbentuk lingkaran dengan volume <b>π r² × tebal</b>. Jumlahkan semua koin, dan kita mendapat volumenya.</p></div>
+  </div>
+  <div class="card"><h2>1. Metode cakram (tumpukan koin)</h2>
+    <p>Jika daerah di bawah kurva <span class="mth"><i>y</i> = <i>r</i>(<i>x</i>)</span> diputar mengelilingi sumbu-x, setiap irisan tipis adalah cakram berjari-jari r(x) dan tebal dx.</p>
+    <div class="def" style="text-align:center;font-size:1.2rem" id="f1"></div>
+    <div class="grid2">
+      <div class="ex"><span class="t">Kerucut (garis miring diputar)</span>r(x) = (R/t)·x dari 0 sampai t:<br>V = π∫(R/t)²x² dx = <b>⅓ π R² t</b></div>
+      <div class="ex"><span class="t">Bola (setengah lingkaran diputar)</span>r(x) = √(R² − x²) dari −R sampai R:<br>V = π∫(R² − x²) dx = <b>4/3 π R³</b></div>
+    </div>
+    <div class="note">Rumus volume kerucut dan bola yang dihafal di SMP sebenarnya lahir dari integral ini.</div>
+  </div>
+  <div class="card"><h2>2. Metode cincin (benda berlubang)</h2>
+    <p>Jika bendanya berlubang di tengah (seperti donat, pipa, atau cincin), setiap irisan berbentuk cincin: lingkaran besar dikurangi lingkaran kecil.</p>
+    <div class="def" style="text-align:center;font-size:1.2rem" id="f2"></div>
+  </div>
+  <div class="card"><h2>3. Wadah berdiri tegak</h2>
+    <p>Untuk wadah yang berdiri (tempayan, gelas), irisannya mendatar dan jari-jarinya bergantung pada ketinggian h: <span class="mth" id="f3"></span>. Ingat: <b>1 liter = 1.000 cm³</b>.</p>
+  </div>
+  <div class="card"><h2>Di mana dipakai?</h2>
+    <p>Desain botol dan kaleng minuman, menghitung isi tangki BBM berbentuk silinder rebah, cetakan kue, tiang beton berbentuk lengkung, hingga dosis obat dalam kapsul.</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Mesin Bubut</h2>
+    <p>Pilih profil, lalu atur banyak cakram. Volume tumpukan cakram makin mendekati volume sebenarnya.</p>
+    <div class="row" id="psel"></div>
+    <div class="ctrl"><label>Banyak cakram <span class="v" id="n-v"></span><input type="range" id="n" min="2" max="60" value="8"></label><label>Ukuran R <span class="v" id="r-v"></span><input type="range" id="r" min="1" max="4" step="0.5" value="3"></label></div>
+    <svg class="viz" id="lathe" viewBox="0 0 640 360"></svg>
+    <div class="out" id="lOut"></div>
+  </div>
+</section>
+
+<section id="wadah" class="panel">
+  <div class="card"><h2>Lab: Berapa Liter Isi Tempayan?</h2>
+    <p>Pilih wadah, lalu atur tinggi air. Volume dihitung dengan menjumlahkan irisan mendatar setinggi dh.</p>
+    <div class="row" id="vsel"></div>
+    <div class="ctrl"><label>Tinggi air <span class="v" id="h-v"></span><input type="range" id="h" min="0" max="100" step="1" value="60"></label></div>
+    <div class="grid2"><svg class="viz" id="vessel" viewBox="0 0 320 340" style="max-width:340px;margin:auto"></svg><div class="out" id="vOut"></div></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Jika jawaban memuat π, tulis koefisiennya saja, kecuali soal meminta angka desimal.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul B6</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+$('#f1').innerHTML=`<span class="mth">V = π ${G.int('<i>a</i>','<i>b</i>')} [<i>r</i>(<i>x</i>)]² <i>dx</i></span>`;
+$('#f2').innerHTML=`<span class="mth">V = π ${G.int('<i>a</i>','<i>b</i>')} ( [<i>R</i>(<i>x</i>)]² − [<i>r</i>(<i>x</i>)]² ) <i>dx</i></span>`;
+$('#f3').innerHTML=`V = π ${G.int('0','<i>h</i>')} [<i>r</i>(<i>y</i>)]² <i>dy</i>`;
+
+/* BUBUT */
+const PR={
+ 'Kerucut':{r:(x,R)=>R*x/4,a:0,b:4,ex:R=>Math.PI*R*R*4/3,fs:R=>`r(x) = ${G.fmt(R/4,3)}x, 0 ≤ x ≤ 4`,ff:R=>`⅓ π R² t = ⅓ π · ${G.fmt(R)}² · 4`},
+ 'Bola':{r:(x,R)=>Math.sqrt(Math.max(0,R*R-(x-R)*(x-R))),a:0,b:null,ex:R=>4/3*Math.PI*R**3,fs:R=>`r(x) = √(${G.fmt(R)}² − (x − ${G.fmt(R)})²)`,ff:R=>`4/3 π R³ = 4/3 π · ${G.fmt(R)}³`},
+ 'Tabung':{r:(x,R)=>R,a:0,b:4,ex:R=>Math.PI*R*R*4,fs:R=>`r(x) = ${G.fmt(R)} (garis datar)`,ff:R=>`π R² t = π · ${G.fmt(R)}² · 4`},
+ 'Kendi':{r:(x,R)=>R*(0.55+0.4*Math.sin(Math.PI*x/5)+0.08*Math.cos(2.4*x)),a:0,b:5,ex:null,fs:R=>`r(x) = ${G.fmt(R)}·(0,55 + 0,4 sin(πx/5) + 0,08 cos 2,4x)`,ff:()=>'dihitung numerik (Simpson)'},
+ 'Mangkuk (√x)':{r:(x,R)=>R*Math.sqrt(x/4),a:0,b:4,ex:R=>Math.PI*R*R*2,fs:R=>`r(x) = ${G.fmt(R)}√(x/4)`,ff:R=>`π∫(${G.fmt(R*R/4)}x)dx dari 0 sampai 4`}};
+let pk='Kendi';
+$('#psel').innerHTML=Object.keys(PR).map(k=>`<button class="chipbtn ${k===pk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#psel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#psel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); pk=b.dataset.k; drawL(); });
+function drawL(){
+  const n=+$('#n').value, R=+$('#r').value, P=PR[pk]; $('#n-v').textContent=n; $('#r-v').textContent=G.fmt(R);
+  const a=P.a, b=P.b==null?2*R:P.b, rf=x=>P.r(x,R);
+  const g=$('#lathe'); clear(g); const A=G.axes(g,{x0:-.3,x1:Math.max(8.2,b+.3),y0:-4.6,y1:4.6,W:640,H:360,lx:'x',ly:'',xs:1,ys:1});
+  const dx=(b-a)/n; let sum=0;
+  for(let i=0;i<n;i++){ const xm=a+(i+.5)*dx, r=rf(xm); sum+=Math.PI*r*r*dx;
+    const x1=A.X(a+i*dx), x2=A.X(a+(i+1)*dx), yT=A.Y(r), yB=A.Y(-r), ry=Math.max(2,(yB-yT)*0.12);
+    s('rect',{x:x1,y:yT,width:Math.max(.6,x2-x1),height:yB-yT,fill:'#167a99','fill-opacity':.32,stroke:'#0e5a72','stroke-width':n>30?.3:1},g);
+    s('ellipse',{cx:x2,cy:A.Y(0),rx:ry,ry:(yB-yT)/2,fill:'#2fa6c9','fill-opacity':.45,stroke:'#0e5a72','stroke-width':n>30?.3:1},g); }
+  s('path',{d:G.curve(rf,a,b,A,300),fill:'none',stroke:'#e8890b','stroke-width':3.5},g);
+  s('path',{d:G.curve(x=>-rf(x),a,b,A,300),fill:'none',stroke:'#e8890b','stroke-width':2,'stroke-dasharray':'6 4'},g);
+  s('path',{d:`M${A.X(b)+30},${A.Y(0)-30} a30,30 0 1,1 -1,0`,fill:'none',stroke:'#7a4fd6','stroke-width':2.5},g); txt(g,A.X(b)+30,A.Y(0)+50,'diputar 360°',{'font-size':12,'font-weight':800,fill:'#7a4fd6'});
+  const exact=P.ex?P.ex(R):Math.PI*G.simpson(x=>rf(x)**2,a,b,2000), err=Math.abs(sum-exact)/exact*100;
+  $('#lOut').innerHTML=`<p>Profil (oranye): <span class="mth">${P.fs(R)}</span>, diputar mengelilingi sumbu-x.</p>
+   <div class="grid2"><div><p class="muted">Jumlah ${n} cakram: Σ π r² Δx</p><p class="big2">${G.fmt(sum,3)}</p></div><div><p class="muted">Volume sebenarnya (integral)</p><p class="big2">${G.fmt(exact,3)}</p></div></div>
+   <p>${P.ff(R)}${P.ex?' = <b>'+G.fmt(exact,3)+'</b>':''} satuan volume. Selisih: <b>${G.fmt(err,2)}%</b>.</p>`;
+}
+['#n','#r'].forEach(z=>$(z).oninput=drawL); drawL();
+
+/* WADAH */
+const VS={
+ 'Tempayan':{H:60,r:h=>16+12*Math.sin(Math.PI*h/62)-3*Math.exp(-((h-58)**2)/8),d:'Tempayan tanah liat untuk menyimpan air'},
+ 'Gelas kerucut terpotong':{H:14,r:h=>3+0.12*h,d:'Gelas minum yang melebar ke atas'},
+ 'Galon':{H:48,r:h=>h<40?13.5:13.5-((h-40)/8)**2*10,d:'Galon air minum isi ulang'},
+ 'Ember':{H:30,r:h=>12+0.25*h,d:'Ember plastik'}};
+let vk='Tempayan';
+$('#vsel').innerHTML=Object.keys(VS).map(k=>`<button class="chipbtn ${k===vk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#vsel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#vsel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); vk=b.dataset.k; drawV(); });
+function drawV(){
+  const V=VS[vk], pct=+$('#h').value/100, lvl=V.H*pct; $('#h-v').textContent=G.fmt(lvl,1)+' cm ('+Math.round(pct*100)+'%)';
+  const g=$('#vessel'); clear(g); let rm=0; for(let h=0;h<=V.H;h+=.2) rm=Math.max(rm,V.r(h));
+  const sc=Math.min(130/rm,290/V.H), cx=160, base=320, X=r=>r*sc, Y=h=>base-h*sc;
+  let L='',Rr=''; for(let h=0;h<=V.H+1e-9;h+=V.H/120){ L+=(L?'L':'M')+(cx-X(V.r(h))).toFixed(1)+','+Y(h).toFixed(1); }
+  for(let h=V.H;h>=0;h-=V.H/120) Rr+='L'+(cx+X(V.r(h))).toFixed(1)+','+Y(h).toFixed(1);
+  let W=''; for(let h=0;h<=lvl+1e-9;h+=Math.max(lvl/80,.01)) W+=(W?'L':'M')+(cx-X(V.r(h))).toFixed(1)+','+Y(h).toFixed(1); for(let h=lvl;h>=0;h-=Math.max(lvl/80,.01)) W+='L'+(cx+X(V.r(h))).toFixed(1)+','+Y(h).toFixed(1);
+  if(lvl>0) s('path',{d:W+'Z',fill:'#2fa6c9','fill-opacity':.55},g);
+  s('path',{d:L+Rr+'Z',fill:'none',stroke:vk==='Tempayan'?'#a0522d':'#4d5675','stroke-width':5,'stroke-linejoin':'round'},g);
+  if(lvl>0){ s('ellipse',{cx,cy:Y(lvl),rx:X(V.r(lvl)),ry:6,fill:'#7fd3ea','fill-opacity':.8},g); for(let k=1;k<6;k++){ const hh=lvl*k/6; s('line',{x1:cx-X(V.r(hh)),y1:Y(hh),x2:cx+X(V.r(hh)),y2:Y(hh),stroke:'#fff','stroke-opacity':.6,'stroke-dasharray':'4 3'},g); } }
+  const vol=Math.PI*G.simpson(h=>V.r(h)**2,0,lvl,600), full=Math.PI*G.simpson(h=>V.r(h)**2,0,V.H,600);
+  $('#vOut').innerHTML=`<p class="muted">${V.d}. Tinggi ${V.H} cm.</p><p class="big2">${G.fmt(vol/1000,2)} liter</p>
+   <p>V = π ∫₀^${G.fmt(lvl,1)} r(h)² dh = <b>${G.fmt(vol,0)} cm³</b>.</p><p>Kapasitas penuh ≈ <b>${G.fmt(full/1000,2)} liter</b>. Terisi ${G.fmt(vol/full*100,1)}% dari volume, padahal tingginya ${Math.round(pct*100)}% dari tinggi wadah.</p>
+   <p class="muted">${Math.abs(vol/full-pct)>.03?'Persentase volume tidak sama dengan persentase tinggi, karena wadahnya tidak berbentuk tabung. Di bagian yang lebar, setiap cm kenaikan air butuh lebih banyak liter.':'Pada bentuk ini, persentase tinggi hampir sama dengan persentase volume.'}</p>
+   <p>Setara ± <b>${Math.round(vol/1000/0.6)}</b> botol air mineral 600 mL.</p>`;
+}
+$('#h').oninput=drawV; drawV();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Kerucut (π)', gen(){ const R=rand(1,6), t=pick([3,6,9]); return {q:`Garis y = ${R}x/${t} dari x = 0 sampai x = ${t} diputar mengelilingi sumbu-x. Volumenya = …·π. (tulis koefisien π)`, a:String(R*R*t/3), hint:'Kerucut: V = ⅓ π R² t.', ex:`⅓ · ${R}² · ${t} = ${R*R*t/3}, jadi V = ${R*R*t/3}π`}; }},
+  {name:'Cakram polinom', gen(){ const k=rand(1,3), b=rand(1,3); const c=k*k*b**5/5; return {q:`Daerah di bawah y = ${k===1?'':k}x² dari 0 sampai ${b} diputar mengelilingi sumbu-x. V = …·π. (tulis koefisien π, boleh pecahan)`, a:String(c), show:G.fmt(c,4)+'π', hint:`V = π∫ (${k}x²)² dx = π∫ ${k*k}x⁴ dx.`, ex:`${k*k}·${b}⁵/5 = ${G.fmt(c,4)}`}; }},
+  {name:'Bola', gen(){ const R=rand(1,6); const c=4*R**3/3; return {q:`Volume bola berjari-jari ${R} cm = …·π cm³. (tulis koefisien π, boleh pecahan)`, a:String(c), show:G.fmt(c,4)+'π', hint:'V = 4/3 π R³ (hasil metode cakram).', ex:`4/3 · ${R}³ = ${G.fmt(c,4)}`}; }},
+  {name:'Liter', gen(){ const r=pick([5,7,10]), h=pick([10,20,30]); const L=Math.PI*r*r*h/1000; return {q:`Ember berbentuk tabung berjari-jari ${r} cm dan tinggi ${h} cm. Isinya berapa liter? (2 desimal, π = 3,14)`, a:v=>Math.abs(parseFloat(String(v).replace(',','.'))-3.14*r*r*h/1000)<0.02, show:G.fmt(3.14*r*r*h/1000,2)+' liter', hint:'V = π r² t dalam cm³, lalu bagi 1.000.', ex:`3,14 × ${r*r} × ${h} = ${G.fmt(3.14*r*r*h,1)} cm³`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Pada metode cakram, setiap irisan tipis berbentuk …', o:['lingkaran (cakram/koin)','persegi','segitiga','bola'], a:0, ex:'Volume cakram = π r² × tebal.'},
+ {q:'Rumus volume dengan metode cakram adalah V = …', o:['π ∫ r(x)² dx','∫ r(x) dx','2π ∫ r(x) dx','π ∫ r(x) dx'], a:0, ex:'Luas lingkaran π r².'},
+ {q:'Jika garis miring y = (R/t)x diputar, terbentuk …', o:['kerucut','tabung','bola','kubus'], a:0, ex:'Jari-jari membesar teratur.'},
+ {q:'Jika garis datar y = R diputar dari 0 sampai t, terbentuk …', o:['tabung','kerucut','bola','limas'], a:0, ex:'Jari-jari tetap.'},
+ {q:'Setengah lingkaran yang diputar mengelilingi diameternya membentuk …', o:['bola','kerucut','tabung','donat'], a:0, ex:'V = 4/3 π R³.'},
+ {q:'Metode cincin dipakai untuk benda yang …', o:['berlubang di tengah','sangat kecil','berbentuk kubus','datar'], a:0, ex:'Cakram besar dikurangi cakram kecil.'},
+ {q:'1 liter sama dengan …', o:['1.000 cm³','100 cm³','10 cm³','1 m³'], a:0, ex:'1 dm³ = 1.000 cm³.'},
+ {q:'Mengapa tempayan yang terisi 50% tingginya belum tentu berisi 50% volumenya?', o:['karena lebarnya berubah-ubah sepanjang tinggi','karena air memuai','karena π berubah','karena alasnya bulat'], a:0, ex:'Irisan di bagian lebar lebih besar.'},
+ {q:'Volume dari y = x diputar dari 0 sampai 3 adalah …', o:['9π','3π','27π','6π'], a:0, ex:'π∫x²dx = π·9.'},
+ {q:'Volume daerah y = √x dari 0 sampai 4 diputar mengelilingi sumbu-x = …·π.', input:true, a:['8'], ex:'π∫x dx = π·8.'},
+ {q:'Volume tabung r = 2, t = 5 = …·π.', input:true, a:['20'], ex:'π·4·5.'},
+ {q:'Volume bola R = 3 = …·π.', input:true, a:['36'], ex:'4/3·27 = 36.'}
+],'kalkm6');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

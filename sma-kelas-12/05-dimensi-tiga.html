@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dimensi Tiga · Matematika SMA Kelas XII</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#0f7fb8">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XII</a><div class="brand">∂ Matematika SMA <small>· Kelas XII</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 5 · Geometri Ruang <span class="lvl lanjut">LANJUT</span></span>
+  <h1>Dimensi Tiga: Jarak Titik, Garis, dan Bidang</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menghitung diagonal sisi dan diagonal ruang kubus dan balok.</li>
+    <li>Menentukan jarak titik ke titik, titik ke garis, dan titik ke bidang.</li>
+    <li>Menentukan sudut antara garis dan bidang dalam masalah nyata.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🧊 Lab Kubus Putar</button><button data-target="ruang">🏫 Lab Ruang Kelas</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Kabel lampu di aula sekolah</span><p style="margin:.3em 0">Panitia ingin menarik kabel lurus dari sudut lantai aula ke sudut langit-langit yang berseberangan. Aula berukuran 12 m × 9 m × 8 m. Panjang kabelnya? Bukan 12 + 9 + 8, tetapi <b>diagonal ruang</b> √(12² + 9² + 8²) = √289 = 17 m. Geometri dimensi tiga membantu tukang, arsitek, dan pilot menghitung jarak di ruang nyata.</p></div>
+  </div>
+  <div class="card"><h2>1. Kubus dan balok</h2>
+    <div class="grid2"><div class="ex"><span class="t">Kubus rusuk a</span>Diagonal sisi = a√2<br>Diagonal ruang = a√3</div><div class="ex"><span class="t">Balok p × l × t</span>Diagonal ruang = √(p² + l² + t²)</div></div>
+    <p>Kubus ABCD.EFGH: ABCD alas, EFGH atap, AE rusuk tegak. AC dan BD diagonal sisi alas; AG, BH, CE, DF diagonal ruang.</p>
+  </div>
+  <div class="card"><h2>2. Konsep jarak</h2>
+    <p>Jarak selalu diukur sepanjang ruas garis <b>terpendek</b>, yaitu yang <b>tegak lurus</b>.</p>
+    <table class="t"><tr><th>Jarak</th><th>Cara</th><th>Contoh pada kubus rusuk a</th></tr>
+      <tr><td>Titik ke titik</td><td>Pythagoras (sekali atau dua kali)</td><td>A ke G = a√3</td></tr>
+      <tr><td>Titik ke garis</td><td>Tarik garis tegak lurus; pakai luas segitiga: d = 2·Luas / alas</td><td>B ke AG = a√6/3</td></tr>
+      <tr><td>Titik ke bidang</td><td>Proyeksikan titik ke bidang (garis tegak lurus bidang)</td><td>E ke bidang BDG = ⅔a√3</td></tr></table>
+    <div class="note">Trik luas: pada segitiga ABG siku-siku di B, luas = ½·AB·BG = ½·AG·d, sehingga d = AB·BG/AG = a·a√2/(a√3) = a√6/3.</div>
+  </div>
+  <div class="card"><h2>3. Sudut garis dan bidang</h2>
+    <p>Sudut antara garis dan bidang adalah sudut antara garis itu dan <b>proyeksinya</b> pada bidang. Contoh: sudut AG dengan alas ABCD adalah sudut GAC, dengan tan θ = CG/AC = a/(a√2) = ½√2.</p>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Kubus Putar</h2>
+    <p>Pilih jenis jarak. Putar kubus untuk melihat dari sisi lain. Ruas garis jarak (ungu) selalu tegak lurus.</p>
+    <div class="row" id="ps"></div>
+    <div class="ctrl"><label>Rusuk a <span class="v" id="a-v"></span><input type="range" id="a" min="2" max="12" value="6"></label><label>Putar kubus <span class="v" id="r-v"></span><input type="range" id="r" min="0" max="360" value="35"></label><label>Kemiringan pandang <span class="v" id="t-v"></span><input type="range" id="t" min="5" max="45" value="22"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 520 420" style="max-width:520px;margin:auto;display:block"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="ruang" class="panel">
+  <div class="card"><h2>Lab: Kabel di Ruang Kelas</h2>
+    <p>Atur ukuran ruangan. Kabel lurus menghubungkan sudut lantai ke sudut langit-langit yang berseberangan.</p>
+    <div class="ctrl"><label>Panjang p (m) <span class="v" id="p-v"></span><input type="range" id="p" min="2" max="15" value="12"></label><label>Lebar l (m) <span class="v" id="l-v"></span><input type="range" id="l" min="2" max="15" value="9"></label><label>Tinggi t (m) <span class="v" id="h-v"></span><input type="range" id="h" min="2" max="10" value="8"></label></div>
+    <svg class="viz" id="g2" viewBox="0 0 520 360" style="max-width:520px;margin:auto;display:block"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XII · Modul 5</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const V={A:[0,0,0],B:[1,0,0],C:[1,1,0],D:[0,1,0],E:[0,0,1],F:[1,0,1],G:[1,1,1],H:[0,1,1]};
+const sub=(p,q)=>p.map((v,i)=>v-q[i]), add=(p,q)=>p.map((v,i)=>v+q[i]), mulv=(p,k)=>p.map(v=>v*k), dot=(p,q)=>p.reduce((s2,v,i)=>s2+v*q[i],0), crs=(p,q)=>[p[1]*q[2]-p[2]*q[1],p[2]*q[0]-p[0]*q[2],p[0]*q[1]-p[1]*q[0]], nrm=p=>Math.sqrt(dot(p,p));
+const PR=[
+ {nm:'A ke C (diagonal sisi)',t:'pp',P:'A',Q:'C',k:Math.SQRT2,f:'a√2',ex:'AC² = AB² + BC² = a² + a²'},
+ {nm:'A ke G (diagonal ruang)',t:'pp',P:'A',Q:'G',k:Math.sqrt(3),f:'a√3',ex:'AG² = AC² + CG² = 2a² + a²'},
+ {nm:'B ke garis AG',t:'pl',P:'B',L:['A','G'],k:Math.sqrt(6)/3,f:'a√6/3',ex:'Segitiga ABG siku-siku di B: d = AB·BG/AG = a·a√2/(a√3)'},
+ {nm:'H ke garis AC',t:'pl',P:'H',L:['A','C'],k:Math.sqrt(6)/2,f:'a√6/2',ex:'Segitiga ACH sama sisi (sisi a√2): tingginya ½·a√2·√3'},
+ {nm:'A ke bidang BDE',t:'pb',P:'A',B:['B','D','E'],k:Math.sqrt(3)/3,f:'a√3/3',ex:'Jarak = ⅓ diagonal ruang AG'},
+ {nm:'E ke bidang BDG',t:'pb',P:'E',B:['B','D','G'],k:2*Math.sqrt(3)/3,f:'⅔a√3',ex:'Jarak = ⅔ diagonal ruang EC'}];
+let pi=1;
+$('#ps').innerHTML=PR.map((p,i)=>`<button class="chipbtn ${i===pi?'on':''}" data-i="${i}">${p.nm}</button>`).join('');
+$$('#ps .chipbtn').forEach(b=>b.onclick=()=>{ $$('#ps .chipbtn').forEach(x=>x.classList.toggle('on',x===b)); pi=+b.dataset.i; d1(); });
+function d1(){
+  const a=+$('#a').value, r=+$('#r').value*Math.PI/180, tl=+$('#t').value*Math.PI/180; $('#a-v').textContent=a; $('#r-v').textContent=$('#r').value+'°'; $('#t-v').textContent=$('#t').value+'°';
+  const sc=170; const pr=p=>{ const x=p[0]-.5, y=p[1]-.5, z=p[2]-.5; const X=x*Math.cos(r)-y*Math.sin(r), Y=x*Math.sin(r)+y*Math.cos(r); return [260+X*sc, 215-(z*Math.cos(tl)-Y*Math.sin(tl))*sc, Y]; };
+  const g=$('#g1'); clear(g); s('rect',{x:0,y:0,width:520,height:420,fill:'var(--card)'},g);
+  const Pb=PR[pi];
+  if(Pb.t==='pb'){ s('polygon',{points:Pb.B.map(k=>pr(V[k]).slice(0,2).join(',')).join(' '),fill:'var(--b)','fill-opacity':.3,stroke:'var(--b)','stroke-width':2},g); }
+  const E=['AB','BC','CD','DA','EF','FG','GH','HE','AE','BF','CG','DH'];
+  const depth=k=>pr(V[k])[2];
+  E.forEach(e=>{ const p=pr(V[e[0]]), q=pr(V[e[1]]); const back=(depth(e[0])+depth(e[1]))/2>0.2; s('line',{x1:p[0],y1:p[1],x2:q[0],y2:q[1],stroke:'var(--ink)','stroke-width':2,'stroke-dasharray':back?'6 5':'','stroke-opacity':back?.5:1},g); });
+  if(Pb.t==='pl'){ const p=pr(V[Pb.L[0]]), q=pr(V[Pb.L[1]]); s('line',{x1:p[0],y1:p[1],x2:q[0],y2:q[1],stroke:'var(--b)','stroke-width':4},g); }
+  if(Pb.t==='pp'){ const p=pr(V[Pb.P]), q=pr(V[Pb.Q]); s('line',{x1:p[0],y1:p[1],x2:q[0],y2:q[1],stroke:'var(--f)','stroke-width':5},g); }
+  let foot=null; const P=V[Pb.P];
+  if(Pb.t==='pl'){ const A0=V[Pb.L[0]], u=sub(V[Pb.L[1]],A0); foot=add(A0,mulv(u,dot(sub(P,A0),u)/dot(u,u))); }
+  if(Pb.t==='pb'){ const [B0,B1,B2]=Pb.B.map(k=>V[k]); const n=crs(sub(B1,B0),sub(B2,B0)); foot=sub(P,mulv(n,dot(sub(P,B0),n)/dot(n,n))); }
+  if(foot){ const p=pr(P), q=pr(foot); s('line',{x1:p[0],y1:p[1],x2:q[0],y2:q[1],stroke:'var(--f)','stroke-width':5},g); s('circle',{cx:q[0],cy:q[1],r:6,fill:'var(--f)'},g); txt(g,q[0]+10,q[1]+16,'T',{'font-weight':800,fill:'var(--f)'}); }
+  Object.keys(V).forEach(k=>{ const p=pr(V[k]); const on=k===Pb.P||(Pb.Q===k)||(Pb.L||[]).includes(k)||(Pb.B||[]).includes(k); s('circle',{cx:p[0],cy:p[1],r:on?7:4,fill:on?'var(--acc)':'var(--ink)'},g); txt(g,p[0]+(p[0]<260?-14:14),p[1]+(V[k][2]?-8:18),k,{'font-weight':800,'font-size':15}); });
+  const d=a*Pb.k; const exact=Pb.f.replace('a',a===1?'':String(a));
+  $('#o1').innerHTML=`<div class="big">Jarak ${Pb.nm.split(' (')[0]} = ${Pb.f} = ${exact} ≈ ${G.fmt(d,3)}</div><p>${Pb.ex}.</p>${foot?'<p class="muted">T adalah titik kaki garis tegak lurus. Ruas ungu adalah jarak terpendek.</p>':''}`;
+}
+['a','r','t'].forEach(k=>$('#'+k).oninput=d1); d1();
+
+function d2(){
+  const p=+$('#p').value, l=+$('#l').value, h=+$('#h').value; $('#p-v').textContent=p; $('#l-v').textContent=l; $('#h-v').textContent=h;
+  const m=Math.max(p,l,h), sc=220/m, r=0.55, tl=0.35;
+  const pr=([x,y,z])=>{ const X=x*Math.cos(r)-y*Math.sin(r), Y=x*Math.sin(r)+y*Math.cos(r); return [200+X*sc, 300-(z*Math.cos(tl)-Y*Math.sin(tl))*sc]; };
+  const g=$('#g2'); clear(g); s('rect',{x:0,y:0,width:520,height:360,fill:'var(--card)'},g);
+  const P={A:[0,0,0],B:[p,0,0],C:[p,l,0],D:[0,l,0],E:[0,0,h],F:[p,0,h],G:[p,l,h],H:[0,l,h]};
+  s('polygon',{points:['A','B','C','D'].map(k=>pr(P[k]).join(',')).join(' '),fill:'var(--c)','fill-opacity':.15},g);
+  ['AB','BC','CD','DA','EF','FG','GH','HE','AE','BF','CG','DH'].forEach(e=>{ const a=pr(P[e[0]]), b=pr(P[e[1]]); s('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'var(--ink)','stroke-width':1.8},g); });
+  const A=pr(P.A), C=pr(P.C), Gp=pr(P.G);
+  s('line',{x1:A[0],y1:A[1],x2:C[0],y2:C[1],stroke:'var(--b)','stroke-width':3,'stroke-dasharray':'7 5'},g);
+  s('line',{x1:A[0],y1:A[1],x2:Gp[0],y2:Gp[1],stroke:'var(--acc)','stroke-width':4},g);
+  txt(g,A[0]-10,A[1]+16,'A',{'font-weight':800}); txt(g,Gp[0]+12,Gp[1]-6,'G',{'font-weight':800}); txt(g,C[0]+12,C[1]+14,'C',{'font-weight':800});
+  const ac=Math.hypot(p,l), ag=Math.hypot(p,l,h), th=Math.atan(h/ac)*180/Math.PI;
+  $('#o2').innerHTML=`<p>Diagonal lantai AC = √(${p}² + ${l}²) = √${p*p+l*l} ≈ ${G.fmt(ac,2)} m.</p><div class="big">Kabel AG = √(${p}² + ${l}² + ${h}²) = √${p*p+l*l+h*h} ≈ ${G.fmt(ag,2)} m</div>
+   <p>Sudut kabel terhadap lantai: tan θ = ${h}/${G.fmt(ac,2)} → θ ≈ ${G.fmt(th,1)}°.</p>`;
+}
+['p','l','h'].forEach(k=>$('#'+k).oninput=d2); d2();
+
+VML.practice($('#prac'),[
+ {name:'Diagonal kubus', gen(){ const a=rand(2,15), t=rand(0,1); return {q:`Kubus ABCD.EFGH dengan rusuk ${a} cm. Panjang ${t?'diagonal ruang AG':'diagonal sisi AC'} = k√${t?3:2} cm. Nilai k = …`, a:String(a), hint:t?'a√3':'a√2', ex:`${a}√${t?3:2}`}; }},
+ {name:'Diagonal balok', gen(){ const tr=pick([[2,3,6,7],[1,4,8,9],[2,6,9,11],[4,4,7,9],[2,10,11,15],[6,6,7,11],[3,4,12,13],[12,9,8,17]]); const k=rand(1,2); return {q:`Balok berukuran ${tr[0]*k} × ${tr[1]*k} × ${tr[2]*k} m. Panjang diagonal ruangnya (m) = …`, a:String(tr[3]*k), hint:'√(p² + l² + t²)', ex:`√${(tr[0]**2+tr[1]**2+tr[2]**2)*k*k} = ${tr[3]*k}`}; }},
+ {name:'Titik ke garis', gen(){ const a=3*rand(1,5); return {q:`Kubus rusuk ${a} cm. Jarak titik B ke garis AG = k√6 cm. Nilai k = …`, a:String(a/3), hint:'d = a√6/3', ex:`${a}√6/3 = ${a/3}√6`}; }},
+ {name:'Titik ke bidang', gen(){ const a=3*rand(1,5), t=rand(0,1); return {q:`Kubus rusuk ${a} cm. Jarak titik ${t?'E ke bidang BDG':'A ke bidang BDE'} = k√3 cm. Nilai k = …`, a:String(t?2*a/3:a/3), hint:t?'⅔ diagonal ruang':'⅓ diagonal ruang', ex:`${t?'⅔':'⅓'}·${a}√3 = ${t?2*a/3:a/3}√3`}; }},
+ {name:'Titik tengah', gen(){ const a=2*rand(1,8); return {q:`Kubus rusuk ${a} cm, P titik tengah rusuk EH. Jarak A ke P = k√5 cm. Nilai k = …`, a:String(a/2), hint:'AP² = AE² + EP² = a² + (a/2)²', ex:`√(${a*a} + ${a*a/4}) = ${a/2}√5`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Diagonal sisi kubus rusuk 5 cm adalah …', o:['5√2 cm','5√3 cm','10 cm','25 cm'], a:0, ex:'a√2.'},
+ {q:'Diagonal ruang kubus rusuk 4 cm adalah …', o:['4√3 cm','4√2 cm','12 cm','16 cm'], a:0, ex:'a√3.'},
+ {q:'Diagonal ruang balok 3 × 4 × 12 adalah …', o:['13','19','15','√19'], a:0, ex:'√(9 + 16 + 144).'},
+ {q:'Jarak titik ke garis diukur sepanjang ruas yang …', o:['tegak lurus garis','sejajar garis','melalui titik pusat','paling panjang'], a:0, ex:'Jarak terpendek.'},
+ {q:'Pada kubus ABCD.EFGH, proyeksi garis AG pada bidang ABCD adalah …', o:['AC','AB','BD','CG'], a:0, ex:'G diproyeksikan ke C.'},
+ {q:'Kubus rusuk 6 cm. Jarak titik A ke titik C adalah …', o:['6√2 cm','6√3 cm','6 cm','12 cm'], a:0, ex:'Diagonal sisi.'},
+ {q:'Kubus rusuk a. Jarak titik E ke bidang ABCD adalah …', o:['a','a√2','a√3','a/2'], a:0, ex:'Rusuk tegak AE.'},
+ {q:'Kubus rusuk a. Sudut θ antara AG dan bidang alas memenuhi tan θ = …', o:['½√2','1','√2','√3'], a:0, ex:'a/(a√2).'},
+ {q:'Kubus rusuk 9 cm. Jarak A ke bidang BDE adalah …', o:['3√3 cm','9√3 cm','6√3 cm','3√2 cm'], a:0, ex:'⅓·9√3.'},
+ {q:'Aula 12 × 9 × 8 m. Panjang kabel dari sudut lantai ke sudut langit-langit seberang (m) = …', input:true, a:['17'], ex:'√289.'},
+ {q:'Kubus rusuk 6 cm. Jarak B ke garis AG = k√6. Nilai k = …', input:true, a:['2'], ex:'6√6/3.'},
+ {q:'Kubus rusuk 4 cm, P titik tengah EH. AP = k√5. Nilai k = …', input:true, a:['2'], ex:'√(16 + 4) = 2√5.'}
+],'xii5');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

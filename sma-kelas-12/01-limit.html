@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Limit Fungsi Aljabar · Matematika SMA Kelas XII</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#b5452a">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XII</a><div class="brand">∂ Matematika SMA <small>· Kelas XII</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 1 · Kalkulus <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Limit Fungsi Aljabar: Mendekat Tanpa Menyentuh</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menjelaskan arti limit dari tabel dan grafik, termasuk limit kiri dan kanan.</li>
+    <li>Menghitung limit dengan substitusi, faktorisasi, dan perkalian sekawan.</li>
+    <li>Menghitung limit di tak hingga untuk fungsi rasional dan bentuk akar.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🔍 Lab Mendekati Lubang</button><button data-target="inf">∞ Lab Menuju Tak Hingga</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Jembatan yang belum tersambung</span><p style="margin:.3em 0">Dua tim membangun jembatan dari kedua tepi sungai. Di tengah ada celah kecil yang belum dicor. Meski titik tengahnya belum ada, semua orang tahu jembatan itu <b>menuju</b> ketinggian yang sama dari kiri dan kanan. Limit bertanya: “ke mana nilai fungsi <b>menuju</b> saat x mendekati suatu angka?”, walau nilai di angka itu sendiri tidak ada.</p></div>
+  </div>
+  <div class="card"><h2>1. Arti limit</h2>
+    <p><span class="mth">lim<sub>x→a</sub> f(x) = L</span> berarti f(x) sedekat apa pun dengan L asalkan x cukup dekat ke a (dari kiri maupun kanan).</p>
+    <div class="note">Limit ada jika <b>limit kiri = limit kanan</b>. Contoh |x|/x di x = 0: dari kiri −1, dari kanan 1, jadi limitnya tidak ada.</div>
+  </div>
+  <div class="card"><h2>2. Cara menghitung limit x → a</h2>
+    <ol class="steps"><li><b>Substitusi langsung.</b> lim<sub>x→2</sub> (3x + 1) = 7. Jika hasilnya bilangan biasa, selesai.</li>
+      <li><b>Faktorkan</b> jika muncul bentuk 0/0. lim<sub>x→3</sub> (x² − 9)/(x − 3) = lim (x + 3) = 6.</li>
+      <li><b>Kalikan sekawan</b> jika ada akar. lim<sub>x→4</sub> (√x − 2)/(x − 4) = lim 1/(√x + 2) = ¼.</li></ol>
+    <div class="ex"><span class="t">Mengapa 0/0 tidak berarti “tidak ada”?</span>0/0 adalah bentuk <b>tak tentu</b>: tanda bahwa ada faktor sama di pembilang dan penyebut yang harus dicoret dulu.</div>
+  </div>
+  <div class="card"><h2>3. Limit di tak hingga</h2>
+    <table class="t"><tr><th>Fungsi rasional, derajat pembilang m, penyebut n</th><th>Limit x → ∞</th></tr>
+      <tr><td>m &lt; n</td><td>0</td></tr><tr><td>m = n</td><td>koefisien utama pembilang / koefisien utama penyebut</td></tr><tr><td>m &gt; n</td><td>±∞</td></tr></table>
+    <div class="ex"><span class="t">Selisih akar</span>lim<sub>x→∞</sub> [√(ax² + bx + c) − √(ax² + px + q)] = (b − p)/(2√a). Contoh √(x² + 6x) − √(x² + 2x) → (6 − 2)/2 = 2.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Mendekati Lubang</h2>
+    <p>Fungsi di bawah tidak terdefinisi di x = a (ada “lubang”). Kecilkan jarak h dan lihat nilai dari kiri dan kanan saling mendekat.</p>
+    <div class="row" id="fs"></div>
+    <div class="ctrl"><label>Jarak h dari a <span class="v" id="h-v"></span><input type="range" id="h" min="0" max="5" step="0.05" value="1.5"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 600 340"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="inf" class="panel">
+  <div class="card"><h2>Lab: Menuju Tak Hingga</h2>
+    <p>f(x) = (p·x<sup>m</sup> + x) / (q·x<sup>n</sup> + 1). Atur derajat dan koefisien utama, lalu perbesar x. Ke mana grafiknya menuju?</p>
+    <div class="ctrl"><label>Derajat pembilang m <span class="v" id="m-v"></span><input type="range" id="m" min="1" max="3" value="2"></label><label>Koefisien p <span class="v" id="p-v"></span><input type="range" id="p" min="-4" max="4" value="3"></label>
+      <label>Derajat penyebut n <span class="v" id="n-v"></span><input type="range" id="n" min="1" max="3" value="2"></label><label>Koefisien q <span class="v" id="q-v"></span><input type="range" id="q" min="1" max="4" value="2"></label><label>Lihat sampai x = <span class="v" id="X-v"></span><input type="range" id="X" min="1" max="4" step="0.1" value="2"></label></div>
+    <svg class="viz" id="g2" viewBox="0 0 600 320"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Jawaban bisa bilangan bulat atau pecahan seperti <code>1/4</code>.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XII · Modul 1</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const FS=[
+ {nm:'(x² − 4)/(x − 2), x → 2',f:x=>(x*x-4)/(x-2),a:2,L:4,y:[0,8],ls:'4',why:'(x − 2)(x + 2)/(x − 2) = x + 2 → 4'},
+ {nm:'(x² − x − 6)/(x − 3), x → 3',f:x=>(x*x-x-6)/(x-3),a:3,L:5,y:[0,9],ls:'5',why:'(x − 3)(x + 2)/(x − 3) = x + 2 → 5'},
+ {nm:'(x³ − 1)/(x − 1), x → 1',f:x=>(x**3-1)/(x-1),a:1,L:3,y:[-1,12],ls:'3',why:'(x − 1)(x² + x + 1)/(x − 1) → 1 + 1 + 1 = 3'},
+ {nm:'(√x − 2)/(x − 4), x → 4',f:x=>(Math.sqrt(x)-2)/(x-4),a:4,L:.25,y:[0,.6],ls:'¼',why:'kalikan sekawan: 1/(√x + 2) → 1/4'},
+ {nm:'|x|/x, x → 0',f:x=>Math.abs(x)/x,a:0,L:null,y:[-2,2],ls:'tidak ada',why:'dari kiri −1, dari kanan 1: berbeda'}];
+let fi=0;
+$('#fs').innerHTML=FS.map((F,i)=>`<button class="chipbtn ${i?'':'on'}" data-i="${i}">${F.nm}</button>`).join('');
+$$('#fs .chipbtn').forEach(b=>b.onclick=()=>{ $$('#fs .chipbtn').forEach(x=>x.classList.toggle('on',x===b)); fi=+b.dataset.i; d1(); });
+function d1(){
+  const F=FS[fi], h=Math.max(+$('#h').value,0.001); $('#h-v').textContent=G.fmt(+$('#h').value,2);
+  const x0=Math.max(F.a-5, fi===3?0.01:-10), x1=F.a+5;
+  const g=$('#g1'); clear(g); const A=G.axes(g,{x0:F.a-5,x1:F.a+5,y0:F.y[0],y1:F.y[1],W:600,H:340,pad:44,padb:28,xs:1,lx:'x',ly:'f(x)'});
+  const fl=x=>Math.abs(x-F.a)<1e-6?NaN:F.f(x);
+  s('path',{d:G.curve(fl,x0,F.a-0.004,A,300)+G.curve(fl,F.a+0.004,x1,A,300),fill:'none',stroke:'var(--acc)','stroke-width':3.5,'clip-path':A.cp},g);
+  if(F.L!==null) s('circle',{cx:A.X(F.a),cy:A.Y(F.L),r:7,fill:'var(--card)',stroke:'var(--acc)','stroke-width':3},g);
+  else { s('circle',{cx:A.X(0),cy:A.Y(-1),r:7,fill:'var(--card)',stroke:'var(--acc)','stroke-width':3},g); s('circle',{cx:A.X(0),cy:A.Y(1),r:7,fill:'var(--card)',stroke:'var(--acc)','stroke-width':3},g); }
+  const xl=F.a-h, xr=F.a+h, yl=F.f(xl), yr=F.f(xr);
+  [[xl,yl,'var(--a)'],[xr,yr,'var(--e)']].forEach(([x,y,c])=>{ if(!isFinite(y)||x<x0) return; s('line',{x1:A.X(x),y1:A.Y(F.y[0]),x2:A.X(x),y2:A.Y(Math.max(F.y[0],Math.min(F.y[1],y))),stroke:c,'stroke-dasharray':'4 4'},g); if(y>=F.y[0]&&y<=F.y[1]) s('circle',{cx:A.X(x),cy:A.Y(y),r:7,fill:c,stroke:'#fff','stroke-width':2},g); });
+  const hs=[1,0.1,0.01,0.001].filter(v=>!(fi===3&&F.a-v<0));
+  const row=(sg)=>hs.map(v=>`<td>${G.fmt(F.f(F.a+sg*v),5)}</td>`).join('');
+  $('#o1').innerHTML=`<div class="big">Kiri: f(${G.fmt(xl,3)}) = ${G.fmt(yl,5)} &nbsp;·&nbsp; Kanan: f(${G.fmt(xr,3)}) = ${G.fmt(yr,5)}</div>
+   <table class="t"><tr><th>jarak h</th>${hs.map(v=>`<td>${G.fmt(v,3)}</td>`).join('')}</tr><tr><th>f(a − h)</th>${row(-1)}</tr><tr><th>f(a + h)</th>${row(1)}</tr></table>
+   <p>Substitusi langsung x = ${F.a} memberi ${fi===4?'0/0 (tidak terdefinisi)':'bentuk 0/0'}. Tetapi nilai di sekitarnya menuju <b>${F.ls}</b>: ${F.why}.</p>`;
+}
+$('#h').oninput=d1; d1();
+
+const pw=(c,k)=>`${c===1?'':c===-1?'−':VML.m(c)}x${k>1?['','','²','³'][k]:''}`;
+function d2(){
+  const m=+$('#m').value, p=+$('#p').value||1, n=+$('#n').value, q=+$('#q').value, Xe=Math.pow(10,+$('#X').value);
+  ['m','n','q'].forEach(k=>$('#'+k+'-v').textContent=$('#'+k).value); $('#p-v').textContent=VML.m(p); $('#X-v').textContent=G.fmt(Xe,0);
+  const f=x=>(p*Math.pow(x,m)+x)/(q*Math.pow(x,n)+1);
+  let L, Lt; if(m<n){ L=0; Lt='0'; } else if(m===n){ L=p/q; Lt=`p/q = ${VML.fracTxt(p,q).replace('-','−')}`; } else { L=p>0?Infinity:-Infinity; Lt=p>0?'+∞':'−∞'; }
+  const ys=[]; for(let k=0;k<=200;k++){ const v=f(Xe*k/200); if(isFinite(v)) ys.push(v); }
+  let y0=Math.min(...ys,isFinite(L)?L:0), y1=Math.max(...ys,isFinite(L)?L:0); if(y1-y0<1){ y0-=0.5; y1+=0.5; } const pad=(y1-y0)*0.08;
+  const g=$('#g2'); clear(g); const A=G.axes(g,{x0:0,x1:Xe,y0:y0-pad,y1:y1+pad,W:600,H:320,pad:60,padb:28,lx:'x',ly:'f(x)'});
+  if(isFinite(L)) s('line',{x1:A.X(0),y1:A.Y(L),x2:A.X(Xe),y2:A.Y(L),stroke:'var(--b)','stroke-width':2,'stroke-dasharray':'8 5'},g);
+  s('path',{d:G.curve(f,0,Xe,A,400),fill:'none',stroke:'var(--acc)','stroke-width':3.5,'clip-path':A.cp},g);
+  $('#o2').innerHTML=`<div class="big">lim<sub>x→∞</sub> (${pw(p,m)} + x)/(${pw(q,n)} + 1) = ${Lt}</div>
+   <p>f(${G.fmt(Xe,0)}) ≈ ${G.fmt(f(Xe),4)}. ${m<n?'Penyebut tumbuh jauh lebih cepat, sehingga pecahan mengecil menuju 0.':m===n?'Pangkat tertinggi sama, sehingga hanya koefisien utamanya yang menentukan; suku lain menjadi tidak berarti.':'Pembilang tumbuh lebih cepat, sehingga nilainya membesar tanpa batas.'}</p>
+   <p class="muted">Trik: bagi pembilang dan penyebut dengan x pangkat tertinggi penyebut (x${['','','²','³'][n]}).</p>`;
+}
+['m','p','n','q','X'].forEach(k=>$('#'+k).oninput=d2); d2();
+
+VML.practice($('#prac'),[
+ {name:'Substitusi', gen(){ const a=rand(-4,4), b=rand(-5,5), c=rand(-9,9), k=rand(-3,3); return {q:`lim<sub>x→${k}</sub> (${a===0?'':pw(a,2)+' '}${b<0?'−':'+'} ${Math.abs(b)}x ${c<0?'−':'+'} ${Math.abs(c)}) = …`, a:String(a*k*k+b*k+c), hint:'Langsung substitusi.', ex:`${a*k*k+b*k+c}`}; }},
+ {name:'Faktorisasi', gen(){ const p=rand(-5,5), q=rand(-6,6); const B=-(p+q), C=p*q; return {q:`lim<sub>x→${p}</sub> (x² ${B<0?'−':'+'} ${Math.abs(B)}x ${C<0?'−':'+'} ${Math.abs(C)}) / (x ${p<0?'+':'−'} ${Math.abs(p)}) = …`, a:String(p-q), hint:`Faktorkan pembilang: (x − ${VML.neg(p)})(x − ${VML.neg(q)}).`, ex:`= lim (x ${q<0?'+':'−'} ${Math.abs(q)}) = ${p-q}`}; }},
+ {name:'Sekawan akar', gen(){ const k=rand(1,6), a=k*k; return {q:`lim<sub>x→${a}</sub> (√x − ${k}) / (x − ${a}) = …`, a:'1/'+(2*k), hint:`Kalikan dengan (√x + ${k})/(√x + ${k}).`, ex:`1/(√${a} + ${k}) = 1/${2*k}`}; }},
+ {name:'Tak hingga', gen(){ const m=rand(1,3), n=rand(1,3), p=VML.randNZ(-6,6), q=rand(1,6); const ans= m<n?'0': m===n?VML.fracTxt(p,q):'∞';
+   return m>n ? this.gen() : {q:`lim<sub>x→∞</sub> (${pw(p,m)} ${rand(0,1)?'+':'−'} ${rand(1,9)}) / (${pw(q,n)} + ${rand(1,9)}x${n>1?'':'⁰'}) = …`.replace('x⁰',''), a:ans, hint:'Bandingkan pangkat tertinggi.', ex:m<n?'Derajat pembilang lebih kecil → 0':`Derajat sama → ${p}/${q}`}; }},
+ {name:'Selisih akar', gen(){ const b=rand(-8,10), pp=rand(-8,10), a=pick([1,4,9]); const r=Math.sqrt(a); return {q:`lim<sub>x→∞</sub> [√(${a===1?'':a}x² ${b<0?'−':'+'} ${Math.abs(b)}x) − √(${a===1?'':a}x² ${pp<0?'−':'+'} ${Math.abs(pp)}x)] = …`, a:VML.fracTxt(b-pp,2*r), hint:'(b − p)/(2√a)', ex:`(${b} − ${VML.neg(pp)})/(2·${r}) = ${VML.fracTxt(b-pp,2*r)}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'lim x→3 (2x + 5) = …', o:['11','8','5','tidak ada'], a:0, ex:'Substitusi.'},
+ {q:'lim x→2 (x² − 4)/(x − 2) = …', o:['4','0','2','tidak ada'], a:0, ex:'= x + 2.'},
+ {q:'Bentuk 0/0 pada limit disebut …', o:['bentuk tak tentu','nilai nol','tak hingga','limit tidak ada'], a:0, ex:'Perlu disederhanakan.'},
+ {q:'Limit f(x) di x = a ada jika …', o:['limit kiri = limit kanan','f(a) terdefinisi','f(a) = 0','grafiknya lurus'], a:0, ex:'Definisi.'},
+ {q:'lim x→∞ (5x² + 1)/(2x² − x) = …', o:['5/2','0','∞','5'], a:0, ex:'Derajat sama.'},
+ {q:'lim x→∞ (3x + 1)/(x² + 4) = …', o:['0','3','∞','1/4'], a:0, ex:'Penyebut berderajat lebih tinggi.'},
+ {q:'lim x→9 (√x − 3)/(x − 9) = …', o:['1/6','1/3','0','6'], a:0, ex:'1/(√9 + 3).'},
+ {q:'lim x→0 |x|/x …', o:['tidak ada','1','−1','0'], a:0, ex:'Kiri −1, kanan 1.'},
+ {q:'lim x→∞ [√(x² + 6x) − √(x² + 2x)] = …', o:['2','4','0','∞'], a:0, ex:'(6 − 2)/2.'},
+ {q:'lim x→1 (x² + 3x − 4)/(x − 1) = …', input:true, a:['5'], ex:'(x − 1)(x + 4) → 5.'},
+ {q:'lim x→−2 (x³ + 8)/(x + 2) = …', input:true, a:['12'], ex:'x² − 2x + 4 → 4 + 4 + 4.'},
+ {q:'lim x→∞ (4x³ − x)/(2x³ + 7) = …', input:true, a:['2'], ex:'4/2.'}
+],'xii1');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

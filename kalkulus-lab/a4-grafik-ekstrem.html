@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Naik-Turun, Puncak & Lembah · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#7a4fd6">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian A · Modul A4 · Turunan <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Naik-Turun, Puncak &amp; Lembah: Membaca Grafik dengan Turunan</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menentukan kapan grafik <b>naik</b> atau <b>turun</b> dari tanda turunan pertama.</li>
+    <li>Menemukan titik stasioner (puncak, lembah) dengan menyelesaikan f′(x) = 0.</li>
+    <li>Memakai turunan kedua untuk kecekungan, titik belok, dan uji maksimum-minimum.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">⛰️ Lab Jalan Bukit</button><button data-target="cekung">🙂 Lab Senyum &amp; Cemberut</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita jalan bukit</span><p style="margin:.3em 0">Bayangkan naik motor di jalan perbukitan menuju Batu Dulang. Saat jalan menanjak, motor terasa berat (kemiringan positif). Saat menurun, motor meluncur (kemiringan negatif). Tepat di <b>puncak bukit</b> dan di <b>dasar lembah</b>, jalan sejenak <b>mendatar</b>: kemiringannya nol. Turunan adalah kemiringan jalan, jadi turunan bisa memberi tahu kita di mana puncak dan lembah berada, tanpa perlu menggambar seluruh grafik.</p></div>
+  </div>
+  <div class="card"><h2>1. Naik, turun, dan stasioner</h2>
+    <table class="t"><tr><th>Tanda f′(x)</th><th>Grafik f</th><th>Seperti jalan …</th></tr>
+      <tr><td>f′ &gt; 0</td><td>naik</td><td>menanjak ↗</td></tr><tr><td>f′ &lt; 0</td><td>turun</td><td>menurun ↘</td></tr><tr><td>f′ = 0</td><td>stasioner</td><td>mendatar (puncak, lembah, atau dataran)</td></tr></table>
+  </div>
+  <div class="card"><h2>2. Langkah mencari puncak dan lembah</h2>
+    <ol><li>Hitung f′(x).</li><li>Selesaikan <b>f′(x) = 0</b> untuk mendapat titik stasioner.</li><li>Periksa tanda f′ di kiri dan kanan titik: <b>+ lalu −</b> berarti <b>maksimum</b> (puncak); <b>− lalu +</b> berarti <b>minimum</b> (lembah).</li></ol>
+    <div class="ex"><span class="t">Contoh: f(x) = x³ − 3x</span>f′(x) = 3x² − 3 = 0 → x = −1 atau x = 1.<br>x = −1: f′ berubah + ke − → <b>maksimum lokal</b>, f(−1) = 2.<br>x = 1: f′ berubah − ke + → <b>minimum lokal</b>, f(1) = −2.</div>
+  </div>
+  <div class="card"><h2>3. Turunan kedua: senyum atau cemberut?</h2>
+    <p><b>f″</b> adalah turunan dari f′. Ia menunjukkan apakah kemiringan sedang bertambah atau berkurang.</p>
+    <div class="grid2"><div class="ex"><span class="t">f″ &gt; 0 → cekung ke atas 🙂</span>Seperti mangkuk/senyum. Titik stasioner di sini adalah <b>minimum</b>.</div><div class="ex"><span class="t">f″ &lt; 0 → cekung ke bawah 🙁</span>Seperti bukit/cemberut. Titik stasioner di sini adalah <b>maksimum</b>.</div></div>
+    <p><b>Titik belok</b>: tempat kecekungan berganti (dari senyum ke cemberut atau sebaliknya), yaitu saat f″ berganti tanda.</p>
+  </div>
+  <div class="card"><h2>Di mana dipakai?</h2>
+    <ul><li><b>Pertanian &amp; pasar:</b> kapan harga cabai mencapai puncak dalam setahun.</li><li><b>Kesehatan:</b> pada wabah, titik belok kurva jumlah kasus adalah saat <b>kasus baru per hari paling banyak</b>. Setelah itu wabah mulai melambat.</li><li><b>Bisnis:</b> titik belok kurva penjualan produk baru menandai saat pertumbuhan penjualan tercepat.</li></ul>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Perjalanan di Jalan Bukit</h2>
+    <p>Pilih bentuk jalan, lalu jalankan motornya. Hijau = menanjak (f′ &gt; 0), merah = menurun (f′ &lt; 0), titik kuning = stasioner (f′ = 0).</p>
+    <div class="row" id="fsel"></div>
+    <div class="ctrl"><label>Posisi motor x <span class="v" id="x-v"></span><input type="range" id="x" min="-3" max="3" step="0.02" value="-2.5"></label></div>
+    <div class="row"><button class="btn" id="go">▶ Jalankan</button></div>
+    <svg class="viz" id="hg" viewBox="0 0 640 340"></svg>
+    <div class="out" id="hOut"></div>
+  </div>
+</section>
+
+<section id="cekung" class="panel">
+  <div class="card"><h2>Lab: Senyum &amp; Cemberut (turunan kedua)</h2>
+    <p>Daerah biru: cekung ke atas (f″ &gt; 0, 🙂). Daerah oranye: cekung ke bawah (f″ &lt; 0, 🙁). Belah ketupat ungu: titik belok.</p>
+    <div class="row" id="csel"></div>
+    <svg class="viz" id="cg" viewBox="0 0 640 340"></svg>
+    <div class="out" id="cOut"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Jika ada dua jawaban, ikuti petunjuk soal (misalnya tulis yang terbesar).</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul A4</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const FN={
+ 'x³ − 3x':{f:x=>x**3-3*x,d:x=>3*x*x-3,dd:x=>6*x,y:[-5,5],ds:'3x² − 3',dds:'6x'},
+ '−x² + 2x + 3':{f:x=>-x*x+2*x+3,d:x=>-2*x+2,dd:()=>-2,y:[-6,5],ds:'−2x + 2',dds:'−2'},
+ '¼x⁴ − 2x²':{f:x=>x**4/4-2*x*x,d:x=>x**3-4*x,dd:x=>3*x*x-4,y:[-5,4],ds:'x³ − 4x',dds:'3x² − 4'},
+ 'x³':{f:x=>x**3,d:x=>3*x*x,dd:x=>6*x,y:[-6,6],ds:'3x²',dds:'6x'},
+ 'sin(1,5x) + 1':{f:x=>Math.sin(1.5*x)+1,d:x=>1.5*Math.cos(1.5*x),dd:x=>-2.25*Math.sin(1.5*x),y:[-1,3],ds:'1,5 cos(1,5x)',dds:'−2,25 sin(1,5x)'}};
+function zeros(h){ const r=[]; const N=3000; let px=-3,pv=h(-3); for(let i=1;i<=N;i++){ const x=-3+6*i/N, v=h(x); if(Math.abs(v)<1e-10){ if(!r.length||Math.abs(r[r.length-1]-x)>1e-3) r.push(x); } else if(pv*v<0&&Math.abs(pv)>1e-10){ let lo=px,hi=x; for(let k=0;k<60;k++){ const m=(lo+hi)/2; if(h(lo)*h(m)<=0) hi=m; else lo=m; } const z=(lo+hi)/2; if(!r.length||Math.abs(r[r.length-1]-z)>1e-3) r.push(z); } px=x; pv=v; } return r; }
+const sel=(id,init,fn)=>{ $('#'+id).innerHTML=Object.keys(FN).map(k=>`<button class="chipbtn ${k===init?'on':''}" data-k="${k}">f(x) = ${k}</button>`).join(''); $$('#'+id+' .chipbtn').forEach(b=>b.onclick=()=>{ $$('#'+id+' .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); fn(b.dataset.k); }); };
+/* BUKIT */
+let hk='x³ − 3x', an=null;
+sel('fsel',hk,k=>{ hk=k; drawH(); });
+function drawH(){
+  const F=FN[hk], x=+$('#x').value; $('#x-v').textContent=G.fmt(x,2);
+  const g=$('#hg'); clear(g); const A=G.axes(g,{x0:-3,x1:3,y0:F.y[0],y1:F.y[1],W:640,H:340,lx:'x',ly:'ketinggian f(x)',xs:1});
+  const N=240; for(let i=0;i<N;i++){ const a=-3+6*i/N, b=a+6/N, m=F.d((a+b)/2); const fa=F.f(a), fb=F.f(b); if(fa<F.y[0]||fa>F.y[1]) continue; s('line',{x1:A.X(a),y1:A.Y(fa),x2:A.X(b),y2:A.Y(fb),stroke:m>1e-9?'#13987a':m<-1e-9?'#d1453b':'#e8890b','stroke-width':5,'stroke-linecap':'round','clip-path':A.cp},g); }
+  const Z=zeros(F.d);
+  Z.forEach(z=>{ s('circle',{cx:A.X(z),cy:A.Y(F.f(z)),r:8,fill:'#ffd27a',stroke:'#9a7300','stroke-width':2},g); });
+  const y=F.f(x), m=F.d(x), ang=Math.atan2(-(A.Y(F.f(x+.01))-A.Y(y)),A.X(x+.01)-A.X(x))*180/Math.PI;
+  const mo=s('g',{transform:`translate(${A.X(x)},${A.Y(y)}) rotate(${-ang})`},g); txt(mo,0,-4,'🛵',{'font-size':30,transform:'scale(-1,1)'});
+  const kind=z=>{ const l=F.d(z-.05), r=F.d(z+.05); return l>0&&r<0?'maksimum (puncak)':l<0&&r>0?'minimum (lembah)':'bukan puncak/lembah (dataran)'; };
+  $('#hOut').innerHTML=`<p class="big2">f′(${G.fmt(x,2)}) = ${G.fmt(m,2)} → jalan ${m>1e-6?'<span style="color:#13987a">menanjak ↗</span>':m<-1e-6?'<span style="color:#d1453b">menurun ↘</span>':'<span style="color:#9a7300">mendatar</span>'}</p>
+   <p>f′(x) = ${F.ds}. Titik stasioner (f′ = 0): ${Z.length?Z.map(z=>`<b>x = ${G.fmt(z,2)}</b> (${kind(z)}, f = ${G.fmt(F.f(z),2)})`).join('; '):'tidak ada'}.</p>
+   <p class="muted">${hk==='x³'?'Pada x³, f′(0) = 0 tetapi jalan tetap menanjak di kiri dan kanan. Jadi f′ = 0 belum tentu puncak atau lembah: periksa tandanya!':'Di puncak, tanda f′ berubah dari + ke −. Di lembah, dari − ke +.'}</p>`;
+}
+$('#x').oninput=()=>{ cancelAnimationFrame(an); drawH(); };
+$('#go').onclick=()=>{ cancelAnimationFrame(an); const st=performance.now(); const step=n=>{ const u=Math.min(1,(n-st)/6000); $('#x').value=-2.95+5.9*u; drawH(); if(u<1) an=requestAnimationFrame(step); }; an=requestAnimationFrame(step); };
+drawH();
+
+/* CEKUNG */
+let ck='¼x⁴ − 2x²';
+sel('csel',ck,k=>{ ck=k; drawC(); });
+function drawC(){
+  const F=FN[ck], g=$('#cg'); clear(g); const A=G.axes(g,{x0:-3,x1:3,y0:F.y[0],y1:F.y[1],W:640,H:340,lx:'x',ly:'f(x)',xs:1});
+  const I=zeros(F.dd), cuts=[-3,...I,3];
+  for(let i=0;i<cuts.length-1;i++){ const a=cuts[i], b=cuts[i+1], up=F.dd((a+b)/2)>0; s('rect',{x:A.X(a),y:A.Y(F.y[1]),width:A.X(b)-A.X(a),height:A.Y(F.y[0])-A.Y(F.y[1]),fill:up?'#2d6ae0':'#e8890b','fill-opacity':.12},g); txt(g,(A.X(a)+A.X(b))/2,A.Y(F.y[1])+22,up?'🙂':'🙁',{'font-size':22}); }
+  s('path',{d:G.curve(F.f,-3,3,A,400),fill:'none',stroke:'#18213d','stroke-width':3.5},g);
+  I.forEach(z=>{ const X=A.X(z),Y=A.Y(F.f(z)); s('path',{d:`M${X},${Y-9} L${X+9},${Y} L${X},${Y+9} L${X-9},${Y}Z`,fill:'#7a4fd6'},g); });
+  const Z=zeros(F.d);
+  Z.forEach(z=>s('circle',{cx:A.X(z),cy:A.Y(F.f(z)),r:7,fill:'#ffd27a',stroke:'#9a7300','stroke-width':2},g));
+  $('#cOut').innerHTML=`<p>f′(x) = ${F.ds}, f″(x) = ${F.dds}.</p>
+   <table class="t"><tr><th>Titik stasioner</th><th>f″ di titik itu</th><th>Kesimpulan</th></tr>${Z.map(z=>{ const v=F.dd(z); return `<tr><td>x = ${G.fmt(z,2)}</td><td>${G.fmt(v,2)}</td><td>${v>1e-6?'🙂 minimum':v<-1e-6?'🙁 maksimum':'uji gagal (f″ = 0), periksa tanda f′'}</td></tr>`; }).join('')||'<tr><td colspan="3">tidak ada</td></tr>'}</table>
+   <p>Titik belok: ${I.length?I.map(z=>`x = ${G.fmt(z,2)}`).join(', '):'tidak ada'}.</p>`;
+}
+drawC();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Titik stasioner', gen(){ const p=rand(-4,4), k=pick([1,2,3]); return {q:`f(x) = ${k===1?'':k}x² ${-2*k*p<0?'−':'+'} ${Math.abs(2*k*p)}x + 5. Titik stasioner terjadi di x = …`, a:String(p), hint:`f′(x) = ${2*k}x ${-2*k*p<0?'−':'+'} ${Math.abs(2*k*p)} = 0.`, ex:`x = ${p}`}; }},
+  {name:'Nilai maksimum', gen(){ const a=rand(1,3), p=rand(-3,3), q=rand(1,20); return {q:`f(x) = −${a===1?'':a}(x ${p<0?'+':'−'} ${Math.abs(p)})² + ${q}. Nilai maksimum f adalah …`, a:String(q), hint:'Puncak saat kuadratnya nol.', ex:`Maksimum ${q} di x = ${p}`}; }},
+  {name:'Kubik', gen(){ const k=pick([1,4,9]), r=Math.sqrt(k); return {q:`f(x) = x³ − ${3*k}x. Titik minimum lokal terjadi di x = …`, a:String(r), hint:`f′(x) = 3x² − ${3*k} = 0 → x = ±${r}. Cek f″ = 6x.`, ex:`f″(${r}) = ${6*r} > 0 → minimum.`}; }},
+  {name:'Turunan kedua', gen(){ const a=rand(1,4), b=rand(1,6), x=rand(-3,3); return {q:`f(x) = ${a===1?'':a}x³ + ${b}x². Nilai f″(${x}) = …`, a:String(6*a*x+2*b), hint:`f′ = ${3*a}x² + ${2*b}x, f″ = ${6*a}x + ${2*b}.`, ex:`${6*a}·${x} + ${2*b} = ${6*a*x+2*b}`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Jika f′(x) > 0 pada suatu selang, grafik f pada selang itu …', o:['naik','turun','mendatar','putus'], a:0, ex:'Kemiringan positif.'},
+ {q:'Titik stasioner diperoleh dari …', o:['f′(x) = 0','f(x) = 0','f″(x) = 1','x = 0'], a:0, ex:'Kemiringan nol.'},
+ {q:'Jika tanda f′ berubah dari + ke −, titik itu adalah …', o:['maksimum','minimum','titik belok','titik potong'], a:0, ex:'Naik lalu turun.'},
+ {q:'f(x) = x² − 6x. Titik stasionernya di x = …', o:['3','6','−3','0'], a:0, ex:'2x − 6 = 0.'},
+ {q:'Jika f″(x) > 0, grafik cekung …', o:['ke atas (senyum)','ke bawah','lurus','tegak'], a:0, ex:'Seperti mangkuk.'},
+ {q:'Titik stasioner dengan f″ < 0 adalah …', o:['maksimum','minimum','titik belok','tidak bisa ditentukan'], a:0, ex:'Cemberut → puncak.'},
+ {q:'Titik belok adalah titik ketika …', o:['kecekungan berganti','f′ = 0','f = 0','grafik putus'], a:0, ex:'f″ berganti tanda.'},
+ {q:'Pada f(x) = x³, titik x = 0 adalah …', o:['titik stasioner tetapi bukan puncak atau lembah','maksimum','minimum','tidak stasioner'], a:0, ex:'f′ positif di kedua sisi.'},
+ {q:'Pada kurva kasus wabah, titik belok menandai …', o:['kasus baru per hari paling banyak','wabah selesai','kasus pertama','kasus total nol'], a:0, ex:'Laju tertinggi.'},
+ {q:'f(x) = −x² + 4x + 1. Nilai maksimum f = …', input:true, a:['5'], ex:'x = 2, f = −4 + 8 + 1 = 5.'},
+ {q:'f(x) = x³ − 12x. Titik maksimum lokal di x = …', input:true, a:['-2','−2'], ex:'3x² = 12, x = ±2; f″(−2) < 0.'},
+ {q:'f(x) = x³ − 3x². Titik belok di x = …', input:true, a:['1'], ex:'f″ = 6x − 6 = 0.'}
+],'kalkd4');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

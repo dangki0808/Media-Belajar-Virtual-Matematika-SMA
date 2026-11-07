@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aturan Dasar Turunan · Kalkulus Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#13987a">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Beranda</a><div class="brand">∂∫ Kalkulus Lab <small>· Turunan &amp; Integral</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Bagian A · Modul A2 · Turunan <span class="lvl pemula">PEMULA</span></span>
+  <h1>Aturan Dasar Turunan: Jalan Pintas Tanpa Limit</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Memakai aturan konstanta, aturan pangkat, kelipatan, serta jumlah dan selisih.</li>
+    <li>Mengingat turunan fungsi penting: sin, cos, eˣ, dan ln x.</li>
+    <li>Membaca grafik turunan: tinggi grafik f′ = kemiringan grafik f.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">📈 Lab Pelacak Kemiringan</button><button data-target="mesin">⚙️ Lab Mesin Turunan</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Cerita resep</span><p style="margin:.3em 0">Menghitung turunan dengan limit (Modul A1) itu seperti memasak rendang dari nol setiap hari: benar, tetapi lama. Para ahli matematika sudah menemukan <b>resep jalan pintas</b> yang selalu menghasilkan jawaban yang sama. Cukup hafalkan beberapa aturan, dan turunan bisa dihitung dalam hitungan detik.</p></div>
+  </div>
+  <div class="card"><h2>1. Aturan-aturan dasar</h2>
+    <table class="t"><tr><th>Aturan</th><th>Rumus</th><th>Contoh</th></tr>
+      <tr><td>Konstanta</td><td>(k)′ = 0</td><td>(7)′ = 0 (nilai tetap tidak berubah)</td></tr>
+      <tr><td><b>Pangkat</b></td><td>(xⁿ)′ = n·xⁿ⁻¹</td><td>(x⁵)′ = 5x⁴</td></tr>
+      <tr><td>Kelipatan</td><td>(k·f)′ = k·f′</td><td>(3x⁴)′ = 12x³</td></tr>
+      <tr><td>Jumlah &amp; selisih</td><td>(f ± g)′ = f′ ± g′</td><td>(x³ − 4x + 2)′ = 3x² − 4</td></tr></table>
+    <div class="note"><b>Resep aturan pangkat:</b> pangkatnya turun ke depan (dikali), lalu pangkatnya dikurangi satu. Kebalikan persis dari aturan pangkat integral di Bagian B.</div>
+  </div>
+  <div class="card"><h2>2. Pangkat pecahan dan negatif</h2>
+    <div class="grid2"><div class="ex"><span class="t">Akar</span>√x = x<sup>½</sup> → ½ x<sup>−½</sup> = 1/(2√x)</div><div class="ex"><span class="t">Pecahan</span>1/x² = x<sup>−2</sup> → −2x<sup>−3</sup> = −2/x³</div></div>
+  </div>
+  <div class="card"><h2>3. Turunan fungsi penting</h2>
+    <table class="t"><tr><th>f(x)</th><th>f′(x)</th><th>Catatan</th></tr>
+      <tr><td>sin x</td><td>cos x</td><td>gelombang bergeser seperempat putaran</td></tr><tr><td>cos x</td><td>−sin x</td><td>perhatikan tanda minus</td></tr>
+      <tr><td>eˣ</td><td>eˣ</td><td>tumbuh secepat nilainya sendiri (bunga majemuk, bakteri)</td></tr><tr><td>ln x</td><td>1/x</td><td>logaritma natural</td></tr></table>
+  </div>
+  <div class="card"><h2>4. Membaca grafik turunan</h2>
+    <p>Grafik f′ menunjukkan <b>kemiringan</b> grafik f di setiap titik:</p>
+    <ul><li>f naik → f′ <b>positif</b> (di atas sumbu-x).</li><li>f turun → f′ <b>negatif</b>.</li><li>f mendatar (puncak atau lembah) → f′ = <b>0</b>.</li></ul>
+    <div class="ex"><span class="t">Contoh penerapan</span>Pendapatan warung bakso R(q) = 15.000q − 50q² rupiah untuk q mangkuk. Pendapatan marginal R′(q) = 15.000 − 100q. Saat q = 100, R′ = 5.000: mangkuk ke-101 menambah sekitar Rp5.000.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Pelacak Kemiringan</h2>
+    <p>Geser titik sepanjang kurva atas (atau seret di grafik). Kemiringan garis singgungnya dicatat sebagai titik di grafik bawah. Jejak titik itu adalah <b>grafik turunan f′</b>.</p>
+    <div class="row" id="fsel"></div>
+    <div class="ctrl"><label>Posisi x <span class="v" id="x-v"></span><input type="range" id="x" min="-3" max="3" step="0.02" value="-2"></label></div>
+    <div class="row"><button class="btn" id="trace">▶ Lacak otomatis</button><label style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="full"> Tampilkan f′ lengkap</label></div>
+    <svg class="viz" id="g1" viewBox="0 0 640 280"></svg>
+    <svg class="viz" id="g2" viewBox="0 0 640 260"></svg>
+    <div class="out" id="tOut"></div>
+  </div>
+</section>
+
+<section id="mesin" class="panel">
+  <div class="card"><h2>Lab: Mesin Turunan</h2>
+    <p>Susun fungsi dari tiga suku <span class="mth"><i>a</i>·<i>x<sup>n</sup></i></span>. Mesin menurunkan setiap suku dengan aturan pangkat.</p>
+    <div id="terms"></div>
+    <div class="out" id="mOut"></div>
+    <div class="card" style="margin-top:12px"><h3 style="margin-top:0">Coba sendiri</h3><p>Tulis turunan fungsi di atas, contoh: <code>12x^3 - 4x + 1</code>.</p>
+      <div class="row"><input type="text" id="ans" style="flex:1;min-width:200px" placeholder="Jawabanmu" autocomplete="off"><button class="btn" id="cek">Periksa</button></div><div id="aFb"></div></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Tulis turunan seperti <code>6x^2 - 4</code>, <code>cos(x)</code>, <code>e^x</code>. Bentuk yang setara dianggap benar.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Kalkulus Lab · Turunan &amp; Integral · Modul A2</div></footer>
+
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+/* PELACAK */
+const FS={'x²':{f:x=>x*x,d:x=>2*x,ds:'2x',y:[-1,9],dy:[-6,6]},'x³ − 3x':{f:x=>x**3-3*x,d:x=>3*x*x-3,ds:'3x² − 3',y:[-5,5],dy:[-4,24]},'sin x':{f:Math.sin,d:Math.cos,ds:'cos x',y:[-1.5,1.5],dy:[-1.5,1.5]},'eˣ':{f:Math.exp,d:Math.exp,ds:'eˣ',y:[-1,20],dy:[-1,20]},'½x² − x':{f:x=>x*x/2-x,d:x=>x-1,ds:'x − 1',y:[-1,8],dy:[-4,2.5]}};
+let fk='x³ − 3x', an=null, A1=null;
+$('#fsel').innerHTML=Object.keys(FS).map(k=>`<button class="chipbtn ${k===fk?'on':''}" data-k="${k}">f(x) = ${k}</button>`).join('');
+$$('#fsel .chipbtn').forEach(b=>b.onclick=()=>{ $$('#fsel .chipbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on'); fk=b.dataset.k; $('#x').value=-3; drawT(); });
+function drawT(){
+  const F=FS[fk], x=+$('#x').value, full=$('#full').checked; $('#x-v').textContent=G.fmt(x,2);
+  let g=$('#g1'); clear(g); A1=G.axes(g,{x0:-3,x1:3,y0:F.y[0],y1:F.y[1],W:640,H:280,lx:'x',ly:'f(x)',xs:1,padb:28});
+  s('path',{d:G.curve(F.f,-3,3,A1,400),fill:'none',stroke:'#2d6ae0','stroke-width':3.5},g);
+  const m=F.d(x), y=F.f(x), dd=.9; s('line',{x1:A1.X(x-dd),y1:A1.Y(y-m*dd),x2:A1.X(x+dd),y2:A1.Y(y+m*dd),stroke:m>0.01?'#13987a':m<-0.01?'#d1453b':'#e8890b','stroke-width':4,'clip-path':A1.cp},g);
+  s('circle',{cx:A1.X(x),cy:A1.Y(y),r:8,fill:'#18213d',stroke:'#fff','stroke-width':2},g);
+  g=$('#g2'); clear(g); const A2=G.axes(g,{x0:-3,x1:3,y0:F.dy[0],y1:F.dy[1],W:640,H:260,lx:'x',ly:"f′(x) = kemiringan",xs:1,padb:28});
+  if(full) s('path',{d:G.curve(F.d,-3,3,A2,400),fill:'none',stroke:'var(--muted)','stroke-width':2,'stroke-dasharray':'5 4'},g);
+  s('path',{d:G.curve(F.d,-3,x,A2,400),fill:'none',stroke:'#7a4fd6','stroke-width':4},g);
+  s('circle',{cx:A2.X(x),cy:A2.Y(m),r:7,fill:'#7a4fd6'},g);
+  $('#tOut').innerHTML=`<p class="big2">Di x = ${G.fmt(x,2)}: kemiringan f′ = ${G.fmt(m,2)}</p><p>Grafik f sedang <b style="color:${m>0.01?'#13987a':m<-0.01?'#d1453b':'#e8890b'}">${m>0.01?'naik':m<-0.01?'turun':'mendatar (puncak atau lembah)'}</b>, jadi titik ungu berada ${m>0.01?'di atas':m<-0.01?'di bawah':'tepat di'} sumbu-x.</p><p class="muted">Rumus: f(x) = ${fk} → f′(x) = ${F.ds}.</p>`;
+}
+$('#x').oninput=()=>{ cancelAnimationFrame(an); drawT(); }; $('#full').onchange=drawT;
+$('#trace').onclick=()=>{ cancelAnimationFrame(an); const st=performance.now(); const step=n=>{ const u=Math.min(1,(n-st)/4500); $('#x').value=-3+6*u; drawT(); if(u<1) an=requestAnimationFrame(step); }; an=requestAnimationFrame(step); };
+VML.dragSvg($('#g1'),p=>1,(k,p)=>{ if(!A1) return; $('#x').value=Math.max(-3,Math.min(3,A1.xi(p.x))); drawT(); });
+drawT();
+
+/* MESIN */
+const NS=[['-2',-2],['-1',-1],['0',0],['½',.5],['1',1],['2',2],['3',3],['4',4],['5',5]];
+const T0=[[3,4],[-2,2],[5,1]];
+$('#terms').innerHTML=T0.map((t,i)=>`<div class="row" style="gap:6px;margin:6px 0"><b style="width:70px">Suku ${i+1}</b><label>a <select data-i="${i}" data-k="a">${[-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,8,10].map(v=>`<option ${v===t[0]?'selected':''}>${v}</option>`).join('')}</select></label><label>n <select data-i="${i}" data-k="n">${NS.map(([l,v])=>`<option value="${v}" ${v===t[1]?'selected':''}>${l}</option>`).join('')}</select></label></div>`).join('');
+$$('#terms select').forEach(sl=>sl.oninput=machine);
+const pw=n=>n===1?'':n===.5?'<sup>½</sup>':n===-.5?'<sup>−½</sup>':`<sup>${String(n).replace('-','−')}</sup>`;
+function term(a,n,first){ if(a===0) return ''; const sg=a<0?(first?'−':' − '):(first?'':' + '), A=Math.abs(a); const co=G.fmt(A,2), xs=n===0?'':'<i>x</i>'+pw(n); return sg+(n!==0&&A===1?'':co)+xs; }
+const poly=T=>{ let o='',f=true; T.forEach(([a,n])=>{ const h=term(a,n,f); if(h){ o+=h; f=false; } }); return o||'0'; };
+let curD=null;
+function machine(){
+  const T=[0,1,2].map(i=>[+$(`#terms select[data-i="${i}"][data-k="a"]`).value,+$(`#terms select[data-i="${i}"][data-k="n"]`).value]);
+  const D=T.map(([a,n])=>n===0?[0,0]:[a*n,n-1]);
+  curD=x=>T.reduce((s,[a,n])=>s+(n===0?0:a*n*x**(n-1)),0);
+  $('#mOut').innerHTML=`<p class="big2"><span class="mth"><i>f</i>(<i>x</i>) = ${poly(T)}</span></p><ol>${T.filter(([a])=>a!==0).map(([a,n])=>`<li><span class="mth">${term(a,n,true)}</span> → ${n===0?'konstanta → 0':`pangkat ${G.fmt(n,1)} turun ke depan: ${G.fmt(a,1)} × ${G.fmt(n,1)} = ${G.fmt(a*n,2)}, pangkat menjadi ${G.fmt(n-1,1)}`} → <b class="mth">${n===0?'0':term(a*n,n-1,true)}</b></li>`).join('')}</ol>
+    <p class="big2" style="color:var(--acc)"><span class="mth"><i>f</i>′(<i>x</i>) = ${poly(D)}</span></p>`;
+  $('#aFb').innerHTML=''; }
+$('#cek').onclick=()=>{ const v=$('#ans').value.trim(); if(!v) return; const ok=G.sameFn(v,curD); let parsed=true; try{ G.parse(v); }catch(e){ parsed=false; }
+  $('#aFb').innerHTML=`<div class="fb ${ok?'ok':parsed?'no':'hint'}">${ok?'<b>✓ Benar!</b>':parsed?'<b>✗ Belum tepat.</b> Ingat: pangkat turun ke depan, lalu dikurangi satu.':'Penulisan belum terbaca. Contoh: <code>12x^3 - 4x + 5</code>'}</div>`; };
+$('#ans').onkeydown=e=>{ if(e.key==='Enter') $('#cek').click(); };
+machine();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+  {name:'Pangkat', gen(){ const a=rand(1,9), n=rand(2,6); return {q:`Turunan dari <span class="mth">${a===1?'':a}<i>x</i><sup>${n}</sup></span> adalah …`, a:v=>G.sameFn(v,x=>a*n*x**(n-1)), show:`${a*n}x${n-1>1?'<sup>'+(n-1)+'</sup>':''}`, hint:'Pangkat turun ke depan, lalu dikurangi satu.', ex:`${a} × ${n} = ${a*n}, pangkat ${n-1}`}; }},
+  {name:'Polinom', gen(){ const a=rand(1,5), b=rand(1,9), c=rand(1,9), d=rand(1,20); return {q:`Turunan dari <span class="mth">${a}<i>x</i>³ + ${b}<i>x</i>² − ${c}<i>x</i> + ${d}</span> adalah …`, a:v=>G.sameFn(v,x=>3*a*x*x+2*b*x-c), show:`${3*a}x² + ${2*b}x − ${c}`, hint:'Turunkan tiap suku; konstanta menjadi 0.', ex:`${3*a}x² + ${2*b}x − ${c}`}; }},
+  {name:'Nilai turunan', gen(){ const a=rand(1,3), b=rand(-5,5), x=rand(-3,3); const v=3*a*x*x+b; return {q:`f(x) = ${a===1?'':a}x³ ${b<0?'−':'+'} ${Math.abs(b)}x. Nilai f′(${x}) = …`, a:String(v), hint:`f′(x) = ${3*a}x² ${b<0?'−':'+'} ${Math.abs(b)}.`, ex:`${3*a}·${x*x} ${b<0?'−':'+'} ${Math.abs(b)} = ${v}`}; }},
+  {name:'Fungsi penting', gen(){ const it=pick([['sin x',Math.cos,'cos x'],['cos x',x=>-Math.sin(x),'−sin x'],['e<sup>x</sup>',Math.exp,'eˣ'],['ln x',x=>1/x,'1/x'],['3 sin x + x²',x=>3*Math.cos(x)+2*x,'3 cos x + 2x'],['√x',x=>.5/Math.sqrt(x),'1/(2√x)']]); return {q:`Turunan dari <span class="mth">${it[0]}</span> adalah …`, a:v=>G.sameFn(v,it[1]), show:it[2], hint:'Lihat tabel turunan fungsi penting. Tulis cos(x), sin(x), e^x, 1/x, sqrt(x).', ex:it[2]}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Turunan dari konstanta 9 adalah …', o:['0','9','9x','1'], a:0, ex:'Nilai tetap tidak berubah.'},
+ {q:'(x⁴)′ = …', o:['4x³','x³','4x⁴','x⁵/5'], a:0, ex:'Pangkat turun, dikurangi satu.'},
+ {q:'(5x²)′ = …', o:['10x','5x','10x²','2x'], a:0, ex:'5 × 2x.'},
+ {q:'(x³ − 6x + 1)′ = …', o:['3x² − 6','3x² − 6x','x² − 6','3x − 6'], a:0, ex:'Tiap suku.'},
+ {q:'(sin x)′ = …', o:['cos x','−cos x','sin x','−sin x'], a:0, ex:'Aturan dasar.'},
+ {q:'(cos x)′ = …', o:['−sin x','sin x','cos x','−cos x'], a:0, ex:'Ada tanda minus.'},
+ {q:'(eˣ)′ = …', o:['eˣ','x·eˣ⁻¹','ln x','1'], a:0, ex:'Turunannya dirinya sendiri.'},
+ {q:'Jika f sedang turun di suatu titik, maka f′ di titik itu …', o:['negatif','positif','nol','tak hingga'], a:0, ex:'Kemiringan negatif.'},
+ {q:'Di puncak bukit grafik f, nilai f′ adalah …', o:['0','1','−1','tidak ada'], a:0, ex:'Garis singgung mendatar.'},
+ {q:'f(x) = x³. Nilai f′(2) = …', input:true, a:['12'], ex:'3 × 4 = 12.'},
+ {q:'f(x) = 4x² + 3x. Nilai f′(1) = …', input:true, a:['11'], ex:'8x + 3 → 11.'},
+ {q:'R(q) = 15.000q − 50q². Pendapatan marginal R′(100) = …', input:true, a:['5000','5.000'], ex:'15.000 − 100·100 = 5.000.'}
+],'kalkd2');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

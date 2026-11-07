@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fungsi Komposisi &amp; Invers · Matematika SMA Kelas XI</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>.mach{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:12px 0}.mach .box{background:linear-gradient(135deg,var(--acc),var(--b));color:#fff;border-radius:18px;padding:12px 18px;text-align:center;min-width:120px;box-shadow:0 6px 18px rgba(0,0,0,.18)}.mach .box small{display:block;opacity:.85}.mach .val{font-size:1.5rem;font-weight:800;font-family:Georgia,serif;min-width:70px;text-align:center}.mach .ar{font-size:1.6rem;color:var(--muted)}</style>
+</head>
+<body style="--acc:#6a3fb0">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas XI</a><div class="brand">∘ Matematika SMA <small>· Kelas XI</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 1 · Fungsi <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Fungsi Komposisi &amp; Invers: Mesin Berantai dan Tombol “Undo”</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Menentukan fungsi komposisi (g∘f)(x) dan nilainya.</li>
+    <li>Menjelaskan mengapa g∘f umumnya tidak sama dengan f∘g.</li>
+    <li>Menentukan invers fungsi linear dan pecahan linear, serta membaca grafiknya.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">⚙️ Lab Mesin Berantai</button><button data-target="inv">🪞 Lab Cermin Invers</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Diskon dulu atau pajak dulu?</span><p style="margin:.3em 0">Sebuah toko memberi diskon Rp20.000 lalu mengenakan pajak 10%. Toko lain mengenakan pajak 10% dulu, baru diskon Rp20.000. Untuk barang Rp200.000: cara pertama (200.000 − 20.000) × 1,1 = Rp198.000, cara kedua 200.000 × 1,1 − 20.000 = Rp200.000. <b>Urutan mesin menentukan hasil.</b> Menjalankan fungsi satu setelah yang lain disebut <b>komposisi</b>.</p></div>
+  </div>
+  <div class="card"><h2>1. Fungsi komposisi</h2>
+    <p><span class="mth">(g∘f)(x) = g(f(x))</span>: masukkan x ke f dulu, hasilnya dimasukkan ke g.</p>
+    <div class="ex"><span class="t">Contoh</span>f(x) = 2x + 1, g(x) = x². Maka (g∘f)(x) = (2x + 1)² = 4x² + 4x + 1, sedangkan (f∘g)(x) = 2x² + 1. Jelas berbeda: <b>komposisi tidak komutatif</b>.</div>
+    <div class="note">Sifat: (h∘g)∘f = h∘(g∘f) (asosiatif), dan f∘I = I∘f = f untuk fungsi identitas I(x) = x.</div>
+  </div>
+  <div class="card"><h2>2. Fungsi invers</h2>
+    <p>Invers f⁻¹ “membatalkan” kerja f: jika f(a) = b maka f⁻¹(b) = a. Fungsi punya invers jika <b>satu-satu</b> (setiap hasil berasal dari tepat satu masukan).</p>
+    <ol class="steps"><li>Tulis y = f(x).</li><li>Nyatakan x dalam y.</li><li>Tukar nama: f⁻¹(x) = hasil langkah 2 dengan y diganti x.</li></ol>
+    <table class="t"><tr><th>f(x)</th><th>f⁻¹(x)</th></tr><tr><td>ax + b</td><td>(x − b)/a</td></tr><tr><td>(ax + b)/(cx + d)</td><td>(−dx + b)/(cx − a)</td></tr><tr><td>aˣ</td><td><sup>a</sup>log x</td></tr></table>
+    <div class="ex"><span class="t">Konversi suhu</span>F = 1,8C + 32 mengubah Celsius ke Fahrenheit. Inversnya C = (F − 32)/1,8. Itulah aplikasi termometer dua satuan.</div>
+    <div class="note">Sifat penting: (f∘f⁻¹)(x) = x dan <b>(g∘f)⁻¹ = f⁻¹∘g⁻¹</b> (seperti melepas kaus kaki dan sepatu: urutannya terbalik). Grafik f⁻¹ adalah pantulan grafik f terhadap garis y = x.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Mesin Berantai</h2>
+    <p>Atur mesin f(x) = ax + b, pilih mesin g, lalu masukkan x. Tukar urutan mesin dan bandingkan hasilnya.</p>
+    <div class="ctrl"><label>a <span class="v" id="a-v"></span><input type="range" id="a" min="-4" max="4" value="2"></label><label>b <span class="v" id="b-v"></span><input type="range" id="b" min="-6" max="6" value="1"></label><label>Masukan x <span class="v" id="x-v"></span><input type="range" id="x" min="-5" max="5" value="3"></label></div>
+    <div class="row" id="gs"></div>
+    <div class="seg" id="ord"><button data-k="gf" class="on">f dulu, lalu g: (g∘f)</button><button data-k="fg">g dulu, lalu f: (f∘g)</button></div>
+    <div class="mach" id="mach"></div>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="inv" class="panel">
+  <div class="card"><h2>Lab: Cermin Invers</h2>
+    <p>Pilih fungsi. Grafik invers (biru) adalah bayangan grafik f (oranye) pada cermin y = x. Geser titik untuk melihat pasangan (a, b) ↔ (b, a).</p>
+    <div class="row" id="fs"></div>
+    <div class="ctrl"><label>Titik pada f: x = <span class="v" id="p-v"></span><input type="range" id="p" min="-3" max="3" step="0.1" value="1"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 480 480" style="max-width:480px;margin:auto;display:block"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas XI · Modul 1</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const lin=(a,b,v='x')=>{ if(a===0) return VML.m(b); let t=(a===1?'':a===-1?'−':VML.m(a))+v; if(b) t+=` ${b<0?'−':'+'} ${Math.abs(b)}`; return t; };
+const GS={ 'g(x) = x²':{f:x=>x*x, gf:(a,b)=>`(${lin(a,b)})² = ${pq(a*a,2*a*b,b*b)}`, fg:(a,b)=>lin(a,b,'x²')},
+  'g(x) = x − 3':{f:x=>x-3, gf:(a,b)=>`(${lin(a,b)}) − 3 = ${lin(a,b-3)}`, fg:(a,b)=>`${a}(x − 3) ${b<0?'−':'+'} ${Math.abs(b)} = ${lin(a,b-3*a)}`},
+  'g(x) = 3x':{f:x=>3*x, gf:(a,b)=>`3(${lin(a,b)}) = ${lin(3*a,3*b)}`, fg:(a,b)=>`${a}(3x) ${b<0?'−':'+'} ${Math.abs(b)} = ${lin(3*a,b)}`},
+  'g(x) = 10 − x':{f:x=>10-x, gf:(a,b)=>`10 − (${lin(a,b)}) = ${lin(-a,10-b)}`, fg:(a,b)=>`${a}(10 − x) ${b<0?'−':'+'} ${Math.abs(b)} = ${lin(-a,10*a+b)}`}};
+function pq(A,B,C){ if(A===0) return VML.m(C); let t=(A===1?'':VML.m(A))+'x²'; if(B) t+=` ${B<0?'−':'+'} ${Math.abs(B)===1?'':Math.abs(B)}x`; if(C) t+=` ${C<0?'−':'+'} ${Math.abs(C)}`; return t; }
+let gk='g(x) = x²', ord='gf';
+$('#gs').innerHTML=Object.keys(GS).map(k=>`<button class="chipbtn ${k===gk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#gs .chipbtn').forEach(b=>b.onclick=()=>{ $$('#gs .chipbtn').forEach(x=>x.classList.toggle('on',x===b)); gk=b.dataset.k; d1(); });
+$$('#ord button').forEach(b=>b.onclick=()=>{ $$('#ord button').forEach(x=>x.classList.toggle('on',x===b)); ord=b.dataset.k; d1(); });
+function d1(){
+  const a=+$('#a').value, b=+$('#b').value, x=+$('#x').value; $('#a-v').textContent=VML.m(a); $('#b-v').textContent=VML.m(b); $('#x-v').textContent=VML.m(x);
+  const f=t=>a*t+b, g=GS[gk].f; const gname=gk.split(' = ')[1];
+  const first= ord==='gf' ? ['f',`f(x) = ${lin(a,b)}`,f] : ['g',gk,g], second= ord==='gf' ? ['g',gk,g] : ['f',`f(x) = ${lin(a,b)}`,f];
+  const m1=first[2](x), m2=second[2](m1);
+  $('#mach').innerHTML=`<div class="val">${VML.m(x)}</div><div class="ar">→</div><div class="box"><b>Mesin ${first[0]}</b><small>${first[1]}</small></div><div class="ar">→</div><div class="val">${VML.m(m1)}</div><div class="ar">→</div><div class="box"><b>Mesin ${second[0]}</b><small>${second[1]}</small></div><div class="ar">→</div><div class="val" style="color:var(--acc)">${VML.m(m2)}</div>`;
+  const other= ord==='gf' ? f(g(x)) : g(f(x));
+  $('#o1').innerHTML=`<div class="big">${ord==='gf'?'(g∘f)':'(f∘g)'}(${VML.m(x)}) = ${VML.m(m2)}</div>
+   <p>Rumus: ${ord==='gf'?'(g∘f)(x) = '+GS[gk].gf(a,b):'(f∘g)(x) = '+GS[gk].fg(a,b)}</p>
+   <p>Jika urutan ditukar, hasilnya ${VML.m(other)}. ${other===m2?'Kebetulan sama untuk x ini.':'<b>Berbeda!</b> Komposisi tidak komutatif.'}</p>`;
+}
+['a','b','x'].forEach(k=>$('#'+k).oninput=d1); d1();
+
+const FS={
+ 'f(x) = 2x − 1':{f:x=>2*x-1, inv:x=>(x+1)/2, fi:'f⁻¹(x) = (x + 1)/2', d:[-3,3]},
+ 'f(x) = −½x + 2':{f:x=>-x/2+2, inv:x=>4-2*x, fi:'f⁻¹(x) = 4 − 2x', d:[-3,3]},
+ 'f(x) = x² (x ≥ 0)':{f:x=>x*x, inv:x=>Math.sqrt(x), fi:'f⁻¹(x) = √x', d:[0,2.6]},
+ 'f(x) = 2ˣ':{f:x=>Math.pow(2,x), inv:x=>Math.log2(x), fi:'f⁻¹(x) = ²log x', d:[-3,2.9]},
+ 'f(x) = x³':{f:x=>x*x*x, inv:x=>Math.cbrt(x), fi:'f⁻¹(x) = ∛x', d:[-1.9,1.9]}};
+let fk='f(x) = 2x − 1';
+$('#fs').innerHTML=Object.keys(FS).map(k=>`<button class="chipbtn ${k===fk?'on':''}" data-k="${k}">${k}</button>`).join('');
+$$('#fs .chipbtn').forEach(b=>b.onclick=()=>{ $$('#fs .chipbtn').forEach(x=>x.classList.toggle('on',x===b)); fk=b.dataset.k; const F=FS[fk]; const e=$('#p'); e.min=F.d[0]; e.max=F.d[1]; e.value=Math.min(F.d[1],Math.max(F.d[0],1)); d2(); });
+function d2(){
+  const F=FS[fk], p=+$('#p').value; $('#p-v').textContent=G.fmt(p,2);
+  const g=$('#g1'); clear(g); const A=G.axes(g,{x0:-6,x1:6,y0:-6,y1:6,W:480,H:480,pad:30,padb:26,xs:1,ys:1,lx:'x',ly:'y'});
+  s('path',{d:G.curve(x=>x,-6,6,A),stroke:'var(--muted)','stroke-dasharray':'6 5',fill:'none'},g);
+  const dom=fk.includes('x ≥ 0')?[0,6]:[-6,6];
+  s('path',{d:G.curve(F.f,dom[0],dom[1],A,400),fill:'none',stroke:'var(--b)','stroke-width':3.5,'clip-path':A.cp},g);
+  const idom= fk.includes('2ˣ')?[0.001,6]: fk.includes('x ≥ 0')?[0,6]:[-6,6];
+  s('path',{d:G.curve(F.inv,idom[0],idom[1],A,600),fill:'none',stroke:'var(--a)','stroke-width':3.5,'clip-path':A.cp},g);
+  const q=F.f(p);
+  if(Math.abs(q)<=6){ s('line',{x1:A.X(p),y1:A.Y(q),x2:A.X(q),y2:A.Y(p),stroke:'var(--muted)','stroke-dasharray':'3 4'},g);
+    s('circle',{cx:A.X(p),cy:A.Y(q),r:7,fill:'var(--b)',stroke:'#fff','stroke-width':2},g); s('circle',{cx:A.X(q),cy:A.Y(p),r:7,fill:'var(--a)',stroke:'#fff','stroke-width':2},g); }
+  $('#o2').innerHTML=`<div class="big">${fk} &nbsp;⟶&nbsp; ${F.fi}</div><p>f(${G.fmt(p,2)}) = ${G.fmt(q,3)}, sehingga f⁻¹(${G.fmt(q,3)}) = ${G.fmt(p,2)}. Titik (${G.fmt(p,2)} ; ${G.fmt(q,3)}) berpasangan dengan (${G.fmt(q,3)} ; ${G.fmt(p,2)}).</p>
+   ${fk.includes('x²')?'<p class="muted">Tanpa syarat x ≥ 0, f(x) = x² tidak satu-satu (f(2) = f(−2) = 4), sehingga tidak punya invers.</p>':''}<div class="legend"><span><i style="background:var(--b)"></i>f</span><span><i style="background:var(--a)"></i>f⁻¹</span></div>`;
+}
+$('#p').oninput=d2; d2();
+
+VML.practice($('#prac'),[
+ {name:'(g∘f)(k)', gen(){ const a=VML.randNZ(-4,4), b=rand(-6,6), c=VML.randNZ(-3,3), d=rand(-5,5), k=rand(-4,4); const sq=rand(0,1);
+   const fv=a*k+b, gv= sq? fv*fv+d : c*fv+d; return {q:`f(x) = ${lin(a,b)} dan g(x) = ${sq?(d?`x² ${d<0?'−':'+'} ${Math.abs(d)}`:'x²'):lin(c,d)}. Nilai (g∘f)(${k}) = …`, a:String(gv), hint:`Hitung f(${k}) dulu, lalu masukkan ke g.`, ex:`f(${k}) = ${fv}, g(${fv}) = ${gv}`}; }},
+ {name:'(f∘g)(k)', gen(){ const a=VML.randNZ(-4,4), b=rand(-6,6), k=rand(-4,4), d=rand(-5,5); const gv=k*k+d, fv=a*gv+b; return {q:`f(x) = ${lin(a,b)} dan g(x) = x² ${d<0?'−':'+'} ${Math.abs(d)}. Nilai (f∘g)(${k}) = …`, a:String(fv), hint:`Hitung g(${k}) dulu.`, ex:`g(${k}) = ${gv}, f(${gv}) = ${fv}`}; }},
+ {name:'Invers linear', gen(){ const a=VML.randNZ(-5,5), b=rand(-9,9), x0=rand(-6,6); const y=a*x0+b; return {q:`f(x) = ${lin(a,b)}. Nilai f⁻¹(${y}) = …`, a:String(x0), hint:`Cari x sehingga f(x) = ${y}.`, ex:`${lin(a,b)} = ${y} → x = ${x0}`}; }},
+ {name:'Invers pecahan', gen(){ let a,b,c,d,x0; do{ a=rand(1,4); b=rand(-5,5); c=rand(1,3); d=rand(-5,5); x0=rand(-4,4); }while(a*d-b*c===0||c*x0+d===0||(a*x0+b)%(c*x0+d)!==0); const y=(a*x0+b)/(c*x0+d);
+   return {q:`f(x) = (${lin(a,b)}) / (${lin(c,d)}). Nilai f⁻¹(${y}) = …`, a:String(x0), hint:'f⁻¹(y) adalah x yang membuat f(x) = y. Atau pakai f⁻¹(x) = (−dx + b)/(cx − a).', ex:`f(${x0}) = ${y}, jadi f⁻¹(${y}) = ${x0}`}; }},
+ {name:'Cari f dari komposisi', gen(){ const p=VML.randNZ(-3,3), q=rand(-6,6), k=rand(-5,5); const gk2=rand(1,3); return {q:`g(x) = ${gk2===1?'':gk2}x + 1 dan (g∘f)(x) = ${lin(gk2*p,gk2*q+1)}. Nilai f(${k}) = …`, a:String(p*k+q), hint:`g(f(x)) = ${gk2===1?'':gk2}·f(x) + 1. Selesaikan untuk f(x).`, ex:`f(x) = ${lin(p,q)}, f(${k}) = ${p*k+q}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'(g∘f)(x) berarti …', o:['g(f(x))','f(g(x))','g(x)·f(x)','g(x) + f(x)'], a:0, ex:'f dikerjakan dulu.'},
+ {q:'f(x) = x + 2, g(x) = 3x. (g∘f)(x) = …', o:['3x + 6','3x + 2','x + 6','3x² + 6x'], a:0, ex:'3(x + 2).'},
+ {q:'f(x) = x + 2, g(x) = 3x. (f∘g)(x) = …', o:['3x + 2','3x + 6','3x','x + 5'], a:0, ex:'3x + 2.'},
+ {q:'Secara umum, g∘f dan f∘g …', o:['tidak sama','selalu sama','saling invers','selalu nol'], a:0, ex:'Komposisi tidak komutatif.'},
+ {q:'Invers dari f(x) = 3x − 6 adalah …', o:['(x + 6)/3','(x − 6)/3','3x + 6','1/(3x − 6)'], a:0, ex:'y = 3x − 6 → x = (y + 6)/3.'},
+ {q:'Invers dari f(x) = (2x + 1)/(x − 3) adalah …', o:['(3x + 1)/(x − 2)','(x − 3)/(2x + 1)','(3x − 1)/(x + 2)','(−3x + 1)/(x − 2)'], a:0, ex:'(−dx + b)/(cx − a) = (3x + 1)/(x − 2).'},
+ {q:'Grafik f⁻¹ adalah pencerminan grafik f terhadap …', o:['garis y = x','sumbu-x','sumbu-y','titik asal'], a:0, ex:'Koordinat bertukar.'},
+ {q:'(g∘f)⁻¹ = …', o:['f⁻¹∘g⁻¹','g⁻¹∘f⁻¹','g∘f','f∘g'], a:0, ex:'Urutannya terbalik.'},
+ {q:'Fungsi f(x) = x² (semua x real) tidak punya invers karena …', o:['tidak satu-satu','tidak kontinu','tidak terdefinisi','grafiknya lurus'], a:0, ex:'f(2) = f(−2).'},
+ {q:'f(x) = 2x + 3 dan g(x) = x². Nilai (g∘f)(1) = …', input:true, a:['25'], ex:'f(1) = 5, g(5) = 25.'},
+ {q:'f(x) = 5x − 7. Nilai f⁻¹(8) = …', input:true, a:['3'], ex:'5x − 7 = 8 → x = 3.'},
+ {q:'F = 1,8C + 32. Suhu 95°F sama dengan … °C', input:true, a:['35'], ex:'(95 − 32)/1,8 = 35.'}
+],'xi1');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

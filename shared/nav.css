@@ -1,0 +1,16 @@
+/* Navigasi bersama Virtual Math Lab SMA */
+.vnav{background:#1f3352;color:#f8f1e3;font-family:"Nunito","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;font-size:14px;line-height:1.3;position:relative;z-index:30}
+.vnav .vin{max-width:1120px;margin:0 auto;padding:6px 16px;display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none}
+.vnav .vin::-webkit-scrollbar{display:none}
+.vnav a,.vnav select{color:#f8f1e3;text-decoration:none;font-weight:800;white-space:nowrap;padding:6px 10px;border-radius:999px;font:inherit;font-weight:800}
+.vnav a:hover{background:rgba(255,255,255,.12)}
+.vnav a.on{background:#f2795c;color:#2a0e05}
+.vnav .vmark{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:.2px;padding-left:0}
+.vnav .vmark b{display:inline-block;padding:3px 6px;border-radius:7px;background:#f8f1e3;color:#1f3352;font-family:"Nunito","Segoe UI",system-ui,sans-serif;font-size:11px;font-weight:900;margin-right:6px;line-height:1.2}
+.vnav select{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);margin-left:auto;min-height:32px;cursor:pointer}
+.vnav select option{color:#1f2a26;background:#fff}
+@media (max-width:560px){.vnav .vlbl{display:none}}
+@media print{.vnav{display:none}}
+/* tabel lebar pada layar HP digulir di dalam kartu, tidak melebarkan halaman */
+@media (max-width:640px){table.t{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+@media (max-width:640px){.mth{white-space:normal}}

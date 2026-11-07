@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fungsi Kuadrat · Matematika SMA Kelas X</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#7a4fd6">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas X</a><div class="brand">√ Matematika SMA <small>· Kelas X</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 5 · Fungsi <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Fungsi Kuadrat: Lengkung Air Mancur dan Bola</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Membaca pengaruh a, b, c terhadap bentuk parabola.</li>
+    <li>Menentukan titik puncak, sumbu simetri, akar, dan diskriminan.</li>
+    <li>Menyelesaikan masalah nilai maksimum/minimum dalam kehidupan.</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🎛️ Lab Parabola</button><button data-target="kebun">🌱 Lab Kebun Terluas</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Air mancur di taman kota</span><p style="margin:.3em 0">Semburan air mancur, lemparan bola basket, dan jembatan gantung membentuk lengkungan yang sama: <b>parabola</b>. Persamaannya y = ax² + bx + c. Jika kita tahu persamaannya, kita bisa menjawab: setinggi apa air menyembur? Di mana jatuhnya? Berapa ukuran kebun paling luas dengan pagar yang terbatas?</p></div>
+  </div>
+  <div class="card"><h2>1. Peran a, b, dan c</h2>
+    <table class="t"><tr><th>Koefisien</th><th>Pengaruh</th></tr>
+      <tr><td class="mth">a</td><td>a &gt; 0 terbuka ke atas (punya titik terendah); a &lt; 0 terbuka ke bawah (punya titik tertinggi). Makin besar |a|, makin ramping.</td></tr>
+      <tr><td class="mth">b</td><td>Bersama a menggeser sumbu simetri: x = −b/(2a).</td></tr>
+      <tr><td class="mth">c</td><td>Titik potong dengan sumbu-y: (0, c).</td></tr></table>
+  </div>
+  <div class="card"><h2>2. Titik penting parabola</h2>
+    <div class="grid2"><div class="ex"><span class="t">Titik puncak</span><span class="mth">x<sub>p</sub> = −b/(2a)</span>, &nbsp; <span class="mth">y<sub>p</sub> = −D/(4a)</span></div>
+    <div class="ex"><span class="t">Diskriminan</span><span class="mth">D = b² − 4ac</span><br>D &gt; 0: dua akar · D = 0: satu akar (menyinggung) · D &lt; 0: tidak memotong sumbu-x</div></div>
+    <div class="ex"><span class="t">Akar (rumus ABC)</span><span class="mth">x = (−b ± √D) / (2a)</span>. Jumlah akar x₁ + x₂ = −b/a, hasil kali x₁·x₂ = c/a.</div>
+    <div class="note">Bentuk puncak: <span class="mth">y = a(x − x<sub>p</sub>)² + y<sub>p</sub></span>. Bentuk akar: <span class="mth">y = a(x − x₁)(x − x₂)</span>. Ketiganya parabola yang sama, hanya ditulis berbeda.</div>
+  </div>
+  <div class="card"><h2>3. Penerapan nilai maksimum</h2>
+    <div class="ex"><span class="t">Lemparan bola</span>Tinggi bola h(t) = −5t² + 20t + 1 meter. Puncak saat t = −20/(2·(−5)) = 2 detik, tinggi maksimum h(2) = 21 m.</div>
+    <div class="ex"><span class="t">Untung pedagang</span>Untung U(x) = −2x² + 80x − 300 ribu rupiah jika menjual x lusin. Untung maksimum saat x = 20 lusin, U = 500 ribu rupiah.</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Parabola Hidup</h2>
+    <p>Geser a, b, c. Amati titik puncak (P), akar (titik potong sumbu-x), dan diskriminan berubah.</p>
+    <div class="ctrl"><label>a <span class="v" id="a-v"></span><input type="range" id="a" min="-3" max="3" step="0.25" value="1"></label>
+      <label>b <span class="v" id="b-v"></span><input type="range" id="b" min="-8" max="8" step="0.5" value="-2"></label>
+      <label>c <span class="v" id="c-v"></span><input type="range" id="c" min="-8" max="8" step="0.5" value="-3"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 520 440" style="max-width:560px;margin:auto;display:block"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="kebun" class="panel">
+  <div class="card"><h2>Lab: Kebun Terluas</h2>
+    <p>Pak Tani punya pagar sepanjang L meter untuk kebun persegi panjang di tepi tembok (sisi tembok tidak perlu dipagari). Lebar kebun x, sehingga panjangnya L − 2x. Cari x agar luasnya maksimum!</p>
+    <div class="ctrl"><label>Panjang pagar L (m) <span class="v" id="L-v"></span><input type="range" id="L" min="20" max="100" step="4" value="40"></label>
+      <label>Lebar x (m) <span class="v" id="x-v"></span><input type="range" id="x" min="0" max="20" step="0.5" value="4"></label></div>
+    <div class="grid2"><svg class="viz" id="g2" viewBox="0 0 320 260"></svg><svg class="viz" id="g3" viewBox="0 0 360 260"></svg></div>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas X · Modul 5</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+const tm=(k,v,first)=>{ if(Math.abs(k)<1e-12) return ''; const sg=k<0?'− ':(first?'':'+ '); const m=Math.abs(k); return sg+((m===1&&v)?'':G.fmt(m,2))+v+' '; };
+const poly=(a,b,c)=>{ let t=tm(a,'x²',true)+tm(b,'x',a===0)+tm(c,'',a===0&&b===0); return t.trim()||'0'; };
+function d1(){
+  const a=+$('#a').value, b=+$('#b').value, c=+$('#c').value; ['a','b','c'].forEach(k=>$('#'+k+'-v').textContent=G.fmt(+$('#'+k).value,2));
+  const f=x=>a*x*x+b*x+c; const g=$('#g1'); clear(g); const A=G.axes(g,{x0:-8,x1:8,y0:-10,y1:12,W:520,H:440,pad:34,padb:28,xs:1,ys:2,lx:'x',ly:'y'});
+  let info='';
+  if(a===0){ s('path',{d:G.curve(f,-8,8,A),fill:'none',stroke:'var(--acc)','stroke-width':3.5,'clip-path':A.cp},g); info='<div class="big">a = 0: bukan fungsi kuadrat lagi, melainkan garis lurus!</div>'; }
+  else{
+    const xp=-b/(2*a), D=b*b-4*a*c, yp=-D/(4*a);
+    s('line',{x1:A.X(xp),y1:A.Y(-10),x2:A.X(xp),y2:A.Y(12),stroke:'var(--muted)','stroke-dasharray':'6 5','clip-path':A.cp},g);
+    s('path',{d:G.curve(f,-8,8,A,400),fill:'none',stroke:'var(--acc)','stroke-width':3.5,'clip-path':A.cp},g);
+    const dot=(x,y,c2,l,dx=10,dy=-10)=>{ if(x<-8||x>8||y<-10||y>12) return; s('circle',{cx:A.X(x),cy:A.Y(y),r:6.5,fill:c2,stroke:'#fff','stroke-width':2},g); if(l) txt(g,A.X(x)+dx,A.Y(y)+dy,l,{'font-weight':800,'font-size':13,fill:c2,'text-anchor':dx<0?'end':'start'}); };
+    dot(0,c,'var(--c)','(0, '+G.fmt(c,2)+')',8,a>0?16:-10);
+    let roots='';
+    if(D>1e-12){ const x1=(-b-Math.sqrt(D))/(2*a), x2=(-b+Math.sqrt(D))/(2*a); dot(x1,0,'var(--e)',''); dot(x2,0,'var(--e)',''); roots=`Dua akar: x₁ ≈ ${G.fmt(Math.min(x1,x2),3)}, x₂ ≈ ${G.fmt(Math.max(x1,x2),3)}`; }
+    else if(Math.abs(D)<=1e-12){ dot(xp,0,'var(--e)',''); roots=`Satu akar kembar: x = ${G.fmt(xp,3)} (parabola menyinggung sumbu-x)`; }
+    else roots='Tidak ada akar real: parabola tidak memotong sumbu-x';
+    dot(xp,yp,'var(--b)','P',10,a>0?18:-10);
+    const kind=a>0?'minimum':'maksimum';
+    info=`<div class="big">y = ${poly(a,b,c)}</div>
+     <table class="t"><tr><th>Sumbu simetri</th><td>x = −b/(2a) = ${G.fmt(xp,3)}</td></tr><tr><th>Titik puncak P</th><td>(${G.fmt(xp,3)} ; ${G.fmt(yp,3)}) → nilai ${kind} ${G.fmt(yp,3)}</td></tr>
+     <tr><th>Diskriminan</th><td>D = (${G.fmt(b,2)})² − 4·(${G.fmt(a,2)})·(${G.fmt(c,2)}) = <b>${G.fmt(D,3)}</b></td></tr><tr><th>Akar</th><td>${roots}</td></tr>
+     <tr><th>Bentuk puncak</th><td>y = ${G.fmt(a,2)}(x ${xp<0?'+':'−'} ${G.fmt(Math.abs(xp),3)})² ${yp<0?'−':'+'} ${G.fmt(Math.abs(yp),3)}</td></tr></table>
+     <p>${a>0?'a &gt; 0: terbuka ke atas, puncaknya titik <b>terendah</b>.':'a &lt; 0: terbuka ke bawah, puncaknya titik <b>tertinggi</b>.'} ${D<0&&a>0?'Karena a &gt; 0 dan D &lt; 0, grafik selalu di atas sumbu-x (<b>definit positif</b>).':D<0&&a<0?'Karena a &lt; 0 dan D &lt; 0, grafik selalu di bawah sumbu-x (<b>definit negatif</b>).':''}</p>`;
+  }
+  $('#o1').innerHTML=info;
+}
+['a','b','c'].forEach(k=>$('#'+k).oninput=d1); d1();
+
+function d2(){
+  const L=+$('#L').value; const xe=$('#x'); xe.max=L/2; let x=Math.min(+xe.value,L/2); $('#L-v').textContent=L; $('#x-v').textContent=G.fmt(x,1);
+  const p=L-2*x, Ar=x*p, xm=L/4, Am=L*L/8;
+  const g=$('#g2'); clear(g); s('rect',{x:0,y:0,width:320,height:260,fill:'var(--card)'},g);
+  s('rect',{x:20,y:20,width:280,height:14,fill:'var(--muted)'},g); txt(g,160,31,'TEMBOK',{'font-size':10,fill:'#fff','font-weight':800});
+  const sc=Math.min(280/L, 180/(L/2));
+  const w=p*sc, h=x*sc, X0=160-w/2;
+  s('rect',{x:X0,y:34,width:Math.max(w,1),height:Math.max(h,1),fill:'color-mix(in srgb,var(--c) 35%,transparent)',stroke:'var(--b)','stroke-width':4,'stroke-dasharray':'2 0'},g);
+  s('line',{x1:X0,y1:34,x2:X0+w,y2:34,stroke:'var(--muted)','stroke-width':5},g);
+  txt(g,X0-6,34+h/2,G.fmt(x,1),{'text-anchor':'end','font-weight':700,'font-size':12}); txt(g,160,34+h+18,G.fmt(p,1)+' m',{'font-weight':700,'font-size':12});
+  txt(g,160,250,'🌱 Luas = '+G.fmt(Ar,1)+' m²',{'font-weight':800});
+  const g3=$('#g3'); clear(g3); const A=G.axes(g3,{x0:0,x1:L/2,y0:0,y1:Am*1.15,W:360,H:260,pad:46,padb:28,lx:'x',ly:'Luas'});
+  s('path',{d:G.curve(t=>t*(L-2*t),0,L/2,A),fill:'none',stroke:'var(--acc)','stroke-width':3},g3);
+  s('line',{x1:A.X(xm),y1:A.Y(0),x2:A.X(xm),y2:A.Y(Am),stroke:'var(--muted)','stroke-dasharray':'4 4'},g3);
+  s('circle',{cx:A.X(x),cy:A.Y(Ar),r:7,fill:'var(--b)',stroke:'#fff','stroke-width':2},g3);
+  const near=Math.abs(x-xm)<0.26;
+  $('#o2').innerHTML=`<div class="big">Luas(x) = x(${L} − 2x) = −2x² + ${L}x</div>
+   <p>Saat ini: lebar ${G.fmt(x,1)} m, panjang ${G.fmt(p,1)} m, luas <b>${G.fmt(Ar,1)} m²</b>. ${near?'<b style="color:var(--ok)">🎉 Kamu menemukan luas maksimum!</b>':'Geser x untuk mencari puncak grafik.'}</p>
+   <p class="muted">Dengan rumus puncak: x = −b/(2a) = −${L}/(2·(−2)) = ${G.fmt(xm,1)} m, luas maksimum ${G.fmt(Am,1)} m². Panjangnya tepat dua kali lebarnya.</p>`;
+}
+['L','x'].forEach(k=>$('#'+k).oninput=d2); d2();
+
+VML.practice($('#prac'),[
+ {name:'Sumbu simetri', gen(){ const a=VML.randNZ(-3,3), xp=rand(-6,6), b=-2*a*xp, c=rand(-9,9); return {q:`Sumbu simetri grafik <span class="mth">y = ${poly(a,b,c)}</span> adalah x = …`, a:String(xp), hint:'x = −b/(2a)', ex:`−(${b})/(2·${VML.neg(a)}) = ${xp}`}; }},
+ {name:'Nilai puncak', gen(){ const a=VML.randNZ(-3,3), xp=rand(-4,4), yp=rand(-9,9), b=-2*a*xp, c=a*xp*xp+yp; return {q:`Nilai ${a>0?'minimum':'maksimum'} fungsi <span class="mth">f(x) = ${poly(a,b,c)}</span> adalah …`, a:String(yp), hint:`Cari x puncak = ${xp}, lalu hitung f(${xp}).`, ex:`f(${xp}) = ${yp}`}; }},
+ {name:'Diskriminan', gen(){ const a=VML.randNZ(-4,4), b=rand(-9,9), c=rand(-9,9); return {q:`Diskriminan <span class="mth">${poly(a,b,c)} = 0</span> adalah …`, a:String(b*b-4*a*c), hint:'D = b² − 4ac', ex:`${b*b} − 4·${VML.neg(a)}·${VML.neg(c)} = ${b*b-4*a*c}`}; }},
+ {name:'Akar terbesar', gen(){ const x1=rand(-7,7), x2=rand(-7,7), b=-(x1+x2), c=x1*x2; return {q:`Akar terbesar dari <span class="mth">${poly(1,b,c)} = 0</span> adalah …`, a:String(Math.max(x1,x2)), hint:'Faktorkan: cari dua bilangan yang hasil kalinya c dan jumlahnya b.', ex:`(x ${x1<0?'+':'−'} ${Math.abs(x1)})(x ${x2<0?'+':'−'} ${Math.abs(x2)}) = 0`}; }},
+ {name:'Jumlah & kali akar', gen(){ const a=pick([1,2,3]), b=rand(-12,12), c=rand(-12,12); const t=rand(0,1); return {q:`Jika x₁, x₂ akar-akar <span class="mth">${poly(a,b,c)} = 0</span>, maka ${t?'x₁ · x₂':'x₁ + x₂'} = …`, a:t?VML.fracTxt(c,a):VML.fracTxt(-b,a), hint:t?'x₁·x₂ = c/a':'x₁ + x₂ = −b/a', ex:t?`c/a = ${VML.fracTxt(c,a)}`:`−b/a = ${VML.fracTxt(-b,a)}`}; }}
+]);
+
+VML.quiz($('#quiz'),[
+ {q:'Grafik y = −2x² + 3x + 1 terbuka ke …', o:['bawah','atas','kanan','kiri'], a:0, ex:'a = −2 < 0.'},
+ {q:'Titik potong y = x² − 4x + 7 dengan sumbu-y adalah …', o:['(0, 7)','(7, 0)','(0, −4)','(2, 3)'], a:0, ex:'(0, c).'},
+ {q:'Sumbu simetri y = x² − 6x + 5 adalah …', o:['x = 3','x = −3','x = 6','x = 5'], a:0, ex:'6/2 = 3.'},
+ {q:'Titik puncak y = x² − 6x + 5 adalah …', o:['(3, −4)','(3, 4)','(−3, −4)','(6, 5)'], a:0, ex:'y(3) = 9 − 18 + 5 = −4.'},
+ {q:'Jika D < 0 dan a > 0, grafik fungsi kuadrat …', o:['selalu di atas sumbu-x','memotong sumbu-x di dua titik','menyinggung sumbu-x','selalu di bawah sumbu-x'], a:0, ex:'Definit positif.'},
+ {q:'Akar-akar x² − 5x + 6 = 0 adalah …', o:['2 dan 3','−2 dan −3','1 dan 6','−1 dan 6'], a:0, ex:'(x − 2)(x − 3).'},
+ {q:'Jumlah akar 2x² − 8x + 3 = 0 adalah …', o:['4','−4','3/2','8'], a:0, ex:'−b/a = 8/2.'},
+ {q:'Agar x² + 4x + k = 0 mempunyai akar kembar, k = …', o:['4','2','−4','16'], a:0, ex:'D = 16 − 4k = 0.'},
+ {q:'Tinggi bola h(t) = −5t² + 20t. Tinggi maksimum bola …', o:['20 m','10 m','40 m','15 m'], a:0, ex:'t = 2, h = −20 + 40.'},
+ {q:'Nilai minimum f(x) = x² + 2x − 8 adalah …', input:true, a:['-9'], ex:'f(−1) = 1 − 2 − 8 = −9.'},
+ {q:'Diskriminan 3x² − 2x − 1 = 0 adalah …', input:true, a:['16'], ex:'4 + 12 = 16.'},
+ {q:'Pagar 60 m untuk kebun di tepi tembok (3 sisi dipagari). Luas maksimum (m²) = …', input:true, a:['450'], ex:'x = 15, panjang 30, luas 450.'}
+],'x5');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

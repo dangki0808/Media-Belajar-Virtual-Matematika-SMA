@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Logaritma · Matematika SMA Kelas X</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="--acc:#2b6fd6">
+<header class="top"><div class="wrap"><a class="back" href="index.html">← Kelas X</a><div class="brand">√ Matematika SMA <small>· Kelas X</small></div></div></header>
+<div class="wrap">
+<section class="hero">
+  <span class="chip">Modul 2 · Bilangan <span class="lvl menengah">MENENGAH</span></span>
+  <h1>Logaritma: Menanyakan “Pangkat Berapa?”</h1>
+  <div class="tp"><b>Setelah modul ini kamu bisa</b><ul>
+    <li>Mengubah bentuk pangkat menjadi logaritma dan sebaliknya.</li>
+    <li>Memakai sifat-sifat logaritma untuk menghitung dan menyederhanakan.</li>
+    <li>Membaca skala logaritma: gempa (Richter), keasaman (pH), dan suara (desibel).</li></ul></div>
+</section>
+<nav class="tabs"><button data-target="materi">📖 Cerita &amp; Materi</button><button data-target="lab">🪞 Lab Cermin</button><button data-target="skala">🌋 Lab Skala Log</button><button data-target="latihan">✏️ Latihan</button><button data-target="kuis">🏆 Kuis</button></nav>
+<main>
+<section id="materi" class="panel">
+  <div class="card"><h2>Mulai dari cerita</h2>
+    <div class="story"><span class="t">Berapa lama tabungan menjadi dua kali?</span><p style="margin:.3em 0">Dengan eksponen kita bertanya: “2 dipangkatkan 5 hasilnya berapa?” (jawab: 32). Logaritma bertanya kebalikannya: “2 dipangkatkan <b>berapa</b> supaya hasilnya 32?” Jawabannya 5, ditulis <b><sup>2</sup>log 32 = 5</b>. Pertanyaan seperti “berapa tahun sampai uangku berlipat?” atau “seberapa kuat gempa ini dibanding yang kemarin?” dijawab dengan logaritma.</p></div>
+  </div>
+  <div class="card"><h2>1. Definisi</h2>
+    <div class="note" style="font-size:1.1rem"><span class="mth">a<sup>c</sup> = b</span> &nbsp;⟺&nbsp; <span class="mth"><sup>a</sup>log b = c</span> &nbsp; dengan a &gt; 0, a ≠ 1, b &gt; 0</div>
+    <p>a disebut <b>basis</b>, b <b>numerus</b>, c <b>hasil logaritma</b>. Jika basis tidak ditulis, basisnya 10: log 1000 = 3.</p>
+    <div class="grid3"><div class="ex"><span class="t">Contoh</span><sup>3</sup>log 81 = 4 sebab 3⁴ = 81</div><div class="ex"><span class="t">Contoh</span><sup>2</sup>log ⅛ = −3 sebab 2⁻³ = ⅛</div><div class="ex"><span class="t">Khusus</span><sup>a</sup>log 1 = 0 dan <sup>a</sup>log a = 1</div></div>
+  </div>
+  <div class="card"><h2>2. Sifat-sifat logaritma</h2>
+    <table class="t"><tr><th>Sifat</th><th>Rumus</th><th>Contoh</th></tr>
+      <tr><td>Perkalian</td><td><sup>a</sup>log (bc) = <sup>a</sup>log b + <sup>a</sup>log c</td><td>log 2 + log 5 = log 10 = 1</td></tr>
+      <tr><td>Pembagian</td><td><sup>a</sup>log (b/c) = <sup>a</sup>log b − <sup>a</sup>log c</td><td><sup>2</sup>log 48 − <sup>2</sup>log 3 = <sup>2</sup>log 16 = 4</td></tr>
+      <tr><td>Pangkat</td><td><sup>a</sup>log bⁿ = n · <sup>a</sup>log b</td><td><sup>3</sup>log 9⁵ = 5 · 2 = 10</td></tr>
+      <tr><td>Ganti basis</td><td><sup>a</sup>log b = log b / log a</td><td><sup>4</sup>log 8 = log 8 / log 4 = 3/2</td></tr>
+      <tr><td>Rantai</td><td><sup>a</sup>log b · <sup>b</sup>log c = <sup>a</sup>log c</td><td><sup>2</sup>log 3 · <sup>3</sup>log 16 = 4</td></tr>
+      <tr><td>Pangkat basis</td><td>a<sup><sup>a</sup>log b</sup> = b</td><td>5<sup><sup>5</sup>log 7</sup> = 7</td></tr></table>
+    <div class="note">Logaritma mengubah <b>perkalian menjadi penjumlahan</b>. Itulah sebabnya dulu para pelaut dan insinyur memakai tabel logaritma untuk menghitung cepat sebelum ada kalkulator.</div>
+  </div>
+  <div class="card"><h2>3. Persamaan logaritma</h2>
+    <p>Jika <sup>a</sup>log f(x) = c, maka f(x) = a<sup>c</sup>. Jangan lupa syarat <b>numerus positif</b>.</p>
+    <div class="ex"><span class="t">Contoh</span><sup>2</sup>log (x + 3) = 4 → x + 3 = 2⁴ = 16 → x = 13. Cek: x + 3 = 16 &gt; 0 ✓</div>
+    <div class="ex"><span class="t">Penerapan: waktu ganda</span>Uang berbunga majemuk 8% per tahun menjadi dua kali saat 1,08ᵗ = 2, jadi t = log 2 / log 1,08 ≈ 9 tahun. (Aturan praktis “72”: 72 : 8 = 9.)</div>
+  </div>
+</section>
+
+<section id="lab" class="panel">
+  <div class="card"><h2>Lab: Cermin Eksponen ↔ Logaritma</h2>
+    <p>Grafik y = <sup>a</sup>log x adalah <b>pantulan</b> grafik y = aˣ terhadap garis y = x. Geser titik P pada kurva eksponen, lalu lihat bayangannya Q pada kurva logaritma.</p>
+    <div class="ctrl"><label>Basis a <span class="v" id="a-v"></span><input type="range" id="a" min="0.2" max="4" step="0.1" value="2"></label>
+      <label>Posisi titik (x pada aˣ) <span class="v" id="p-v"></span><input type="range" id="p" min="-3" max="2.2" step="0.05" value="1.5"></label></div>
+    <svg class="viz" id="g1" viewBox="0 0 520 520" style="max-width:520px;margin:auto;display:block"></svg>
+    <div class="out" id="o1"></div>
+  </div>
+</section>
+
+<section id="skala" class="panel">
+  <div class="card"><h2>Lab: Skala Logaritma di Sekitar Kita</h2>
+    <p>Pada skala logaritma, naik <b>satu angka</b> berarti <b>dikali 10</b> (atau angka lain). Pilih keadaan, lalu bandingkan dua nilai.</p>
+    <div class="row" id="sc"></div>
+    <div class="ctrl"><label id="l1">Nilai 1 <span class="v" id="v1-v"></span><input type="range" id="v1" min="0" max="9" step="0.1" value="5"></label>
+      <label id="l2">Nilai 2 <span class="v" id="v2-v"></span><input type="range" id="v2" min="0" max="9" step="0.1" value="7"></label></div>
+    <svg class="viz" id="g2" viewBox="0 0 640 230"></svg>
+    <div class="out" id="o2"></div>
+  </div>
+</section>
+
+<section id="latihan" class="panel"><div id="prac"></div><p class="muted">Jawaban berupa bilangan bulat atau pecahan seperti <code>3/2</code> atau <code>-2</code>.</p></section>
+<section id="kuis" class="panel"><p class="muted">12 soal, urutannya acak. Nilai terbaik tersimpan di perangkat ini.</p><div id="quiz"></div></section>
+</main>
+</div>
+<footer><div class="wrap">Virtual Math Lab SMA · Kelas X · Modul 2</div></footer>
+<script src="assets/core.js"></script>
+<script src="assets/graph.js"></script>
+<script>
+const {$, $$, s, txt, clear, rand, pick} = VML; const G=GR;
+/* LAB 1 */
+function d1(){
+  let a=+$('#a').value; if(Math.abs(a-1)<0.05) a=1.1; const p=+$('#p').value;
+  $('#a-v').textContent=G.fmt(a,1); $('#p-v').textContent=G.fmt(p,2);
+  const g=$('#g1'); clear(g); const A=G.axes(g,{x0:-4,x1:8,y0:-4,y1:8,W:520,H:520,pad:34,padb:28,xs:1,ys:1,lx:'x',ly:'y'});
+  s('path',{d:G.curve(x=>x,-4,8,A),fill:'none',stroke:'var(--muted)','stroke-width':1.5,'stroke-dasharray':'6 5'},g);
+  txt(g,A.X(6.6),A.Y(7.2),'y = x',{'font-size':12,fill:'var(--muted)'});
+  const ex=x=>Math.pow(a,x), lg=x=>Math.log(x)/Math.log(a);
+  s('path',{d:G.curve(ex,-4,8,A,400),fill:'none',stroke:'var(--b)','stroke-width':3,'clip-path':A.cp},g);
+  s('path',{d:G.curve(lg,0.001,8,A,600),fill:'none',stroke:'var(--acc)','stroke-width':3,'clip-path':A.cp},g);
+  const py=ex(p);
+  if(py<8 && py>-4){
+    s('line',{x1:A.X(p),y1:A.Y(py),x2:A.X(py),y2:A.Y(p),stroke:'var(--muted)','stroke-dasharray':'3 4'},g);
+    s('circle',{cx:A.X(p),cy:A.Y(py),r:7,fill:'var(--b)',stroke:'#fff','stroke-width':2},g); txt(g,A.X(p)-12,A.Y(py)-10,'P',{'font-weight':800,fill:'var(--b)'});
+    s('circle',{cx:A.X(py),cy:A.Y(p),r:7,fill:'var(--acc)',stroke:'#fff','stroke-width':2},g); txt(g,A.X(py)+14,A.Y(p)+16,'Q',{'font-weight':800,fill:'var(--acc)'});
+  }
+  txt(g,A.X(a>1?1.4:-2.6),A.Y(7.4),'y = aˣ',{'font-weight':800,fill:'var(--b)'}); txt(g,A.X(6.9),A.Y(lg(7)+(a>1?0.6:-0.6)),'y = ᵃlog x',{'font-weight':800,fill:'var(--acc)'});
+  $('#o1').innerHTML=`<div class="big">P(${G.fmt(p,2)} ; ${G.fmt(py,3)}) &nbsp;↔&nbsp; Q(${G.fmt(py,3)} ; ${G.fmt(p,2)})</div>
+   <p>Artinya ${G.fmt(a,1)}<sup>${G.fmt(p,2)}</sup> = ${G.fmt(py,3)} dan <sup>${G.fmt(a,1)}</sup>log ${G.fmt(py,3)} = ${G.fmt(p,2)}. Koordinat x dan y <b>bertukar tempat</b>.</p>
+   <p>${a>1?'Basis &gt; 1: kedua grafik <b>naik</b>.':'Basis antara 0 dan 1: kedua grafik <b>turun</b>.'} Kurva logaritma selalu memotong sumbu-x di (1, 0) karena <sup>a</sup>log 1 = 0, dan tidak pernah menyentuh x ≤ 0.</p>`;
+}
+['a','p'].forEach(id=>$('#'+id).oninput=d1); d1();
+
+/* LAB 2 */
+const SC={
+ gempa:{nm:'🌋 Gempa (skala Richter)',u:'SR',min:2,max:9,v1:5,v2:7,step:1,fac:10,what:'amplitudo getaran',extra:d=>`Energi yang dilepas sekitar 31,6<sup>${G.fmt(d,1)}</sup> ≈ ${G.fmt(Math.pow(31.62,d),0)} kali lipat.`},
+ ph:{nm:'🧪 Keasaman (pH)',u:'pH',min:1,max:13,v1:7,v2:3,step:-1,fac:10,what:'kadar ion H⁺ (keasaman)',extra:()=>`Air murni pH 7, cuka sekitar pH 3, air sabun sekitar pH 10. pH = −log[H⁺].`},
+ db:{nm:'🔊 Suara (desibel)',u:'dB',min:0,max:120,v1:60,v2:90,step:10,fac:10,what:'intensitas (energi) suara',extra:()=>`Percakapan ≈ 60 dB, lalu lintas padat ≈ 85 dB, konser ≈ 110 dB. Di atas 85 dB berisiko merusak pendengaran jika lama.`}
+};
+let sk='gempa';
+$('#sc').innerHTML=Object.keys(SC).map(k=>`<button class="chipbtn ${k===sk?'on':''}" data-k="${k}">${SC[k].nm}</button>`).join('');
+$$('#sc .chipbtn').forEach(b=>b.onclick=()=>{ $$('#sc .chipbtn').forEach(x=>x.classList.toggle('on',x===b)); sk=b.dataset.k; const S=SC[sk]; ['v1','v2'].forEach(id=>{ const e=$('#'+id); e.min=S.min; e.max=S.max; e.step=sk==='db'?1:0.1; e.value=S[id]; }); d2(); });
+function d2(){
+  const S=SC[sk], v1=+$('#v1').value, v2=+$('#v2').value; $('#v1-v').textContent=G.fmt(v1,1)+' '+S.u; $('#v2-v').textContent=G.fmt(v2,1)+' '+S.u;
+  const d=(v2-v1)/S.step; const ratio=Math.pow(S.fac,d);
+  const g=$('#g2'); clear(g); s('rect',{x:0,y:0,width:640,height:230,fill:'var(--card)'},g);
+  // bar linear (intensitas relatif)
+  const big=Math.max(1,ratio), small=Math.min(1,ratio), r1=ratio>=1?1/big:1, r2=ratio>=1?1:ratio;
+  txt(g,20,30,'Skala biasa (intensitas):',{'text-anchor':'start','font-weight':700,'font-size':13});
+  [[r1,'Nilai 1','var(--b)',50],[r2,'Nilai 2','var(--acc)',80]].forEach(([r,l,c,y])=>{ s('rect',{x:90,y,width:Math.max(1.5,520*r),height:22,rx:4,fill:c},g); txt(g,82,y+16,l,{'text-anchor':'end','font-size':12}); });
+  txt(g,20,140,'Skala logaritma (angka yang kita baca):',{'text-anchor':'start','font-weight':700,'font-size':13});
+  const X=v=>90+520*(v-S.min)/(S.max-S.min);
+  s('line',{x1:90,y1:180,x2:610,y2:180,stroke:'var(--ink)','stroke-width':2},g);
+  for(let v=S.min; v<=S.max+1e-9; v+=(sk==='db'?10:1)){ s('line',{x1:X(v),y1:175,x2:X(v),y2:185,stroke:'var(--ink)'},g); txt(g,X(v),202,String(v),{'font-size':11,fill:'var(--muted)'}); }
+  s('circle',{cx:X(v1),cy:180,r:8,fill:'var(--b)'},g); s('circle',{cx:X(v2),cy:180,r:8,fill:'var(--acc)'},g);
+  const lo=Math.min(ratio,1/ratio);
+  $('#o2').innerHTML=`<div class="big">Selisih ${G.fmt(Math.abs(v2-v1),1)} ${S.u} → ${S.what} ${ratio>=1?'nilai 2':'nilai 1'} sekitar <b>${G.fmt(Math.max(ratio,1/ratio),ratio>100||1/ratio>100?0:2)}</b> kali ${ratio>=1?'nilai 1':'nilai 2'}</div>
+   <p>Karena tiap ${Math.abs(S.step)} ${S.u} berarti ×${S.fac}: ${S.fac}<sup>${G.fmt(Math.abs(d),2)}</sup>. Pada skala biasa, batang yang kecil bisa hampir tidak terlihat (${G.fmt(lo*100,lo<0.01?4:2)}% dari yang besar), sedangkan pada skala logaritma keduanya tetap mudah dibandingkan.</p><p class="muted">${S.extra(Math.abs(d))}</p>`;
+}
+['v1','v2'].forEach(id=>$('#'+id).oninput=d2); d2();
+
+/* LATIHAN */
+VML.practice($('#prac'),[
+ {name:'Nilai log', gen(){ const a=pick([2,3,4,5,10]), n=rand(-2,a===10?4:4); const b=Math.pow(a,n); const bs=n>=0?String(b):'1/'+Math.pow(a,-n); return {q:`Nilai <span class="mth"><sup>${a===10?'':a}</sup>log ${bs}</span> = …`, a:String(n), hint:`${a} dipangkatkan berapa supaya hasilnya ${bs}?`, ex:`${a}<sup>${n}</sup> = ${bs}, jadi hasilnya ${n}`}; }},
+ {name:'Sifat log', gen(){ const t=rand(0,2); if(t===0){ const a=pick([2,3,6]); const n=rand(2,4), tot=Math.pow(a,n); let x=pick([2,3,4,6,8,9].filter(v=>tot%v===0&&v!==tot))||a; const y=tot/x; return {q:`<span class="mth"><sup>${a}</sup>log ${x} + <sup>${a}</sup>log ${y}</span> = …`, a:String(n), hint:'Jumlah log = log perkalian.', ex:`<sup>${a}</sup>log ${tot} = ${n}`}; }
+   if(t===1){ const a=pick([2,3,5]), n=rand(1,3), c=rand(2,7), tot=Math.pow(a,n)*c; return {q:`<span class="mth"><sup>${a}</sup>log ${tot} − <sup>${a}</sup>log ${c}</span> = …`, a:String(n), hint:'Selisih log = log pembagian.', ex:`<sup>${a}</sup>log (${tot}/${c}) = <sup>${a}</sup>log ${tot/c} = ${n}`}; }
+   const a=pick([2,3]), k=rand(2,4), m=rand(2,5); return {q:`<span class="mth"><sup>${a}</sup>log ${Math.pow(a,k)}<sup>${m}</sup></span> = …`, a:String(k*m), hint:'Pangkat numerus turun menjadi pengali.', ex:`${m} · <sup>${a}</sup>log ${Math.pow(a,k)} = ${m}·${k} = ${k*m}`}; }},
+ {name:'Ganti basis', gen(){ const p=pick([[4,8,'3/2'],[8,4,'2/3'],[9,27,'3/2'],[27,9,'2/3'],[8,16,'4/3'],[16,8,'3/4'],[4,32,'5/2'],[25,125,'3/2'],[32,4,'2/5']]); return {q:`Nilai <span class="mth"><sup>${p[0]}</sup>log ${p[1]}</span> = …`, a:p[2], hint:'Tulis keduanya sebagai pangkat dari basis yang sama, misal 2 atau 3.', ex:`Hasilnya ${p[2]}`}; }},
+ {name:'Persamaan log', gen(){ const a=pick([2,3]), c=rand(2,a===2?5:3), k=rand(-5,6); const x=Math.pow(a,c)-k; return {q:`<span class="mth"><sup>${a}</sup>log (x ${k<0?'−':'+'} ${Math.abs(k)}) = ${c}</span>. Nilai x = …`, a:String(x), hint:`Ubah ke bentuk pangkat: x ${k<0?'−':'+'} ${Math.abs(k)} = ${a}<sup>${c}</sup>.`, ex:`x ${k<0?'−':'+'} ${Math.abs(k)} = ${Math.pow(a,c)} → x = ${x}`}; }}
+]);
+
+/* KUIS */
+VML.quiz($('#quiz'),[
+ {q:'Bentuk logaritma dari 5³ = 125 adalah …', o:['⁵log 125 = 3','³log 125 = 5','¹²⁵log 5 = 3','⁵log 3 = 125'], a:0, ex:'Basis 5, numerus 125, hasil 3.'},
+ {q:'Nilai ²log 64 = …', o:['6','8','32','5'], a:0, ex:'2⁶ = 64.'},
+ {q:'Nilai log 0,01 = …', o:['−2','2','−1','0,01'], a:0, ex:'10⁻² = 0,01.'},
+ {q:'log 4 + log 25 = …', o:['2','1','29','100'], a:0, ex:'log 100 = 2.'},
+ {q:'Jika log 2 = 0,301, maka log 8 = …', o:['0,903','0,602','2,408','0,301'], a:0, ex:'log 8 = 3 log 2.'},
+ {q:'⁴log 8 = …', o:['3/2','2','2/3','2√2'], a:0, ex:'2²ˣ = 2³ → x = 3/2.'},
+ {q:'²log 3 · ³log 32 = …', o:['5','6','32/3','3'], a:0, ex:'Sifat rantai: ²log 32 = 5.'},
+ {q:'Grafik y = ²log x memotong sumbu-x di titik …', o:['(1, 0)','(0, 1)','(2, 0)','tidak memotong'], a:0, ex:'²log 1 = 0.'},
+ {q:'Gempa 7 SR dibanding gempa 5 SR memiliki amplitudo … kali lebih besar.', o:['100','2','20','1.000'], a:0, ex:'Selisih 2 → 10² = 100.'},
+ {q:'Penyelesaian ³log (x − 1) = 2 adalah x = …', input:true, a:['10'], ex:'x − 1 = 9.'},
+ {q:'Nilai 7^(⁷log 12) = …', input:true, a:['12'], ex:'a pangkat ᵃlog b = b.'},
+ {q:'Larutan pH 4 dibanding pH 6: keasamannya berapa kali lipat?', input:true, a:['100'], ex:'Selisih 2 pH → 10² = 100 kali.'}
+],'x2');
+</script>
+<script src="../shared/nav.js"></script>
+</body></html>

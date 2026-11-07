@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Virtual Math Lab SMA · Kelas X – XII</title>
+<style>
+:root{--bg:#eef1f7;--bg2:#f7efe9;--card:#ffffff;--ink:#1b2236;--muted:#5d6479;--line:#dfe3ee;--green:#1f3352;--orange:#d9572b;--gold:#f2795c;--yellow:#ffd9a8;--blue:#c9d8ff;--coral:#f4b19d;--mint:#bfe8dc}
+@media (prefers-color-scheme:dark){:root{--bg:#11151f;--bg2:#171b27;--card:#1c2231;--ink:#eef1f8;--muted:#a8afc4;--line:#2e364b;--green:#8fb4ff;--orange:#ff9a76;--yellow:#4d3a1c;--blue:#22304f;--coral:#53302a;--mint:#1c4038}}
+*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;min-height:100vh;font-family:"Nunito","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);font-size:17px;line-height:1.55;
+ background:radial-gradient(1000px 600px at 0% 0%,color-mix(in srgb,var(--gold) 22%,transparent),transparent 60%),linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.3px;line-height:1.15}
+.eyebrow{display:inline-block;font-size:.75rem;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:var(--orange)}
+.hero{display:grid;grid-template-columns:1.25fr .85fr;gap:28px;align-items:center;padding:34px 0 10px}
+.hero h1{font-size:clamp(2.2rem,5.6vw,3.6rem);margin:.25em 0}.hero h1 em{color:var(--orange)}
+.hero p{color:var(--muted);max-width:560px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{font:inherit;font-weight:800;border-radius:14px;cursor:pointer;min-height:46px;padding:10px 18px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.pri{background:var(--green);color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--green) 60%,#000)}
+@media (prefers-color-scheme:dark){.btn.pri{color:#0d1a15}}
+.btn.sec{border:1.5px solid var(--green);color:var(--green);background:transparent}
+.btn.txt{background:none;border:0;color:var(--muted);padding:6px 4px;min-height:auto}
+.stat-card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:20px;box-shadow:0 14px 34px rgba(60,40,10,.10)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stats div{background:color-mix(in srgb,var(--green) 6%,var(--card));border:1px solid var(--line);border-radius:16px;padding:10px 14px}
+.stats b{display:block;font-family:Georgia,serif;font-size:1.8rem;line-height:1.1}.stats small{color:var(--muted);font-weight:700}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.pill-row span{font-size:.78rem;font-weight:800;padding:3px 10px;border-radius:99px;background:var(--line)}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}
+.feat{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);border-radius:24px;padding:20px;min-height:200px;position:relative;transition:transform .15s,box-shadow .15s}
+.feat:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.10)}
+.feat.f1{background:var(--yellow)}.feat.f2{background:var(--blue)}.feat.f3{background:var(--mint)}.feat.f4{background:color-mix(in srgb,var(--coral) 70%,var(--card))}
+.feat .sym{font-family:Georgia,serif;font-size:2.4rem;font-weight:700;line-height:1}
+.feat h3{margin:.2em 0 0;font-size:1.4rem}.feat p{margin:0;opacity:.85;font-size:.95rem}
+.feat .meta{margin-top:auto;font-weight:800;font-size:.85rem}
+.feat .arr{position:absolute;right:18px;top:16px;font-weight:900}
+.top-search{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:30px 0 12px}
+.top-search h2{margin:0;font-size:1.8rem}
+.top-search input{font:inherit;font-weight:700;padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);width:280px;max-width:100%}
+.grades{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.g{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.g:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(30,40,20,.12)}
+.g .sw{height:92px;position:relative;display:flex;align-items:flex-end;padding:12px 16px}
+.g .sw b{font-family:Georgia,serif;font-size:1.4rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+.g .sw span{position:absolute;top:10px;right:12px;font-size:.72rem;font-weight:900;background:rgba(255,255,255,.88);color:#333;padding:3px 10px;border-radius:99px}
+.g .bd{padding:12px 16px 16px;flex:1;display:flex;flex-direction:column;gap:6px}
+.g .bd p{margin:0;color:var(--muted);font-size:.92rem;flex:1}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%}
+.meta2{display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;color:var(--muted)}
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;margin:10px 0;overflow:hidden}
+summary{cursor:pointer;padding:14px 18px;font-weight:800;display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary .dot{width:16px;height:16px;border-radius:50%;flex:0 0 16px}
+summary .c{margin-left:auto;color:var(--muted);font-weight:700;font-size:.9rem}
+.ml{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;padding:0 14px 14px}
+.ml a{display:flex;gap:10px;align-items:flex-start;text-decoration:none;color:var(--ink);padding:10px 12px;border-radius:12px;border:1px solid var(--line)}
+.ml a:hover{background:color-mix(in srgb,var(--green) 7%,transparent)}
+.ml .ic{font-size:1.3rem;width:28px;text-align:center}.ml small{display:block;color:var(--muted);font-size:.82rem}
+.ml .sc{margin-left:auto;font-size:.78rem;font-weight:800;white-space:nowrap;color:var(--orange)}
+.guide{background:#1f3352;color:#f4f6fb;border-radius:26px;padding:22px;margin:26px 0}
+@media (prefers-color-scheme:dark){.guide{background:#18233a}}
+.guide .eyebrow{color:var(--gold)}.guide h2{margin:.2em 0 .4em}.guide ol{margin:.4em 0;padding-left:1.3em}.guide li{margin:4px 0}
+.guide .btn.sec{border-color:#f8f1e3;color:#f8f1e3}
+.empty{padding:14px;color:var(--muted)}
+footer{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding:18px 0 30px;margin-top:30px}
+@media (max-width:960px){.features{grid-template-columns:1fr 1fr}}@media (max-width:820px){.hero{grid-template-columns:1fr}}@media (max-width:560px){.features{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+  <div><span class="eyebrow">Laboratorium matematika digital · SMA Kelas X – XII</span>
+    <h1>Matematika SMA yang bisa <em>digeser, dibuktikan, dan dilatih.</em></h1>
+    <p>Pilih kelas untuk belajar lewat cerita sehari-hari dan lab interaktif. Ukur kesiapan ujian dengan Tryout bergaya asesmen sekolah, UTBK/SNBT, dan OSN. Perdalam kalkulus di Kalkulus Lab, dan simpan ringkasan rumus untuk belajar cepat.</p>
+    <div class="cta"><a class="btn pri" href="#kelas">📚 Pilih kelas</a><a class="btn sec" href="tryout/index.html">📝 Coba Tryout</a><a class="btn txt" href="rumus/index.html">📘 Ringkasan rumus →</a></div></div>
+  <div class="stat-card"><span class="eyebrow">Ringkasan di perangkat ini</span>
+    <div class="stats" style="margin-top:10px"><div><b id="nm">0</b><small>modul lab SMA</small></div><div><b id="done">0</b><small>kuis modul selesai</small></div><div><b id="kl">0</b><small>kuis Kalkulus Lab</small></div><div><b id="tob">–</b><small>nilai tryout terbaik</small></div></div>
+    <div class="pill-row"><span>3 jenjang kelas</span><span id="nl">0 lab</span><span id="nq">0 soal kuis</span><span>+ Kalkulus Lab 14 modul</span></div></div>
+</section>
+<section class="features">
+  <a class="feat f1" href="#kelas"><span class="sym">∑</span><h3>Lab per kelas</h3><p>Cerita, dua lab interaktif, latihan acak tak terbatas, dan kuis 12 soal di setiap modul.</p><span class="meta" id="f1m"></span><span class="arr">↗</span></a>
+  <a class="feat f2" href="tryout/index.html"><span class="sym">A–E</span><h3>Tryout & UTBK</h3><p>Set per kelas, Penalaran Kuantitatif bergaya UTBK/SNBT, paket campuran, dan OSN SMA.</p><span class="meta" id="f2m"></span><span class="arr">↗</span></a>
+  <a class="feat f3" href="kalkulus-lab/index.html"><span class="sym">∂∫</span><h3>Kalkulus Lab</h3><p>14 modul turunan dan integral untuk pendalaman Kelas XII dan persiapan kuliah.</p><span class="meta" id="f3m"></span><span class="arr">↗</span></a>
+  <a class="feat f4" href="rumus/index.html"><span class="sym">📘</span><h3>Ringkasan Rumus</h3><p>Semua rumus penting Kelas X–XII dalam satu halaman, bisa dicari dan dicetak.</p><span class="meta">20 topik</span><span class="arr">↗</span></a>
+</section>
+<div class="top-search" id="kelas"><div><span class="eyebrow">Pilih kelas</span><h2>Lab interaktif per kelas</h2></div><input type="search" id="q" placeholder="🔍 Cari materi, misalnya logaritma" aria-label="Cari materi"></div>
+<div class="grades" id="grades"></div>
+<div class="top-search"><div><span class="eyebrow">Daftar lengkap</span><h2>Semua modul</h2></div></div>
+<div id="list"></div>
+<section class="guide"><span class="eyebrow">Untuk guru</span><h2>Cara memakai di kelas</h2>
+  <ol>
+    <li>Semua berkas berjalan <b>tanpa internet</b>. Ekstrak ZIP, lalu buka <b>index.html</b> ini di browser.</li>
+    <li>Awali dengan <b>cerita</b> di tab Materi, ajak siswa menebak lalu membuktikan di <b>lab</b>, dan tutup dengan <b>kuis</b> modul.</li>
+    <li>Gunakan <b>Tryout</b> sebagai latihan ujian dan persiapan UTBK/SNBT. Setiap set bisa dicetak beserta pembahasannya.</li>
+    <li>Untuk dibagikan, unggah seluruh folder ke hosting (misalnya GitHub Pages atau Netlify), lalu sematkan alamatnya di Google Sites atau LMS. Jangan memindahkan berkas keluar dari foldernya.</li>
+    <li>Nilai tersimpan di perangkat masing-masing siswa.</li>
+  </ol>
+  <button class="btn sec" id="reset">Hapus semua nilai SMA di perangkat ini</button>
+</section>
+</div>
+<div class="wrap"><footer><span>Virtual Math Lab SMA · Media Pembelajaran Matematika Interaktif Kelas X – XII · Kurikulum Merdeka</span><span>Pahami dulu, buktikan sendiri, lalu latih.</span></footer></div>
+<script src="shared/nav.js"></script>
+<script>
+const G=[{"folder": "sma-kelas-10", "name": "Kelas X", "theme": "Samudra Senja", "grad": "linear-gradient(160deg,#04222b,#0a4a57,#12808a,#f2795c)", "pref": "sma10:", "mods": [{"f": "01-eksponen-akar.html", "t": "Eksponen & Bentuk Akar", "d": "Bakteri membelah, tabungan majemuk, dan penyederhana akar.", "i": "aˣ", "k": "x1"}, {"f": "02-logaritma.html", "t": "Logaritma", "d": "Pangkat berapa? Cermin eksponen, skala gempa, pH, desibel.", "i": "log", "k": "x2"}, {"f": "03-barisan-deret.html", "t": "Barisan & Deret", "d": "Tabungan bertambah tetap vs berlipat, bola memantul.", "i": "∑", "k": "x3"}, {"f": "04-sistem-persamaan.html", "t": "SPLDV & SPLTV", "d": "Dua garis berpotongan dan belanja tiga barang.", "i": "⨯", "k": "x4"}, {"f": "05-fungsi-kuadrat.html", "t": "Fungsi Kuadrat", "d": "Parabola hidup, titik puncak, dan kebun terluas.", "i": "x²", "k": "x5"}, {"f": "06-pertidaksamaan.html", "t": "Pertidaksamaan", "d": "Garis bilangan tanda, rasional, dan nilai mutlak.", "i": "≤", "k": "x6"}, {"f": "07-trigonometri.html", "t": "Trigonometri", "d": "Mengukur menara, segitiga ajaib, lingkaran satuan.", "i": "θ", "k": "x7"}, {"f": "08-statistika.html", "t": "Statistika Data Tunggal", "d": "Diagram titik, kotak-garis, pencilan, rata-rata gabungan.", "i": "x̄", "k": "x8"}]}, {"folder": "sma-kelas-11", "name": "Kelas XI", "theme": "Ungu Mahkota", "grad": "linear-gradient(160deg,#150b2b,#33195e,#5f37a8,#f0b429)", "pref": "sma11:", "mods": [{"f": "01-komposisi-invers.html", "t": "Fungsi Komposisi & Invers", "d": "Diskon dulu atau pajak dulu? Mesin berantai dan cermin invers.", "i": "g∘f", "k": "xi1"}, {"f": "02-polinomial.html", "t": "Polinomial (Suku Banyak)", "d": "Grafik dari akar, mesin Horner, teorema sisa & faktor.", "i": "P(x)", "k": "xi2"}, {"f": "03-lingkaran.html", "t": "Persamaan Lingkaran", "d": "Jangkauan menara sinyal dan garis singgung.", "i": "○", "k": "xi3"}, {"f": "04-program-linear.html", "t": "Program Linear", "d": "Toko roti, daerah layak, titik pojok, garis selidik.", "i": "max", "k": "xi4"}, {"f": "05-matriks.html", "t": "Matriks", "d": "Transformasi bidang, determinan, invers, perkalian.", "i": "[ ]", "k": "xi5"}, {"f": "06-peluang.html", "t": "Teori Peluang", "d": "Simulasi koin & dadu, permutasi, kombinasi.", "i": "P(A)", "k": "xi6"}]}, {"folder": "sma-kelas-12", "name": "Kelas XII", "theme": "Bara Senja", "grad": "linear-gradient(160deg,#1b100d,#4b1d14,#9a3a20,#f2c14e)", "pref": "sma12:", "mods": [{"f": "01-limit.html", "t": "Limit Fungsi Aljabar", "d": "Mendekati lubang di grafik dan menuju tak hingga.", "i": "lim", "k": "xii1"}, {"f": "02-turunan.html", "t": "Turunan & Penerapannya", "d": "Tali busur jadi garis singgung, kotak karton terbesar.", "i": "f′", "k": "xii2"}, {"f": "03-integral.html", "t": "Integral", "d": "Persegi panjang tipis, luas sawah antara sungai dan jalan.", "i": "∫", "k": "xii3"}, {"f": "04-transformasi.html", "t": "Transformasi Geometri", "d": "Motif tenun: geser, cermin, putar, perbesar, komposisi.", "i": "⟲", "k": "xii4"}, {"f": "05-dimensi-tiga.html", "t": "Dimensi Tiga", "d": "Kubus putar, jarak titik-garis-bidang, kabel aula.", "i": "🧊", "k": "xii5"}, {"f": "06-statistika-kelompok.html", "t": "Statistika Data Berkelompok", "d": "Histogram hidup, ogive, dan persentil.", "i": "Me", "k": "xii6"}]}];
+const KL=['kalkd1','kalkd2','kalkd3','kalkd4','kalkd5','kalkd6','kalkm1','kalkm2','kalkm3','kalkm4','kalkm5','kalkm6','kalkm7','kalkm8'];
+const get=k=>{ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } };
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function render(){
+  const q=(document.getElementById('q').value||'').trim().toLowerCase();
+  let total=0, done=0;
+  document.getElementById('grades').innerHTML=G.map(g=>{ const sc=g.mods.map(m=>get(g.pref+m.k)).filter(v=>v!=null); done+=sc.length; total+=g.mods.length;
+    const avg=sc.length?Math.round(sc.reduce((a,b)=>a+b,0)/sc.length):null;
+    return `<a class="g" href="${g.folder}/index.html"><div class="sw" style="background:${g.grad}"><b>${g.name}</b><span>SMA</span></div>
+      <div class="bd"><div style="font-weight:800">Tema: ${g.theme}</div><p>${g.mods.map(m=>m.t).join(' · ')}</p>
+      <div class="meta2"><span>${g.mods.length} modul</span><span>${sc.length}/${g.mods.length} kuis${avg!=null?' · rata-rata '+avg:''}</span></div>
+      <div class="bar"><i style="width:${sc.length/g.mods.length*100}%;background:${g.grad}"></i></div></div></a>`; }).join('');
+  document.getElementById('nm').textContent=total; document.getElementById('nl').textContent=(total*2)+' lab'; document.getElementById('nq').textContent=(total*12).toLocaleString('id-ID')+' soal kuis'; document.getElementById('done').textContent=done;
+  document.getElementById('f1m').textContent=`${total} modul · ${done} kuis selesai`;
+  const kd=KL.map(k=>get('kalk:'+k)).filter(v=>v!=null).length; document.getElementById('kl').textContent=kd; document.getElementById('f3m').textContent=`${kd}/14 kuis selesai`;
+  const B=get('tosma:best')||{}, bv=Object.values(B); document.getElementById('tob').textContent=bv.length?Math.max(...bv):'–'; const C=get('tosma:cnt')||{}; const cs=Object.values(C).reduce((a,b)=>a+b,0); document.getElementById('f2m').textContent=cs?`${cs} set selesai`:'6 jenis tryout';
+  document.getElementById('list').innerHTML=G.map(g=>{ const mods=g.mods.filter(m=>!q||(m.t+' '+m.d+' '+g.name).toLowerCase().includes(q)); if(!mods.length) return '';
+    return `<details ${q?'open':''}><summary><span class="dot" style="background:${g.grad}"></span>${g.name}<span class="c">${mods.length} modul</span></summary><div class="ml">${mods.map(m=>{ const b=get(g.pref+m.k);
+      return `<a href="${g.folder}/${m.f}"><span class="ic">${m.i}</span><span><b>${esc(m.t)}</b><small>${esc(m.d)}</small></span>${b!=null?`<span class="sc">⭐ ${b}</span>`:''}</a>`; }).join('')}</div></details>`; }).join('') || '<div class="empty">Tidak ada materi yang cocok dengan pencarian.</div>';
+}
+document.getElementById('q').oninput=render;
+document.getElementById('reset').onclick=()=>{ if(confirm('Hapus semua nilai kuis SMA, Kalkulus Lab, dan Tryout di perangkat ini?')){ G.forEach(g=>g.mods.forEach(m=>{ try{ localStorage.removeItem(g.pref+m.k); }catch(e){} })); KL.forEach(k=>{ try{ localStorage.removeItem('kalk:'+k); }catch(e){} }); ['tosma:best','tosma:cnt','tosma:hist'].forEach(k=>{ try{ localStorage.removeItem(k); }catch(e){} }); render(); } };
+window.addEventListener('pageshow',render); render();
+</script>
+</body></html>
